@@ -1,1 +1,1 @@
-("~/Desktop/LearnEmacs/" "~/.emacs.d/" "~/GitRepo/MyBlog/" "~/GitRepo/jsb_Blog/")
+("~/.emacs.d/" "~/Desktop/LearnEmacs/" "~/GitRepo/MyBlog/" "~/GitRepo/jsb_Blog/")
