@@ -1,0 +1,40 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("ranger-l"
+ (filename . "~/Desktop/")
+ (front-context-string . "快乐每一天.org\n  -rw-")
+ (rear-context-string . ".4k 10-20 11:19 ")
+ (position . 908))
+("ranger-j"
+ (filename . "~/elisp/")
+ (front-context-string . "company-english-")
+ (rear-context-string . "256 10-18 23:04 ")
+ (position . 127))
+("ranger-k"
+ (filename . "~/elisp/company-english-helper/")
+ (front-context-string . "company-english-")
+ (rear-context-string . ".4k 10-18 23:04 ")
+ (position . 228))
+("ranger-?"
+ (filename . "~/GitRepo/MyBlog/source/_posts/")
+ (front-context-string . "Python-01-Python")
+ (rear-context-string . ".9k 08-30 01:50 ")
+ (position . 3585))
+("ranger-h"
+ (filename . "~/GitRepo/MyBlog/source/_posts/")
+ (front-context-string . "Python-01-Python")
+ (rear-context-string . ".9k 08-30 01:50 ")
+ (position . 3585))
+("ranger-"
+ (filename . "~/GitRepo/MyBlog/source/_posts/")
+ (front-context-string . "Python-01-Python")
+ (rear-context-string . ".9k 08-30 01:50 ")
+ (position . 3585))
+("ranger-"
+ (filename . "~/elisp/company-english-helper/")
+ (front-context-string . "company-english-")
+ (rear-context-string . ".2M 10-18 23:04 ")
+ (position . 127))
+)
