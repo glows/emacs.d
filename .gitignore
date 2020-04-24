@@ -1,9 +1,9 @@
 !.gitignore
 .lsp-session-*
-/url/
-/elpa/
-/.cache/
-/doc/
-/var/
+url/
+elpa/*
+.cache/
+doc/
+var/*
 !/var/banner/
-/site-lisp/
+site-lisp/
