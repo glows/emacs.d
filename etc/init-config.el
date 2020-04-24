@@ -1,0 +1,11 @@
+(require 'init-package)
+(require 'init-basic)
+(require 'init-ui)
+(require 'init-keybind)
+(require 'init-tools)
+(require 'init-complete)
+(require 'init-prog)
+(require 'init-org)
+(require 'init-dired)
+
+(provide 'init-config)

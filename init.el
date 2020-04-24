@@ -1,105 +1,46 @@
-;; 我们在这个文件里配置Emacs
+;; 初始化各种包
+;; (package-initialize)
 
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;; 递归遍历加载路径
+(defun add-subdirs-to-load-path(dir)
+  "Recursive add directories to `load-path`"
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
+    (normal-top-level-add-subdirs-to-load-path)))
 
-(package-initialize)
+(let ((gc-cons-threshold most-positive-fixnum)
+      (file-name-handler-alist nil))
+  (add-subdirs-to-load-path "~/.emacs.d/etc/"))
 
-;; 设置为全屏
+;; 性能测试
+(load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
+
+(require 'init-config)
+(require '+autoload)
+
+
+;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(custom-safe-themes
+   (quote
+    ("0e8bac1e87493f6954faf5a62e1356ec9365bd5c33398af3e83cfdf662ad955f" "51956e440cec75ba7e4cff6c79f4f8c884a50b220e78e5e05145386f5b381f7b" "7220c44ef252ec651491125f1d95ad555fdfdc88f872d3552766862d63454582" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" default)))
+ '(default-input-method "rime")
+ '(emojify-emojis-dir "~/.emacs.d/var/emojis" t)
+ '(lsp-python-ms-executable
+   "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer")
+ '(lsp-ui-doc-delay 1 t)
  '(package-selected-packages
    (quote
-    (doom-themes dakrone-light-theme w3m use-package spacemacs-theme ranger projectile multi-term magit lispy gruvbox-theme grip-mode elpy ahungry-theme))))
-;; 加载ahungry主题
-(load-theme 'doom-dracula t)
-;; 加载gruvbox主题
-;; (load-theme 'spacemacs-dark t)
-
-;; 设置字体
-;; 如果有图形界面，可以在菜单栏选择set default font，选择好后，M-x describe-font
-;; (set-default-font "-*-Menlo-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1")
-(set-default-font "Menlo-16")
-
-;; 隐藏工具栏
-(tool-bar-mode -1)
-
-;; 隐藏菜单栏
-(menu-bar-mode -1)
-
-;; 隐藏滚动条
-(scroll-bar-mode -1)
-
-;; 关闭错误提示音
-(setq ring-bell-function 'ignore)
-
-;; 粘贴跟随光标
-(setq mouse-yank-at-point t)
-
-;; yes or no 改为 y/n
-(fset 'yes-or-no-p 'y-or-n-p)
-
-(setq use-package-always-ensure t)
-
-;; org文件以缩进的形式显示
-(setq org-startup-indented t)
-;; 最近打开过的文件
-(recentf-mode 1)
-(setq recentf-max-menu-items 25)
-(setq recentf-max-saved-items 25)
-(global-set-key "\C-x\ \C-r" 'recentf-open-files)
-;; 快速打开init.elnn
-;(global-set-key (kbd "C-x i") (find-file "~/.emacs.d/init.el"))
-;; 配置magit
-(use-package
-  magit
-  :bind ("C-x g" . t-status))
-;; 配置lispy
-(use-package
-  lispy
-  :config (add-hook
-	   'emacs-lisp-mode-hook
-	   (lambda () (lispy-mode 1))))
-;; 配置ranger
-(use-package
-  ranger)
-;; 配置projectile
-(use-package
-  projectile)
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;; 配置awesome-tab
-(add-to-list 'load-path (expand-file-name "~/elisp/awesome-tab"))
-(require 'awesome-tab)
-(awesome-tab-mode t)
-;; 配置company-english-helper
-(add-to-list 'load-path (expand-file-name "~/elisp/company-english-helper"))
-(require 'company-english-helper)
-;; 配置grip-mode
-(use-package grip-mode
-  :ensure t
-  :hook ((markdown-mode org-mode) . grip-mode))
-(add-hook 'markdown-mode-hook #'grip-mode)
-(add-hook 'org-mode-hook #'grip-mode)
-
-;; 配置iimage mode
-(add-to-list 'load-path (expand-file-name "~/elisp/iimage.el"))
-(autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
-(autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
-;; 配置aweshell
-(add-to-list 'load-path (expand-file-name "~/elisp/aweshell"))
-(require 'aweshell)
-;; 配置multi-shell
-(require 'multi-term)
-(put 'upcase-region 'disabled nil)
+    (perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine company-lsp bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window)))
+ '(which-key-popup-type (quote side-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "red")))))
