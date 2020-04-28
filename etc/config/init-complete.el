@@ -22,4 +22,14 @@
   :ensure t
   :hook ('prog-mode . 'lsp-mode))
 
+(use-package yasnippet
+  :ensure t
+  :commands (yas-reload-all)
+  :init
+  (autoload 'yas-minor-mode-on "yasnippet")
+  (setq yas-snippet-dirs
+        '("~/.emacs.d/etc/snippets"))
+  (dolist (x '(org-mode-hook prog-mode-hook snippet-mode-hook))
+    (add-hook x #'yas-minor-mode-on)))
+
 (provide 'init-complete)

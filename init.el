@@ -13,7 +13,7 @@
   (add-subdirs-to-load-path "~/.emacs.d/etc/"))
 
 ;; 性能测试
-(load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
+;;(load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
 
 (require 'init-config)
 (require '+autoload)
@@ -36,11 +36,13 @@
  '(lsp-ui-doc-delay 1 t)
  '(package-selected-packages
    (quote
-    (perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine company-lsp bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window)))
+    (yasnippet-snippets yasnippet perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine company-lsp bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window)))
  '(which-key-popup-type (quote side-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "red")))))
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "red"))))
+ '(mode-line ((t (:family "Sarasa Mono SC" :height 150))))
+ '(mode-line-inactive ((t (:family "Sarasa Mono SC" :height 150)))))

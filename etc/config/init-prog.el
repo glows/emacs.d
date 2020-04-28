@@ -40,4 +40,9 @@
   (which-key-add-prefix-title
     "M-SPC c n" "insert-translated-name"))
 
+(use-package yasnippet-snippets
+  :ensure t)
+
+
+
 (provide 'init-prog)

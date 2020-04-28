@@ -7,3 +7,6 @@ doc/
 var/*
 !/var/banner/
 site-lisp/
+session*
+tramp
+eaf/

@@ -7,5 +7,6 @@
 (require 'init-prog)
 (require 'init-org)
 (require 'init-dired)
+(require 'init-version-control)
 
 (provide 'init-config)
