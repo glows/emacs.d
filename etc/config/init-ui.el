@@ -1,7 +1,6 @@
 ;; 加载主题
-(load-file "~/.emacs.d/themes/oswald-theme.el")
-(load-theme
- 'oswald t)
+;; (load-file "~/.emacs.d/themes/oswald-theme.el")
+(load-theme 'doom-snazzy t)
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
@@ -87,6 +86,7 @@
   (set-face-bold 'rainbow-delimiters-depth-8-face "IndianRed1")
   (set-face-bold 'rainbow-delimiters-depth-9-face "ivory1")
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

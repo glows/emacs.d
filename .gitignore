@@ -10,3 +10,4 @@ site-lisp/
 session*
 tramp
 eaf/
+transient/

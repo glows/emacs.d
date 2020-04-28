@@ -1,5 +1,6 @@
 ;; yes-or-no-p to y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq user-emacs-directory "~/.emacs.d/var")
 ;; 设置最近打开文件缓存的路径
 (setq recentf-save-file "~/.emacs.d/var/recentf")
 ;; 设置书签文件路径

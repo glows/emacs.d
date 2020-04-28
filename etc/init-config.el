@@ -8,5 +8,6 @@
 (require 'init-org)
 (require 'init-dired)
 (require 'init-version-control)
+(require 'init-ivy)
 
 (provide 'init-config)
