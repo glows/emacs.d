@@ -1,3 +1,21 @@
+(use-package eaf
+  :disabled
+  :ensure nil
+  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+  :custom
+        (eaf-find-alternate-file-in-dired t)
+        ;; (eaf-proxy-type "http")
+        ;; (eaf-proxy-host "127.0.0.1")
+        ;; (eaf-proxy-port "1080")
+        :config
+        (eaf-setq eaf-browser-dark-mode "true")
+        (eaf-setq eaf-mindmap-dark-mode "true")
+        (eaf-setq eaf-pdf-dark-mode "false")
+        (eaf-setq eaf-browser-default-zoom "1.5")
+        (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+        (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
+        (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+
 (use-package awesome-pair
   :disabled
   :load-path "/home/evanmeek/.emacs.d/site-lisp/awesome-pair"
@@ -39,13 +57,14 @@
   :hook ('prog-mode . 'smartparens-global-mode))
 
 (use-package company-english-helper
+  :disabled
   :load-path "/home/evanmeek/.emacs.d/site-lisp/company-english-helper"
   :config
   (define-key leader-key (kbd "t e") 'toggle-company-english-helper))
 
-(use-package 
-  telega
-  :defer 2
+
+(use-package telega
+  :commands telega
   :init (setq telega-proxies 
               '((:server "localhost" 
                          :port 1080 
@@ -79,7 +98,6 @@
 
 (use-package vterm
   :defer 2
-  :config
   :bind (:map leader-key
               ("o t" . 'vterm)))
 
@@ -104,8 +122,8 @@
               (setq bongo-insert-whole-directory-trees "ask") 
               (bongo-insert-file "~/Music") 
               (bongo-insert-enqueue-region (point-min) 
-                                           (point-max)) 
-              (bongo-play-random) 
+                                           (point-max))
+              (bongo-play-random)
               (switch-to-buffer buffer)))
   :bind (:map leader-key                    
               ("b RET" . 'bongo-dwim) 
@@ -126,7 +144,7 @@
 (use-package pdf-tools
   :ensure t
   :hook
-  ('doc-view-mode 'pdf-view-mode-hook))
+  ('doc-view-mode 'pdf-view-mode))
 
 (use-package windmove
   :ensure t
@@ -136,9 +154,16 @@
               ("w f" . #'windmove-right)
               ("w b" . #'windmove-left)
               ("w p" . #'windmove-up)
-              ("w n" . #'windmove-down)))
+              ("w n" . #'windmove-down)
+              ("w F" . #'window-move-right)
+              ("w B" . #'window-move-left)
+              ("w P" . #'window-move-up)
+              ("w N" . #'window-move-down)))
+
+
+
 (use-package hideshow
-  :ensure nil
+  :ensure t
   :diminish hs-minor-mode
   :bind (:map prog-mode-map
               ("C-c TAB" . hs-toggle-hiding)
@@ -150,7 +175,8 @@
 
 ;; 谷歌翻译
 (use-package google-translate
-  :ensure t
+  :disabled
+  :ensure nil
   :config
   (setq google-translate--tkk-url "http://translate.google.cn/"
         google-translate-base-url "http://translate.google.cn/translate\_a/single"
@@ -162,25 +188,10 @@
   :ensure t
   :init
   (setq perspeen-use-tab t)
-  (setq perspeen-keymap-prefix (kbd "C-."))
+  (setq perspeen-keymap-prefix [C-tab])
   :config
   (perspeen-mode))
 
-(use-package eaf
-  :ensure nil
-  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
-  :custom
-        (eaf-find-alternate-file-in-dired t)
-        (eaf-proxy-type "http")
-        (eaf-proxy-host "127.0.0.1")
-        (eaf-proxy-port "1080")
-        :config
-        (eaf-setq eaf-browser-dark-mode "true")
-        (eaf-setq eaf-mindmap-dark-mode "true")
-        (eaf-setq eaf-pdf-dark-mode "true")
-        (eaf-setq eaf-browser-default-zoom "1.5")
-        (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-        (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
-        (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+
 
 (provide 'init-tools)

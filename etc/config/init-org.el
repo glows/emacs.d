@@ -6,6 +6,8 @@
           org-bullets
           :ensure t
           :after org
+          ;; :custom
+          ;; (org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
           :config
           (add-hook 'org-mode-hook (lambda () 
                                      (org-bullets-mode t))))

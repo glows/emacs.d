@@ -1,3 +1,5 @@
+(require '+autoload)
+(require '+config)
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
@@ -9,5 +11,6 @@
 (require 'init-dired)
 (require 'init-version-control)
 (require 'init-ivy)
+
 
 (provide 'init-config)

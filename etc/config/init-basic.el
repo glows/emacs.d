@@ -1,5 +1,6 @@
 ;; yes-or-no-p to y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
+
 (setq user-emacs-directory "~/.emacs.d/var")
 ;; 设置最近打开文件缓存的路径
 (setq recentf-save-file "~/.emacs.d/var/recentf")
@@ -19,10 +20,13 @@
 (tool-bar-mode -1)
 
 ;; 关闭菜单栏
-(menu-bar-mode -1)
+(menu-bar-mode -11)
 
 ;; 关闭GUI功能
-(setq use-file-dialog nil use-dialog-box nil inhibit-startup-screen t inhibit-startup-message t)
+(setq use-file-dialog nil
+      use-dialog-box nil
+      inhibit-startup-screen t
+      inhibit-startup-message t)
 
 ;; 关闭备份
 (setq make-backup-files nil auto-save-default nil)
@@ -79,7 +83,7 @@
                                           (modify-syntax-entry ?- "w")))
 ;; 没有制表符
 (setq-default indent-tabs-mode nil) 
-(setq-default tab-width 4)
+(setq-default tab-width 8)
 
 ;; 高亮括号
 (show-paren-mode 1)
@@ -114,8 +118,7 @@
     (setq ivy-display-style 'fancy)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
-(use-package 
-  counsel
+(use-package counsel
   :hook
   ('counsel-mode . 'dashboard-mode)
   :ensure t
@@ -124,7 +127,7 @@
    ("C-x d" . 'counsel-dired)))
 
 (use-package avy 
-  :ensure t 
+  :ensure t
   :bind (("M-g :" . 'avy-goto-char)
          ("M-g '" . 'avy-goto-char-2)
          ("M-g \"" . 'avy-goto-char-timer)
@@ -147,5 +150,8 @@
   (setq default-input-method "rime"
         rime-show-candidate 'posframe))
 
+(use-package hungry-delete
+  :ensure t
+  :hook ('prog-mode . 'global-hungry-delete-mode))
 
 (provide 'init-basic)

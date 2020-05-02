@@ -43,6 +43,12 @@
 (use-package yasnippet-snippets
   :ensure t)
 
+(use-package web-mode
+  :mode ("\\.html'" . web-mode)
+  :ensure t)
 
+(use-package js2-mode
+  :mode ("\\.js'" . js2-mode)
+  :ensure t)
 
 (provide 'init-prog)

@@ -1,16 +1,18 @@
 ;; 加载主题
 ;; (load-file "~/.emacs.d/themes/oswald-theme.el")
-(load-theme 'doom-snazzy t)
+(load-theme 'doom-Iosvkem t)
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
 (set-cursor-color "green2")
 ;; 设置光标样式
+
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message nil)
 ;; 设置英文字体
 ;; (set-face-attribute 'default nil :font "Fira Code Retina 13")
+
 (set-face-attribute 'default nil :font "Sarasa Mono SC 16")
 ;; 设置中文字体
 (set-fontset-font t 'han "Sarasa Mono SC 13")
@@ -27,6 +29,7 @@
   :hook 'after-init-hook #'global-emojify-mode
   :custom
   (emojify-emojis-dir "~/.emacs.d/var/emojis"))
+
 
 (use-package page-break-lines
   :ensure nil
