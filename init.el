@@ -1,9 +1,25 @@
 ;; 初始化各种包
 ;; (package-initialize)
 
+(defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       'garbage-collect))
+
+(defmacro k-time (&rest body)
+  "Measure and return the time it takes evaluating BODY."
+  `(let ((time (current-time)))
+     ,@body
+     (float-time (time-since time))))
+
+(defvar k-gc-timer
+  (run-with-idle-timer 15 t
+                       (lambda ()
+                         (message "Garbage Collector has run for %.06fsec"
+                                  (k-time (garbage-collect))))))
+
 ;; 递归遍历加载路径
 (defun add-subdirs-to-load-path(dir)
-  "Recursive add directories to `load-path`"
+  "Recursive add directories to `load-path`."
   (let ((default-directory (file-name-as-directory dir)))
     (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
@@ -12,25 +28,43 @@
       (file-name-handler-alist nil))
   (add-subdirs-to-load-path "~/.emacs.d/etc/"))
 
-(defvar evan/gc-cons-threshold-up-limit (* 100 1024 1024))
-
-(defvar evan/gc-cons-threshold-default (* 20 1024 1024))
-
-(defun evan/inc-gc-cons-threshold! ()
-  "Increase `gc-cons-threshold' to `cm/gc-cons-threshold-up-limit'."
-  (setq gc-cons-threshold evan/gc-cons-threshold-up-limit))
-
-(defun evan/reset-gc-cons-threshold! ()
-  "Rest `gc-cons-threshold' to `cm/gc-cons-threshold-default'."
-  (setq gc-cons-threshold evan/gc-cons-threshold-default))
 
 ;; 性能测试
-;; (load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
+;;(load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
 
 (require 'init-config)
 
 (+evan/toggle-transparency)
 (+evan/toggle-transparency)
+
+;; (defvar evan/gc-cons-threshold-up-limit (* 100 1024 1024))
+
+;; (defvar evan/gc-cons-threshold-default (* 20 1024 1024))
+
+;; (defun evan/inc-gc-cons-threshold! ()
+;;   "Increase `gc-cons-threshold' to `cm/gc-cons-threshold-up-limit'."
+;;   (setq gc-cons-threshold evan/gc-cons-threshold-up-limit))
+
+;; (defun evan/reset-gc-cons-threshold! ()
+;;   "Rest `gc-cons-threshold' to `cm/gc-cons-threshold-default'."
+;;   (setq gc-cons-threshold evan/gc-cons-threshold-default))
+
+;; ;;* Avoid Emacs do GC during the initializing
+;; (let ((default-file-name-handler-alist file-name-handler-alist))
+;;   (evan/inc-gc-cons-threshold!)
+;;   (setq file-name-handler-alist nil)
+;;   (add-hook 'emacs-startup-hook
+;;             (lambda ()
+;;               (setq file-name-handler-alist
+;;                     default-file-name-handler-alist)
+;;               (evan/reset-gc-cons-threshold!)
+;;               (add-hook 'minibuffer-setup-hook
+;;                         #'evan/inc-gc-cons-threshold!)
+;;               (add-hook 'minibuffer-exit-hook
+;;                         #'evan/reset-gc-cons-threshold!)
+;;               (add-hook 'focus-out-hook #'garbage-collect))))
+
+
 
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
@@ -53,7 +87,7 @@
  '(lsp-ui-doc-delay 1 t)
  '(package-selected-packages
    (quote
-    (web-mode hungry-delete all-the-icons-ivy-rich ivy-rich yasnippet-snippets yasnippet perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine company-lsp bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window)))
+    (flycheck-pos-tip flycheck-popup-tip flycheck-posframe counsel-projectile linum-relative projectile undo-tree web-mode hungry-delete all-the-icons-ivy-rich ivy-rich yasnippet-snippets yasnippet perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine company-lsp bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window)))
  '(which-key-popup-type (quote side-window)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -61,6 +95,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "red"))))
+ '(flycheck-posframe-border-face ((t (:inherit default))))
  '(mode-line ((t (:family "Sarasa Mono SC" :height 150))))
  '(mode-line-inactive ((t (:family "Sarasa Mono SC" :height 150)))))
 (put 'upcase-region 'disabled nil)

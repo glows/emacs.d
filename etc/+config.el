@@ -52,4 +52,8 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
           (set-window-buffer old-window (window-buffer))
           (set-window-buffer (get-buffer-window) old-window-buffer)))))
 
+(defun open-init-dired ()
+  (interactive)
+  (dired "~/.emacs.d/"))
+
 (provide '+config)

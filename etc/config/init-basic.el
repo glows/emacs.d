@@ -22,6 +22,9 @@
 ;; 关闭菜单栏
 (menu-bar-mode -1)
 
+;; 行号开启
+
+
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil
@@ -124,7 +127,11 @@
   :ensure t
   :bind
   (("C-x C-r" . 'counsel-recentf) 
-   ("C-x d" . 'counsel-dired)))
+   ("C-x d" . 'counsel-dired))
+  :config
+  ;; Integration with `projectile'
+  (with-eval-after-load 'projectile
+    (setq projectile-completion-system 'ivy)))
 
 (use-package avy 
   :ensure t
@@ -153,5 +160,10 @@
 (use-package hungry-delete
   :ensure t
   :hook ('prog-mode . 'global-hungry-delete-mode))
+
+(use-package linum-relative
+  :disabled
+  :ensure t
+  :hook ('prog-mode . 'linum-relative-mode))
 
 (provide 'init-basic)

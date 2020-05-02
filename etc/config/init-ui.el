@@ -45,7 +45,7 @@
   ;; 设置标题
   (setq dashboard-banner-logo-title "Life is fantastic!")
   ;; 设置banner
-  (setq dashboard-startup-banner "/home/evanmeek/.emacs.d/var/banner/a.png") 
+  (setq dashboard-startup-banner "~/.emacs.d/var/banner/a.png") 
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   (setq dashboard-set-file-icons t) 
@@ -79,24 +79,17 @@
   (set-face-foreground 'rainbow-delimiters-depth-8-face "IndianRed1")
   (set-face-foreground 'rainbow-delimiters-depth-9-face "ivory1")
 
-  (set-face-bold 'rainbow-delimiters-depth-1-face "orange red")
-  (set-face-bold 'rainbow-delimiters-depth-2-face "gold")
-  (set-face-bold 'rainbow-delimiters-depth-3-face "yellow")
-  (set-face-bold 'rainbow-delimiters-depth-4-face "spring green")
-  (set-face-bold 'rainbow-delimiters-depth-5-face "cyan")
-  (set-face-bold 'rainbow-delimiters-depth-6-face "magenta")
-  (set-face-bold 'rainbow-delimiters-depth-7-face "goldenrod")
-  (set-face-bold 'rainbow-delimiters-depth-8-face "IndianRed1")
-  (set-face-bold 'rainbow-delimiters-depth-9-face "ivory1")
+  (set-face-bold 'rainbow-delimiters-depth-1-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-2-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-3-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-4-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-5-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-6-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-7-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-8-face "t")
+  (set-face-bold 'rainbow-delimiters-depth-9-face "t")
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)
-
-
-
-
-
-
-
