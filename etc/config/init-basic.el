@@ -20,7 +20,7 @@
 (tool-bar-mode -1)
 
 ;; 关闭菜单栏
-(menu-bar-mode -11)
+(menu-bar-mode -1)
 
 ;; 关闭GUI功能
 (setq use-file-dialog nil
