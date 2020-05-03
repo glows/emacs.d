@@ -1,21 +1,24 @@
 ;; 加载主题
-;; (load-file "~/.emacs.d/themes/oswald-theme.el")
-(load-theme 'doom-Iosvkem t)
+;; (load-file "~/.emacs.d/themes/oyswald-theme.el")
+(load-theme 'doom-gruvbox t)
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
 (set-cursor-color "green2")
 ;; 设置光标样式
-
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
 ;; (set-face-attribute 'default nil :font "Fira Code Retina 13")
+(global-hl-line-mode 1)
 
 (set-face-attribute 'default nil :font "Sarasa Mono SC 16")
 ;; 设置中文字体
 (set-fontset-font t 'han "Sarasa Mono SC 13")
+
+(use-package doom-themes
+  :ensure t)
 
 (use-package all-the-icons
   :ensure t)
@@ -36,8 +39,7 @@
   :config
   (turn-on-page-break-lines-mode))
 
-(use-package 
-  dashboard
+(use-package dashboard
   :ensure t 
   :config (dashboard-setup-startup-hook) 
   (dashboard-modify-heading-icons '((recents . "file-text") 
@@ -64,8 +66,7 @@
 (use-package posframe
   :ensure t)
 
-(use-package 
-  rainbow-delimiters
+(use-package rainbow-delimiters
   :ensure t
   :config
   ;; 设置每一级括号的颜色

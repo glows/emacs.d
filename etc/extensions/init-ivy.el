@@ -51,15 +51,13 @@
   (ivy-posframe-parameters
    '((left-fringe . 8)
      (right-fringe . 8)))
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center))))
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-cbenter))))
 
 (use-package counsel-projectile
   :ensure t
   :hook (counsel-mode . counsel-projectile-mode)
   :init
-  (define-key projectile-mode-map (kbd "M-SPC p") 'projectile-command-map))(use-package counsel-projectile
-  :ensure
-  :hook (counsel-mode .counsel-projectile-mode)
-  :init (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
+  (define-key projectile-mode-map (kbd "M-SPC p") 'projectile-command-map)
+  (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
 
 (provide 'init-ivy)

@@ -78,6 +78,7 @@
   (lsp-python-ms-executable "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
 
 (use-package insert-translated-name
+  :disabled
   :load-path "~/.emacs.d/site-lisp/insert-translated-name"
   :bind (:map leader-key
               ("c n i" . #'insert-translated-name-insert)

@@ -185,9 +185,10 @@
         google-translate-default-source-language "en"))
 
 (use-package perspeen
+  :diminish
   :ensure t
   :init
-  (setq perspeen-use-tab t)
+  ;; (setq perspeen-use-tab t)
   (setq perspeen-keymap-prefix [C-tab])
   :config
   (perspeen-mode))

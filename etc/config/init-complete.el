@@ -13,6 +13,7 @@
 
 
 (use-package company-tabnine
+  :disabled
   :ensure t
   :after 'company-mode 'company-tabnine-mode
   :config
@@ -21,6 +22,11 @@
 (use-package lsp-mode
   :ensure t
   :hook ('prog-mode . 'lsp-mode))
+
+(use-package company-box
+  :ensure t
+  :hook (company-mode . company-box-mode))
+
 
 (use-package yasnippet
   :ensure t

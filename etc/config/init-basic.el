@@ -2,11 +2,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (setq user-emacs-directory "~/.emacs.d/var")
-;; 设置最近打开文件缓存的路径
-(setq recentf-save-file "~/.emacs.d/var/recentf")
-;; 设置书签文件路径
-(setq bookmark-default-file "~/.emacs.d/var/bookmarks")
-(setq bookmark-file "~/.emacs.d/var/bookmarks")
+
 ;; 设置amx保存文件的路径
 (setq amx-save-file "~/.emacs.d/var/amx-items")
 ;; 设置自动保存路径
@@ -22,6 +18,8 @@
 ;; 关闭菜单栏
 (menu-bar-mode -1)
 
+;; 自动刷新被修改过的文件
+(global-auto-revert-mode 1)
 ;; 行号开启
 
 
