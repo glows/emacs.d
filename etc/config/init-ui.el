@@ -1,6 +1,5 @@
 ;; 加载主题
 ;; (load-file "~/.emacs.d/themes/oyswald-theme.el")
-(load-theme 'doom-gruvbox t)
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
@@ -18,7 +17,10 @@
 (set-fontset-font t 'han "Sarasa Mono SC 13")
 
 (use-package doom-themes
-  :ensure t)
+  :ensure t
+  :config
+  (load-theme 'doom-gruvbox t))
+
 
 (use-package all-the-icons
   :ensure t)
