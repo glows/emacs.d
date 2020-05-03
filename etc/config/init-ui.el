@@ -24,7 +24,7 @@
   :ensure t)
 
 (use-package all-the-icons-dired
-  :load-path "/home/evanmeek/.emacs.d/site-lisp/all-the-icons-dired/"
+  :ensure t
   :hook
   ('dired-mode . 'all-the-icons-dired-mode))
 
