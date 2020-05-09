@@ -1,15 +1,13 @@
 (use-package 
   org 
-  :ensure t)
+  :ensure t
+  :hook ('org-mode . 'toggle-truncate-lines))
 
 (use-package 
   org-bullets
   :ensure t
-  :after org
-  ;; :custom
-  ;; (org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
-  :config
-  (add-hook 'org-mode-hook (lambda () 
-                             (org-bullets-mode t))))
+  :hook ('org-mode . 'org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("☰" "☷" "☯" "☭")))
 
 (provide 'init-org)

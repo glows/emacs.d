@@ -16,6 +16,5 @@
 (global-set-key (kbd "C-(") 'backward-sexp) 
 (global-set-key (kbd "C-)") 'forward-sexp)
 (global-set-key (kbd "<f12>") 'open-init-dired)
-
-
+  
 (provide 'init-keybind)

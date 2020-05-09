@@ -1,20 +1,22 @@
-(use-package eaf
-  :disabled
-  :ensure nil
-  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
-  :custom
-        (eaf-find-alternate-file-in-dired t)
-        ;; (eaf-proxy-type "http")
-        ;; (eaf-proxy-host "127.0.0.1")
-        ;; (eaf-proxy-port "1080")
-        :config
-        (eaf-setq eaf-browser-dark-mode "true")
-        (eaf-setq eaf-mindmap-dark-mode "true")
-        (eaf-setq eaf-pdf-dark-mode "false")
-        (eaf-setq eaf-browser-default-zoom "1.5")
+(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework")
+    (use-package eaf
+      :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+      :custom
+      (eaf-find-alternate-file-in-dired t)
+      ;; (eaf-proxy-type "http")
+      ;; (eaf-proxy-host "127.0.0.1")
+      ;; (eaf-proxy-port "1080")
+      :config
+      (eaf-setq eaf-browser-dark-mode "true")
+      (eaf-setq eaf-mindmap-dark-mode "true")
+      (eaf-setq eaf-pdf-dark-mode "false")
+      (eaf-setq eaf-browser-default-zoom "1.2")
         (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
         (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
         (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+  (message "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF"))
+
+
 
 (use-package awesome-pair
   :disabled
@@ -209,5 +211,10 @@
 (use-package projectile
   :ensure t
   :hook (after-init . projectile-mode))
+
+(use-package howdoyou
+  :ensure t
+  :hook (after-init . howdoyou-mode))
+
 
 (provide 'init-tools)

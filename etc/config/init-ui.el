@@ -10,17 +10,17 @@
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
 ;; (set-face-attribute 'default nil :font "Fira Code Retina 13")
+;; 高亮当前行
 (global-hl-line-mode 1)
 
 (set-face-attribute 'default nil :font "Sarasa Mono SC 16")
 ;; 设置中文字体
-(set-fontset-font t 'han "Sarasa Mono SC 13")
+(set-fontset-font t 'han "Sarasa Mono SC 16")
 
 (use-package doom-themes
   :ensure t
   :config
   (load-theme 'doom-gruvbox t))
-
 
 (use-package all-the-icons
   :ensure t)
@@ -37,7 +37,7 @@
 
 
 (use-package page-break-lines
-  :ensure nil
+  :ensure t
   :config
   (turn-on-page-break-lines-mode))
 
@@ -93,6 +93,9 @@
   (set-face-bold 'rainbow-delimiters-depth-9-face "t")
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package info-colors
+  :ensure t
+  :hook ('Info-selection-hook . 'info-colors-fontify-node))
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)
