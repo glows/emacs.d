@@ -3,7 +3,7 @@
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
-(set-cursor-color "green2")
+;; (set-cursor-color "green2")
 ;; 设置光标样式
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
@@ -20,7 +20,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-gruvbox t))
+  (load-theme 'doom-solarized-light t))
 
 (use-package all-the-icons
   :ensure t)
@@ -47,7 +47,7 @@
   (dashboard-modify-heading-icons '((recents . "file-text") 
                                     (bookmarks . "book")))
   ;; 设置标题
-  (setq dashboard-banner-logo-title "Life is fantastic!")
+  (setq dashboard-banner-logo-title "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
   ;; 设置banner
   (setq dashboard-startup-banner "~/.emacs.d/var/banner/a.png") 
   (setq dashboard-center-content t) 
