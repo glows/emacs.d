@@ -1,4 +1,5 @@
-(use-package ivy-rich
+(if (graphic-p)
+   (use-package ivy-rich
   :ensure t
   :init
   (ivy-rich-mode 1)
@@ -37,7 +38,6 @@
            ((counsel-describe-variable-transformer (:width 40))
             (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))  ; return docstring of the variable
           )))
-
 (use-package all-the-icons-ivy-rich
   :ensure t
   :init
@@ -51,13 +51,17 @@
   (ivy-posframe-parameters
    '((left-fringe . 8)
      (right-fringe . 8)))
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))))
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))))
 
 (use-package counsel-projectile
   :ensure t
-  :hook (counsel-mode . counsel-projectile-mode)
+  :hook ((projectile-mode . counsel-projectile-mode)
+         (counsel-mode . counsel-projectile-mode))
   :init
   (define-key projectile-mode-map (kbd "M-SPC p") 'projectile-command-map)
-  (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point)))
+  (setq counsel-projectile-grep-initial-input '(ivy-thing-at-point))
+  )
+
+
 
 (provide 'init-ivy)

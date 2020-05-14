@@ -56,8 +56,13 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (interactive)
   (dired "~/.emacs.d/"))
 
-(defun open-with-chrome ()
+
+
+(if (graphic-p)
+   (defun open-with-chrome ()
   (interactive)
-  (browse-url-chrome (buffer-file-name)))
+  (browse-url-chrome (buffer-file-name))))
+
+
 
 (provide '+config)

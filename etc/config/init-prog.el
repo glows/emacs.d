@@ -1,6 +1,7 @@
 (use-package flycheck
   :ensure t
-  :hook (prog-mode . flycheck-mode)
+  :commands (flycheck-mode)
+  ;; :hook (prog-mode . flycheck-mode)
   :bind (:map leader-key
               ("t t" . global-flycheck-mode))
   :config
@@ -22,7 +23,7 @@
       [16 48 112 240 112 48 16] nil nil 'center))
 
   ;; 用GUI tooltips来显示检查到的错误
-  (if (display-graphic-p)
+  (if (graphic-p)
       (use-package flycheck-posframe
         :ensure t
         :custom-face (flycheck-posframe-border-face ((t (:inherit default))))
@@ -38,8 +39,8 @@
   (use-package flycheck-popup-tip
     :ensure t
     :hook (flycheck-mode . flycheck-popup-tip-mode)))
-
-(use-package lsp-ui
+(if (graphic-p)
+   (use-package lsp-ui
   :ensure t
   :hook (lsp-mode . lsp-ui-mode)
   :custom
@@ -63,7 +64,6 @@
                               ,(face-foreground 'font-lock-string-face)
                               ,(face-foreground 'font-lock-constant-face)
                               ,(face-foreground 'font-lock-variable-name-face))))
-
 (use-package company-lsp
   :ensure t
   :config
@@ -76,6 +76,16 @@
                          (lsp)))
   :custom
   (lsp-python-ms-executable "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
+
+(use-package web-mode
+  :mode ("\\.html'" . web-mode)
+  :ensure t)
+
+(use-package js2-mode
+  :mode ("\\.js'" . js2-mode)
+  :ensure t))
+
+
 
 (use-package insert-translated-name
   :disabled
@@ -90,13 +100,7 @@
 (use-package yasnippet-snippets
   :ensure t)
 
-(use-package web-mode
-  :mode ("\\.html'" . web-mode)
-  :ensure t)
 
-(use-package js2-mode
-  :mode ("\\.js'" . js2-mode)
-  :ensure t)
 
 (use-package python
   :ensure t
@@ -126,6 +130,14 @@
   :bind (:map leader-key
               ("c r" . #'quickrun))
   :init
-  (setq quickrun-timeout-seconds nil))
+  (setq quickrun-timeout-seconds nil)
+  (setq quickrun-focus-p nil)
+  (setq quickrun-input-file-extension nil)
+  :config
+  (quickrun-add-command "python"
+    '((:command . "python3")
+      (:exec . "%c %s")
+      (:tempfile . nil))
+    :default "python"))
 
 (provide 'init-prog)

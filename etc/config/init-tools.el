@@ -1,133 +1,138 @@
-(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework")
-    (use-package eaf
-      :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
-      :custom
-      (eaf-find-alternate-file-in-dired t)
-      ;; (eaf-proxy-type "http")
-      ;; (eaf-proxy-host "127.0.0.1")
-      ;; (eaf-proxy-port "1080")
-      :config
-      (eaf-setq eaf-browser-dark-mode "true")
-      (eaf-setq eaf-mindmap-dark-mode "true")
-      (eaf-setq eaf-pdf-dark-mode "false")
-      (eaf-setq eaf-browser-default-zoom "1.2")
-        (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-        (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)
-        (eaf-bind-key take_photo "p" eaf-camera-keybinding))
-  (message "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF"))
+(if (graphic-p) 
+    (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
+        (use-package 
+          eaf 
+          :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
+          :custom (eaf-find-alternate-file-in-dired t)
+          ;; (eaf-proxy-type "http")
+          ;; (eaf-proxy-host "127.0.0.1")
+          ;; (eaf-proxy-port "1080")
+          :config (eaf-setq eaf-browser-dark-mode "true") 
+          (eaf-setq eaf-mindmap-dark-mode "true") 
+          (eaf-setq eaf-pdf-dark-mode "false") 
+          (eaf-setq eaf-browser-default-zoom "1.2") 
+          (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
+          (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
+          (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+          ) 
+      (message
+       "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
 
 
 
-(use-package awesome-pair
-  :disabled
-  :load-path "/home/evanmeek/.emacs.d/site-lisp/awesome-pair"
-  :config (dolist (hook (list 'c-mode-common-hook 'c-mode-hook 'c++-mode-hook 'java-mode-hook
-                              'haskell-mode-hook 'emacs-lisp-mode-hook 'lisp-interaction-mode-hook
-                              'lisp-mode-hook 'maxima-mode-hook 'ielm-mode-hook 'sh-mode-hook
-                              'makefile-gmake-mode-hook 'php-mode-hook 'python-mode-hook
-                              'js-mode-hook 'go-mode-hook 'qml-mode-hook 'jade-mode-hook
-                              'css-mode-hook 'ruby-mode-hook 'coffee-mode-hook 'rust-mode-hook
-                              'qmake-mode-hook 'lua-mode-hook 'swift-mode-hook
-                              'minibuffer-inactive-mode-hook)) 
+
+(use-package 
+  awesome-pair 
+
+  :disabled 
+  :load-path "/home/evanmeek/.emacs.d/site-lisp/awesome-pair" 
+  :config (dolist (hook (list 'c-mode-common-hook 'c-mode-hook 'c++-mode-hook 'java-mode-hook 'haskell-mode-hook 'emacs-lisp-mode-hook 'lisp-interaction-mode-hook 'lisp-mode-hook 'maxima-mode-hook 'ielm-mode-hook 'sh-mode-hook 'makefile-gmake-mode-hook 'php-mode-hook 'python-mode-hook 'js-mode-hook 'go-mode-hook 'qml-mode-hook 'jade-mode-hook 'css-mode-hook 'ruby-mode-hook 'coffee-mode-hook 'rust-mode-hook 'qmake-mode-hook 'lua-mode-hook 'swift-mode-hook 'minibuffer-inactive-mode-hook)) 
             (add-hook hook '(lambda () 
-                              (awesome-pair-mode 1))))
+                              (awesome-pair-mode 1)))) 
   :bind (:map awesome-pair-mode-map
-              ("(" . #'awesome-pair-open-round)
-              ("(" . #'awesome-pair-open-round)
-              ("[" . #'awesome-pair-open-bracket)
-              ("{" . #'awesome-pair-open-curly)
-              ("" . #'awesome-pair-close-round)
-              ("]" . #'awesome-pair-close-bracket)
-              ("}" . #'awesome-pair-close-curly)
-              ("=" . #'awesome-pair-equal)
-              ("%" . #'awesome-pair-match-paren)
-              ("\"" . #'awesome-pair-double-quote)
-              ("SPC" . #'awesome-pair-space)
-              ("M-o" . #'awesome-pair-backward-delete)
-              ("C-d" . #'awesome-pair-forward-delete)
-              ("C-k" . #'awesome-pair-kill)
-              ("M-\"" . #'awesome-pair-wrap-double-quote)
-              ("M-[" . #'awesome-pair-wrap-bracket)
-              ("M-{" . #'awesome-pair-wrap-curly)
-              ("M-(" . #'awesome-pair-wrap-round)
-              ("M-)" . #'awesome-pair-unwrap)
-              ("M-p" . #'awesome-pair-jump-right)
-              ("M-n" . #'awesome-pair-jump-left)
-              ("M-:" . #'awesome-pair-jump-out-pair-and-newline)))
-(use-package smartparens
-  :ensure t
-  :hook ('prog-mode . 'smartparens-global-mode))
+              ("(" . #'awesome-pair-open-round) 
+              ("(" . #'awesome-pair-open-round) 
+              ("[" . #'awesome-pair-open-bracket) 
+              ("{" . #'awesome-pair-open-curly) 
+              ("" . #'awesome-pair-close-round) 
+              ("]" . #'awesome-pair-close-bracket) 
+              ("}" . #'awesome-pair-close-curly) 
+              ("=" . #'awesome-pair-equal) 
+              ("%" . #'awesome-pair-match-paren) 
+              ("\"" . #'awesome-pair-double-quote) 
+              ("SPC" . #'awesome-pair-space) 
+              ("M-o" . #'awesome-pair-backward-delete) 
+              ("C-d" . #'awesome-pair-forward-delete) 
+              ("C-k" . #'awesome-pair-kill) 
+              ("M-\"" . #'awesome-pair-wrap-double-quote) 
+              ("M-[" . #'awesome-pair-wrap-bracket) 
+              ("M-{" . #'awesome-pair-wrap-curly) 
+              ("M-(" . #'awesome-pair-wrap-round) 
+              ("M-)" . #'awesome-pair-unwrap) 
+              ("M-p" . #'awesome-pair-jump-right) 
+              ("M-n" . #'awesome-pair-jump-left) 
+              ("M-:" . #'awesome-pair-jump-out-pair-and-newline)
+              )
+  )
+(use-package 
+  smartparens 
+  :ensure t 
+  :hook ('prog-mode . 'smartparens-global-mode)
+  )
 
-(use-package company-english-helper
-  :disabled
-  :load-path "/home/evanmeek/.emacs.d/site-lisp/company-english-helper"
-  :config
-  (define-key leader-key (kbd "t e") 'toggle-company-english-helper))
+(use-package 
+  company-english-helper 
+
+  :disabled 
+  :load-path "/home/evanmeek/.emacs.d/site-lisp/company-english-helper" 
+  :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper)
+  )
 
 
-(use-package telega
-  :commands telega
+(use-package 
+  telega 
+  :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
                          :port 1080 
                          :enable t 
-                         :type (:@type "proxyTypeSocks5")))) 
+                         :type (:@type "proxyTypeSocks5"
+                                       )
+                         ))) 
   (setq telega-chat-fill-column 65) 
   (setq telega-emoji-use-images nil) 
-  :config
-  (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
+  :config (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
   (with-eval-after-load 'company (add-hook 'telega-chat-mode-hook (lambda () 
-                                                                    (make-local-variable
-                                                                     'company-backends) 
-                                                                    (dolist (it
-                                                                             '(telega-company-botcmd
-                                                                               telega-company-emoji)) 
+                                                                    (make-local-variable 'company-backends) 
+                                                                    (dolist (it '(telega-company-botcmd telega-company-emoji)) 
                                                                       (push it company-backends))))) 
-  (with-eval-after-load 'all-the-icons (add-to-list 'all-the-icons-mode-icon-alist
-                                                    '(telega-root-mode all-the-icons-fileicon
-                                                                       "telegram" 
-                                                                       :heigt 1.0 
-                                                                       :v-adjust -0.2 
-                                                                       :face all-the-icons-yellow)) 
-                        (add-to-list 'all-the-icons-mode-icon-alist '(telega-chat-mode
-                                                                      all-the-icons-fileicon
-                                                                      "telegram" 
-                                                                      :heigt 1.0 
-                                                                      :v-adjust -0.2 
-                                                                      :face all-the-icons-blue))) 
+  (with-eval-after-load 'all-the-icons (add-to-list 'all-the-icons-mode-icon-alist '(telega-root-mode all-the-icons-fileicon "telegram" 
+                                                                                                      :heigt 1.0 
+                                                                                                      :v-adjust -0.2 
+                                                                                                      :face all-the-icons-yellow)) 
+                        (add-to-list 'all-the-icons-mode-icon-alist '(telega-chat-mode all-the-icons-fileicon "telegram" 
+                                                                                       :heigt 1.0 
+                                                                                       :v-adjust -0.2 
+                                                                                       :face all-the-icons-blue))) 
   (telega-notifications-mode 1) 
-  (telega-mode-line-mode 1))
+  (telega-mode-line-mode 1)
+  )
 
-(use-package vterm
-  :defer 2
+(use-package 
+  vterm 
+  :defer 2 
   :bind (:map leader-key
-              ("o t" . 'vterm)))
+              ("o t" . 'vterm)
+              )
+  )
 
-(use-package youdao-dictionary
-  :defer 2
-  :ensure t
-  :config
-  (setq url-automatic-caching t)
-  (which-key-add-key-based-replacements "C-x y" "有道翻译")
-  :bind 
-  (("C-x y t" . 'youdao-dictionary-search-at-point-tooltip)
-   ("C-x y p" . 'youdao-dictionary-play-voice-at-point)
-   ("C-x y r" . 'youdao-dictionary-search-and-replace)
-   ("C-x y i" . 'youdao-dictionary-search-from-input)))
+(use-package 
+  youdao-dictionary 
+  :defer 2 
+  :ensure t 
+  :config (setq url-automatic-caching t) 
+  (which-key-add-key-based-replacements "C-x y" "有道翻译") 
+  :bind (("C-x y t" . 'youdao-dictionary-search-at-point-tooltip) 
+         ("C-x y p" . 'youdao-dictionary-play-voice-at-point) 
+         ("C-x y r" . 'youdao-dictionary-search-and-replace) 
+         ("C-x y i" . 'youdao-dictionary-search-from-input))
+  )
 
-(use-package bongo
-  :defer 2
+(use-package 
+  bongo 
+  :defer 2 
   :config (defun bongo-init () 
             (interactive) 
             (let ((buffer (current-buffer))) 
-              (bongo)
+              (bongo) 
               (setq bongo-insert-whole-directory-trees "ask") 
               (bongo-insert-file "~/Music") 
               (bongo-insert-enqueue-region (point-min) 
-                                           (point-max))
-              (bongo-play-random)
-              (switch-to-buffer buffer)))
-  :bind (:map leader-key                    
+                                           (point-max)) 
+              (bongo-play-random) 
+              (switch-to-buffer buffer))
+            ) 
+  :bind (:map leader-key
               ("b RET" . 'bongo-dwim) 
               ("b i" . 'bongo-init) 
               ("b x" . 'bongo-kill-region) 
@@ -141,80 +146,93 @@
               ("b n" . 'bongo-play-next) 
               ("b p" . 'bongo-play-previous) 
               ("b r" . 'bongo-play-random) 
-              ("b s" . 'bongo-sprinkle)))
+              ("b s" . 'bongo-sprinkle)
+              )
+  )
+(if (graphic-p) 
+    (use-package 
+      pdf-tools 
+      :ensure t 
+      :hook ('doc-view-mode 'pdf-view-mode)
+      ))
 
-(use-package pdf-tools
-  :ensure t
-  :hook
-  ('doc-view-mode 'pdf-view-mode))
 
-(use-package windmove
-  :ensure t
-  :init (windmove-default-keybindings)
-  :config
+(use-package 
+  windmove 
+  :ensure t 
+  :init (windmove-default-keybindings) 
+  :config 
   :bind (:map leader-key
-              ("w f" . #'windmove-right)
-              ("w b" . #'windmove-left)
-              ("w p" . #'windmove-up)
-              ("w n" . #'windmove-down)
-              ("w F" . #'window-move-right)
-              ("w B" . #'window-move-left)
-              ("w P" . #'window-move-up)
-              ("w N" . #'window-move-down)))
+              ("w f" . #'windmove-right) 
+              ("w b" . #'windmove-left) 
+              ("w p" . #'windmove-up) 
+              ("w n" . #'windmove-down) 
+              ("w F" . #'window-move-right) 
+              ("w B" . #'window-move-left) 
+              ("w P" . #'window-move-up) 
+              ("w N" . #'window-move-down)
+              )
+  )
 
 
 
-(use-package hideshow
-  :ensure t
-  :diminish hs-minor-mode
+(use-package 
+  hideshow 
+  :ensure t 
+  :diminish hs-minor-mode 
   :bind (:map prog-mode-map
-              ("C-c TAB" . hs-toggle-hiding)
-              ("C-c p +" . hs-show-all))
-  :hook (prog-mode . hs-minor-mode))
+              ("C-c TAB" . hs-toggle-hiding) 
+              ("C-c p +" . hs-show-all)
+              ) 
+  :hook (prog-mode . hs-minor-mode)
+  )
 
-(use-package try
-  :ensure t)
+(use-package 
+  try 
+  :ensure t
+  )
 
 ;; 谷歌翻译
-(use-package google-translate
-  :disabled
-  :ensure nil
-  :config
-  (setq google-translate--tkk-url "http://translate.google.cn/"
-        google-translate-base-url "http://translate.google.cn/translate\_a/single"
-        google-translate-listen-url "https://translate.google.cn/translate\_tts"
-        google-translate-default-target-language "zh-CN"
-        google-translate-default-source-language "en"))
+(use-package 
+  google-translate 
 
-(use-package perspeen
-  :diminish
-  :ensure t
+  :disabled 
+  :ensure nil 
+  :config (setq google-translate--tkk-url "http://translate.google.cn/" google-translate-base-url "http://translate.google.cn/translate\_a/single" google-translate-listen-url "https://translate.google.cn/translate\_tts" google-translate-default-target-language "zh-CN" google-translate-default-source-language "en")
+  )
+
+(use-package 
+  perspeen 
+
+  :diminish 
+  :ensure t 
   :init
   ;; (setq perspeen-use-tab t)
-  (setq perspeen-keymap-prefix [C-tab])
-  :config
-  (perspeen-mode))
+  (setq perspeen-keymap-prefix [C-tab]) 
+  :config (perspeen-mode)
+  )
 
-(use-package undo-tree
-  :ensure t
-  :hook (after-init . global-undo-tree-mode)
-  :init
-  (setq undo-tree-visualizer-timestamps t
-        undo-tree-enable-undo-in-region nil
-        undo-tree-auto-save-history nil)
+(use-package 
+  undo-tree 
+  :ensure t 
+  :hook (after-init . global-undo-tree-mode) 
+  :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
 
   ;; HACK: keep the diff window
-  (with-no-warnings
-    (make-variable-buffer-local 'undo-tree-visualizer-diff)
-    (setq-default undo-tree-visualizer-diff t)))
+  (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
+                    (setq-default undo-tree-visualizer-diff t))
+  )
 
-(use-package projectile
+(use-package 
+  projectile 
   :ensure t
-  :hook (after-init . projectile-mode))
+  )
 
-(use-package howdoyou
-  :ensure t
-  :hook (after-init . howdoyou-mode))
+(use-package 
+  howdoyou 
+  :ensure t 
+  :hook (after-init . howdoyou-mode)
+  )
 
 
 (provide 'init-tools)

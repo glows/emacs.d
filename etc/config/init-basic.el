@@ -9,8 +9,10 @@
 (setq auto-save-list-file-prefix "~/.emacs/var/auto-save-list/.saves-")
 ;; 设置eshell历史记录
 (setq eshell-history-file-name "~/.emacs/var/eshell/history")
+
 ;; 关闭滚动条
-(scroll-bar-mode -1)
+(if (graphic-p)
+    (scroll-bar-mode -1))
 
 ;; 关闭工具栏
 (tool-bar-mode -1)
@@ -55,13 +57,13 @@
 
 ;; 更友好和平滑的滚动
 (setq scroll-step 2
-  scroll-margin 2
-  hscroll-step 2
-  hscroll-margin 2
-  scroll-conservatively 101
-  scroll-up-aggressively 0.01
-  scroll-down-aggressively 0.01
-  scroll-preserve-screen-position 'always)
+      scroll-margin 2
+      hscroll-step 2
+      hscroll-margin 2
+      scroll-conservatively 101
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01
+      scroll-preserve-screen-position 'always)
 
 ;; 关闭自动调节行高
 (setq auto-window-vscroll nil)
@@ -129,7 +131,8 @@
   :config
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
-    (setq projectile-completion-system 'ivy)))
+    (setq projectile-completion-system 'ivy))
+  )
 
 (use-package avy 
   :ensure t
