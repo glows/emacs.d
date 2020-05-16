@@ -37,7 +37,7 @@
        ,** Snippets
        ,** Trace
      #+end_src
-   - *~/Documents/org/word.org* :: 记录生词
+   - *~/Documents/org/capture/word.org* :: 记录生词
 ** telega的安装方式
    telega是emacs下的一个telegram客户端，你首先得编译tdlib，才能使用telega，tdlib的安装方式可以在这里找到: [[https://github.com/tdlib/td][tdlib 主页]]
 
