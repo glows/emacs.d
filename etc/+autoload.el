@@ -1,7 +1,8 @@
 ;;;###autoload
 (defun graphic-p ()
   "判断当前环境是否为图形环境"
-  (getenv "DISPLAY"))
+  ;; (getenv "DISPLAY")
+  (display-graphic-p))
 
 (defun +evan/toggle-transparency ()
         (interactive)

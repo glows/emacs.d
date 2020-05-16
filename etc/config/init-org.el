@@ -21,30 +21,32 @@
                             ("[新事件]" . (:foreground "white" :background "#D35400" :weight bold))
                             ("[已知问题]" . (:foreground "white" :background "#17A589" :weight bold))
                             ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
-                            ("[已修复]" . (:foreground "white" :background "#566573" :weight bold)))))
+                            ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
   :config
   (add-to-list 'org-capture-templates
                '("t" "任务清单"))
   (add-to-list 'org-capture-templates
                '("c" "代码"))
-  (add-to-list 'org-capture-templates '("tw" "工作任务" entry (file+headline "~/Documents/org/task.org" "Work")
+  (add-to-list 'org-capture-templates '("tw" "工作任务" entry (file+headline "~/Documents/org/capture/task.org" "Work")
                                         "* 待办 %^{任务名} - %U\n  %a\n  %?" :clock-in t :clock-keep t))
-  (add-to-list 'org-capture-templates '("ts" "学习任务" entry (file+headline "~/Documents/org/task.org" "Study")
+  (add-to-list 'org-capture-templates '("ts" "学习任务" entry (file+headline "~/Documents/org/capture/task.org" "Study")
                                         "* 学习 %^{学习项目} - %U\n  %a\n  %?" :clock-in t :clock-keep t))
-  (add-to-list 'org-capture-templates '("j" "记录日志" entry (file+datetree "~/Documents/org/journal.org")
+  (add-to-list 'org-capture-templates '("j" "记录日志" entry (file+datetree "~/Documents/org/capture/journal.org")
                                         "* %U - %^{标题}\n  %?"))
-  (add-to-list 'org-capture-templates '("i" "捕获灵感" entry (file "~/Documents/org/inbox.org")
+  (add-to-list 'org-capture-templates '("i" "捕获灵感" entry (file "~/Documents/org/capture/inbox.org")
                                         "* %U - %^{标题} %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("n" "临时笔记" entry (file "~/Documents/org/notes.org")
+  (add-to-list 'org-capture-templates '("n" "临时笔记" entry (file "~/Documents/org/capture/notes.org")
                                         "* %^{标题} %t %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/link.org" "Links")
+  (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
                                         "* %^{简介} %t %^g\n  %^L\n  %?\n"))
-  (add-to-list 'org-capture-templates '("cd" "代码片段" entry (file+olp "~/Documents/org/code.org" "Code" "Snippets")
+  (add-to-list 'org-capture-templates '("cd" "代码片段" entry (file+olp "~/Documents/org/capture/code.org" "Code" "Snippets")
                                         "* %^{简介} %t %^g\n  %a\n  #+begin_src %^{语言}\n  %?\n  #+end_src"))
-  (add-to-list 'org-capture-templates '("ct" "代码追踪" entry (file+olp "~/Documents/org/code.org" "Code" "Trace")
+  (add-to-list 'org-capture-templates '("ct" "代码追踪" entry (file+olp "~/Documents/org/capture/code.org" "Code" "Trace")
                                         "* %^{简介} %t %^g\n  %a\n  %?"))
-  (add-to-list 'org-capture-templates '("w" "记录单词" table-line (file+headline "~/Documents/org/word.org" "Words")
+  (add-to-list 'org-capture-templates '("w" "记录单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
                                         " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
+  (set-face-attribute 'org-table nil :font (font-spec :name "等距更纱黑体 SC"
+                                                      :size 20)))
 
 
 (use-package 

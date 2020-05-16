@@ -9,11 +9,12 @@
 ;; 去除默认启动界面
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
-(if (fontp (font-spec :name "Sarasa Mono CL 15" 
-                      :style "Regular")) 
+(if (fontp (font-spec :name "Fira Code Nerd Font" 
+                      :style "Retina")) 
     (set-face-attribute 'default nil 
-                        :font (font-spec :name "Sarasa Mono CL 15" 
-                                         :style "Regular")) 
+                        :font (font-spec :name "Fira Code Nerd Font" 
+                                         :style "Retina"
+                                         :size 17))
   (message "无法找到Sarasa Mono CL字体，你可以更换其他字体或安装它让这条消息消失."))
 
 ;; 高亮当前行
@@ -23,8 +24,8 @@
   doom-themes 
   :ensure t 
   :config (load-theme 'doom-monokai-pro t))
-(if (graphic-p) 
-    (use-package 
+(when (graphic-p) 
+  (use-package 
       all-the-icons 
       :ensure t)
   (use-package 

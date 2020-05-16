@@ -25,12 +25,12 @@
    本配置只在GNU/Linux下测试过，如果有其他平台遇到的Bug可能无法提供解决方案。
 ** org-capture
    如果你要使用我的org-capture捕获思路，那么请你创建以下几个文件:
-   - *~/Documents/org/task.org* :: 工作任务/学习任务
-   - *~/Documents/org/journal.org* :: 记录日志
-   - *~/Documents/org/inbox.org* :: 捕获灵感
-   - *~/Documents/org/notes.org* :: 临时笔记
-   - *~/Documents/org/link.org* :: 超链接
-   - *~/Documents/org/code.org* :: 代码片段/代码追踪
+   - *~/Documents/org/capture/task.org* :: 工作任务/学习任务
+   - *~/Documents/org/capture/journal.org* :: 记录日志
+   - *~/Documents/org/capture/inbox.org* :: 捕获灵感
+   - *~/Documents/org/capture/notes.org* :: 临时笔记
+   - *~/Documents/org/capture/link.org* :: 超链接
+   - *~/Documents/org/capture/code.org* :: 代码片段/代码追踪
      _请手动创建以下结构:_
      #+begin_src org
        ,* Code

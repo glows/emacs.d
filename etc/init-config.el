@@ -13,5 +13,4 @@
 (require 'init-ivy)
 (require 'init-projectile)
 
-
 (provide 'init-config)

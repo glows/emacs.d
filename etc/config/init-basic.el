@@ -91,6 +91,10 @@
 ;; 高亮括号
 (show-paren-mode 1)
 
+(use-package frame
+  :defer t
+  :commands (graphic-p))
+
 (use-package which-key
   :ensure t
   :custom

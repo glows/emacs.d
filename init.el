@@ -35,6 +35,10 @@
     (+evan/toggle-transparency)
   (+evan/toggle-transparency))
 
+(if (display-graphic-p)
+    (message "图形界面 t")
+  (message "图形界面 nil"))
+
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
 
 

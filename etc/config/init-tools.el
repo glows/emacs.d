@@ -1,4 +1,4 @@
-(if (graphic-p) 
+(if (graphic-p)
     (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
         (use-package 
           eaf 
@@ -112,7 +112,7 @@
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
-  :bind (("C-x y t" . 'youdao-dictionary-search-at-point-tooltip) 
+  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+) 
          ("C-x y p" . 'youdao-dictionary-play-voice-at-point) 
          ("C-x y r" . 'youdao-dictionary-search-and-replace) 
          ("C-x y i" . 'youdao-dictionary-search-from-input))
