@@ -38,7 +38,7 @@
       :config (setq flycheck-pos-tip-timeout 30))
     (use-package flycheck-popup-tip
       :ensure t
-      :hook (flycheck-mode . flycheck-popup-tip-mode)))
+      :hook (flycheck-mode . flycheck-popup-tip-mode))))
 
 (when (graphic-p)
   (use-package lsp-ui

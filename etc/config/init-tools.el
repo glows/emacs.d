@@ -234,5 +234,10 @@
   :hook (after-init . howdoyou-mode)
   )
 
-
+(use-package
+  eww
+  :ensure t
+  :hook (after-init . eww-mode)
+  :custom
+  (eww-search-prefix "https://google.com/search?q="))
 (provide 'init-tools)
