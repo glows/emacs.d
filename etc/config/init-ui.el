@@ -23,7 +23,7 @@
 (use-package 
   doom-themes 
   :ensure t 
-  :config (load-theme 'doom-solarized-dark t))
+  :config (load-theme 'doom-dracula t))
 (when (graphic-p) 
   (use-package 
       all-the-icons 
