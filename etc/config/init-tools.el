@@ -112,7 +112,8 @@
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
-  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+) 
+  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+)
+         ("C-x y g" . 'youdao-dictionary-search-at-point-posframe)
          ("C-x y p" . 'youdao-dictionary-play-voice-at-point) 
          ("C-x y r" . 'youdao-dictionary-search-and-replace) 
          ("C-x y i" . 'youdao-dictionary-search-from-input))
@@ -237,7 +238,6 @@
 (use-package
   eww
   :ensure t
-  :hook (after-init . eww-mode)
   :custom
   (eww-search-prefix "https://google.com/search?q="))
 (provide 'init-tools)

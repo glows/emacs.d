@@ -14,7 +14,7 @@
     (set-face-attribute 'default nil 
                         :font (font-spec :name "Fira Code Nerd Font" 
                                          :style "Retina"
-                                         :size 17))
+                                         :size 20))
   (message "无法找到Sarasa Mono CL字体，你可以更换其他字体或安装它让这条消息消失."))
 
 ;; 高亮当前行
@@ -23,7 +23,7 @@
 (use-package 
   doom-themes 
   :ensure t 
-  :config (load-theme 'doom-monokai-pro t))
+  :config (load-theme 'doom-solarized-dark t))
 (when (graphic-p) 
   (use-package 
       all-the-icons 

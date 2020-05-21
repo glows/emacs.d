@@ -65,10 +65,6 @@
                                 ,(face-foreground 'font-lock-string-face)
                                 ,(face-foreground 'font-lock-constant-face)
                                 ,(face-foreground 'font-lock-variable-name-face))))
-  (use-package company-lsp
-    :ensure t
-    :config
-    (push 'company-lsp company-backends))
 
   (use-package lsp-python-ms
     :ensure t

@@ -23,12 +23,15 @@
   'company-tabnine-mode 
   :config (add-to-list 'company-backends #'company-tabnine))
 
-(if (graphic-p)
+(when (graphic-p)
     (use-package 
       lsp-mode 
       :ensure t 
       :hook ('prog-mode . 'lsp-mode) 
-      :custom (lsp-idle-delay 0)))
+      :custom (lsp-idle-delay 0)
+      :config
+      (setq lsp-prefer-capf t)))
+
 
 (use-package 
   company-box 

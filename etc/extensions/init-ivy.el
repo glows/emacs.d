@@ -51,7 +51,7 @@
     (ivy-posframe-parameters
      '((left-fringe . 8)
        (right-fringe . 8)))
-    (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))))
+    (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))))
 
 (use-package counsel-projectile
   :ensure t
