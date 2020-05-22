@@ -11,6 +11,5 @@
 (require 'init-dired)
 (require 'init-version-control)
 (require 'init-ivy)
-(require 'init-projectile)
 
 (provide 'init-config)

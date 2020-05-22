@@ -164,10 +164,16 @@
 (use-package hungry-delete
   :ensure t
   :hook ('prog-mode . 'global-hungry-delete-mode))
+
 ;; 相对行号，默认未开启
 (use-package linum-relative
   :disabled
   :ensure t
   :hook ('prog-mode . 'linum-relative-mode))
+
+;; 选中文本后输入会覆盖
+(use-package delsel
+  :ensure nil
+  :hook (after-init . delete-selection-mode))
 
 (provide 'init-basic)
