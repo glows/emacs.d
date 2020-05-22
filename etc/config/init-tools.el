@@ -1,29 +1,26 @@
-(if (graphic-p)
-    (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
-        (use-package 
-          eaf 
-          :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
-          :custom (eaf-find-alternate-file-in-dired t)
-          ;; (eaf-proxy-type "http")
-          ;; (eaf-proxy-host "127.0.0.1")
-          ;; (eaf-proxy-port "1080")
-          :config (eaf-setq eaf-browser-dark-mode "true") 
-          (eaf-setq eaf-mindmap-dark-mode "true") 
-          (eaf-setq eaf-pdf-dark-mode "false") 
-          (eaf-setq eaf-browser-default-zoom "1.2") 
-          (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
-          (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
-          (eaf-bind-key take_photo "p" eaf-camera-keybinding)
-          ) 
-      (message
-       "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
+(when (graphic-p) 
+  (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
+      (use-package 
+        eaf 
+        :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
+        :custom (eaf-find-alternate-file-in-dired t)
+        ;; (eaf-proxy-type "http")
+        ;; (eaf-proxy-host "127.0.0.1")
+        ;; (eaf-proxy-port "1080")
+        :config (eaf-setq eaf-browser-dark-mode "true") 
+        (eaf-setq eaf-mindmap-dark-mode "true") 
+        (eaf-setq eaf-pdf-dark-mode "false") 
+        (eaf-setq eaf-browser-default-zoom "1.2") 
+        (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
+        (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
+        (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+        ) 
+    (message
+     "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
 
-
-
-
+;; 括号匹配，不再使用这个
 (use-package 
-  awesome-pair 
-
+  awesome-pair
   :disabled 
   :load-path "/home/evanmeek/.emacs.d/site-lisp/awesome-pair" 
   :config (dolist (hook (list 'c-mode-common-hook 'c-mode-hook 'c++-mode-hook 'java-mode-hook 'haskell-mode-hook 'emacs-lisp-mode-hook 'lisp-interaction-mode-hook 'lisp-mode-hook 'maxima-mode-hook 'ielm-mode-hook 'sh-mode-hook 'makefile-gmake-mode-hook 'php-mode-hook 'python-mode-hook 'js-mode-hook 'go-mode-hook 'qml-mode-hook 'jade-mode-hook 'css-mode-hook 'ruby-mode-hook 'coffee-mode-hook 'rust-mode-hook 'qmake-mode-hook 'lua-mode-hook 'swift-mode-hook 'minibuffer-inactive-mode-hook)) 
@@ -52,25 +49,24 @@
               ("M-p" . #'awesome-pair-jump-right) 
               ("M-n" . #'awesome-pair-jump-left) 
               ("M-:" . #'awesome-pair-jump-out-pair-and-newline)
-              )
-  )
+              ))
+;; 括号匹配
 (use-package 
   smartparens 
   :ensure t 
-  :hook ('prog-mode . 'smartparens-global-mode)
-  )
+  :hook ('prog-mode . 'smartparens-global-mode))
 
+;; 英语拼写助手，默认不开启
 (use-package 
-  company-english-helper 
-
+  company-english-helper
   :disabled 
   :load-path "/home/evanmeek/.emacs.d/site-lisp/company-english-helper" 
   :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper)
   )
 
-
+;; Emacs下telegram的客户端，默认不开启
 (use-package 
-  telega 
+  telega
   :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
@@ -95,32 +91,33 @@
                                                                                        :v-adjust -0.2 
                                                                                        :face all-the-icons-blue))) 
   (telega-notifications-mode 1) 
-  (telega-mode-line-mode 1)
-  )
+  (telega-mode-line-mode 1))
 
+;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
   vterm 
   :defer 2 
   :bind (:map leader-key
               ("o t" . 'vterm)
-              )
-  )
+              ))
 
+;; 有道词典，非常有用
 (use-package 
   youdao-dictionary 
   :defer 2 
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
-  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+)
-         ("C-x y g" . 'youdao-dictionary-search-at-point-posframe)
+  :bind (("C-x y t" . 'youdao-dictionary-search-at-point+) 
+         ("C-x y g" . 'youdao-dictionary-search-at-point-posframe) 
          ("C-x y p" . 'youdao-dictionary-play-voice-at-point) 
          ("C-x y r" . 'youdao-dictionary-search-and-replace) 
-         ("C-x y i" . 'youdao-dictionary-search-from-input))
-  )
+         ("C-x y i" . 'youdao-dictionary-search-from-input)))
 
+;; Emacs下的音乐播放器，自带一个函数将~/Music下的所有音乐导入进Bongo再自动播放(bongo-init)
 (use-package 
-  bongo 
+  bongo
+  :ensure t
   :defer 2 
   :config (defun bongo-init () 
             (interactive) 
@@ -148,16 +145,16 @@
               ("b p" . 'bongo-play-previous) 
               ("b r" . 'bongo-play-random) 
               ("b s" . 'bongo-sprinkle)
-              )
-  )
-(if (graphic-p) 
-    (use-package 
-      pdf-tools 
-      :ensure t 
-      :hook ('doc-view-mode 'pdf-view-mode)
-      ))
+              ))
+;; Emacs下的pdf查看工具，默认非图形化不开启
+(when (graphic-p) 
+  (use-package 
+    pdf-tools 
+    :ensure t 
+    :hook ('doc-view-mode 'pdf-view-mode)
+    ))
 
-
+;; 窗口管理器
 (use-package 
   windmove 
   :ensure t 
@@ -172,11 +169,11 @@
               ("w B" . #'window-move-left) 
               ("w P" . #'window-move-up) 
               ("w N" . #'window-move-down)
-              )
-  )
-
-
-
+              ("w h" . #'enlarge-window-horizontally)
+              ("w l" . #'shrink-window-horizontally)
+              ("w j" . #'enlarge-window)
+              ("w k" . #'shrink-window)))
+;; 折叠和收缩代码
 (use-package 
   hideshow 
   :ensure t 
@@ -185,34 +182,30 @@
               ("C-c TAB" . hs-toggle-hiding) 
               ("C-c p +" . hs-show-all)
               ) 
-  :hook (prog-mode . hs-minor-mode)
-  )
+  :hook (prog-mode . hs-minor-mode))
 
+;; 一个可以临时安装使用插件的插件
 (use-package 
   try 
-  :ensure t
-  )
+  :ensure t)
 
-;; 谷歌翻译
+;; 谷歌翻译，
 (use-package 
-  google-translate 
+  google-translate
+  :disabled
+  :config (setq google-translate--tkk-url "http://translate.google.cn/" google-translate-base-url "http://translate.google.cn/translate\_a/single" google-translate-listen-url "https://translate.google.cn/translate\_tts" google-translate-default-target-language "zh-CN" google-translate-default-source-language "en"))
 
-  :disabled 
-  :ensure nil 
-  :config (setq google-translate--tkk-url "http://translate.google.cn/" google-translate-base-url "http://translate.google.cn/translate\_a/single" google-translate-listen-url "https://translate.google.cn/translate\_tts" google-translate-default-target-language "zh-CN" google-translate-default-source-language "en")
-  )
-
+;; 工作区
 (use-package 
-  perspeen 
-
+  perspeen
   :diminish 
   :ensure t 
   :init
   ;; (setq perspeen-use-tab t)
   (setq perspeen-keymap-prefix [C-tab]) 
-  :config (perspeen-mode)
-  )
+  :config (perspeen-mode))
 
+;; 撤销树
 (use-package 
   undo-tree 
   :ensure t 
@@ -221,23 +214,22 @@
 
   ;; HACK: keep the diff window
   (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
-                    (setq-default undo-tree-visualizer-diff t))
-  )
-
+                    (setq-default undo-tree-visualizer-diff t)))
+;; 项目管理
 (use-package 
   projectile 
-  :ensure t
-  )
+  :ensure t)
 
+;; 快速查询你的问题
 (use-package 
   howdoyou 
   :ensure t 
-  :hook (after-init . howdoyou-mode)
-  )
+  :hook (after-init . howdoyou-mode))
 
-(use-package
-  eww
-  :ensure t
-  :custom
-  (eww-search-prefix "https://google.com/search?q="))
+;; emacs内置网页浏览器
+(use-package 
+  eww 
+  :ensure t 
+  :custom (eww-search-prefix "https://google.com/search?q="))
+
 (provide 'init-tools)

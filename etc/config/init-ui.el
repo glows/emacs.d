@@ -13,25 +13,27 @@
                       :style "Retina")) 
     (set-face-attribute 'default nil 
                         :font (font-spec :name "Fira Code Nerd Font" 
-                                         :style "Retina"
-                                         :size 20))
-  (message "无法找到Sarasa Mono CL字体，你可以更换其他字体或安装它让这条消息消失."))
+                                         :style "Retina" 
+                                         :size 20)) 
+  (message "无法找到Fira Code Nerd Font字体，你可以更换其他字体或安装它让这条消息消失."))
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
 
+;; 主题包
 (use-package 
   doom-themes 
   :ensure t 
   :config (load-theme 'doom-dracula t))
+
 (when (graphic-p) 
   (use-package 
-      all-the-icons 
-      :ensure t)
+    all-the-icons 
+    :ensure t) 
   (use-package 
     all-the-icons-dired 
     :ensure t 
-    :hook ('dired-mode . 'all-the-icons-dired-mode))
+    :hook ('dired-mode . 'all-the-icons-dired-mode)) 
   (use-package 
     emojify 
     :hook 'after-init-hook 
@@ -62,21 +64,22 @@
   (setq dashboard-set-file-icons t) 
   (setq dashboard-set-navigator t))
 
+
+;; modeline样式
 (use-package 
   doom-modeline 
   :ensure t 
   :init (doom-modeline-mode 1) 
   :config (setq doom-modeline-height 10) 
   (custom-set-faces '(mode-line ((t 
-                                  (:family "Sarasa Mono SC" 
-                                           :height 150)))) 
+                                  (:family "Fira Code Nerd Font"
+                                           :style "Retina"
+                                           :height 125)))) 
                     '(mode-line-inactive ((t 
-                                           (:family "Sarasa Mono SC" 
-                                                    :height 150))))))
-
-
-
-
+                                           (:family "Fira Code Nerd Font"
+                                                    :style "Retina"
+                                                    :height 125))))))
+;; 彩虹括号
 (use-package 
   rainbow-delimiters 
   :ensure t 
@@ -90,7 +93,7 @@
   (set-face-foreground 'rainbow-delimiters-depth-6-face "magenta") 
   (set-face-foreground 'rainbow-delimiters-depth-7-face "goldenrod") 
   (set-face-foreground 'rainbow-delimiters-depth-8-face "IndianRed1") 
-  (set-face-foreground 'rainbow-delimiters-depth-9-face "ivory1")
+  (set-face-foreground 'rainbow-delimiters-depth-9-face "ivory1") 
   (set-face-bold 'rainbow-delimiters-depth-1-face "t") 
   (set-face-bold 'rainbow-delimiters-depth-2-face "t") 
   (set-face-bold 'rainbow-delimiters-depth-3-face "t") 

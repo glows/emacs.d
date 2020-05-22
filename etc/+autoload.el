@@ -4,6 +4,7 @@
   ;; (getenv "DISPLAY")
   (display-graphic-p))
 
+;; 切换透明
 (defun +evan/toggle-transparency ()
         (interactive)
         (let ((alpha (frame-parameter nil 'alpha)))

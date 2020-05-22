@@ -48,7 +48,7 @@
   (set-face-attribute 'org-table nil :font (font-spec :name "等距更纱黑体 SC"
                                                       :size 22)))
 
-
+;; 美化org
 (use-package 
   org-bullets
   :ensure t

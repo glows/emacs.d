@@ -11,7 +11,7 @@
 (setq eshell-history-file-name "~/.emacs/var/eshell/history")
 
 ;; 关闭滚动条
-(if (graphic-p)
+(when (graphic-p)
     (scroll-bar-mode -1))
 
 ;; 关闭工具栏
@@ -91,10 +91,6 @@
 ;; 高亮括号
 (show-paren-mode 1)
 
-(use-package frame
-  :defer t
-  :commands (graphic-p))
-
 (use-package which-key
   :ensure t
   :custom
@@ -109,8 +105,8 @@
     (global-set-key [remap other-window] 'ace-window)
     (custom-set-faces
      '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "red")))))))
-
+       ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta")))))))
+;; 增强了搜索功能
 (use-package swiper
   :bind
   (("C-s" . swiper)
@@ -125,6 +121,7 @@
     (setq ivy-display-style 'fancy)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
+;; 集成了很多非常有用的的功能
 (use-package counsel
   :hook
   ('counsel-mode . 'dashboard-mode)
@@ -135,9 +132,9 @@
   :config
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
-    (setq projectile-completion-system 'ivy))
-  )
+    (setq projectile-completion-system 'ivy)))
 
+;; 强大的跳转工具
 (use-package avy 
   :ensure t
   :bind (("M-g :" . 'avy-goto-char)
@@ -147,8 +144,9 @@
          ("M-g w" . 'avy-goto-word-1)
          ("M-g e" . 'avy-goto-word-0)))
 
-(use-package rime
-  :ensure t
+;; emacs 调用 rime输入法的前端，强烈推荐
+(when (graphic-p)
+  (use-package rime
   :custom
   (default-input-method "rime")
   :config
@@ -160,12 +158,13 @@
               :font "Sarasa Mono SC-16"
               :internal-border-width 10))
   (setq default-input-method "rime"
-        rime-show-candidate 'posframe))
+        rime-show-candidate 'posframe)))
 
+;; 饥饿删除（一次性删除多个连续的空白符）
 (use-package hungry-delete
   :ensure t
   :hook ('prog-mode . 'global-hungry-delete-mode))
-
+;; 相对行号，默认未开启
 (use-package linum-relative
   :disabled
   :ensure t

@@ -1,3 +1,4 @@
+;; 著名的Emacs补全框架
 (use-package 
   company 
   :defer 2 
@@ -14,7 +15,7 @@
   (:map leader-key
         ("c s" . #'company-yasnippet))) 
 
-
+;; 人工智能补全代码
 (use-package 
   company-tabnine
   :disabled 
@@ -23,6 +24,7 @@
   'company-tabnine-mode 
   :config (add-to-list 'company-backends #'company-tabnine))
 
+;; Emacs对语言服务器支持的插件
 (when (graphic-p)
     (use-package 
       lsp-mode 
@@ -32,13 +34,13 @@
       :config
       (setq lsp-prefer-capf t)))
 
-
+;; 美化company
 (use-package 
   company-box 
   :ensure t 
   :hook (company-mode . company-box-mode))
 
-
+;; 代码片段
 (use-package 
   yasnippet 
   :ensure t 
