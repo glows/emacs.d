@@ -95,7 +95,8 @@
 
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
-  vterm 
+  vterm
+  :ensure t
   :defer 2 
   :bind (:map leader-key
               ("o t" . 'vterm)
