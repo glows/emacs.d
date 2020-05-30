@@ -11,5 +11,6 @@
 (require 'init-dired)
 (require 'init-version-control)
 (require 'init-ivy)
+(require 'init-treemacs)
 
 (provide 'init-config)

@@ -23,8 +23,7 @@
 ;; 自动刷新被修改过的文件
 (global-auto-revert-mode 1)
 ;; 行号开启
-
-
+(add-hook 'prog-mode-hook display-line-numbers)
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil
@@ -85,7 +84,7 @@
 (add-hook 'after-change-major-mode-hook (lambda () 
                                           (modify-syntax-entry ?- "w")))
 ;; 没有制表符
-(setq-default indent-tabs-mode nil) 
+(setq-default indent-tabs-mode t) 
 (setq-default tab-width 8)
 
 ;; 高亮括号

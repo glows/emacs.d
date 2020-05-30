@@ -6,6 +6,7 @@
 
 ;; 在Emacs中使用终端程序ranger
 (use-package ranger
+  :disabled
   :ensure t
   :config
   (ranger-override-dired-mode 1))
