@@ -61,7 +61,7 @@
  '(lsp-idle-delay 0)
  '(lsp-python-ms-executable
    "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer")
- '(lsp-ui-doc-delay 1)
+ '(lsp-ui-doc-delay 1 t)
  '(org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
  '(org-todo-keyword-faces
    '(("[学习]" :foreground "white" :background "#2ECC71" :weight bold)

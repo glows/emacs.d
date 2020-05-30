@@ -141,8 +141,5 @@
               (:tempfile . 
                          nil)) 
             :default "python"))
-(use-package nxml-mode
-  :ensure t
-  :hook (prog-mode nxml-mode-hook))
 
 (provide 'init-prog)
