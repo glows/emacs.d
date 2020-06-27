@@ -70,7 +70,7 @@
   :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
-                         :port 1080 
+                         :port 1088
                          :enable t 
                          :type (:@type "proxyTypeSocks5"
                                        )

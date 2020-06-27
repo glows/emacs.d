@@ -22,8 +22,8 @@
 
 ;; 自动刷新被修改过的文件
 (global-auto-revert-mode 1)
-;; 行号开启
-(add-hook 'prog-mode-hook display-line-numbers)
+;; 选中文本后输入会覆盖
+(delete-selection-mode 1)
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil
@@ -146,6 +146,7 @@
 ;; emacs 调用 rime输入法的前端，强烈推荐
 (when (graphic-p)
   (use-package rime
+    :ensure t
   :custom
   (default-input-method "rime")
   :config
@@ -170,9 +171,7 @@
   :ensure t
   :hook ('prog-mode . 'linum-relative-mode))
 
-;; 选中文本后输入会覆盖
-(use-package delsel
-  :ensure nil
-  :hook (after-init . delete-selection-mode))
+
+
 
 (provide 'init-basic)
