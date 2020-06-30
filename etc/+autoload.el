@@ -5,6 +5,7 @@
   (display-graphic-p))
 
 ;; 切换透明
+;;;###autoload
 (defun +evan/toggle-transparency ()
         (interactive)
         (let ((alpha (frame-parameter nil 'alpha)))

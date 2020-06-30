@@ -18,11 +18,11 @@
     (message
      "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
 
-;; 括号匹配，不再使用这个
+;; 括号匹配，不再使用这个，转为使用smartparens
 (use-package 
   awesome-pair
   :disabled 
-  :load-path "/home/evanmeek/.emacs.d/site-lisp/awesome-pair" 
+  :load-path "~/.emacs.d/site-lisp/awesome-pair" 
   :config (dolist (hook (list 'c-mode-common-hook 'c-mode-hook 'c++-mode-hook 'java-mode-hook 'haskell-mode-hook 'emacs-lisp-mode-hook 'lisp-interaction-mode-hook 'lisp-mode-hook 'maxima-mode-hook 'ielm-mode-hook 'sh-mode-hook 'makefile-gmake-mode-hook 'php-mode-hook 'python-mode-hook 'js-mode-hook 'go-mode-hook 'qml-mode-hook 'jade-mode-hook 'css-mode-hook 'ruby-mode-hook 'coffee-mode-hook 'rust-mode-hook 'qmake-mode-hook 'lua-mode-hook 'swift-mode-hook 'minibuffer-inactive-mode-hook)) 
             (add-hook hook '(lambda () 
                               (awesome-pair-mode 1)))) 
@@ -59,14 +59,15 @@
 ;; 英语拼写助手，默认不开启
 (use-package 
   company-english-helper
-  :disabled 
-  :load-path "/home/evanmeek/.emacs.d/site-lisp/company-english-helper" 
+  :disabled
+  :load-path "~/.emacs.d/site-lisp/company-english-helper" 
   :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper)
   )
 
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
   telega
+  :ensure nil
   :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
@@ -96,11 +97,10 @@
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
   vterm
-  :ensure t
+  :ensure nil
   :defer 2 
   :bind (:map leader-key
-              ("o t" . 'vterm)
-              ))
+              ("o t" . 'vterm)))
 
 ;; 有道词典，非常有用
 (use-package 

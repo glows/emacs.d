@@ -17,6 +17,13 @@
         ~pacman -S libvterm~
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+    - tdlib :: telega需要
+      * ArchLinux #archlinuxcn
+	~pacman -S libtd-git~
+** 字体
+   - all-the-icons
+   - Fira Code
+   - Sarasa Mono
 ** 安装
    ~>mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
 * 注意事项
@@ -39,7 +46,6 @@
    - *~/Documents/org/capture/word.org* :: 记录生词
 ** telega的安装方式
    telega是emacs下的一个telegram客户端，你首先得编译tdlib，才能使用telega，tdlib的安装方式可以在这里找到: [[https://github.com/tdlib/td][tdlib 主页]]
-
 * 常见问题
 ** 暂时没有！欢迎提交Issue或在QQ群讨论.
 * 其他

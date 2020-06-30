@@ -23,8 +23,28 @@
 ;; 主题包
 (use-package 
   doom-themes 
-  :ensure t 
-  :config (load-theme 'doom-dracula t))
+  :ensure t
+  :defer
+  ;; :config (load-theme 'doom-dracula t))
+  )
+(use-package
+  spacemacs-common
+  :ensure spacemacs-theme
+  :defer)
+
+;; 自动切换主题
+(use-package
+  circadian
+  :ensure t
+  :config
+  ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
+  (setq calendar-latitude 23.130280
+	calendar-longitude 113.288879
+	;; sunrise 白天用的主题 sunset 晚上用的主题
+	circadian-themes '((:sunrise . spacemacs-light)
+			   (:sunset . spacemacs-dark)))
+  (circadian-setup))
+
 
 (when (graphic-p) 
   (use-package 
