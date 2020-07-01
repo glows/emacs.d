@@ -13,15 +13,15 @@
         (eaf-setq eaf-mindmap-dark-mode "true")
 	(when (and
 	       (> (car (circadian-now-time)) (car (circadian-sunrise)))
-	       (< (car (circadian-now-time)) (car (circadian-sunset)))))
+	       (< (car (circadian-now-time)) (car (circadian-sunset))))
 	  (progn
 	    (eaf-setq eaf-pdf-dark-mode "false")
 	    (eaf-setq eaf-browser-dark-mode "false") 
-            (eaf-setq eaf-mindmap-dark-mode "false"))
-        (eaf-setq eaf-browser-default-zoom "1.2"))
+            (eaf-setq eaf-mindmap-dark-mode "false")))
+        (eaf-setq eaf-browser-default-zoom "1.2")
         (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
         (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
-        (eaf-bind-key take_photo "p" eaf-camera-keybinding)) 
+        (eaf-bind-key take_photo "p" eaf-camera-keybinding))
     (message
      "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
 
