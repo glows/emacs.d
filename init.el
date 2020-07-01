@@ -54,7 +54,7 @@
  '(eaf-proxy-host "127.0.0.1")
  '(eaf-proxy-port "1088")
  '(eaf-proxy-type "socks5")
- '(emojify-emojis-dir "~/.emacs.d/var/emojis" t)
+ '(emojify-emojis-dir "~/.emacs.d/var/emojis")
  '(eww-search-prefix "https://google.com/search?q=")
  '(global-hl-line-mode t)
  '(ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
@@ -79,7 +79,7 @@
    '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
      (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
  '(package-selected-packages
-   '(circadian nyx-theme hemera-theme spacemacs-themes spacemacs-theme sudo-edit lsp-treemacs treemacs-icons-dired treemacs-projectile treemacs prettier-js xml-format xml+ iceberg-theme user-package-hydra use-package-hydra major-mode-hydra pretty-hydra ivy-hydra hydra quickrun live-py-mode ag howdoyou info-colors ivy company-box flycheck-pos-tip flycheck-popup-tip flycheck-posframe counsel-projectile linum-relative projectile undo-tree web-mode hungry-delete all-the-icons-ivy-rich ivy-rich yasnippet-snippets yasnippet perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window))
+   '(rotate doom circadian nyx-theme hemera-theme spacemacs-themes spacemacs-theme sudo-edit lsp-treemacs treemacs-icons-dired treemacs-projectile treemacs prettier-js xml-format xml+ iceberg-theme user-package-hydra use-package-hydra major-mode-hydra pretty-hydra ivy-hydra hydra quickrun live-py-mode ag howdoyou info-colors ivy company-box flycheck-pos-tip flycheck-popup-tip flycheck-posframe counsel-projectile linum-relative projectile undo-tree web-mode hungry-delete all-the-icons-ivy-rich ivy-rich yasnippet-snippets yasnippet perspeen google-translate smartparens insert-tranlsated-name benchmark-init youdao-dictionary yaml-mode xah-fly-keys which-key w3m vterm use-package try toc-org telega solarized-theme snazzy-theme rime rainbow-delimiters pdf-tools ox-reveal org-bullets lsp-ui lsp-python-ms jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe htmlize general flycheck esup emojify elisp-format doom-themes doom-modeline dired-icon dashboard dash-docs dakrone-light-theme counsel company-tabnine bongo auto-complete amx all-the-icons-ivy all-the-icons-dired ace-window))
  '(tooltip-mode nil)
  '(which-key-popup-type 'side-window))
 (custom-set-faces

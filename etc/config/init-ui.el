@@ -45,7 +45,6 @@
 			   (:sunset . spacemacs-dark)))
   (circadian-setup))
 
-
 (when (graphic-p) 
   (use-package 
     all-the-icons 
@@ -55,10 +54,11 @@
     :ensure t 
     :hook ('dired-mode . 'all-the-icons-dired-mode)) 
   (use-package 
-    emojify 
-    :hook 'after-init-hook 
-    #'global-emojify-mode 
-    :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")) 
+    emojify
+    :after telega
+    :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
+    :config
+    (global-emojify-mode)) 
   (use-package 
     posframe 
     :ensure t))

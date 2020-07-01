@@ -11,7 +11,14 @@
 	(eaf-setq eaf-pdf-dark-mode "true")
 	(eaf-setq eaf-browser-dark-mode "true") 
         (eaf-setq eaf-mindmap-dark-mode "true")
-        (eaf-setq eaf-browser-default-zoom "1.2") 
+	(when (and
+	       (> (car (circadian-now-time)) (car (circadian-sunrise)))
+	       (< (car (circadian-now-time)) (car (circadian-sunset)))))
+	  (progn
+	    (eaf-setq eaf-pdf-dark-mode "false")
+	    (eaf-setq eaf-browser-dark-mode "false") 
+            (eaf-setq eaf-mindmap-dark-mode "false"))
+        (eaf-setq eaf-browser-default-zoom "1.2"))
         (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
         (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
         (eaf-bind-key take_photo "p" eaf-camera-keybinding)) 
@@ -78,7 +85,8 @@
                          ))) 
   (setq telega-chat-fill-column 65) 
   (setq telega-emoji-use-images nil) 
-  :config (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
+  :config
+  (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
   (with-eval-after-load 'company (add-hook 'telega-chat-mode-hook (lambda () 
                                                                     (make-local-variable 'company-backends) 
                                                                     (dolist (it '(telega-company-botcmd telega-company-emoji)) 
