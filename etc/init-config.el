@@ -12,5 +12,6 @@
 (require 'init-version-control)
 (require 'init-ivy)
 (require 'init-treemacs)
-
+(require 'init-python)
+(require 'init-java)
 (provide 'init-config)

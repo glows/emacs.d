@@ -85,7 +85,7 @@
                                           (modify-syntax-entry ?- "w")))
 ;; 没有制表符
 (setq-default indent-tabs-mode t) 
-(setq-default tab-width 8)
+(setq-default tab-width 4)
 
 ;; 高亮括号
 (show-paren-mode 1)

@@ -101,28 +101,6 @@
   yasnippet-snippets 
   :ensure t)
 
-;; Python
-(use-package 
-  python 
-  :ensure t 
-  :hook (inferior-python-mode . (lambda () 
-                                  (process-query-on-exit-flag (get-process "Python")))) 
-  :init
-  ;; Disable readline based native completion
-  (setq python-shell-completion-native-enable nil) 
-  :config
-  ;; Default to Python 3. Prefer the versioned Python binaries since some
-  ;; systems stupidly make the unversioned one point at Python 2.
-  (when (and (executable-find "python3") 
-             (string= python-shell-interpreter "python")) 
-    (setq python-shell-interpreter "python3"))
-  ;; Env vars
-  (with-eval-after-load 'exec-path-from-shell (exec-path-from-shell-copy-env "PYTHONPATH"))
-  ;; Live Coding in Python
-  (use-package 
-    live-py-mode 
-    :ensure t))
-
 ;; 编译运行当前文件
 (use-package 
   quickrun 
@@ -133,7 +111,8 @@
   :init (setq quickrun-timeout-seconds nil) 
   (setq quickrun-focus-p nil) 
   (setq quickrun-input-file-extension nil) 
-  :config (quickrun-add-command "python" 
+  :config
+  (quickrun-add-command "python" 
             '((:command .
                         "python3") 
               (:exec .

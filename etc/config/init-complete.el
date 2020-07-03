@@ -25,14 +25,23 @@
   :config (add-to-list 'company-backends #'company-tabnine))
 
 ;; Emacs对语言服务器支持的插件
-(when (graphic-p)
-    (use-package 
-      lsp-mode 
-      :ensure t 
-      :hook ('prog-mode . 'lsp-mode) 
-      :custom (lsp-idle-delay 0)
-      :config
-      (setq lsp-prefer-capf t)))
+(use-package 
+  lsp-mode 
+  :ensure t 
+  :hook ('prog-mode . 'lsp-mode) 
+  :custom (lsp-idle-delay 0)
+  :config
+  (setq lsp-prefer-capf t))
+
+;; 各个语言的Debug工具
+(use-package
+  dap-mode
+  :ensure t
+  :hook ((after-init . dap-mode)
+		 (dapmode . dap-ui-mode)
+		 (java-mode . (lambda () (require 'dap-java)))))
+
+(provide 'init-complete)
 
 ;; 美化company
 (use-package 
