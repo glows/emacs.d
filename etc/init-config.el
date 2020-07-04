@@ -8,6 +8,7 @@
 (require 'init-complete)
 (require 'init-prog)
 (require 'init-org)
+(require 'init-markdown)
 (require 'init-dired)
 (require 'init-version-control)
 (require 'init-ivy)

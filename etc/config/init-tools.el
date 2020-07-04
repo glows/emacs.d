@@ -8,15 +8,16 @@
         (eaf-proxy-host "127.0.0.1")
         (eaf-proxy-port "1088")
         :config
-	(eaf-setq eaf-pdf-dark-mode "true")
-	(eaf-setq eaf-browser-dark-mode "true") 
+		(setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+		(eaf-setq eaf-pdf-dark-mode "true")
+		(eaf-setq eaf-browser-dark-mode "true") 
         (eaf-setq eaf-mindmap-dark-mode "true")
-	(when (and
-	       (> (car (circadian-now-time)) (car (circadian-sunrise)))
-	       (< (car (circadian-now-time)) (car (circadian-sunset))))
-	  (progn
-	    (eaf-setq eaf-pdf-dark-mode "false")
-	    (eaf-setq eaf-browser-dark-mode "false") 
+		(when (and
+			   (> (car (circadian-now-time)) (car (circadian-sunrise)))
+			   (< (car (circadian-now-time)) (car (circadian-sunset))))
+		  (progn
+			(eaf-setq eaf-pdf-dark-mode "false")
+			(eaf-setq eaf-browser-dark-mode "false") 
             (eaf-setq eaf-mindmap-dark-mode "false")))
         (eaf-setq eaf-browser-default-zoom "1.2")
         (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 

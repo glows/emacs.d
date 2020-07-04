@@ -30,6 +30,11 @@
       inhibit-startup-screen t
       inhibit-startup-message t)
 
+;; 回到上一次光标的位置
+(use-package saveplace
+  :ensure t
+  :hook (after-init . save-place-mode))
+
 ;; 关闭备份
 (setq make-backup-files nil auto-save-default nil)
 

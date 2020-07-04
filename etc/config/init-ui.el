@@ -1,7 +1,7 @@
 ;; 加载主题
 ;; (load-file "~/.emacs.d/themes/oyswald-theme.el")
 ;; 设置透明
-(set-frame-parameter nil 'alpha '(85 .100))
+;; (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
 ;; 设置光标样式
@@ -10,15 +10,26 @@
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
 (if (fontp (font-spec :name "Fira Code Nerd Font" 
-                      :style "Retina")) 
+					  :style "Retina"
+					  ;; :name "Sarasa Mono SC"
+					  :style "Regular"
+					  )) 
     (set-face-attribute 'default nil 
-                        :font (font-spec :name "Fira Code Nerd Font" 
-                                         :style "Retina" 
-                                         :size 20)) 
+                        :font (font-spec ;; :name "Sarasa Mono SC"
+							   :name "Fira Code Nerd Font"							 
+                               :style "Retina"
+							   ;; :style "Regular"
+                               :size 20)) 
   (message "无法找到Fira Code Nerd Font字体，你可以更换其他字体或安装它让这条消息消失."))
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
+
+;; 切换buffer焦点时高亮动画
+(use-package
+  beacon
+  :ensure t
+  :hook (after-init . beacon-mode))
 
 ;; 主题包
 (use-package 
@@ -71,7 +82,7 @@
 (use-package 
   dashboard 
   :ensure t 
-  :config (dashboard-setup-startup-hook) 
+  :config (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text") 
                                     (bookmarks . "book")))
   ;; 设置标题
@@ -81,8 +92,9 @@
   (setq dashboard-startup-banner "~/.emacs.d/var/banner/a.png") 
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
-  (setq dashboard-set-file-icons t) 
-  (setq dashboard-set-navigator t))
+  ;; (setq dashboard-set-file-icons t) 
+  (setq dashboard-set-navigator t)
+  )
 
 
 ;; modeline样式
