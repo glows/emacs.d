@@ -1,5 +1,4 @@
 (define-prefix-command 'leader-key)
-
 (which-key-add-key-based-replacements
   "M-SPC b" "音乐"
   "M-SPC o" "开启"
@@ -13,10 +12,157 @@
   "M-SPC w B" "交换窗口-左")
 (bind-key "t T" #'+evan/toggle-transparency leader-key)
 (bind-key "t p" #'+evan/toggle-proxy leader-key)
-(global-set-key (kbd "M-SPC") 'leader-key) 
+(global-set-key (kbd "M-SPC") 'leader-key)
 (global-set-key (kbd "C-(") 'backward-sexp) 
 (global-set-key (kbd "C-)") 'forward-sexp)
 (global-set-key (kbd "<f12>") 'open-init-dired)
 
-  
+(use-package
+  hydra
+  :ensure t)
+
+(use-package
+  hydra-posframe
+  :load-path "~/.emacs.d/site-lisp/hydra-posframe"
+  :hook (after-init . hydra-posframe-enable))
+
+;; (use-package
+;;   major-mode-hydra
+;;   :ensure t
+;;   :after hydra)
+
+;; Bongo 音乐播放器
+(defhydra evan/hydra-music-menu ()
+  "
+								^音乐^
+----------------------------------------------------------------------
+[_RET_] ^播放曲目	[_i_] ^一键播放^		[_x_] ^删除曲目(区域)^	[_d_] ^删除曲目(行内)^
+[_\__] ^撤回操作		[_SPC_] ^暂停/播放^	[_TAB_] ^收起专辑^		[_h_] ^回退10s^
+[_l_] ^前进10s		[_a_] ^加入列表^		[_n_] ^下一首^			[_p_] ^上一首^
+[_r_] ^随机播放		[_k_] ^关闭播放器^
+"
+  ("RET" bongo-dwim nil :color blue)
+  ("i" bongo-init nil)
+  ("x" bongo-kill-region nil)
+  ("d" bongo-kill-line nil) 
+  ("_" bongo-undo nil)
+  ("SPC" bongo-pause/resume nil) 
+  ("TAB" bongo-toggle-collapsed nil) 
+  ("h" bongo-seek-backward-10 nil) 
+  ("l" bongo-seek-forward-10 nil) 
+  ("a" bongo-insert-enqueue nil) 
+  ("n" bongo-play-next nil) 
+  ("p" bongo-play-previous nil) 
+  ("r" bongo-play-random nil)
+  ("k" bongo-stop nil)
+  ("q" nil "QUIT" :color blue))
+;; 启动点er啥
+(defhydra evan/hydra-open-menu ()
+  "
+							^启动点er啥^
+-----------------------------------------------------------------
+[_t_] ^vterm^
+"
+  ("t" vterm nil :color blue)
+  ("q" nil "QUIT" :color blue))
+;; 开关
+(defhydra evan/hydra-toggle-menu ()
+  "
+							^开关^
+-----------------------------------------------------------------
+[_T_] ^透明^		[_p_] ^代理^		[_f_] ^FlyCheck^
+"
+  ("T" +evan/toggle-transparency nil)
+  ("p" +evan/toggle-proxy nil)
+  ("f" global-flycheck-mode nil)
+  ("q" nil "QUIT" :color blue))
+;; 窗格
+(defhydra evan/hydra-window-menu ()
+  "
+							^窗口管理器^
+-----------------------------------------------------------------
+[_0_] ^关闭窗格^				[_F_] ^全屏模式^		[_K_] ^↑+^		[_k_] ^go ↑^    
+[_1_] ^关闭其他窗格^			[_r_] ^旋转交换^		[_J_] ^↓+^		[_j_] ^go ↓^ 
+[_2_] ^新建窗格(垂直)^		[_s_] ^选择交换^		[_H_] ^←+^		[_h_] ^go ←^
+[_3_] ^新建窗格(水平)^		[_b_] ^平均铺开^		[_L_] ^→+^		[_l_] ^go →^
+"
+  ("0" delete-window nil)
+  ("1" delete-other-window nil :color blue)
+  ("2" split-window-vertically nil)
+  ("3" split-window-horizontally nil)
+  ("F" toggle-frame-fullscreen nil :color blue)
+  ("r" rotate-window nil)
+  ("s" ace-swap-window nil :color blue)
+  ("b" balance-windows nil :color blue)
+  ("H" shrink-window-horizontally nil)
+  ("J" enlarge-window nil)
+  ("K" shrink-window nil)
+  ("L" enlarge-window-horizontally nil)
+  ("h" windmove-left nil)
+  ("j" windmove-down nil)
+  ("k" windmove-up nil)
+  ("l" windmove-right nil)
+  ("q" nil "QUIT" :color blue))
+;; 代码
+(defhydra evan/hydra-code-menu ()
+  "
+				^代码^
+----------------------------------
+[_r_] ^quickrun^	[_s_] company-yasnippet
+"
+  ("s" company-yasnippet nil :color blue)
+  ("r" quickrun nil :color blue)
+  ("q" nil "QUIT" :color blue))
+;; 项目
+(defhydra evan/hydra-project-menu ()
+  ""
+  ("q" nil "QUIT" :color blue))
+;; 各种插件的键绑定
+(defhydra evan/hydra-app-menu ()
+  "
+"
+  ("q" nil "QUIT" :color blue))
+;; 常用的命令
+(defhydra evan/hydra-common-menu ()
+  "
+						^常用^
+------------------------------------------------------
+[_g_] ^counsel-rg^					[_y_] ^counsel-yank-pop^
+[_f_] ^counsel-fzf^					[_d_] ^counsel-dired^	   
+[_r_] ^counsel-recentf^				[_m_] ^counsel-bookmark^ 
+[_b_] ^counsel-switch-buffer^		[_l_] ^counsel-linux-app^
+"
+  ("g" counsel-rg nil :color blue)
+  ("f" counsel-fzf nil :color blue)
+  ("r" counsel-recentf nil :color blue)
+  ("b" counsel-switch-buffer nil :color blue)
+  ("y" counsel-yank-pop nil :color blue)
+  ("d" counsel-dired nil :color blue)
+  ("m" counsel-bookmark nil :color blue)
+  ("l" counsel-linux-app nil :color blue)
+  ("q" nil "QUIT" :color blue))
+;; 主菜单
+(defhydra evan/hydra-main-menu ()
+  "
+							^主菜单^
+-------------------------------------------------
+[_b_] ^音乐 	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
+[_c_] ^代码 	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
+"
+  ("b" evan/hydra-music-menu/body nil :color blue)
+  ("o" evan/hydra-open-menu/body nil :color blue)
+  ("t" evan/hydra-toggle-menu/body nil :color blue)
+  ("w" evan/hydra-window-menu/body nil :color blue)
+  ("c" evan/hydra-code-menu/body nil :color blue)
+  ("p" evan/hydra-project-menu/body nil :color blue)
+  ("2" evan/hydra-common-menu/body nil :color blue)
+  ("a" evan/hydra-app-menu/body nil :color blue)
+  ("q" nil "QUIT" :color blue))
+
+(global-set-key (kbd "C-`") #'evan/hydra-main-menu/body)
+
+
+
+
+
 (provide 'init-keybind)
