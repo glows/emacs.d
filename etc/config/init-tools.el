@@ -128,7 +128,7 @@
 (use-package 
   bongo
   :ensure t
-  :defer 2 
+  :hook (after-init . bongo)
   :config (defun bongo-init () 
             (interactive) 
             (let ((buffer (current-buffer))) 

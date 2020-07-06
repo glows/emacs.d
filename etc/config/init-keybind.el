@@ -26,13 +26,13 @@
   :load-path "~/.emacs.d/site-lisp/hydra-posframe"
   :hook (after-init . hydra-posframe-enable))
 
-;; (use-package
-;;   major-mode-hydra
-;;   :ensure t
-;;   :after hydra)
+(use-package
+  major-mode-hydra
+  :ensure t
+  :after hydra)
 
 ;; Bongo 音乐播放器
-(defhydra evan/hydra-music-menu ()
+(defhydra evan/hydra-music-menu (:color blue)
   "
 								^音乐^
 ----------------------------------------------------------------------
@@ -41,17 +41,17 @@
 [_l_] ^前进10s		[_a_] ^加入列表^		[_n_] ^下一首^			[_p_] ^上一首^
 [_r_] ^随机播放		[_k_] ^关闭播放器^
 "
-  ("RET" bongo-dwim nil :color blue)
+  ("RET" bongo-dwim nil)
   ("i" bongo-init nil)
   ("x" bongo-kill-region nil)
   ("d" bongo-kill-line nil) 
   ("_" bongo-undo nil)
   ("SPC" bongo-pause/resume nil) 
   ("TAB" bongo-toggle-collapsed nil) 
-  ("h" bongo-seek-backward-10 nil) 
-  ("l" bongo-seek-forward-10 nil) 
+  ("h" bongo-seek-backward-10 nil :color red) 
+  ("l" bongo-seek-forward-10 nil :color red) 
   ("a" bongo-insert-enqueue nil) 
-  ("n" bongo-play-next nil) 
+  ("n" bongo-play-next nil)
   ("p" bongo-play-previous nil) 
   ("r" bongo-play-random nil)
   ("k" bongo-stop nil)
@@ -118,10 +118,37 @@
   ""
   ("q" nil "QUIT" :color blue))
 ;; 各种插件的键绑定
-(defhydra evan/hydra-app-menu ()
-  "
-"
-  ("q" nil "QUIT" :color blue))
+(pretty-hydra-define evan/hydra-app-menu (:color blue)
+  (
+   "EAF"
+   (("e" evan/eaf-hydra/body "EAF"))
+   "Telega"
+   (("t" telega "启动Telega")
+	("c" ivy-telega-chat-with "选择联系人")
+	("n" (lambda () (message "占位"))))))
+
+;; EAF键绑定
+(pretty-hydra-define evan/eaf-hydra (:color blue)
+  (
+   "Emacs"
+   (("s" eaf-search-it "立即搜索")
+	("b" eaf-open-browser "打开网页")
+	("h" eaf-open-browser-with-history "历史记录")
+	("e" eaf-proxy-open_download_manage_page "下载管理")
+	("m" eaf-open-bookmark "打开书签"))
+  "Application"
+  (("o" eaf-open "智能Open")
+   ("c" eaf-open-camera "打开摄像")
+   ("p" eaf-open-mindmap "思维导图(O)")
+   ("l" eaf-create-mindmap "思维导图(N)")
+   ("r" eaf-restart-process "刷新EAF"))
+  "Framwork"
+  (("t" eaf-open-terminal "打开终端")
+   ("f" eaf-file-send-qrcode "隔空投送(F)")
+   ("d" eaf-file-browser-qrcode "隔空投送(D)")
+   ("i" eaf-open-airshare "隔空投送(S)")
+   ("a" eaf-open-rss-reader "RSS阅读器"))
+  ))
 ;; 常用的命令
 (defhydra evan/hydra-common-menu ()
   "
