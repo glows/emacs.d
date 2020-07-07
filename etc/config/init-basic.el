@@ -11,8 +11,7 @@
 (setq eshell-history-file-name "~/.emacs/var/eshell/history")
 
 ;; 关闭滚动条
-(when (graphic-p)
-    (scroll-bar-mode -1))
+(push '(scroll-bar-mode -1) graphic-only-plugins-setting)
 
 ;; 关闭工具栏
 (tool-bar-mode -1)
@@ -149,21 +148,22 @@
          ("M-g e" . 'avy-goto-word-0)))
 
 ;; emacs 调用 rime输入法的前端，强烈推荐
-(when (graphic-p)
-  (use-package rime
-    :ensure t
-  :custom
-  (default-input-method "rime")
-  :config
-  (setq rime-user-data-dir "~/.config/fcitx/rime")
+(push '(progn
+		 (use-package rime
+		   :ensure t
+		   :custom
+		   (default-input-method "rime")
+		   :config
+		   (setq rime-user-data-dir "~/.config/fcitx/rime")
 
-  (setq rime-posframe-properties
-        (list :background-color "#333333"
-              :foreground-color "#dcdccc"
-              :font "Sarasa Mono SC-16"
-              :internal-border-width 10))
-  (setq default-input-method "rime"
-        rime-show-candidate 'posframe)))
+		   (setq rime-posframe-properties
+				 (list :background-color "#333333"
+					   :foreground-color "#dcdccc"
+					   :font "Sarasa Mono SC-16"
+					   :internal-border-width 10))
+		   (setq default-input-method "rime"
+				 rime-show-candidate 'posframe)))
+	  graphic-only-plugins-setting)
 
 ;; 饥饿删除（一次性删除多个连续的空白符）
 (use-package hungry-delete

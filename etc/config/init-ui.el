@@ -9,7 +9,7 @@
 ;; 去除默认启动界面
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
-(if (fontp (font-spec :name "Fira Code Nerd Font" 
+(push '(if (fontp (font-spec :name "Fira Code Nerd Font" 
 					  :style "Retina"
 					  ;; :name "Sarasa Mono SC"
 					  :style "Regular"
@@ -20,7 +20,7 @@
                                :style "Retina"
 							   ;; :style "Regular"
                                :size 20)) 
-  (message "无法找到Fira Code Nerd Font字体，你可以更换其他字体或安装它让这条消息消失."))
+	(message "无法找到Fira Code Nerd Font字体，你可以更换其他字体或安装它让这条消息消失.")) graphic-only-plugins-setting)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -56,8 +56,7 @@
 			   (:sunset . spacemacs-dark)))
   (circadian-setup))
 
-(when (graphic-p) 
-  (use-package 
+(push '(progn (use-package 
     all-the-icons 
     :ensure t) 
   (use-package 
@@ -72,7 +71,7 @@
     (global-emojify-mode)) 
   (use-package 
     posframe 
-    :ensure t))
+    :ensure t)) graphic-only-plugins-setting)
 
 (use-package 
   page-break-lines 
@@ -93,8 +92,7 @@
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 
-  (setq dashboard-set-navigator t)
-  )
+  (setq dashboard-set-navigator t))
 
 
 ;; modeline样式
@@ -102,15 +100,15 @@
   doom-modeline 
   :ensure t 
   :init (doom-modeline-mode 1) 
-  :config (setq doom-modeline-height 10) 
-  (custom-set-faces '(mode-line ((t 
+  :config (setq doom-modeline-height 10)
+  (push '(custom-set-faces '(mode-line ((t 
                                   (:family "Fira Code Nerd Font"
                                            :style "Retina"
                                            :height 125)))) 
                     '(mode-line-inactive ((t 
                                            (:family "Fira Code Nerd Font"
                                                     :style "Retina"
-                                                    :height 125))))))
+                                                    :height 125))))) graphic-only-plugins-setting))
 ;; 彩虹括号
 (use-package 
   rainbow-delimiters 

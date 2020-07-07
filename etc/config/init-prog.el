@@ -21,8 +21,8 @@
       'center))
 
   ;; 用GUI tooltips来显示检查到的错误
-  (when (graphic-p) 
-    (use-package 
+  (push '(progn
+		   (use-package 
       flycheck-posframe 
       :ensure t 
       :custom-face (flycheck-posframe-border-face ((t 
@@ -42,11 +42,10 @@
     (use-package 
       flycheck-popup-tip 
       :ensure t 
-      :hook (flycheck-mode . flycheck-popup-tip-mode))))
+      :hook (flycheck-mode . flycheck-popup-tip-mode))) graphic-only-plugins-setting))
 
 ;; 美化lsp-mode
-(when (graphic-p) 
-  (use-package 
+(push '(use-package 
     lsp-ui 
     :ensure t 
     :hook (lsp-mode . lsp-ui-mode) 
@@ -63,7 +62,7 @@
                                                             ,(face-foreground
                                                               'font-lock-constant-face) 
                                                             ,(face-foreground
-                                                              'font-lock-variable-name-face))))
+                                                              'font-lock-variable-name-face)))) graphic-only-plugins-setting)
   ;; 微软的python语言服务器
   (use-package 
     lsp-python-ms 
@@ -82,7 +81,7 @@
   (use-package 
     js2-mode 
     :mode ("\\.js'" . js2-mode) 
-    :ensure t))
+    :ensure t)
 
 
 ;; 快速插入翻译后的函数名，变量名等。。。

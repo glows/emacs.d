@@ -1,8 +1,8 @@
 ;;;###autoload
 (defun graphic-p ()
   "判断当前环境是否为图形环境"
-  ;; (getenv "DISPLAY")
-  (display-graphic-p))
+  (if (display-graphic-p)
+	  t))
 
 ;; 切换透明
 ;;;###autoload

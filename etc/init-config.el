@@ -15,4 +15,5 @@
 (require 'init-treemacs)
 (require 'init-python)
 (require 'init-java)
+(require 'init-graphic)
 (provide 'init-config)

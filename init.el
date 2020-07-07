@@ -25,6 +25,9 @@
       (file-name-handler-alist nil)) 
   (add-subdirs-to-load-path "~/.emacs.d/etc/"))
 
+;; 图形界面插件的设置
+(setq graphic-only-plugins-setting ())
+
 (require 'init-config)
 
 ;; 透明效果
@@ -33,7 +36,7 @@
 ;;   (+evan/toggle-transparency) 
 ;;   (message "透明以开启，想要关闭可以调用命令(+evan/toggle-transparency)"))
 
-(if (display-graphic-p) 
+(if (graphic-p) 
     (message "检测到当前环境为图形环境，可以正常使用。")
   (message "检测到当前环境为字符环境，部分插件未启用。"))
 

@@ -1,30 +1,29 @@
-(when (graphic-p) 
-  (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
-      (use-package 
-        eaf 
-        :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
-        :custom (eaf-find-alternate-file-in-dired t)
-        (eaf-proxy-type "socks5")
-        (eaf-proxy-host "127.0.0.1")
-        (eaf-proxy-port "1088")
-        :config
-		(setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
-		(eaf-setq eaf-pdf-dark-mode "true")
-		(eaf-setq eaf-browser-dark-mode "true") 
-        (eaf-setq eaf-mindmap-dark-mode "true")
-		(when (and
-			   (> (car (circadian-now-time)) (car (circadian-sunrise)))
-			   (< (car (circadian-now-time)) (car (circadian-sunset))))
-		  (progn
-			(eaf-setq eaf-pdf-dark-mode "false")
-			(eaf-setq eaf-browser-dark-mode "false") 
-            (eaf-setq eaf-mindmap-dark-mode "false")))
-        (eaf-setq eaf-browser-default-zoom "1.2")
-        (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
-        (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
-        (eaf-bind-key take_photo "p" eaf-camera-keybinding))
-    (message
-     "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")))
+(push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
+		   (use-package 
+			 eaf 
+			 :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
+			 :custom (eaf-find-alternate-file-in-dired t)
+			 (eaf-proxy-type "socks5")
+			 (eaf-proxy-host "127.0.0.1")
+			 (eaf-proxy-port "1088")
+			 :config
+			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+			 (eaf-setq eaf-pdf-dark-mode "true")
+			 (eaf-setq eaf-browser-dark-mode "true") 
+			 (eaf-setq eaf-mindmap-dark-mode "true")
+			 (when (and
+					(> (car (circadian-now-time)) (car (circadian-sunrise)))
+					(< (car (circadian-now-time)) (car (circadian-sunset))))
+			   (progn
+				 (eaf-setq eaf-pdf-dark-mode "false")
+				 (eaf-setq eaf-browser-dark-mode "false") 
+				 (eaf-setq eaf-mindmap-dark-mode "false")))
+			 (eaf-setq eaf-browser-default-zoom "1.2")
+			 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
+			 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
+			 (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+		 (message
+		  "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")) graphic-only-plugins-setting)
 
 ;; 括号匹配，不再使用这个，转为使用smartparens
 (use-package 
@@ -157,12 +156,10 @@
               ("b s" . 'bongo-sprinkle)
               ))
 ;; Emacs下的pdf查看工具，默认非图形化不开启
-(when (graphic-p) 
-  (use-package 
+(push '(use-package 
     pdf-tools 
     :ensure t 
-    :hook ('doc-view-mode 'pdf-view-mode)
-    ))
+    :hook ('doc-view-mode 'pdf-view-mode)) graphic-only-plugins-setting)
 
 ;; 窗口管理器
 (use-package 

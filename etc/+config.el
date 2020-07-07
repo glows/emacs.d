@@ -54,10 +54,10 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
 
 
 
-(when (graphic-p) 
-  (defun open-with-chrome () 
-    (interactive) 
-    (browse-url-chrome (buffer-file-name))))
+(push '(defun open-with-chrome () 
+		 (interactive) 
+		 (browse-url-chrome (buffer-file-name)))
+	  garbage-collection-messages)
 
 ;; 切换代理
 (defun +evan/toggle-proxy () 
