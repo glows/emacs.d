@@ -100,16 +100,26 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-term-color-vector
+   [unspecified "#ffffff" "#cc342b" "#198844" "#fba922" "#3971ed" "#a36ac7" "#3971ed" "#373b41"] t)
+ '(custom-safe-themes
+   '("1263771faf6967879c3ab8b577c6c31020222ac6d3bac31f331a74275385a452" "36746ad57649893434c443567cb3831828df33232a7790d232df6f5908263692" "285efd6352377e0e3b68c71ab12c43d2b72072f64d436584f9159a58c4ff545a" "1526aeed166165811eefd9a6f9176061ec3d121ba39500af2048073bea80911e" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
  '(default-input-method "rime")
  '(eaf-find-alternate-file-in-dired t t)
  '(eaf-proxy-host "127.0.0.1")
  '(eaf-proxy-port "1088")
  '(eaf-proxy-type "socks5")
+ '(emojify-emojis-dir "~/.emacs.d/var/emojis")
  '(eww-search-prefix "https://google.com/search?q=")
+ '(fci-rule-color "#6272a4")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
  '(lsp-idle-delay 0)
  '(lsp-python-ms-executable
    "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer")
  '(lsp-ui-doc-delay 1)
+ '(objed-cursor-color "#ff5555")
  '(org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
  '(org-todo-keyword-faces
    '(("[学习]" :foreground "white" :background "#2ECC71" :weight bold)
@@ -126,7 +136,32 @@
    '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
 	 (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
  '(package-selected-packages
-   '(beacon markdown-mode+ markdown ranger dired-ranger dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ xah-fly-keys which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit spacemacs-theme snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-themes doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
+   '(simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit spacemacs-theme snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-themes doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
+ '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
+ '(rustic-ansi-faces
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
+ '(vc-annotate-background "#282a36")
+ '(vc-annotate-color-map
+   (list
+	(cons 20 "#50fa7b")
+	(cons 40 "#85fa80")
+	(cons 60 "#bbf986")
+	(cons 80 "#f1fa8c")
+	(cons 100 "#f5e381")
+	(cons 120 "#face76")
+	(cons 140 "#ffb86c")
+	(cons 160 "#ffa38a")
+	(cons 180 "#ff8ea8")
+	(cons 200 "#ff79c6")
+	(cons 220 "#ff6da0")
+	(cons 240 "#ff617a")
+	(cons 260 "#ff5555")
+	(cons 280 "#d45558")
+	(cons 300 "#aa565a")
+	(cons 320 "#80565d")
+	(cons 340 "#6272a4")
+	(cons 360 "#6272a4")))
+ '(vc-annotate-very-old-color nil)
  '(which-key-popup-type 'side-window))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -138,3 +173,4 @@
  '(mode-line ((t (:family "Fira Code Nerd Font" :style "Retina" :height 125))))
  '(mode-line-inactive ((t (:family "Fira Code Nerd Font" :style "Retina" :height 125))))
  '(perspeen-selected-face ((t (:background "violet" :foreground "Black" :weight bold)))))
+(put 'dired-find-alternate-file 'disabled nil)

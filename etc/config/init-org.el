@@ -45,8 +45,10 @@
                                         "* %^{简介} %t %^g\n  %a\n  %?"))
   (add-to-list 'org-capture-templates '("w" "记录单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
                                         " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
-  (set-face-attribute 'org-table nil :font (font-spec :name "Iosevka"
-                                                      :size 20)))
+  (set-face-attribute 'org-table nil :font (font-spec :name "Sarasa Mono SC"
+                                                      :size 20
+													  ;; :style "Regular"
+													  )))
 
 ;; 美化org
 (use-package 

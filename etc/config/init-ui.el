@@ -52,8 +52,8 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . spacemacs-light)
-			   (:sunset . spacemacs-dark)))
+	circadian-themes '((:sunrise . base16-google-light)
+			   (:sunset . doom-dracula)))
   (circadian-setup))
 
 (push '(progn (use-package 
@@ -139,6 +139,11 @@
   info-colors 
   :ensure t 
   :hook ('Info-selection-hook . 'info-colors-fontify-node))
+
+(use-package
+  indent-guide
+  :ensure t
+  :hook (prog-mode . indent-guide-mode))
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

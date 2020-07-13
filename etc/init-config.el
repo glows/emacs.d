@@ -16,4 +16,5 @@
 (require 'init-python)
 (require 'init-java)
 (require 'init-graphic)
+(require 'init-blog)
 (provide 'init-config)
