@@ -15,6 +15,7 @@
 (require 'init-treemacs)
 (require 'init-python)
 (require 'init-java)
+(require 'init-cc)
 (require 'init-graphic)
 (require 'init-blog)
 (provide 'init-config)

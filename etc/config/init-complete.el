@@ -27,19 +27,36 @@
 ;; Emacs对语言服务器支持的插件
 (use-package 
   lsp-mode 
-  :ensure t 
-  :hook ('prog-mode . 'lsp-mode) 
-  :custom (lsp-idle-delay 0)
+  :ensure t
+  :defer t
+  :commands lsp
+  :hook ((java-mode python-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode) . lsp)
+  :custom
+  (lsp-idle-delay 1200)
+  (lsp-auto-guess-root nil)
+  (lsp-file-watch-threshold 2000)
+  (read-process-output-max (* 1024 1024))
+  (lsp-eldoc-hook nil)
+  (lsp-prefer-flymake nil)
+  :bind (:map lsp-mode-map
+			  ("C-c C-f" . lsp-format-buffer)
+			  ("M-RET" . lsp-ui-sideline-apply-code-actions)
+			  ("M-\\" . lsp-execute-code-action))
   :config
   (setq lsp-prefer-capf t))
 
 ;; 各个语言的Debug工具
-(use-package
-  dap-mode
+(use-package dap-mode
   :ensure t
-  :hook ((after-init . dap-mode)
-		 (dapmode . dap-ui-mode)
-		 (java-mode . (lambda () (require 'dap-java)))))
+  :diminish
+  :bind
+  (:map dap-mode-map
+		(("<f3>" . dap-debug)
+		 ("<f4>" . dap-continue)
+		 ("<f5>" . dap-next)
+		 ("<f6>" . dap-step-in)
+		 ("<f7>" . dap-step-out)
+		 ("<f8>" . dap-breakpoint-toggle))))
 
 (provide 'init-complete)
 

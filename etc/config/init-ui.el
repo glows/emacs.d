@@ -1,5 +1,5 @@
 ;; 加载主题
-;; (load-file "~/.emacs.d/themes/oyswald-theme.el")
+(load-file "~/.emacs.d/themes/oswald-theme.el")
 ;; 设置透明
 ;; (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
@@ -52,8 +52,8 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . base16-google-light)
-			   (:sunset . doom-dracula)))
+	circadian-themes '((:sunrise . doom-monokai-pro)
+			   (:sunset . oswald)))
   (circadian-setup))
 
 (push '(progn (use-package 
