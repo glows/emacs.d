@@ -1,11 +1,22 @@
+;;;===========================================
+;;;					模块介绍
+;;; 基础模块，修改了大部分Emacs自带的功能。
+;;;===========================================
+
+;; MODULE: EMACS BASIC
+
+;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
+
+;; CODE:
+
 ;; yes-or-no-p to y-or-n-p
 (fset 'yes-or-no-p 'y-or-n-p)
-
+;; 设置缓存文件/杂七杂八的文件存放的地址
 (setq user-emacs-directory "~/.emacs.d/var")
 
 ;; 设置amx保存文件的路径
 (setq amx-save-file "~/.emacs.d/var/amx-items")
-;; 设置自动保存路径
+;; 设置自动保存路径前缀
 (setq auto-save-list-file-prefix "~/.emacs/var/auto-save-list/.saves-")
 ;; 设置eshell历史记录
 (setq eshell-history-file-name "~/.emacs/var/eshell/history")
@@ -29,7 +40,7 @@
       inhibit-startup-screen t
       inhibit-startup-message t)
 
-;; 回到上一次光标的位置
+;; 回到关闭文件前光标的位置
 (use-package saveplace
   :ensure t
   :hook (after-init . save-place-mode))
@@ -37,10 +48,10 @@
 ;; 关闭备份
 (setq make-backup-files nil auto-save-default nil)
 
-;; 关闭锁文件
+;; 关闭多编辑器同时编辑统一文件时锁文件操作
 (setq create-lockfiles nil)
 
-;; 总是加载最新的文件
+;; 随时重新加载发生修改过的文件
 (setq load-prefer-newer t)
 
 ;; 关闭字体缓存gc
@@ -58,7 +69,7 @@
 (prefer-coding-system        'utf-8)    ; with sugar on top
 (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
 
-;; 更友好和平滑的滚动
+;; 更友好及平滑的滚动
 (setq scroll-step 2
       scroll-margin 2
       hscroll-step 2
@@ -72,13 +83,15 @@
 (setq auto-window-vscroll nil)
 
 ;; 创建新行的动作
-(global-set-key (kbd "RET") 'newline-and-indent) 
+;; 回车时创建新行并且对齐
+(global-set-key (kbd "RET") 'newline-and-indent)
+;; 取消对齐创建的新行
 (global-set-key (kbd "S-<return>") 'comment-indent-new-line)
 
 ;; 让光标无法离开视线
 (setq mouse-yank-at-point nil)
 
-;; 行宽
+;; 最大单行字符数量
 (setq-default fill-column 80)
 
 ;; 让'_'被视为单词的一部分
@@ -87,28 +100,34 @@
 ;; "-" 同上)
 (add-hook 'after-change-major-mode-hook (lambda () 
                                           (modify-syntax-entry ?- "w")))
-;; 没有制表符
-(setq-default indent-tabs-mode t) 
+;; 允许插入制表符
+(setq-default indent-tabs-mode t)
+;; 制表符宽度
 (setq-default tab-width 4)
 
-;; 高亮括号
+;; 高亮对应的括号
 (show-paren-mode 1)
 
+;; 键位提示
 (use-package which-key
   :ensure t
   :custom
+  ;; 弹出方式，底部弹出
   (which-key-popup-type 'side-window)
   :config
   (which-key-mode))
 
+;; 跳转窗口
 (use-package ace-window
   :ensure t
   :init
   (progn
     (global-set-key [remap other-window] 'ace-window)
+	;; 设置标记
     (custom-set-faces
      '(aw-leading-char-face
        ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta")))))))
+
 ;; 增强了搜索功能
 (use-package swiper
   :bind
@@ -126,8 +145,7 @@
 
 ;; 集成了很多非常有用的的功能
 (use-package counsel
-  :hook
-  ('counsel-mode . 'dashboard-mode)
+  :hook (after-init . 'ecounsel)
   :ensure t
   :bind
   (("C-x C-r" . 'counsel-recentf) 
@@ -137,7 +155,7 @@
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))
 
-;; 强大的跳转工具
+;; 强大的字符跳转工具
 (use-package avy 
   :ensure t
   :bind (("M-g :" . 'avy-goto-char)
@@ -175,8 +193,5 @@
   :disabled
   :ensure t
   :hook ('prog-mode . 'linum-relative-mode))
-
-
-
 
 (provide 'init-basic)

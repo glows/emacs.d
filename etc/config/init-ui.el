@@ -1,5 +1,20 @@
+;;;===========================================
+;;;					模块介绍
+;;; 用户交互界面模块
+;;;===========================================
+
+;; MODULE: USER INTERFACE 
+
+;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
+
+;; CODE:
+
 ;; 加载主题
 (load-file "~/.emacs.d/themes/oswald-theme.el")
+
+(setq evan/font-name "Iosevka"
+	  evan/font-style "Regular"
+	  evan/font-size 20)
 ;; 设置透明
 ;; (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
@@ -10,23 +25,23 @@
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
 (push '(if (fontp (font-spec
-				   ;; :name "Fira Code Nerd Font" 
+				   ;; :name "Fira Code Nerd Font"
 				   ;; :style "Retina"
-				   :name "Iosevka"
-				   :style "Regular"
+				   :name evan/font-name
+				   :style evan/font-style
 				   ;; :name "Sarasa Mono SC"
 				   ;; :style "Regular"
-				   )) 
+				   :size evan/font-size)) 
 		   (set-face-attribute 'default nil 
 							   :font (font-spec 
 									  ;; :name "Fira Code Nerd Font"
 									  ;; :style "Retina"
-									  :name "Iosevka"
-									  :style "Regular"
+									  :name evan/font-name
+									  :style evan/font-style
 									  ;; :name "Sarasa Mono SC"
 									  ;; :style "Regular"
-									  :size 20)) 
-		 (message "无法找到Sarasa Mono SC字体，你可以更换其他字体或安装它让这条消息消失.")) graphic-only-plugins-setting)
+									  :size evan/font-size)) 
+		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -44,10 +59,10 @@
   :defer
   ;; :config (load-theme 'doom-dracula t))
   )
-(use-package
-  spacemacs-common
-  :ensure spacemacs-theme
-  :defer)
+;; (use-package
+;;   spacemacs-common
+;;   :ensure spacemacs-theme
+;;   :defer)
 
 ;; 自动切换主题
 (use-package
@@ -62,28 +77,35 @@
 			   (:sunset . oswald)))
   (circadian-setup))
 
-(push '(progn (use-package 
-    all-the-icons 
-    :ensure t) 
-  (use-package 
-    all-the-icons-dired 
-    :ensure t 
-    :hook ('dired-mode . 'all-the-icons-dired-mode)) 
-  (use-package 
-    emojify
-    :after telega
-    :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
-    :config
-    (global-emojify-mode)) 
-  (use-package 
-    posframe 
-    :ensure t)) graphic-only-plugins-setting)
+(push '(progn
+		 ;; 图标支持
+		 (use-package 
+		   all-the-icons 
+		   :ensure t)
+		 ;; dired模式图标支持
+		 (use-package 
+		   all-the-icons-dired 
+		   :ensure t 
+		   :hook ('dired-mode . 'all-the-icons-dired-mode))
+		 ;; 表情符号
+		 (use-package 
+		   emojify
+		   :after telega
+		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
+		   :config
+		   (global-emojify-mode))
+		 ;; 浮动窗口支持
+		 (use-package 
+		   posframe 
+		   :ensure t)) graphic-only-plugins-setting)
 
+;; 竖线
 (use-package 
   page-break-lines 
   :ensure t 
   :config (turn-on-page-break-lines-mode))
 
+;; 启动界面
 (use-package 
   dashboard 
   :ensure t 
@@ -103,18 +125,18 @@
 
 ;; modeline样式
 (use-package 
-  doom-modeline 
+  doom-modeline
   :ensure t 
   :init (doom-modeline-mode 1) 
   :config (setq doom-modeline-height 10)
-  (push '(custom-set-faces '(mode-line ((t 
-                                  (:family "Fira Code Nerd Font"
-                                           :style "Retina"
+  (custom-set-faces '(mode-line ((t 
+                                  (:family evan/font-name
+                                           :style evan/font-style
                                            :height 125)))) 
                     '(mode-line-inactive ((t 
-                                           (:family "Fira Code Nerd Font"
-                                                    :style "Retina"
-                                                    :height 125))))) graphic-only-plugins-setting))
+                                           (:family evan/font-name
+                                                    :style evan/font-size
+                                                    :height 125))))))
 ;; 彩虹括号
 (use-package 
   rainbow-delimiters 
@@ -141,11 +163,13 @@
   (set-face-bold 'rainbow-delimiters-depth-9-face "t") 
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+;; 让info帮助信息中关键字有高亮
 (use-package 
   info-colors 
   :ensure t 
   :hook ('Info-selection-hook . 'info-colors-fontify-node))
 
+;; 缩进线
 (use-package
   indent-guide
   :ensure t

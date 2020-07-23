@@ -1,3 +1,15 @@
+;;;===========================================
+;;;					模块介绍
+;;; 编程模块
+;;;===========================================
+
+;; MODULE: PROGRAMMING
+
+;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
+
+;; CODE:
+
+
 ;; 代码检查
 (use-package 
   flycheck 

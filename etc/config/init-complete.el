@@ -1,3 +1,16 @@
+;;;===========================================
+;;;					模块介绍
+;;; 代码自动补全模块，使用company作为基础补全框架
+;;; 使用lsp作为全线补全后端
+;;; 提供yasnippet，支持代码片段快速插入
+;;;===========================================
+
+;; MODULE: CODE COMPLETE
+
+;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
+
+;; CODE:
+
 ;; 著名的Emacs补全框架
 (use-package 
   company 

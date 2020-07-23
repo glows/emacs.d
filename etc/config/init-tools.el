@@ -128,7 +128,13 @@
   bongo
   :ensure t
   :hook (after-init . bongo)
-  :config (defun bongo-init () 
+  :custom
+  (bongo-mode-line-icon-size 10)
+  :config
+  (setq bongo-header-line-mode nil)
+  (setq bongo-mode-line-indicator-mode nil)
+  (setq bongo-global-lastfm-mode nil)
+  (defun bongo-init () 
             (interactive) 
             (let ((buffer (current-buffer))) 
               (bongo) 
@@ -137,8 +143,7 @@
               (bongo-insert-enqueue-region (point-min) 
                                            (point-max)) 
               (bongo-play-random) 
-              (switch-to-buffer buffer))
-            ) 
+              (switch-to-buffer buffer)))
   :bind (:map leader-key
               ("b RET" . 'bongo-dwim) 
               ("b i" . 'bongo-init) 
@@ -153,8 +158,8 @@
               ("b n" . 'bongo-play-next) 
               ("b p" . 'bongo-play-previous) 
               ("b r" . 'bongo-play-random) 
-              ("b s" . 'bongo-sprinkle)
-              ))
+              ("b s" . 'bongo-sprinkle)))
+
 										; Emacs下的pdf查看工具，默认非图形化不开启
 (push '(use-package 
 		 pdf-tools 
