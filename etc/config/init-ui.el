@@ -9,18 +9,24 @@
 ;; 去除默认启动界面
 (setq inhibit-startup-message nil)
 ;; 设置英文字体
-(push '(if (fontp (font-spec :name "Fira Code Nerd Font" 
-					  :style "Retina"
-					  ;; :name "Sarasa Mono SC"
-					  :style "Regular"
-					  )) 
-    (set-face-attribute 'default nil 
-                        :font (font-spec ;; :name "Sarasa Mono SC"
-							   :name "Fira Code Nerd Font"							 
-                               :style "Retina"
-							   ;; :style "Regular"
-                               :size 20)) 
-	(message "无法找到Fira Code Nerd Font字体，你可以更换其他字体或安装它让这条消息消失.")) graphic-only-plugins-setting)
+(push '(if (fontp (font-spec
+				   ;; :name "Fira Code Nerd Font" 
+				   ;; :style "Retina"
+				   :name "Iosevka"
+				   :style "Regular"
+				   ;; :name "Sarasa Mono SC"
+				   ;; :style "Regular"
+				   )) 
+		   (set-face-attribute 'default nil 
+							   :font (font-spec 
+									  ;; :name "Fira Code Nerd Font"
+									  ;; :style "Retina"
+									  :name "Iosevka"
+									  :style "Regular"
+									  ;; :name "Sarasa Mono SC"
+									  ;; :style "Regular"
+									  :size 20)) 
+		 (message "无法找到Sarasa Mono SC字体，你可以更换其他字体或安装它让这条消息消失.")) graphic-only-plugins-setting)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)

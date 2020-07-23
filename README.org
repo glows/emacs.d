@@ -4,6 +4,7 @@
   具体配置请看/etc下的配置文件
   [[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]
   [[https://github.com/EvanMeek/.emacs.d/blob/master/var/banner/emacs.png][预览]]
+  [[file:var/banner/emacs.png][预览]]
 * 如何安装
 ** 依赖
     - Git

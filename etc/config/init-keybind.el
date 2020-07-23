@@ -172,9 +172,9 @@
 (defhydra evan/hydra-main-menu ()
   "
 							^主菜单^
--------------------------------------------------
-[_b_] ^音乐 	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
-[_c_] ^代码 	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
+————————————————————————————————————————————————————————————
+[_b_] ^音乐^	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
+[_c_] ^代码^	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
 "
   ("b" evan/hydra-music-menu/body nil :color blue)
   ("o" evan/hydra-open-menu/body nil :color blue)
@@ -186,10 +186,6 @@
   ("a" evan/hydra-app-menu/body nil :color blue)
   ("q" nil "QUIT" :color blue))
 
-(global-set-key (kbd "C-`") #'evan/hydra-main-menu/body)
-
-
-
-
+(global-set-key (kbd "s-,") #'evan/hydra-main-menu/body)
 
 (provide 'init-keybind)

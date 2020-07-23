@@ -155,11 +155,12 @@
               ("b r" . 'bongo-play-random) 
               ("b s" . 'bongo-sprinkle)
               ))
-;; Emacs下的pdf查看工具，默认非图形化不开启
+										; Emacs下的pdf查看工具，默认非图形化不开启
 (push '(use-package 
-    pdf-tools 
-    :ensure t 
-    :hook ('doc-view-mode 'pdf-view-mode)) graphic-only-plugins-setting)
+		 pdf-tools 
+		 :ensure t 
+		 :hook ('doc-view-mode 'pdf-view-mode)) graphic-only-plugins-setting)
+
 
 ;; 窗口管理器
 (use-package 
