@@ -73,7 +73,7 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . doom-monokai-pro)
+	circadian-themes '((:sunrise . spacemacs-dark)
 			   (:sunset . oswald)))
   (circadian-setup))
 
@@ -174,6 +174,11 @@
   indent-guide
   :ensure t
   :hook (prog-mode . indent-guide-mode))
+
+;; 彩虹猫进度条
+(use-package nyan-mode
+  :ensure t
+  :hook (after-init . nyan-mode))
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

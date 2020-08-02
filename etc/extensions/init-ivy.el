@@ -71,7 +71,6 @@
 		   :custom (ivy-posframe-parameters '((left-fringe . 8) 
 											  (right-fringe . 8))) 
 		   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))))) graphic-only-plugins-setting)
- 
 ;; counsel提供对项目管理的支持
 (use-package 
   counsel-projectile 

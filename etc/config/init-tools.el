@@ -1,16 +1,19 @@
 (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 		   (use-package 
-			 eaf 
+			 eaf
 			 :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
 			 :custom (eaf-find-alternate-file-in-dired t)
 			 (eaf-proxy-type "socks5")
 			 (eaf-proxy-host "127.0.0.1")
 			 (eaf-proxy-port "1088")
+			 (browse-url-browser-function 'eaf-open-browser)
 			 :config
+			 (defalias 'browse-web #'eaf-open-browser)
 			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
 			 (eaf-setq eaf-pdf-dark-mode "true")
 			 (eaf-setq eaf-browser-dark-mode "true") 
 			 (eaf-setq eaf-mindmap-dark-mode "true")
+			 (eaf-setq eaf-browser-enable-adblocker "true")
 			 (when (and
 					(> (car (circadian-now-time)) (car (circadian-sunrise)))
 					(< (car (circadian-now-time)) (car (circadian-sunset))))

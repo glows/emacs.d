@@ -16,7 +16,7 @@
                           ;; Also handle undocumented (<active> <inactive>) form.
                           ((numberp (cadr alpha)) (cadr alpha)))
                     100)
-               '(85 . 85) '(100 . 100)))))
+               '(95 . 95) '(100 . 100)))))
 
 (provide '+autoload)
 
