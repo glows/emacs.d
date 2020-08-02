@@ -248,4 +248,16 @@
   :ensure t 
   :custom (eww-search-prefix "https://google.com/search?q="))
 
+;; 看英语文档神器
+(use-package english-teacher
+  :load-path "~/.emacs.d/site-lisp/english-teacher"
+  :custom
+  (english-teacher-backend 'baidu)
+  :hook ((Info-mode
+		  elfeed-show-mode
+		  eww-mode
+		  Man-mode
+		  Woman-mode
+		  help-mode) . english-teacher-follow-mode))
+
 (provide 'init-tools)

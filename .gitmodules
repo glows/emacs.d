@@ -1,0 +1,24 @@
+[submodule "site-lisp/emacs-application-framework"]
+	path = site-lisp/emacs-application-framework
+	url = https://github.com/manateelazycat/emacs-application-framework
+[submodule "site-lisp/awesome-pair"]
+	path = site-lisp/awesome-pair
+	url = https://github.com/manateelazycat/awesome-pair
+[submodule "site-lisp/awesome-tray"]
+	path = site-lisp/awesome-tray
+	url = https://github.com/manateelazycat/awesome-tray
+[submodule "site-lisp/all-the-icons-dired"]
+	path = site-lisp/all-the-icons-dired
+	url = https://github.com/jtbm37/all-the-icons-dired
+[submodule "site-lisp/hydra-posframe"]
+	path = site-lisp/hydra-posframe
+	url = https://github.com/Ladicle/hydra-posframe
+[submodule "site-lisp/company-english-helper"]
+	path = site-lisp/company-english-helper
+	url = https://github.com/manateelazycat/company-english-helper
+[submodule "site-lisp/english-teacher"]
+	path = site-lisp/english-teacher
+	url = https://github.com/loyalpartner/english-teacher
+[submodule "site-lisp/insert-translated-name"]
+	path = site-lisp/insert-translated-name
+	url = https://github.com/manateelazycat/insert-translated-name

@@ -98,8 +98,7 @@
 
 ;; 快速插入翻译后的函数名，变量名等。。。
 (use-package 
-  insert-translated-name 
-
+  insert-translated-name
   :disabled 
   :load-path "~/.emacs.d/site-lisp/insert-translated-name" 
   :bind (:map leader-key
