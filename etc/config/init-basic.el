@@ -147,10 +147,14 @@
 (use-package counsel
   :hook (after-init . 'ecounsel)
   :ensure t
+ 
   :bind
   (("C-x C-r" . 'counsel-recentf) 
    ("C-x d" . 'counsel-dired))
   :config
+  ;; 默认的 rg 配置
+  ;; (setq counsel-rg-base-command "rg -M 240 --with-filename --no-heading --line-number --color never %s")
+  (setq counsel-rg-base-command (concat counsel-rg-base-command " -g !package-config.org -g !site-lisp"))
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))

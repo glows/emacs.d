@@ -4,6 +4,9 @@
 [submodule "site-lisp/awesome-pair"]
 	path = site-lisp/awesome-pair
 	url = https://github.com/manateelazycat/awesome-pair
+[submodule "site-lisp/awesome-tab"]	
+	path = site-lisp/awesome-tab
+	url = https://github.com/manateelazycat/awesome-tab
 [submodule "site-lisp/awesome-tray"]
 	path = site-lisp/awesome-tray
 	url = https://github.com/manateelazycat/awesome-tray
