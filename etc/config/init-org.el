@@ -23,6 +23,35 @@
                             ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
                             ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
   :config
+  (defun evan/capture-get-word-point ()
+	(interactive)
+	(setq evan/capture-get-word-point-word (thing-at-point 'word))
+	(if (null evan/capture-get-word-point-word)
+						   (error "Cannot find word at point.")
+						 (org-capture 1 "f")))
+  (defun evan/capture-get-word-eng(type)
+	;; (interactive "^p")
+	(message "当前光标下的英文: %s" (thing-at-point 'word))
+	(let* ((point-word (if (null evan/capture-get-word-point-word)
+						   (error "Cannot find word at point.")
+						 evan/capture-get-word-point-word))
+		   (evan/capture-word-translate (youdao-dictionary--request point-word))
+		   (evan/capture-word-eng point-word)
+		   (evan/capture-word-chinese (cdar (nthcdr 3 (cdadr evan/capture-word-translate))))
+		   (evan/capture-word-type nil))
+	  ;; 获取单词词性
+	  (progn (string-match "[a-zA-Z]+" (aref evan/capture-word-chinese 0)) ;; 匹配英文字符
+			 ;; 设置词性 格式为: "adj."
+			 (setq evan/capture-word-type (concat (match-string 0 (aref evan/capture-word-chinese 0)) ".")))
+	  
+	  ;; 设置单词中文
+	  (progn (string-match "[\u4e00-\u9fa5；，]+" (aref evan/capture-word-chinese 0))
+			 ;; 设置中文
+			 (setq evan/capture-word-chinese (match-string 0 (aref evan/capture-word-chinese 0))))
+	  ;; 根据参数返回具体的值
+	  (cond ((eq type 1) evan/capture-word-eng)
+			((eq type 2) evan/capture-word-type)
+			((eq type 3) evan/capture-word-chinese))))
   (setq org-capture-templates nil)
   ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
   (add-to-list 'org-capture-templates
@@ -38,7 +67,9 @@
   (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "~/Documents/site/org/wiki.org" "WIKI")
                                         "* %^{标题} %t %^g\n  %?\n"))
   (add-to-list 'org-capture-templates '("w" "我的单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
-                                        " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
+                                        " | %U | %^{en_US} | %^{词性} | %^{zh_CN} | %(evan/hello)"))
+  (add-to-list 'org-capture-templates '("f" "单词速导" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
+                                        " | %U | %(evan/capture-get-word-eng 1) | %(evan/capture-get-word-eng 2) | %(evan/capture-get-word-eng 3) |"))
   (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
                                         "* %^{简介} %t %^g\n  %^L\n  %?\n")))
 

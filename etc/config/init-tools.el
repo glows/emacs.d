@@ -69,10 +69,8 @@
 ;; 英语拼写助手，默认不开启
 (use-package 
   company-english-helper
-  :disabled
   :load-path "~/.emacs.d/site-lisp/company-english-helper" 
-  :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper)
-  )
+  :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper))
 
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
@@ -253,6 +251,7 @@
   :load-path "~/.emacs.d/site-lisp/english-teacher"
   :custom
   (english-teacher-backend 'baidu)
+  (english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
   :hook ((Info-mode
 		  elfeed-show-mode
 		  eww-mode

@@ -145,7 +145,7 @@
 
 ;; 集成了很多非常有用的的功能
 (use-package counsel
-  :hook (after-init . 'ecounsel)
+  :hook (after-init . 'counsel)
   :ensure t
  
   :bind
@@ -154,7 +154,7 @@
   :config
   ;; 默认的 rg 配置
   ;; (setq counsel-rg-base-command "rg -M 240 --with-filename --no-heading --line-number --color never %s")
-  (setq counsel-rg-base-command (concat counsel-rg-base-command " -g !package-config.org -g !site-lisp"))
+  (setq counsel-rg-base-command (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s" "-g" "!package-config.org" "-g" "!site-lisp"))
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))
