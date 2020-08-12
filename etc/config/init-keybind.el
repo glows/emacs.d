@@ -168,7 +168,7 @@
   ("d" counsel-dired nil :color blue)
   ("m" counsel-bookmark nil :color blue)
   ("l" counsel-linux-app nil :color blue)
-  ("w" evan/capture-get-word-point nil :color blue)
+  ("w" evan/capture-word nil :color blue)
   ("q" nil "QUIT" :color blue))
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()

@@ -3,9 +3,7 @@
 (use-package 
   org 
   :ensure t
-  :hook (('after-init-hook 'org-mode-hook)
-         ;; ('org-mode . 'toggle-truncate-lines)
-		 )
+  ;; ('org-mode . 'toggle-truncate-lines)	 
   :bind
   ("C-c c" . 'org-capture)
   ("C-c a" . 'org-agenda)
@@ -23,35 +21,35 @@
                             ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
                             ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
   :config
-  (defun evan/capture-get-word-point ()
+  (defun evan/capture-word ()
 	(interactive)
-	(setq evan/capture-get-word-point-word (thing-at-point 'word))
-	(if (null evan/capture-get-word-point-word)
-						   (error "Cannot find word at point.")
-						 (org-capture 1 "f")))
-  (defun evan/capture-get-word-eng(type)
-	;; (interactive "^p")
-	(message "当前光标下的英文: %s" (thing-at-point 'word))
-	(let* ((point-word (if (null evan/capture-get-word-point-word)
-						   (error "Cannot find word at point.")
-						 evan/capture-get-word-point-word))
-		   (evan/capture-word-translate (youdao-dictionary--request point-word))
-		   (evan/capture-word-eng point-word)
-		   (evan/capture-word-chinese (cdar (nthcdr 3 (cdadr evan/capture-word-translate))))
-		   (evan/capture-word-type nil))
-	  ;; 获取单词词性
-	  (progn (string-match "[a-zA-Z]+" (aref evan/capture-word-chinese 0)) ;; 匹配英文字符
-			 ;; 设置词性 格式为: "adj."
-			 (setq evan/capture-word-type (concat (match-string 0 (aref evan/capture-word-chinese 0)) ".")))
-	  
-	  ;; 设置单词中文
-	  (progn (string-match "[\u4e00-\u9fa5；，]+" (aref evan/capture-word-chinese 0))
-			 ;; 设置中文
-			 (setq evan/capture-word-chinese (match-string 0 (aref evan/capture-word-chinese 0))))
-	  ;; 根据参数返回具体的值
-	  (cond ((eq type 1) evan/capture-word-eng)
-			((eq type 2) evan/capture-word-type)
-			((eq type 3) evan/capture-word-chinese))))
+	(setq-local capture-word-item nil)
+	(setq evan/capture-word-data nil)
+	(let* ((word (youdao-dictionary--request (if (not (thing-at-point 'word))
+												 nil
+											   (thing-at-point 'word))))
+		   (basic (youdao-dictionary--explains word))
+		   (eng (assoc-default 'query word)))
+	  (dotimes (i (map-length basic))
+		(let* ((explain (map-elt basic i)) ;; 所有说明
+			   ;; 词性
+			   (type (progn (string-match "[a-zA-Z]+" explain)
+							(concat (match-string 0 explain) ".")))
+			   ;; 中文翻译
+			   (chinese (progn (string-match "[\u4e00-\u9fa5；，]+" explain)
+							   (match-string 0 explain))))
+		  (push (concat "|" eng "|" type "|" chinese "|") capture-word-item))))
+	(setq evan/capture-word-data (ivy-read "请选择要插入的词性: " capture-word-item))
+	(setq evan/capture-word-data (remove "" (split-string evan/capture-word-data "|")))
+	(if (null evan/capture-word-data)
+		(message "光标下的单词无法捕获!")
+	  (org-capture 1 "f")))
+
+  (defun evan/capture-get-word (number)
+	(cond ((eq number 1) (nth 0 evan/capture-word-data))
+		  ((eq number 2) (nth 1 evan/capture-word-data))
+		  ((eq number 3) (nth 2 evan/capture-word-data))))
+  
   (setq org-capture-templates nil)
   ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
   (add-to-list 'org-capture-templates
@@ -64,20 +62,20 @@
                                         "* %U - %^{标题}\n  %?"))
   (add-to-list 'org-capture-templates '("i" "我的闪念" entry (file+headline "~/Documents/site/org/idea.org" "闪念")
                                         "* %U - %^{标题} %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "~/Documents/site/org/wiki.org" "WIKI")
+  (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "p~/Documents/site/org/wiki.org" "WIKI")
                                         "* %^{标题} %t %^g\n  %?\n"))
   (add-to-list 'org-capture-templates '("w" "我的单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
-                                        " | %U | %^{en_US} | %^{词性} | %^{zh_CN} | %(evan/hello)"))
+                                        " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
   (add-to-list 'org-capture-templates '("f" "单词速导" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
-                                        " | %U | %(evan/capture-get-word-eng 1) | %(evan/capture-get-word-eng 2) | %(evan/capture-get-word-eng 3) |"))
+                                        "| %U | %(evan/capture-get-word 1) | %(evan/capture-get-word 2) | %(evan/capture-get-word 3) |"))
   (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
                                         "* %^{简介} %t %^g\n  %^L\n  %?\n")))
 
 
 (set-face-attribute 'org-table nil :font (font-spec :name "Sarasa Mono SC"
-                                                      :size 20
-													  ;; :style "Regular"
-													  ))
+                                                    :size evan/font-size
+													;; :style "Regular"
+													))
 
 ;; 美化org
 (use-package 
