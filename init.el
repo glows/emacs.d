@@ -48,16 +48,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#090300" "#db2d20" "#01a252" "#fded02" "#01a0e4" "#a16a94" "#01a0e4" "#a5a2a2"])
  '(ansi-term-color-vector
    [unspecified "#ffffff" "#cc342b" "#198844" "#fba922" "#3971ed" "#a36ac7" "#3971ed" "#373b41"] t)
  '(bongo-mode-line-icon-color "")
  '(bongo-mode-line-icon-size 10 t)
  '(browse-url-browser-function 'eaf-open-browser)
- '(ccls-enable-skipped-ranges nil t)
- '(ccls-executable "/usr/bin/ccls" t)
- '(ccls-sem-highlight-method 'font-lock t)
+ '(ccls-enable-skipped-ranges nil)
+ '(ccls-executable "/usr/bin/ccls")
+ '(ccls-sem-highlight-method 'font-lock)
  '(custom-safe-themes
-   '("efbd20364f292a1199d291dfaff28cc1fd89fff5b38e314bd7e40121f5c465b4" "615123f602c56139c8170c153208406bf467804785007cdc11ba73d18c3a248b" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "5c6e56b16058ec861a3e7f7906cd98cce34ef7e1cbcfd8f8f681a25975f898a8" "4a91a64af7ff1182ed04f7453bb5a4b0c3d82148d27db699df89a5f1d449e2a4" "6151e76f90a494363b167acdb0d36aada6d34c1843999523abe46764abb04179" "08765d801b06462a3ce7e414cdb747436ccaf0c073350be201d8f87bd0481435" "e01db763cd9daa56f75df8ebd057f84017ae8b5f351ec90c96c928ad50f3eb25" "8e335b2bc6e218828189e2b3b19b3bd5938fcbc23ab5b28f19ff782a8bc2eec3" "d7d317a4a3629d91129493ed6caa795c38e3b120da4df0156aa7700e9fe7d88c" "fa3bdd59ea708164e7821574822ab82a3c51e262d419df941f26d64d015c90ee" "7d708f0168f54b90fc91692811263c995bebb9f68b8b7525d0e2200da9bc903c" "7f791f743870983b9bb90c8285e1e0ba1bf1ea6e9c9a02c60335899ba20f3c94" "e1ef2d5b8091f4953fe17b4ca3dd143d476c106e221d92ded38614266cea3c8b" "be9645aaa8c11f76a10bcf36aaf83f54f4587ced1b9b679b55639c87404e2499" "28fa7536c8f563c6d6296989937a8e87a2dc6477fd7b366e0336a8997a521094" "6bacece4cf10ea7dd5eae5bfc1019888f0cb62059ff905f37b33eec145a6a430" "7c4cfa4eb784539d6e09ecc118428cd8125d6aa3053d8e8413f31a7293d43169" "24132f7b6699c6e0118d742351b74141bac3c4388937e40db9207554eaae78c9" "f2b56244ecc6f4b952b2bcb1d7e517f1f4272876a8c873b378f5cf68e904bd59" "361f5a2bc2a7d7387b442b2570b0ef35198442b38c2812bf3c70e1e091771d1a" "1623aa627fecd5877246f48199b8e2856647c99c6acdab506173f9bb8b0a41ac" "6231254e74298a1cf8a5fee7ca64352943de4b495e615c449e9bb27e2ccae709" "264b639ee1d01cd81f6ab49a63b6354d902c7f7ed17ecf6e8c2bd5eb6d8ca09c" "a83f05e5e2f2538376ea2bfdf9e3cd8b7f7593b16299238c1134c1529503fa88" "845103fcb9b091b0958171653a4413ccfad35552bc39697d448941bcbe5a660d" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "51956e440cec75ba7e4cff6c79f4f8c884a50b220e78e5e05145386f5b381f7b" "1263771faf6967879c3ab8b577c6c31020222ac6d3bac31f331a74275385a452" "36746ad57649893434c443567cb3831828df33232a7790d232df6f5908263692" "285efd6352377e0e3b68c71ab12c43d2b72072f64d436584f9159a58c4ff545a" "1526aeed166165811eefd9a6f9176061ec3d121ba39500af2048073bea80911e" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
+   '("57bd93e7dc5fbb5d8d27697185b753f8563fe0db5db245592bab55a8680fdd8c" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" "dc11cee30927281fe3f5c77372119d639e77e86aa794dce2a6ff019afdfbec9e" "b3bcf1b12ef2a7606c7697d71b934ca0bdd495d52f901e73ce008c4c9825a3aa" "4bca89c1004e24981c840d3a32755bf859a6910c65b829d9441814000cf6c3d0" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "54cf3f8314ce89c4d7e20ae52f7ff0739efb458f4326a2ca075bf34bc0b4f499" "01cf34eca93938925143f402c2e6141f03abb341f27d1c2dba3d50af9357ce70" "6b423e7cd5d1e705b0c92356273899057d26e125f83d7f007615ae088195682f" "f2927d7d87e8207fa9a0a003c0f222d45c948845de162c885bf6ad2a255babfd" "f4c8f0b999a6407211a899401315a628e1a5ae2f408c04a33b14d7aa3ed86187" "17d158ec27961156ee222055f1089364b7fd38cf838304a1f9fe8b1cd561c188" "5d09b4ad5649fea40249dd937eaaa8f8a229db1cec9a1a0ef0de3ccf63523014" "efbd20364f292a1199d291dfaff28cc1fd89fff5b38e314bd7e40121f5c465b4" "615123f602c56139c8170c153208406bf467804785007cdc11ba73d18c3a248b" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "5c6e56b16058ec861a3e7f7906cd98cce34ef7e1cbcfd8f8f681a25975f898a8" "4a91a64af7ff1182ed04f7453bb5a4b0c3d82148d27db699df89a5f1d449e2a4" "6151e76f90a494363b167acdb0d36aada6d34c1843999523abe46764abb04179" "08765d801b06462a3ce7e414cdb747436ccaf0c073350be201d8f87bd0481435" "e01db763cd9daa56f75df8ebd057f84017ae8b5f351ec90c96c928ad50f3eb25" "8e335b2bc6e218828189e2b3b19b3bd5938fcbc23ab5b28f19ff782a8bc2eec3" "d7d317a4a3629d91129493ed6caa795c38e3b120da4df0156aa7700e9fe7d88c" "fa3bdd59ea708164e7821574822ab82a3c51e262d419df941f26d64d015c90ee" "7d708f0168f54b90fc91692811263c995bebb9f68b8b7525d0e2200da9bc903c" "7f791f743870983b9bb90c8285e1e0ba1bf1ea6e9c9a02c60335899ba20f3c94" "e1ef2d5b8091f4953fe17b4ca3dd143d476c106e221d92ded38614266cea3c8b" "be9645aaa8c11f76a10bcf36aaf83f54f4587ced1b9b679b55639c87404e2499" "28fa7536c8f563c6d6296989937a8e87a2dc6477fd7b366e0336a8997a521094" "6bacece4cf10ea7dd5eae5bfc1019888f0cb62059ff905f37b33eec145a6a430" "7c4cfa4eb784539d6e09ecc118428cd8125d6aa3053d8e8413f31a7293d43169" "24132f7b6699c6e0118d742351b74141bac3c4388937e40db9207554eaae78c9" "f2b56244ecc6f4b952b2bcb1d7e517f1f4272876a8c873b378f5cf68e904bd59" "361f5a2bc2a7d7387b442b2570b0ef35198442b38c2812bf3c70e1e091771d1a" "1623aa627fecd5877246f48199b8e2856647c99c6acdab506173f9bb8b0a41ac" "6231254e74298a1cf8a5fee7ca64352943de4b495e615c449e9bb27e2ccae709" "264b639ee1d01cd81f6ab49a63b6354d902c7f7ed17ecf6e8c2bd5eb6d8ca09c" "a83f05e5e2f2538376ea2bfdf9e3cd8b7f7593b16299238c1134c1529503fa88" "845103fcb9b091b0958171653a4413ccfad35552bc39697d448941bcbe5a660d" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" "e1ecb0536abec692b5a5e845067d75273fe36f24d01210bf0aa5842f2a7e029f" "51956e440cec75ba7e4cff6c79f4f8c884a50b220e78e5e05145386f5b381f7b" "1263771faf6967879c3ab8b577c6c31020222ac6d3bac31f331a74275385a452" "36746ad57649893434c443567cb3831828df33232a7790d232df6f5908263692" "285efd6352377e0e3b68c71ab12c43d2b72072f64d436584f9159a58c4ff545a" "1526aeed166165811eefd9a6f9176061ec3d121ba39500af2048073bea80911e" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "dd4628d6c2d1f84ad7908c859797b24cc6239dfe7d71b3363ccdd2b88963f336" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default))
  '(default-input-method "rime")
  '(doom-modeline-mode t)
  '(eaf-find-alternate-file-in-dired t t)
@@ -65,8 +67,8 @@
  '(eaf-proxy-port "1088")
  '(eaf-proxy-type "socks5")
  '(emojify-emojis-dir "~/.emacs.d/var/emojis")
- '(english-teacher-backend 'baidu t)
- '(english-teacher-show-result-function 'english-teacher-eldoc-show-result-function t)
+ '(english-teacher-backend 'baidu)
+ '(english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
  '(eww-search-prefix "https://google.com/search?q=")
  '(fci-rule-color "#6272a4")
  '(hl-todo-keyword-faces
@@ -85,6 +87,7 @@
 	 ("FIXME" . "#dc752f")
 	 ("XXX+" . "#dc752f")
 	 ("\\?\\?\\?+" . "#dc752f")))
+ '(hydra-posframe-mode t nil (hydra-posframe))
  '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
@@ -95,7 +98,7 @@
  '(lsp-prefer-flymake nil t)
  '(lsp-python-ms-executable
    "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer")
- '(lsp-ui-doc-delay 1 t)
+ '(lsp-ui-doc-delay 1)
  '(objed-cursor-color "#ff5555")
  '(org-bullets-bullet-list '("☰" "☷" "☯" "☭"))
  '(org-todo-keyword-faces
@@ -113,7 +116,7 @@
    '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
 	 (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
  '(package-selected-packages
-   '(mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit spacemacs-theme snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-themes doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
+   '(python-black vscdark-theme vscode-dark-plus-theme mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit spacemacs-theme snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-themes doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(read-process-output-max 1048576 t)
  '(rustic-ansi-faces

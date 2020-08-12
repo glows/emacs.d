@@ -12,9 +12,9 @@
 ;; 加载主题
 (load-file "~/.emacs.d/themes/oswald-theme.el")
 
-(setq evan/font-name "Iosevka"
+(setq evan/font-name "Iosevka Semibold"
 	  evan/font-style "Regular"
-	  evan/font-size 20)
+	  evan/font-size 18)
 ;; 设置透明
 ;; (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
@@ -73,7 +73,7 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . spacemacs-dark)
+	circadian-themes '((:sunrise . doom-snazzy)
 			   (:sunset . oswald)))
   (circadian-setup))
 
