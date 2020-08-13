@@ -24,7 +24,11 @@
    - Fira Code
    - Sarasa Mono
 ** 安装
-   ~>mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
+   #+begin_src shell
+   mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
+   cd ~/.emacs.d/ && git submodule update --init --recursive
+   #+end_src
+   
 * 注意事项
 ** 平台兼容性
    本配置只在GNU/Linux下测试过，如果有其他平台遇到的Bug可能无法提供解决方案。
