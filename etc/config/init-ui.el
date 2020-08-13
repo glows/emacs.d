@@ -73,7 +73,7 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . doom-snazzy)
+	circadian-themes '((:sunrise . oswald)
 			   (:sunset . oswald)))
   (circadian-setup))
 

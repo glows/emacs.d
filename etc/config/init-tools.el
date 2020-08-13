@@ -259,4 +259,14 @@
 		  Woman-mode
 		  help-mode) . english-teacher-follow-mode))
 
+
+(use-package async-await
+  :ensure t)
+(use-package rocket-chat
+  :after async-await
+  :load-path "~/.emacs.d/site-lisp/rocket-chat/")
+
 (provide 'init-tools)
+
+
+

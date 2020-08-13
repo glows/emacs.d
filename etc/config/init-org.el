@@ -72,7 +72,7 @@
                                         "* %^{简介} %t %^g\n  %^L\n  %?\n")))
 
 
-(set-face-attribute 'org-table nil :font (font-spec :name "Sarasa Mono SC"
+(set-face-attribute 'org-table nil :font (font-spec :name evan/font-name
                                                     :size evan/font-size
 													;; :style "Regular"
 													))
