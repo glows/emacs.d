@@ -1,4 +1,5 @@
 !.gitignore
+!recentf
 .lsp-session-*
 url/
 elpa/*
