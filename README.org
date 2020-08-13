@@ -9,20 +9,22 @@
     - GNU Emacs Version > 26.3
     - CMake
     - Python
-    - libvterm :: vterm需要
+    - libvterm
       * Ubuntu/Debian
         ~apt install libvterm~
       * ArchLinux
         ~pacman -S libvterm~
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
-    - tdlib :: telega需要
-      * ArchLinux #archlinuxcn
-	~pacman -S libtd-git~
+    - tdlib
+      * ArchLinux[#archlinuxcn]
+		~pacman -S libtd-git~
 ** 字体
    - all-the-icons
-   - Fira Code
-   - Sarasa Mono
+	 下面的字体三选一
+   - Fira Code [可选]
+   - Sarasa Mono [可选]
+   - Iosevka [可选]
 ** 安装
    #+begin_src shell
    mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
