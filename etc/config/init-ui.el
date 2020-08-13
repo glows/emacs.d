@@ -10,15 +10,15 @@
 ;; CODE:
 
 ;; 加载主题
-(load-file "~/.emacs.d/themes/oswald-theme.el")
+;; (load-file "~/.emacs.d/themes/oswald-theme.el")
 
 (setq evan/font-name "Iosevka Semibold"
 	  evan/font-style "Regular"
 	  evan/font-size 18)
 ;; 设置透明
-;; (set-frame-parameter nil 'alpha '(85 .100))
+(set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色
-;; (set-cursor-color "green2")
+(set-cursor-color "green2")
 ;; 设置光标样式
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
@@ -64,6 +64,10 @@
 ;;   :ensure spacemacs-theme
 ;;   :defer)
 
+(use-package base16-theme
+  :ensure t
+  :defer)
+
 ;; 自动切换主题
 (use-package
   circadian
@@ -73,9 +77,12 @@
   (setq calendar-latitude 23.130280
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . oswald)
-			   (:sunset . oswald)))
+	circadian-themes '((:sunrise . base16-google-light)
+			   (:sunset . base16-google-dark)))
   (circadian-setup))
+
+
+(provide 'init-ui)
 
 (push '(progn
 		 ;; 图标支持
