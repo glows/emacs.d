@@ -12,7 +12,7 @@
 	url = https://github.com/manateelazycat/company-english-helper
 [submodule "site-lisp/english-teacher"]
 	path = site-lisp/english-teacher
-	url = https://github.com/loyalpartner/english-teacher
+	url = https://github.com/loyalpartner/english-teacher.el
 [submodule "site-lisp/insert-translated-name"]
 	path = site-lisp/insert-translated-name
 	url = https://github.com/manateelazycat/insert-translated-name
