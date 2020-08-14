@@ -62,7 +62,7 @@
                                         "* %U - %^{标题}\n  %?"))
   (add-to-list 'org-capture-templates '("i" "我的闪念" entry (file+headline "~/Documents/site/org/idea.org" "闪念")
                                         "* %U - %^{标题} %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "p~/Documents/site/org/wiki.org" "WIKI")
+  (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "~/Documents/site/org/wiki.org" "WIKI")
                                         "* %^{标题} %t %^g\n  %?\n"))
   (add-to-list 'org-capture-templates '("w" "我的单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
                                         " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
