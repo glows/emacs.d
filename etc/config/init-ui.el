@@ -97,6 +97,7 @@
 		 ;; 表情符号
 		 (use-package 
 		   emojify
+		   :ensure t
 		   :after telega
 		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
 		   :config
