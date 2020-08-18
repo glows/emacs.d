@@ -14,7 +14,7 @@
 
 (setq evan/font-name "Iosevka Semibold"
 	  evan/font-style "Regular"
-	  evan/font-size 18)
+	  evan/font-size 22)
 ;; 设置透明
 (set-frame-parameter nil 'alpha '(85 .100))
 ;; 设置光标颜色

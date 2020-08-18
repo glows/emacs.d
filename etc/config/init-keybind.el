@@ -24,7 +24,8 @@
 (use-package
   hydra-posframe
   :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-  :hook (after-init . hydra-posframe-enable))
+  ;; :hook (after-init . hydra-posframe-mode)
+  )
 
 (use-package
   major-mode-hydra
