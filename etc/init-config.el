@@ -18,4 +18,5 @@
 (require 'init-cc)
 (require 'init-graphic)
 (require 'init-blog)
+(require 'init-lua)
 (provide 'init-config)
