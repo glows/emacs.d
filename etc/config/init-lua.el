@@ -1,7 +1,6 @@
 (use-package
   lua-mode
-  :ensure t
-  :hook (prog-mode . lua-mode))
+  :ensure t)
 
 
 (provide 'init-lua)
