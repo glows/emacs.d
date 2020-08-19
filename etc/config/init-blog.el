@@ -187,6 +187,27 @@
           ("statics" :components ("js" "css" "images" "assets" "webfonts"))
           )))
 
+(defun create-blog-article (title)
+  "
+新建博客文章，TITLE为文章标题
+"
+  (interactive "s文章标题: ")
+  
+  (if (file-directory-p "~/Documents/site/org/")
+	  (let* ((file-path (concat (expand-file-name "~/Documents/site/org/") title ".org"))
+			 (atr-buffer (generate-new-buffer (concat title ".org"))))
+		(switch-to-buffer atr-buffer)
+		(org-mode)
+		(time-stamp-toggle-active)
+		(cd "~/Documents/site/org")
+		(insert
+		   (concat
+			"#+SETUPFILE: ../theme-rose.setup"
+			"\n#+DATE: " (time-stamp-string "<%Y-%m-%d %a>")
+			"\n#+TITLE: " title))
+		(write-file file-path t))
+	(message "请创建目录: ~/Documents/site/org/")))
+
 (defun save-and-publish-website()
     "Save all buffers and publish."
   (interactive)

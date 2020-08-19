@@ -79,7 +79,13 @@
 	;; sunrise 白天用的主题 sunset 晚上用的主题
 	circadian-themes '((:sunrise . base16-google-light)
 			   (:sunset . base16-google-dark)))
-  (circadian-setup))
+  (circadian-setup)
+  (set-face-background 'hl-line "gray17")
+  (when (and
+		 (> (car (circadian-now-time)) (car (circadian-sunrise)))
+		 (< (car (circadian-now-time)) (car (circadian-sunset))))
+	(progn
+	  (set-face-background 'hl-line "light gray"))))
 
 
 (provide 'init-ui)
