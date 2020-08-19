@@ -69,7 +69,12 @@
   (add-to-list 'org-capture-templates '("f" "单词速导" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
                                         "| %U | %(evan/capture-get-word 1) | %(evan/capture-get-word 2) | %(evan/capture-get-word 3) |"))
   (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
-                                        "* %^{简介} %t %^g\n  %^L\n  %?\n")))
+                                        "* %^{简介} %t %^g\n  %^L\n  %?\n"))
+;; 设置org-babel支持运行的代码
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python . t)))
+  )
 
 
 (set-face-attribute 'org-table nil :font (font-spec :name evan/font-name
