@@ -159,7 +159,6 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta"))))
  '(flycheck-posframe-border-face ((t (:inherit default))))
- '(hl-line ((t (:inherit highlight :extend t :background "gray9"))))
  '(mode-line ((t (:family evan/font-name :style evan/font-style :height 125))))
  '(mode-line-inactive ((t (:family evan/font-name :style evan/font-size :height 125))))
  '(perspeen-selected-face ((t (:background "violet" :foreground "Black" :weight bold)))))

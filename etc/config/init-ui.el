@@ -80,15 +80,13 @@
 	circadian-themes '((:sunrise . base16-google-light)
 			   (:sunset . base16-google-dark)))
   (circadian-setup)
-  (set-face-background 'hl-line "gray17")
-  (when (and
+  (set-face-background 'hl-line "gray17"))
+
+(when (and
 		 (> (car (circadian-now-time)) (car (circadian-sunrise)))
 		 (< (car (circadian-now-time)) (car (circadian-sunset))))
 	(progn
-	  (set-face-background 'hl-line "light gray"))))
-
-
-(provide 'init-ui)
+	  (set-face-background 'hl-line "light gray")))
 
 (push '(progn
 		 ;; 图标支持
