@@ -16,7 +16,9 @@
 (require 'init-python)
 (require 'init-java)
 (require 'init-cc)
-(require 'init-graphic)
 (require 'init-blog)
 (require 'init-lua)
+(require 'init-scheme)
+
+(require 'init-graphic)
 (provide 'init-config)
