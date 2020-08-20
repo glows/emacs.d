@@ -78,15 +78,13 @@
 	calendar-longitude 113.288879
 	;; sunrise 白天用的主题 sunset 晚上用的主题
 	circadian-themes '((:sunrise . base16-google-light)
-			   (:sunset . base16-google-dark)))
-  (circadian-setup)
-  (set-face-background 'hl-line "gray17"))
+					   (:sunset . base16-google-dark)))
+  (circadian-setup))
 
-(when (and
-		 (> (car (circadian-now-time)) (car (circadian-sunrise)))
-		 (< (car (circadian-now-time)) (car (circadian-sunset))))
-	(progn
-	  (set-face-background 'hl-line "light gray")))
+
+(if (> (car (circadian-now-time)) (car (circadian-sunrise)))
+	(set-face-background 'hl-line "light gray")
+  (set-face-background 'hl-line "gray17"))
 
 (push '(progn
 		 ;; 图标支持
@@ -102,10 +100,8 @@
 		 (use-package 
 		   emojify
 		   :ensure t
-		   :after telega
 		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
-		   :config
-		   (global-emojify-mode))
+		   :hook telega-mode)
 		 ;; 浮动窗口支持
 		 (use-package 
 		   posframe 
