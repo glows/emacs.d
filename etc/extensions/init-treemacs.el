@@ -73,7 +73,7 @@
   :ensure t)
 
 (use-package treemacs-icons-dired
-  :after treemacs dired
+  :after treemacs
   :ensure t
   :config (treemacs-icons-dired-mode))
 
