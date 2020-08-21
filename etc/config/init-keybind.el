@@ -21,11 +21,11 @@
   hydra
   :ensure t)
 
-(use-package
+(push '(use-package
   hydra-posframe
   :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-  ;; :hook (after-init . hydra-posframe-mode)
-  )
+  ;; :hook (after-init . hydra-posframe-mode))
+  ) graphic-only-plugins-setting)
 
 (use-package
   major-mode-hydra
@@ -188,6 +188,6 @@
   ("a" evan/hydra-app-menu/body nil :color blue)
   ("q" nil "QUIT" :color blue))
 
-(global-set-key (kbd "s-,") #'evan/hydra-main-menu/body)
+(global-set-key (kbd "M-\\") #'evan/hydra-main-menu/body)
 
 (provide 'init-keybind)
