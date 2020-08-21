@@ -167,7 +167,9 @@
 		 :hook ('doc-view-mode 'pdf-view-mode)
 		 :bind (:map pdf-view-mode-map
 					 ("j" . #'pdf-view-next-line-or-next-page)
-					 ("k" . #'pdf-view-previous-line-or-previous-page))) graphic-only-plugins-setting)
+					 ("k" . #'pdf-view-previous-line-or-previous-page)
+					 ("l" . #'image-forward-hscroll)
+					 ("h" . #'image-backward-hscroll))) graphic-only-plugins-setting)
 
 
 ;; 窗口管理器
@@ -260,6 +262,8 @@
 		  Man-mode
 		  Woman-mode
 		  help-mode) . english-teacher-follow-mode))
+(use-package sudo-edit
+  :ensure t)
 (provide 'init-tools)
 
 
