@@ -43,7 +43,7 @@
 ;; 回到关闭文件前光标的位置
 (use-package saveplace
   :ensure t
-  :hook (after-init . save-place-mode))
+  :hook (after-init . (lambda () (save-place-mode t))))
 
 ;; 关闭备份
 (setq make-backup-files nil auto-save-default nil)
@@ -145,9 +145,7 @@
 
 ;; 集成了很多非常有用的的功能
 (use-package counsel
-  :hook (after-init . 'counsel)
   :ensure t
- 
   :bind
   (("C-x C-r" . 'counsel-recentf) 
    ("C-x d" . 'counsel-dired))
@@ -170,22 +168,20 @@
          ("M-g e" . 'avy-goto-word-0)))
 
 ;; emacs 调用 rime输入法的前端，强烈推荐
-(push '(progn
-		 (use-package rime
-		   :ensure t
-		   :custom
-		   (default-input-method "rime")
-		   :config
-		   (setq rime-user-data-dir "~/.config/fcitx/rime")
+(use-package rime
+  :ensure t
+  :custom
+  (default-input-method "rime")
+  :config
+  (setq rime-user-data-dir "~/.config/fcitx/rime")
 
-		   (setq rime-posframe-properties
-				 (list :background-color "#333333"
-					   :foreground-color "#dcdccc"
-					   :font "Sarasa Mono SC-16"
-					   :internal-border-width 10))
-		   (setq default-input-method "rime"
-				 rime-show-candidate 'posframe)))
-	  graphic-only-plugins-setting)
+  (setq rime-posframe-properties
+		(list :background-color "#333333"
+			  :foreground-color "#dcdccc"
+			  :font "Sarasa Mono SC-16"
+			  :internal-border-width 10))
+  (setq default-input-method "rime"
+		rime-show-candidate 'posframe))
 
 ;; 饥饿删除（一次性删除多个连续的空白符）
 (use-package hungry-delete
