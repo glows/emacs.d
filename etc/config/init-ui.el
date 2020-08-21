@@ -9,9 +9,6 @@
 
 ;; CODE:
 
-;; 加载主题
-;; (load-file "~/.emacs.d/themes/oswald-theme.el")
-
 (setq evan/font-name "Iosevka Semibold"
 	  evan/font-style "Regular"
 	  evan/font-size 22)
@@ -59,10 +56,10 @@
   :defer
   ;; :config (load-theme 'doom-dracula t))
   )
-;; (use-package
-;;   spacemacs-common
-;;   :ensure spacemacs-theme
-;;   :defer)
+(use-package
+  spacemacs-common
+  :ensure spacemacs-theme
+  :defer)
 
 (use-package base16-theme
   :ensure t
@@ -75,10 +72,18 @@
   :config
   ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
   (setq calendar-latitude 23.130280
-	calendar-longitude 113.288879
-	;; sunrise 白天用的主题 sunset 晚上用的主题
-	circadian-themes '((:sunrise . base16-google-light)
-					   (:sunset . base16-google-dark)))
+		calendar-longitude 113.288879)
+  ;; sunrise 白天用的主题 sunset 晚上用的主题
+  (if (graphic-p)
+	  (progn
+		(setq circadian-themes '((:sunrise . base16-google-light)
+								 (:sunset . base16-google-dark))))
+	
+	(progn
+	  (load-file "~/.emacs.d/themes/oswald-theme.el")
+	  (setq circadian-themes '((:sunrise . spacemacs-dark-theme)
+							   (:sunset . oswald)))))
+  
   (circadian-setup))
 
 
