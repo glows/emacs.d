@@ -160,12 +160,14 @@
               ("b p" . 'bongo-play-previous) 
               ("b r" . 'bongo-play-random) 
               ("b s" . 'bongo-sprinkle)))
-
-										; Emacs下的pdf查看工具，默认非图形化不开启
+;; Emacs下的pdf查看工具，默认非图形化不开启
 (push '(use-package 
 		 pdf-tools 
 		 :ensure t 
-		 :hook ('doc-view-mode 'pdf-view-mode)) graphic-only-plugins-setting)
+		 :hook ('doc-view-mode 'pdf-view-mode)
+		 :bind (:map pdf-view-mode-map
+					 ("j" . #'pdf-view-next-line-or-next-page)
+					 ("k" . #'pdf-view-previous-line-or-previous-page))) graphic-only-plugins-setting)
 
 
 ;; 窗口管理器
