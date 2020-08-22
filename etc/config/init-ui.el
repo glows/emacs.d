@@ -87,7 +87,7 @@
   (circadian-setup))
 
 
-(if (> (car (circadian-now-time)) (car (circadian-sunrise)))
+(if (<= (car (circadian-now-time)) (car (circadian-sunrise)))
 	(set-face-background 'hl-line "light gray")
   (set-face-background 'hl-line "gray17"))
 

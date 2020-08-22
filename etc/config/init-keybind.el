@@ -24,7 +24,7 @@
 (push '(use-package
   hydra-posframe
   :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-  ;; :hook (after-init . hydra-posframe-mode))
+  :hook (after-init . hydra-posframe-mode)
   ) graphic-only-plugins-setting)
 
 (use-package
