@@ -14,8 +14,7 @@
 ;; 设置缓存文件/杂七杂八的文件存放的地址
 (setq user-emacs-directory "~/.emacs.d/var")
 
-;; 设置amx保存文件的路径
-(setq amx-save-file "~/.emacs.d/var/amx-items")
+
 ;; 设置自动保存路径前缀
 (setq auto-save-list-file-prefix "~/.emacs/var/auto-save-list/.saves-")
 ;; 设置eshell历史记录
@@ -143,6 +142,11 @@
     (setq ivy-display-style 'fancy)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
 
+(use-package amx
+  :ensure t
+  :config
+  ;; 设置amx保存文件的路径
+  (setq amx-save-file "~/.emacs.d/var/amx-items"))
 ;; 集成了很多非常有用的的功能
 (use-package counsel
   :ensure t
@@ -190,8 +194,8 @@
 
 ;; 相对行号，默认未开启
 (use-package linum-relative
-  :disabled
   :ensure t
+  :disabled
   :hook ('prog-mode . 'linum-relative-mode))
 
 (provide 'init-basic)

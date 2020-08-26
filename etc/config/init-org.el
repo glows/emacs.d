@@ -51,6 +51,7 @@
 		  ((eq number 3) (nth 2 evan/capture-word-data))))
   
   (setq org-capture-templates nil)
+  (push "~/Documents/org/capture/task.org" org-agenda-files)
   ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
   (add-to-list 'org-capture-templates
                '("t" "任务清单"))
@@ -73,8 +74,7 @@
 ;; 设置org-babel支持运行的代码
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((python . t)))
-  )
+   '((python . t))))
 
 
 (set-face-attribute 'org-table nil :font (font-spec :name evan/font-name

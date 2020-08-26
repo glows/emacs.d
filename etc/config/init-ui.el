@@ -74,20 +74,22 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (if (graphic-p)
-	  (progn
-		(setq circadian-themes '((:sunrise . base16-google-light)
-								 (:sunset . base16-google-dark))))
-	
-	(progn
-	  (load-file "~/.emacs.d/themes/oswald-theme.el")
-	  (setq circadian-themes '((:sunrise . spacemacs-dark-theme)
-							   (:sunset . oswald)))))
+  ;; (if (graphic-p)
+  ;; 	  (progn
+  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
+						   (:sunset . doom-gruvbox))
+		
+		;; (progn
+		;;   (load-file "~/.emacs.d/themes/oswald-theme.el")
+		;;   (setq circadian-themes '((:sunrise . spacemacs-dark-theme)
+		;; 						   (:sunset . oswald))))
+		)
   
   (circadian-setup))
 
 
-(if (<= (car (circadian-now-time)) (car (circadian-sunrise)))
+(if (and (> (car (circadian-now-time)) (car (circadian-sunrise)))
+		 (< (car (circadian-now-time)) (car (circadian-sunset))))
 	(set-face-background 'hl-line "light gray")
   (set-face-background 'hl-line "gray17"))
 

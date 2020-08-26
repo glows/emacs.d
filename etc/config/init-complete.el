@@ -36,9 +36,8 @@
   :config (add-to-list 'company-backends #'company-tabnine))
 
 ;; Emacs对语言服务器支持的插件
-(use-package lsp-mode 
+(use-package lsp-mode
   :ensure t
-  :defer t
   :commands lsp
   :hook ((java-mode python-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode) . lsp)
   :custom
@@ -50,8 +49,7 @@
   (lsp-prefer-flymake nil)
   :bind (:map lsp-mode-map
 			  ("C-c C-f" . lsp-format-buffer)
-			  ("M-RET" . lsp-ui-sideline-apply-code-actions)
-			  ("M-\\" . lsp-execute-code-action))
+			  ("M-RET" . lsp-ui-sideline-apply-code-actions))
   :config
   (setq lsp-prefer-capf t))
 

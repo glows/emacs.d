@@ -264,6 +264,16 @@
 		  help-mode) . english-teacher-follow-mode))
 (use-package sudo-edit
   :ensure t)
+
+(use-package dired-posframe
+  :ensure t
+  :custom
+  (dired-posframe-size-limit (* 10 1024 1024))
+  :bind((:map dired-mode-map)
+		("C-*" . dired-posframe-show)))
+
+(use-package rotate
+  :ensure t)
 (provide 'init-tools)
 
 
