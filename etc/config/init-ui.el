@@ -76,8 +76,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . modus-operandi-theme)
-						   (:sunset . modus-vivendi-theme)))
+  (setq circadian-themes '((:sunrise . modus-operandi)
+						   (:sunset . modus-vivendi)))
   (circadian-setup))
 
 
@@ -137,7 +137,7 @@
   doom-modeline
   :ensure t 
   :init (doom-modeline-mode 1) 
-  :config (setq doom-modeline-height 10)
+  :config (setq doom-modeline-height 22)
   (custom-set-faces '(mode-line ((t 
                                   (:family evan/font-name
                                            :style evan/font-style

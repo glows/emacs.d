@@ -2,7 +2,7 @@
 ;; (load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
 
 (setq gc-cons-threshold-original gc-cons-threshold)
-(setq gc-cons-threshold (* 1024 1024 1000))
+(setq gc-cons-threshold (* 1024 1024 1))
 (setq file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (run-with-idle-timer 5 nil (lambda () 
@@ -124,7 +124,7 @@
    '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
 	 (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
  '(package-selected-packages
-   '(modues-vivendi-theme modus-operandi-theme modus-vivendi-theme smart-mode-line-powerline-theme dired-rainbow dired-posframe geiser lsp-pyright lua-mode paredit elisp-slime-nav rust-mode python-black vscdark-theme vscode-dark-plus-theme mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit spacemacs-theme snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-themes doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
+   '(modues-vivendi-theme modus-operandi-theme modus-vivendi-theme dired-rainbow dired-posframe geiser lsp-pyright lua-mode paredit elisp-slime-nav rust-mode python-black vscdark-theme vscode-dark-plus-theme mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom-modeline doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(read-process-output-max 1048576 t)
  '(rustic-ansi-faces
@@ -161,8 +161,8 @@
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta"))))
  '(flycheck-posframe-border-face ((t (:inherit default))))
  '(magit-diff-file-heading-highlight ((t (:inherit nil :extend t))))
- '(mode-line ((t (:family evan/font-name :style evan/font-style :height 105))))
- '(mode-line-inactive ((t (:family evan/font-name :style evan/font-size :height 105))))
+ '(mode-line ((t (:family evan/font-name :style evan/font-style :height 125))))
+ '(mode-line-inactive ((t (:family evan/font-name :style evan/font-size :height 125))))
  '(perspeen-selected-face ((t (:background "violet" :foreground "Black" :weight bold)))))
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
