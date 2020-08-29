@@ -1,6 +1,9 @@
 #+STARTUP: overview
 * 简介
-  [[file:var/banner/EvanEmacsPreview.png]]
+  *黑暗主题*
+  [[file:var/banner/EmacsPreviewDark.png]]
+  *明亮主题*
+  [[file:var/banner/EmacsPreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
   具体配置请看/etc下的配置文件
 * 如何安装

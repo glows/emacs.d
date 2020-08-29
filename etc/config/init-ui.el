@@ -125,7 +125,7 @@
   (setq dashboard-banner-logo-title
         "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
   ;; 设置banner
-  (setq dashboard-startup-banner "~/.emacs.d/var/banner/a.png") 
+  (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png") 
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 
