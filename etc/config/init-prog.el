@@ -76,22 +76,22 @@
                                                             ,(face-foreground
                                                               'font-lock-variable-name-face)))) graphic-only-plugins-setting)
 ;; 微软的python语言服务器-老牌稳定
-;; (use-package 
-;;   lsp-python-ms 
-;;   :ensure nil
-;;   :hook (python-mode . (lambda () 
-;;                          (require 'lsp-python-ms) 
-;;                          (lsp))) 
-;;   :custom (lsp-python-ms-executable
-;;            "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
+(use-package 
+  lsp-python-ms 
+  :ensure t
+  :hook (python-mode . (lambda () 
+                         (require 'lsp-python-ms) 
+                         (lsp))) 
+  :custom (lsp-python-ms-executable
+           "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
 
 ;; 微软的python语言服务器-新版
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                         (require 'lsp-pyright)
-                         (lsp)))
-  )  ; or lsp-deferred
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :hook (python-mode . (lambda ()
+;;                          (require 'lsp-pyright)
+;;                          (lsp)))
+;;   )  ; or lsp-deferred
 
   ;; 写网页可用的模式
   (use-package 

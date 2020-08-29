@@ -1,3 +1,4 @@
+
 (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 		   (use-package 
 			 eaf
@@ -8,12 +9,17 @@
 			 (eaf-proxy-port "1088")
 			 (browse-url-browser-function 'eaf-open-browser)
 			 :config
+			 ;; eaf markdown 预览所需要的
+			 (use-package grip-mode
+			   :ensure t
+			   :after eaf)
 			 (defalias 'browse-web #'eaf-open-browser)
 			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
 			 (eaf-setq eaf-pdf-dark-mode "true")
 			 (eaf-setq eaf-browser-dark-mode "true") 
 			 (eaf-setq eaf-mindmap-dark-mode "true")
 			 (eaf-setq eaf-browser-enable-adblocker "true")
+			 (eaf-setq eaf-browser-search-engines (list "duckduckgo" "https://duckduckgo.com/?q=%s"))
 			 (when (and
 					(> (car (circadian-now-time)) (car (circadian-sunrise)))
 					(< (car (circadian-now-time)) (car (circadian-sunset))))
@@ -274,6 +280,9 @@
 
 (use-package rotate
   :ensure t)
+
+(use-package netease-cloud-music
+  :load-path "~/.emacs.d/site-lisp/netease-cloud-music.el")
 (provide 'init-tools)
 
 

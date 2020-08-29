@@ -12,10 +12,9 @@
 (setq evan/font-name "Iosevka Semibold"
 	  evan/font-style "Regular"
 	  evan/font-size 22)
-;; 设置透明
-(set-frame-parameter nil 'alpha '(85 .100))
+
 ;; 设置光标颜色
-(set-cursor-color "green2")
+;; (set-cursor-color "green2")
 ;; 设置光标样式
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
@@ -30,13 +29,9 @@
 				   ;; :style "Regular"
 				   :size evan/font-size)) 
 		   (set-face-attribute 'default nil 
-							   :font (font-spec 
-									  ;; :name "Fira Code Nerd Font"
-									  ;; :style "Retina"
+							   :font (font-spec
 									  :name evan/font-name
 									  :style evan/font-style
-									  ;; :name "Sarasa Mono SC"
-									  ;; :style "Regular"
 									  :size evan/font-size)) 
 		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
 
@@ -50,20 +45,27 @@
   :hook (after-init . beacon-mode))
 
 ;; 主题包
-(use-package 
-  doom-themes 
-  :ensure t
-  :defer
-  ;; :config (load-theme 'doom-dracula t))
-  )
-(use-package
-  spacemacs-common
-  :ensure spacemacs-theme
-  :defer)
+;; (use-package 
+;;   doom-themes 
+;;   :ensure t
+;;   :defer
+;;   ;; :config (load-theme 'doom-dracula t))
+;;   )
+;; (use-package
+;;   spacemacs-common
+;;   :ensure spacemacs-theme
+;;   :defer)
 
-(use-package base16-theme
-  :ensure t
-  :defer)
+;; (use-package base16-theme
+;;   :ensure t
+;;   :defer)
+
+(use-package modus-operandi-theme
+  :ensure t)
+
+(use-package modus-vivendi-theme
+  :ensure t)
+
 
 ;; 自动切换主题
 (use-package
@@ -74,24 +76,16 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  ;; (if (graphic-p)
-  ;; 	  (progn
-  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-						   (:sunset . doom-gruvbox))
-		
-		;; (progn
-		;;   (load-file "~/.emacs.d/themes/oswald-theme.el")
-		;;   (setq circadian-themes '((:sunrise . spacemacs-dark-theme)
-		;; 						   (:sunset . oswald))))
-		)
-  
+  (setq circadian-themes '((:sunrise . modus-operandi-theme)
+						   (:sunset . modus-vivendi-theme)))
   (circadian-setup))
 
 
-(if (and (> (car (circadian-now-time)) (car (circadian-sunrise)))
-		 (< (car (circadian-now-time)) (car (circadian-sunset))))
-	(set-face-background 'hl-line "light gray")
-  (set-face-background 'hl-line "gray17"))
+;; 根据时间切换高亮当前行颜色
+;; (if (and (> (car (circadian-now-time)) (car (circadian-sunrise)))
+;; 		 (< (car (circadian-now-time)) (car (circadian-sunset))))
+;; 	(set-face-background 'hl-line "light gray")
+;;   (set-face-background 'hl-line "gray17"))
 
 (push '(progn
 		 ;; 图标支持
@@ -158,15 +152,15 @@
   :ensure t 
   :config
   ;; 设置每一级括号的颜色
-  (set-face-foreground 'rainbow-delimiters-depth-1-face "orange red") 
-  (set-face-foreground 'rainbow-delimiters-depth-2-face "gold") 
-  (set-face-foreground 'rainbow-delimiters-depth-3-face "yellow") 
-  (set-face-foreground 'rainbow-delimiters-depth-4-face "spring green") 
-  (set-face-foreground 'rainbow-delimiters-depth-5-face "cyan") 
-  (set-face-foreground 'rainbow-delimiters-depth-6-face "magenta") 
-  (set-face-foreground 'rainbow-delimiters-depth-7-face "goldenrod") 
-  (set-face-foreground 'rainbow-delimiters-depth-8-face "IndianRed1") 
-  (set-face-foreground 'rainbow-delimiters-depth-9-face "ivory1") 
+  (set-face-foreground 'rainbow-delimiters-depth-1-face "chartreuse3") 
+  (set-face-foreground 'rainbow-delimiters-depth-2-face "DodgerBlue1") 
+  (set-face-foreground 'rainbow-delimiters-depth-3-face "DarkOrange2")
+  (set-face-foreground 'rainbow-delimiters-depth-4-face "deep pink") 
+  (set-face-foreground 'rainbow-delimiters-depth-5-face "medium orchid") 
+  (set-face-foreground 'rainbow-delimiters-depth-6-face "turquoise") 
+  (set-face-foreground 'rainbow-delimiters-depth-7-face "lime green") 
+  (set-face-foreground 'rainbow-delimiters-depth-8-face "gold") 
+  (set-face-foreground 'rainbow-delimiters-depth-9-face "cyan") 
   (set-face-bold 'rainbow-delimiters-depth-1-face "t") 
   (set-face-bold 'rainbow-delimiters-depth-2-face "t") 
   (set-face-bold 'rainbow-delimiters-depth-3-face "t") 
@@ -177,7 +171,6 @@
   (set-face-bold 'rainbow-delimiters-depth-8-face "t") 
   (set-face-bold 'rainbow-delimiters-depth-9-face "t") 
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
-
 ;; 让info帮助信息中关键字有高亮
 (use-package 
   info-colors 
