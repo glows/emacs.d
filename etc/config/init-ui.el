@@ -136,8 +136,12 @@
 (use-package 
   doom-modeline
   :ensure t 
-  :init (doom-modeline-mode 1) 
-  :config (setq doom-modeline-height 22)
+  :init (doom-modeline-mode 1)
+  :custom
+  (doom-modeline-height 10)
+  (doom-modeline-bar-width 5)
+  (doom-modeline-buffer-file-name-style 'file-name)
+  :config
   (custom-set-faces '(mode-line ((t 
                                   (:family evan/font-name
                                            :style evan/font-style

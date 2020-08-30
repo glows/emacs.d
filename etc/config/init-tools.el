@@ -134,7 +134,7 @@
 (use-package 
   bongo
   :ensure t
-  :hook (after-init . bongo)
+  ;; :hook (after-init . bongo)
   :custom
   (bongo-mode-line-icon-size 10)
   :config
