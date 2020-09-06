@@ -135,11 +135,11 @@
 ;; modeline样式
 (use-package 
   doom-modeline
-  :ensure t 
+  :disabled
   :init (doom-modeline-mode 1)
   :custom
   (doom-modeline-height 10)
-  (doom-modeline-bar-width 5)
+  (doom-modeline-bar-width 3)
   (doom-modeline-buffer-file-name-style 'file-name)
   :config
   (custom-set-faces '(mode-line ((t 

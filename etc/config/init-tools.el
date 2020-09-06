@@ -1,4 +1,3 @@
-
 (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 		   (use-package 
 			 eaf
@@ -197,6 +196,7 @@
               ("w l" . #'shrink-window-horizontally)
               ("w j" . #'enlarge-window)
               ("w k" . #'shrink-window)))
+
 ;; 折叠和收缩代码
 (use-package 
   hideshow 
@@ -212,12 +212,6 @@
 (use-package 
   try 
   :ensure t)
-
-;; 谷歌翻译，
-(use-package 
-  google-translate
-  :disabled
-  :config (setq google-translate--tkk-url "http://translate.google.cn/" google-translate-base-url "http://translate.google.cn/translate\_a/single" google-translate-listen-url "https://translate.google.cn/translate\_tts" google-translate-default-target-language "zh-CN" google-translate-default-source-language "en"))
 
 ;; 工作区
 (use-package 
@@ -264,25 +258,29 @@
   (english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
   :hook ((Info-mode
 		  elfeed-show-mode
-		  eww-mode
 		  Man-mode
 		  Woman-mode
 		  help-mode) . english-teacher-follow-mode))
+
+;; 管理员模式编辑
 (use-package sudo-edit
   :ensure t)
 
+;; 用posframe在dired模式下显示文件内容
 (use-package dired-posframe
   :ensure t
   :custom
-  (dired-posframe-size-limit (* 10 1024 1024))
+  (dired-posframe-size-limit (* 100 1024 1024))
   :bind((:map dired-mode-map)
-		("C-*" . dired-posframe-show)))
-
+		("C-*" . dired-posframe-mode)))
+;; 更改窗格布局
 (use-package rotate
   :ensure t)
 
-(use-package netease-cloud-music
-  :load-path "~/.emacs.d/site-lisp/netease-cloud-music.el")
+;; 命令日志
+(use-package command-log-mode
+  :ensure t)
+
 (provide 'init-tools)
 
 

@@ -56,17 +56,16 @@
 ;; 各个语言的Debug工具
 (use-package dap-mode
   :ensure t
+  :functions dap-hydra/nil
   :diminish
-  :bind
-  (:map dap-mode-map
-		(("<f3>" . dap-debug)
-		 ("<f4>" . dap-continue)
-		 ("<f5>" . dap-next)
-		 ("<f6>" . dap-step-in)
-		 ("<f7>" . dap-step-out)
-		 ("<f8>" . dap-breakpoint-toggle))))
+  :bind (:map lsp-mode-map
+			  ("<f5>" . dap-debug)
+			  ("M-<f5>" . dap-hydra))
+  :hook ((after-init . dap-mode)
+		 (dap-mode . dap-ui-mode)
+		 (python-mode . (lambda () (require 'dap-python)))
+		 ((c-mode c++-mode) . (lambda () (require 'dap-lldb)))))
 
-(provide 'init-complete)
 
 ;; 美化company
 (use-package company-box 
