@@ -71,4 +71,10 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
     (setq url-proxy-services nil)
     (message "代理已关闭.")))
 
+
+(defun +evan/find-config-file-by-fzf ()
+  "在~/.emacs.d/中使用fzf查找文件"
+  (interactive)
+  (counsel-fzf nil "~/.emacs.d"))
+
 (provide '+config)

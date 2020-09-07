@@ -158,6 +158,7 @@
 [_f_] ^counsel-fzf^					[_d_] ^counsel-dired^	   
 [_r_] ^counsel-recentf^				[_m_] ^counsel-bookmark^ 
 [_b_] ^counsel-switch-buffer^		[_l_] ^counsel-linux-app^
+[_i_] ^find-config-file-by-fzf^
 [_w_] ^capture-word^
 "
   ("g" counsel-rg nil :color blue)
@@ -169,6 +170,7 @@
   ("m" counsel-bookmark nil :color blue)
   ("l" counsel-linux-app nil :color blue)
   ("w" evan/capture-word nil :color blue)
+  ("i" +evan/find-config-file-by-fzf :color blue)
   ("q" nil "QUIT" :color blue))
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()
