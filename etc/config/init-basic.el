@@ -80,6 +80,8 @@
 
 ;; 关闭自动调节行高
 (setq auto-window-vscroll nil)
+;; 关闭自动换行的功能
+(setq truncate-partial-width-windows t)
 
 ;; 创建新行的动作
 ;; 回车时创建新行并且对齐

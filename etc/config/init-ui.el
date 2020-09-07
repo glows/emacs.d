@@ -111,21 +111,23 @@
 ;; 竖线
 (use-package 
   page-break-lines 
-  :ensure t 
+  :ensure t
+  :hook (after-init . page-break-lines-mode)
   :config (turn-on-page-break-lines-mode))
 
 ;; 启动界面
 (use-package 
   dashboard 
   :ensure t 
-  :config (dashboard-setup-startup-hook)
+  :init
+  (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text") 
                                     (bookmarks . "book")))
   ;; 设置标题
   (setq dashboard-banner-logo-title
         "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
   ;; 设置banner
-  (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png") 
+  (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png")
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 

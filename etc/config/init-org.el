@@ -13,7 +13,7 @@
   (org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
                             ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
                             ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))
-                            ("[完成]" . (:foreground "white" :background "#566573 " :weight bold))
+                            ("[完成]" . (:foreground "black" :background "snow " :weight bold))
                             ("[取消]" . (:foreground "white" :background "#566573" :weight bold))
                             ("[BUG]" . (:foreground "white" :background "#E74C3C" :weight bold))
                             ("[新事件]" . (:foreground "white" :background "#D35400" :weight bold))
