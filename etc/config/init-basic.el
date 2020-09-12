@@ -164,6 +164,39 @@
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))
 
+
+;; (use-package fuz
+;;   :load-path "~/.emacs.d/site-lisp/fuz.el"
+;;   :init
+;;   (require 'fuz)
+;;   (unless (require 'fuz-core nil t)
+;; 	(fuz-build-and-load-dymod)))
+
+;; (use-package snails
+;;   :load-path "~/.emacs.d/site-lisp/snails"
+;;   :config
+;;   (setq snails-default-backends '(snails-backend-current-buffer
+;; 								  snails-backend-command
+;; 								  snails-backend-bookmark
+;; 								  snails-backend-buffer
+;; 								  snails-backend-rg
+;; 								  snails-backend-fd
+;; 								  snails-backend-eaf-browser-history
+;; 								  snails-backend-eaf-github-search
+;; 								  snails-backend-google-suggestion
+;; 								  )
+;; 		snails-prefix-backends '(("*" '(snails-backend-current-buffer))
+;; 								 (">" '(snails-backend-command))
+;; 								 ("@" '(snails-backend-bookmark))
+;; 								 ("#" '(snails-backend-buffer))
+;; 								 ("$" '(snails-backend-rg))
+;; 								 ("-" '(snails-backend-fd))
+;; 								 ("=" '(snails-backend-eaf-browser-history))
+;; 								 ("." '(snails-backend-eaf-github-search))
+;; 								 ("," '(snails-backend-google-suggestion)))
+;; 		snails-default-show-prefix-tips t
+;; 		snails-backend-eaf-browser-history-limit 10))
+
 ;; 强大的字符跳转工具
 (use-package avy 
   :ensure t

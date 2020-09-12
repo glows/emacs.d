@@ -9,7 +9,7 @@
 
 ;; CODE:
 
-(setq evan/font-name "Iosevka Semibold"
+(setq evan/font-name "Sarasa Mono Slab SC Semibold" ;
 	  evan/font-style "Regular"
 	  evan/font-size 22)
 

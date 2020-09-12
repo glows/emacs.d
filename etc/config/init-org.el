@@ -1,7 +1,7 @@
 (require 'org-capture)
 
 (use-package 
-  org 
+  org
   :ensure t
   ;; ('org-mode . 'toggle-truncate-lines)	 
   :bind
@@ -9,8 +9,9 @@
   ("C-c a" . 'org-agenda)
   :custom
   (org-todo-keywords '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
-                       (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
-  (org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
+                       (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))  
+  :config
+  (setq org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
                             ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
                             ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))
                             ("[完成]" . (:foreground "black" :background "snow " :weight bold))
@@ -20,7 +21,6 @@
                             ("[已知问题]" . (:foreground "white" :background "#17A589" :weight bold))
                             ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
                             ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
-  :config
   (defun evan/capture-word ()
 	(interactive)
 	(setq-local capture-word-item nil)
