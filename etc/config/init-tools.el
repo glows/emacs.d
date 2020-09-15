@@ -80,7 +80,7 @@
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
   telega
-  :ensure nil
+  :ensure t
   :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
@@ -111,7 +111,7 @@
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
   vterm
-  :ensure nil
+  :ensure t
   :defer 2 
   :bind (:map leader-key
               ("o t" . 'vterm)))
