@@ -76,8 +76,8 @@
                                                             ,(face-foreground
                                                               'font-lock-variable-name-face)))) graphic-only-plugins-setting)
 ;; 微软的python语言服务器-老牌稳定
-(use-package 
-  lsp-python-ms
+(use-package lsp-python-ms
+  :disabled
   :ensure t
   :hook (python-mode . (lambda () 
                          (require 'lsp-python-ms) 
@@ -87,7 +87,6 @@
 
 ;; 微软的python语言服务器-新版
 (use-package lsp-pyright
-  :disabled
   :ensure t
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)

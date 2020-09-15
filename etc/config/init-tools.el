@@ -262,6 +262,12 @@
 		  Woman-mode
 		  help-mode) . english-teacher-follow-mode))
 
+
+(use-package go-translate
+  :ensure t
+  :custom
+  (go-translate-base-url "https://translate.google.cn")
+  (go-translate-local-language "zh-CN"))
 ;; 管理员模式编辑
 (use-package sudo-edit
   :ensure t)

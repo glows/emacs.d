@@ -3,11 +3,11 @@
 ;;; 用户交互界面模块
 ;;;===========================================
 
-;; MODULE: USER INTERFACE 
+;; MODULE: USER INTERFACE
 
 ;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
 
-;; CODE:
+;;; Code:
 
 (setq evan/font-name "Sarasa Mono Slab SC Semibold" ;
 	  evan/font-style "Regular"
@@ -18,7 +18,7 @@
 ;; 设置光标样式
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
-(setq inhibit-startup-message nil)
+(setq inhibit-startup-message t)
 ;; 设置英文字体
 (push '(if (fontp (font-spec
 				   ;; :name "Fira Code Nerd Font"
@@ -27,26 +27,27 @@
 				   :style evan/font-style
 				   ;; :name "Sarasa Mono SC"
 				   ;; :style "Regular"
-				   :size evan/font-size)) 
-		   (set-face-attribute 'default nil 
+				   :size evan/font-size))
+		   (set-face-attribute 'default nil
 							   :font (font-spec
 									  :name evan/font-name
 									  :style evan/font-style
-									  :size evan/font-size)) 
+									  :size evan/font-size))
 		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
 
 ;; 切换buffer焦点时高亮动画
-(use-package
-  beacon
+(use-package beacon
   :ensure t
   :hook (after-init . beacon-mode))
 
+
+
 ;; 主题包
-;; (use-package 
-;;   doom-themes 
+;; (use-package
+;;   doom-themes
 ;;   :ensure t
 ;;   :defer
 ;;   ;; :config (load-theme 'doom-dracula t))
@@ -61,7 +62,10 @@
 ;;   :defer)
 
 (use-package modus-operandi-theme
-  :ensure t)
+  :ensure t
+  :disabled)
+
+(load-file "~/.emacs.d/themes/solo-jazz-theme.el")
 
 (use-package modus-vivendi-theme
   :ensure t)
@@ -76,7 +80,7 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . modus-operandi)
+  (setq circadian-themes '((:sunrise . solo-jazz)
 						   (:sunset . modus-vivendi)))
   (circadian-setup))
 
@@ -89,28 +93,28 @@
 
 (push '(progn
 		 ;; 图标支持
-		 (use-package 
-		   all-the-icons 
+		 (use-package
+		   all-the-icons
 		   :ensure t)
 		 ;; dired模式图标支持
-		 (use-package 
-		   all-the-icons-dired 
-		   :ensure t 
+		 (use-package
+		   all-the-icons-dired
+		   :ensure t
 		   :hook ('dired-mode . 'all-the-icons-dired-mode))
 		 ;; 表情符号
-		 (use-package 
+		 (use-package
 		   emojify
 		   :ensure t
 		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
 		   :hook telega-mode)
 		 ;; 浮动窗口支持
-		 (use-package 
-		   posframe 
+		 (use-package
+		   posframe
 		   :ensure t)) graphic-only-plugins-setting)
 
 ;; 竖线
-(use-package 
-  page-break-lines 
+(use-package
+  page-break-lines
   :ensure t
   :hook (after-init . page-break-lines-mode)
   :config (turn-on-page-break-lines-mode))
@@ -118,7 +122,7 @@
 ;; 启动界面
 (use-package 
   dashboard 
-  :ensure t 
+  :disabled
   :init
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text") 

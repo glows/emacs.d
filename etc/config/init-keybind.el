@@ -35,7 +35,6 @@
 (defhydra evan/hydra-music-menu (:color blue)
   "
 									^音乐^
-—————————————————————————————————————
 [_RET_] ^播放曲目	[_i_] ^一键播放^		[_x_] ^删除曲目(区域)^	[_d_] ^删除曲目(行内)^
 [_\__] ^撤回操作	[_SPC_] ^暂停/播放^		[_TAB_] ^收起专辑^		[_h_] ^回退10s^
 [_l_] ^前进10s		[_a_] ^加入列表^		[_n_] ^下一首^			[_p_] ^上一首^
@@ -60,7 +59,6 @@
 (defhydra evan/hydra-open-menu ()
   "
 							^启动点er啥^
-————————————————————————————————
 [_t_] ^vterm^
 "
   ("t" vterm nil :color blue)
@@ -69,7 +67,6 @@
 (defhydra evan/hydra-toggle-menu ()
   "
 				^开关^
-——————————————————
 [_T_] ^透明^	[_p_] ^代理^	[_f_] ^FlyCheck^
 "
   ("T" +evan/toggle-transparency nil)
@@ -80,7 +77,6 @@
 (defhydra evan/hydra-window-menu ()
   "
 							^窗口管理器^
-^—————————————————————————————————^
 [_0_] ^关闭窗格^			[_F_] ^全屏模式^		[_K_] ^↑+^		[_k_] ^go ↑^    
 [_1_] ^关闭其他窗格^		[_r_] ^旋转交换^		[_J_] ^↓+^		[_j_] ^go ↓^ 
 [_2_] ^新建窗格(垂直)^		[_s_] ^选择交换^		[_H_] ^←+^		[_h_] ^go ←^
@@ -107,7 +103,6 @@
 (defhydra evan/hydra-code-menu ()
   "
 				^代码^
-----------------------------------
 [_r_] ^quickrun^	[_s_] company-yasnippet
 "
   ("s" company-yasnippet nil :color blue)
@@ -152,7 +147,6 @@
 (defhydra evan/hydra-common-menu ()
   "
 						^常用^
-———————————————————————————
 [_g_] ^counsel-rg^					[_y_] ^counsel-yank-pop^
 [_f_] ^counsel-fzf^					[_d_] ^counsel-dired^	   
 [_r_] ^counsel-recentf^				[_m_] ^counsel-bookmark^ 
@@ -175,9 +169,9 @@
 (defhydra evan/hydra-main-menu ()
   "
 					^主菜单^
-————————————————————————
 [_b_] ^音乐^	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
 [_c_] ^代码^	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
+[_s_] ^Snails^
 "
   ("b" evan/hydra-music-menu/body nil :color blue)
   ("o" evan/hydra-open-menu/body nil :color blue)
@@ -187,6 +181,7 @@
   ("p" evan/hydra-project-menu/body nil :color blue)
   ("2" evan/hydra-common-menu/body nil :color blue)
   ("a" evan/hydra-app-menu/body nil :color blue)
+  ("s" snails nil :color blue)
   ("q" nil "QUIT" :color blue))
 
 (global-set-key (kbd "M-\\") #'evan/hydra-main-menu/body)

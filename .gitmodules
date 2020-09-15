@@ -16,3 +16,9 @@
 [submodule "site-lisp/insert-translated-name"]
 	path = site-lisp/insert-translated-name
 	url = https://github.com/manateelazycat/insert-translated-name
+[submodule "site-lisp/snails"]
+	path = site-lisp/snails
+	url = https://github.com/manateelazycat/snails
+[submodule "site-lisp/fuz.el"]
+	path = site-lisp/fuz.el
+	url = https://github.com/rustify-emacs/fuz.el
