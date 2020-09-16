@@ -22,3 +22,6 @@
 [submodule "site-lisp/fuz.el"]
 	path = site-lisp/fuz.el
 	url = https://github.com/rustify-emacs/fuz.el
+[submodule "site-lisp/valign"]
+	path = site-lisp/valign
+	url = https://github.com/casouri/valign

@@ -79,6 +79,9 @@
   :bind (:map leader-key
               ("p" . #'projectile-command-map)))
 
+(use-package ivy-fuz
+  :ensure t)
+
 ;;;###autoload
 (defun ivy-telega-chat-highlight (chat)
   (let ((unread (funcall (telega--tl-prop :unread_count) chat))

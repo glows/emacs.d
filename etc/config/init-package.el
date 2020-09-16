@@ -10,8 +10,5 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; (use-package straight
-;;   :load-path "~/.emacs.d/site-lisp/straight.el")
-
 (provide 'init-package)
  

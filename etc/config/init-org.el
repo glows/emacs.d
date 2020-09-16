@@ -1,5 +1,4 @@
 (require 'org-capture)
-
 (use-package 
   org
   :ensure t
@@ -75,7 +74,6 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t))))
-
 
 (set-face-attribute 'org-table nil :font (font-spec :name evan/font-name
                                                     :size evan/font-size

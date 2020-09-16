@@ -198,5 +198,12 @@
   :ensure t
   :hook (after-init . nyan-mode))
 
+;; 对齐表格
+(use-package valign
+  :load-path "~/.emacs.d/site-lisp/valign"
+  :hook ((org-mode markdown-mode) . valign-mode)
+  :config
+  (setq valign-fancy-bar nil))
+
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)
