@@ -18,7 +18,7 @@
 (require 'init-cc)
 (require 'init-blog)
 (require 'init-lua)
+(require 'init-emacs-lisp)
 (require 'init-scheme)
-
 (require 'init-graphic)
 (provide 'init-config)
