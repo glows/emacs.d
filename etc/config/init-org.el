@@ -6,20 +6,22 @@
   :bind
   ("C-c c" . 'org-capture)
   ("C-c a" . 'org-agenda)
+  ("M-H" . 'org-shiftmetaleft)
+  ("M-L" . 'org-shiftmetaright)
   :custom
   (org-todo-keywords '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
                        (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))  
   :config
   (setq org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
-                            ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
-                            ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))
-                            ("[完成]" . (:foreground "black" :background "snow " :weight bold))
-                            ("[取消]" . (:foreground "white" :background "#566573" :weight bold))
-                            ("[BUG]" . (:foreground "white" :background "#E74C3C" :weight bold))
-                            ("[新事件]" . (:foreground "white" :background "#D35400" :weight bold))
-                            ("[已知问题]" . (:foreground "white" :background "#17A589" :weight bold))
-                            ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
-                            ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
+								 ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
+								 ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))
+								 ("[完成]" . (:foreground "black" :background "snow " :weight bold))
+								 ("[取消]" . (:foreground "white" :background "#566573" :weight bold))
+								 ("[BUG]" . (:foreground "white" :background "#E74C3C" :weight bold))
+								 ("[新事件]" . (:foreground "white" :background "#D35400" :weight bold))
+								 ("[已知问题]" . (:foreground "white" :background "#17A589" :weight bold))
+								 ("[修改中]" . (:foreground "white" :background "#BB8FCE" :weight bold))
+								 ("[已修复]" . (:foreground "white" :background "#566573" :weight bold))))
   (defun evan/capture-word ()
 	(interactive)
 	(setq-local capture-word-item nil)
@@ -70,7 +72,7 @@
                                         "| %U | %(evan/capture-get-word 1) | %(evan/capture-get-word 2) | %(evan/capture-get-word 3) |"))
   (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
                                         "* %^{简介} %t %^g\n  %^L\n  %?\n"))
-;; 设置org-babel支持运行的代码
+  ;; 设置org-babel支持运行的代码
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t))))
