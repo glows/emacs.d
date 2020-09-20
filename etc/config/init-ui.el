@@ -28,12 +28,20 @@
 				   ;; :name "Sarasa Mono SC"
 				   ;; :style "Regular"
 				   :size evan/font-size))
-		   (set-face-attribute 'default nil
-							   :font (font-spec
-									  :name evan/font-name
-									  :style evan/font-style
-									  :size evan/font-size))
+		   (progn
+			 (set-face-attribute 'default nil
+								 :font (font-spec
+										:name evan/font-name
+										:style evan/font-style
+										:size evan/font-size))
+			 (set-fontset-font t ?中 (font-spec
+										:name evan/font-name
+										:style evan/font-style
+										:size evan/font-size)))
+		   
 		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
+
+
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -45,13 +53,11 @@
 
 
 
-;; 主题包
-;; (use-package
-;;   doom-themes
-;;   :ensure t
-;;   :defer
-;;   ;; :config (load-theme 'doom-dracula t))
-;;   )
+;; 主题包									
+(use-package
+  doom-themes
+  :ensure t
+  :defer)
 (use-package
   spacemacs-common
   :ensure spacemacs-theme
@@ -80,8 +86,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . spacemacs-light)
-						   (:sunset . spacemacs-dark)))
+  (setq circadian-themes '((:sunrise . doom-one-light)
+						   (:sunset . doom-one)))
   (circadian-setup))
 
 
