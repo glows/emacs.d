@@ -52,10 +52,10 @@
 ;;   :defer
 ;;   ;; :config (load-theme 'doom-dracula t))
 ;;   )
-;; (use-package
-;;   spacemacs-common
-;;   :ensure spacemacs-theme
-;;   :defer)
+(use-package
+  spacemacs-common
+  :ensure spacemacs-theme
+  :defer)
 
 ;; (use-package base16-theme
 ;;   :ensure t
@@ -80,8 +80,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . solo-jazz)
-						   (:sunset . modus-vivendi)))
+  (setq circadian-themes '((:sunrise . spacemacs-light)
+						   (:sunset . spacemacs-dark)))
   (circadian-setup))
 
 
