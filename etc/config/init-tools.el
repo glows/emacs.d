@@ -287,6 +287,12 @@
 (use-package command-log-mode
   :ensure t)
 
+;; 窗口布局恢复
+(use-package winner-mode
+  :bind (:map winner-mode-map
+			  ("C-c H" . 'winner-undo)
+			  ("C-c L" . 'winner-redo)))
+
 (provide 'init-tools)
 
 
