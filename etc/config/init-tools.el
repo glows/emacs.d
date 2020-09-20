@@ -105,7 +105,7 @@
                                                                                        :heigt 1.0 
                                                                                        :v-adjust -0.2 
                                                                                        :face all-the-icons-blue))) 
-  (telega-notifications-mode 1) 
+  (telega-notifications-mode t)
   (telega-mode-line-mode 1))
 
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启

@@ -88,4 +88,30 @@
   :custom
   (org-bullets-bullet-list '("☰" "☷" "✿" "☭")))
 
+;; (use-package org-protocol
+;;   :ensure t
+;;   :hook (org-mode . org-protocol))
+
+;; (use-package org-roam
+;;   :ensure t
+;;   :hook (after-init . org-roam-mode)
+;;   :custom
+;;   (org-roam-directory "~/Documents/org/roam")
+;;   :config
+
+;;   (require 'org-roam-protocol))
+
+
+;; (use-package org-roam-server
+;;   :ensure t
+;;   :hook (after-init . org-roam-server-mode)
+;;   :config
+;;   (setq org-roam-server-host "127.0.0.1"
+;; 		org-roam-server-port 9090
+;; 		org-roam-server-export-inline-images t
+;; 		org-roam-server-authenticate nil
+;; 		org-roam-server-network-label-truncate t
+;; 		org-roam-server-network-label-truncate-length 60
+;; 		org-roam-server-network-label-wrap-length 20))
+
 (provide 'init-org)
