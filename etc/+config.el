@@ -77,4 +77,17 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (interactive)
   (counsel-fzf nil "~/.emacs.d"))
 
+;; 调节屏幕亮度
+(defun +evan/set-backlight (&optional light-value)
+  (interactive "s请输入亮度(小数表示的百分比): ")
+  (let ((max-backlight (string-to-number (string-trim-right
+										  (shell-command-to-string
+										   "cat /sys/class/backlight/intel_backlight/max_brightness")))))
+	(when (and light-value (floatp (string-to-number light-value)))
+	  (shell-command
+	   (concat "echo "
+			   (format "%d" (* max-backlight (string-to-number light-value))) 
+			   " > /sys/class/backlight/intel_backlight/brightness")))))
+
+
 (provide '+config)
