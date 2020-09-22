@@ -42,7 +42,6 @@
 		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
 
 
-
 ;; 高亮当前行
 (global-hl-line-mode 1)
 
@@ -202,7 +201,10 @@
 ;; 彩虹猫进度条
 (use-package nyan-mode
   :ensure t
-  :hook (after-init . nyan-mode))
+  :hook (after-init . nyan-mode)
+  :config
+  (setq nyan-wavy-trail t
+		nyan-animate-nyancat t))
 
 ;; 对齐表格
 (use-package valign

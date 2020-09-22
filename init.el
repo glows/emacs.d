@@ -11,7 +11,8 @@
                              (makunbound 'file-name-handler-alist-original)
                              ;; (message "gc-cons-threshold and file-name-handler-alist restored")
                              (message
-                              "自动优化完毕!\t如果要关闭这条消息可以在~/.emacs.d/init.el里注释掉.")))
+                              ;; "自动优化完毕!\t如果要关闭这条消息可以在~/.emacs.d/init.el里注释掉."
+							  "如果感到无聊就试试按下 M-\ 2 c 吧!")))
 
 ;; 递归遍历加载路径
 (defun add-subdirs-to-load-path(dir) 

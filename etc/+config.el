@@ -89,5 +89,45 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
 			   (format "%d" (* max-backlight (string-to-number light-value))) 
 			   " > /sys/class/backlight/intel_backlight/brightness")))))
 
+;; 增加10%屏幕亮度
+(defun +evan/plus-backlight ()
+  (interactive)
+  (let* (
+		 ;; 最大亮度
+		 (max-backlight (string-to-number (string-trim-right
+										   (shell-command-to-string "cat /sys/class/backlight/intel_backlight/max_brightness"))))
+		 ;; 当前亮度
+		 (current-backlight (string-to-number (string-trim-right
+											   (shell-command-to-string "cat /sys/class/backlight/intel_backlight/brightness"))))
+		 ;; 增加后的亮度
+		 (add-backlight (+ current-backlight (* max-backlight 0.1))))
+	(if (< add-backlight max-backlight)
+		(progn (shell-command
+				(concat "echo "
+						(format "%d" add-backlight) 
+						" > /sys/class/backlight/intel_backlight/brightness"))
+			   (message "亮度+10%")) 
+	  (message "亮度MAX!!"))))
+
+;; 减少屏幕亮度
+(defun +evan/less-backlight ()
+  (interactive)
+  (let* (
+		 ;; 最大亮度
+		 (max-backlight (string-to-number (string-trim-right
+										   (shell-command-to-string "cat /sys/class/backlight/intel_backlight/max_brightness"))))
+		 ;; 当前亮度
+		 (current-backlight (string-to-number (string-trim-right
+											   (shell-command-to-string "cat /sys/class/backlight/intel_backlight/brightness"))))
+		 ;; 减少后的亮度
+		 (less-backlight (- current-backlight (* max-backlight 0.1))))
+	(if (> less-backlight (* max-backlight 0.1) )
+		(progn (shell-command
+				(concat "echo "
+						(format "%d" less-backlight)
+						" > /sys/class/backlight/intel_backlight/brightness"))
+			   (message "亮度-10%")) 
+	  (message "亮度Min!!"))))
+
 
 (provide '+config)

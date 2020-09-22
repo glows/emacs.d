@@ -151,8 +151,9 @@
 [_f_] ^counsel-fzf^					[_d_] ^counsel-dired^	   
 [_r_] ^counsel-recentf^				[_m_] ^counsel-bookmark^ 
 [_b_] ^counsel-switch-buffer^		[_l_] ^counsel-linux-app^
-[_i_] ^find-config-file-by-fzf^
-[_w_] ^capture-word^
+[_i_] ^find-config-file-by-fzf^     [_=_] ^plus-backlight^
+[_w_] ^capture-word^				[_-_] ^less-backlight^
+[_c_] ^nyan-strat-music^			[_s_] ^nyan-stop-music^
 "
   ("g" counsel-rg nil :color blue)
   ("f" counsel-fzf nil :color blue)
@@ -164,6 +165,10 @@
   ("l" counsel-linux-app nil :color blue)
   ("w" evan/capture-word nil :color blue)
   ("i" +evan/find-config-file-by-fzf :color blue)
+  ("-" +evan/less-backlight :color red)
+  ("=" +evan/plus-backlight :color red)
+  ("c" nyan-start-music :color blue)
+  ("s" nyan-stop-music :colro blue)
   ("q" nil "QUIT" :color blue))
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()
