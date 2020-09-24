@@ -260,7 +260,8 @@
 		  elfeed-show-mode
 		  Man-mode
 		  Woman-mode
-		  help-mode) . english-teacher-follow-mode))
+		  ;; help-mode
+		  ) . english-teacher-follow-mode))
 
 
 (use-package go-translate
