@@ -204,10 +204,11 @@
   :hook (after-init . nyan-mode)
   :config
   (setq nyan-wavy-trail t
-		nyan-animate-nyancat t))
+		nyan-animate-nyancat nil))
 
 ;; 对齐表格
 (use-package valign
+  :disabled
   :load-path "~/.emacs.d/site-lisp/valign"
   :hook ((org-mode markdown-mode) . valign-mode)
   :config
