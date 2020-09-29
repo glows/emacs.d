@@ -83,7 +83,7 @@
 [_3_] ^新建窗格(水平)^		[_b_] ^平均铺开^		[_L_] ^→+^		[_l_] ^go →^
 "
   ("0" delete-window nil)
-  ("1" delete-other-window nil :color blue)
+  ("1" delete-other-windows nil :color blue)
   ("2" split-window-vertically nil)
   ("3" split-window-horizontally nil)
   ("F" toggle-frame-fullscreen nil :color blue)
