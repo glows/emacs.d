@@ -125,9 +125,9 @@
   :config (turn-on-page-break-lines-mode))
 
 ;; 启动界面
-(use-package 
-  dashboard 
+(use-package
   :disabled
+  dashboard 
   :init
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text") 
