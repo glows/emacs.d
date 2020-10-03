@@ -116,4 +116,26 @@
 ;; 		org-roam-server-network-label-truncate-length 60
 ;; 		org-roam-server-network-label-wrap-length 20))
 
+(use-package gkroam
+  :ensure t
+  :init
+  (setq gkroam-root-dir "~/Documents/org/"
+		gkroam-window-margin 4
+		org-startup-folded nil)
+  :bind
+  (("C-c r I" . gkroam-index)
+   ("C-c r d" . gkroam-daily)
+   ("C-c r f" . gkroam-find)
+   ("C-c r i" . gkroam-insert)
+   ("C-c r c" . gkroam-capture)
+   ("C-c r e" . gkroam-link-edit)
+   ("C-c r n" . gkroam-smart-new)
+   ("C-c r b" . gkroam-toggle-beautify)
+   ("C-c r t" . gkroam-toggle-brackets)
+   ("C-c r g" . gkroam-update)
+   ("C-c r G" . gkroam-update-all))
+  :config
+  ;; when this minor mode is on, show and hide brackets dynamically.
+  (gkroam-dynamic-brackets-mode -1))
+
 (provide 'init-org)

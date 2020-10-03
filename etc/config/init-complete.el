@@ -15,7 +15,7 @@
 (use-package company 
   :defer 2 
   :hook (after-init . global-company-mode) 
-  :init (setq company-tooltip-align-annotations t company-idle-delay 0 company-echo-delay 0
+  :init (setq company-tooltip-align-annotations t company-idle-delay 0.1 company-echo-delay 0
               company-minimum-prefix-length 2 company-require-match nil company-dabbrev-ignore-case
               nil company-dabbrev-downcase nil company-show-numbers t) 
   :config 

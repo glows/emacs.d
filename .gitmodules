@@ -25,3 +25,6 @@
 [submodule "site-lisp/valign"]
 	path = site-lisp/valign
 	url = https://github.com/casouri/valign
+[submodule "site-lisp/awesome-tray"]
+	path = site-lisp/awesome-tray
+	url = https://github.com/manateelazycat/awesome-tray

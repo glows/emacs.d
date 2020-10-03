@@ -294,6 +294,11 @@
 			  ("C-c H" . 'winner-undo)
 			  ("C-c L" . 'winner-redo)))
 
+(use-package figlet
+  :ensure t
+  :config
+  (setq figlet-default-font ))
+
 (provide 'init-tools)
 
 

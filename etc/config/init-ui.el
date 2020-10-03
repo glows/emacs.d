@@ -161,6 +161,12 @@
                                            (:family evan/font-name
                                                     :style evan/font-size
                                                     :height 125))))))
+
+(use-package spaceline
+  :ensure t
+  :config
+  (spaceline-spacemacs-theme 1))
+
 ;; 彩虹括号
 (use-package 
   rainbow-delimiters 
@@ -213,6 +219,11 @@
   :hook ((org-mode markdown-mode) . valign-mode)
   :config
   (setq valign-fancy-bar nil))
+
+(use-package awesome-tray
+  :disabled
+  :load-path "~/.emacs.d/site-lisp/awesome-tray"
+  :hook (after-init . awesome-tray-mode))
 
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)
