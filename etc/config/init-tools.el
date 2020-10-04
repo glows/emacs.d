@@ -294,12 +294,10 @@
 			  ("C-c H" . 'winner-undo)
 			  ("C-c L" . 'winner-redo)))
 
+;; ASCII艺术字
 (use-package figlet
   :ensure t
   :config
-  (setq figlet-default-font ))
+  (setq figlet-default-font "standard"))
 
 (provide 'init-tools)
-
-
-
