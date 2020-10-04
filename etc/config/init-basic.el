@@ -158,8 +158,15 @@
   :config
   ;; 默认的 rg 配置
   ;; (setq counsel-rg-base-command "rg -M 240 --with-filename --no-heading --line-number --color never %s")
-  (setq counsel-rg-base-command (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s" "-g" "!package-config.org" "-g" "!site-lisp"))
-  (setq counsel-fzf-cmd "fd --exclude={site-lisp,elpa/,etc/snippets} --type f | fzf -f \"%s\" --algo=v1")
+  (setq counsel-rg-base-command (list "rg"
+									  "-M" "240"
+									  "--with-filename" "--no-heading" "--line-number" "--color"
+									  "never" "%s"
+									  "-g" "!package-config.org"
+									  "-g" "!site-lisp"
+									  "-g" "!doc"
+									  "-g" "!themes"))
+  (setq counsel-fzf-cmd "fd --exclude={site-lisp,elpa/,etc/snippets,themes} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))
@@ -232,5 +239,13 @@
   :ensure t
   :disabled
   :hook ('prog-mode . 'linum-relative-mode))
+
+;; 更好的显示行号
+(use-package nlinum
+  :ensure t
+  :hook (after-init . global-nlinum-mode))
+
+;; 默认目录为~/.emacs.d/
+(cd "~/.emacs.d/")
 
 (provide 'init-basic)
