@@ -43,6 +43,9 @@
 ;;   (+evan/toggle-transparency) 
 ;;   (message "透明以开启，想要关闭可以调用命令(+evan/toggle-transparency)"))
 
+;; 全屏
+(toggle-frame-fullscreen)
+
 (if (graphic-p) 
     (message "检测到当前环境为图形环境，可以正常使用。")
   (message "检测到当前环境为字符环境，部分插件未启用。"))
@@ -71,7 +74,7 @@
  '(ccls-executable "/usr/bin/ccls" t)
  '(ccls-sem-highlight-method 'font-lock t)
  '(custom-safe-themes
-   '("2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" default))
+   '("58f68812adb97601734ba811f50669cb0b1d7a4301c20821524bee482079ebab" "de2a4aedfee6a8644cd74dc15de228eff96e9f9d081f56161c4fac6b8d2feb15" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "f2927d7d87e8207fa9a0a003c0f222d45c948845de162c885bf6ad2a255babfd" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" default))
  '(default-input-method "rime")
  '(doom-modeline-mode t)
  '(eaf-find-alternate-file-in-dired t t)

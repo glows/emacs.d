@@ -65,6 +65,7 @@
 		 ;; 美化
 		 (use-package 
 		   ivy-posframe
+		   :disabled
 		   :ensure t 
 		   :init (ivy-posframe-mode 1) 
 		   :custom (ivy-posframe-parameters '((left-fringe . 8) 

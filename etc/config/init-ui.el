@@ -67,10 +67,9 @@
 ;;   :defer)
 
 (use-package modus-operandi-theme
-  :ensure t
-  :disabled)
+  :ensure t)
 
-(load-file "~/.emacs.d/themes/solo-jazz-theme.el")
+ ;; (load-file "~/.emacs.d/themes/solo-jazz-theme.el")
 
 (use-package modus-vivendi-theme
   :ensure t)
@@ -85,8 +84,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-one-light)
-						   (:sunset . doom-one)))
+  (setq circadian-themes '((:sunrise . modus-operandi)
+						   (:sunset . modus-vivendi)))
   (circadian-setup))
 
 
