@@ -164,7 +164,7 @@
 (use-package spaceline
   :ensure t
   :config
-  (spaceline-spacemacs-theme 1))
+  (spaceline-emacs-theme))
 
 ;; 彩虹括号
 (use-package 
