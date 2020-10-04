@@ -6,6 +6,7 @@
   [[file:var/banner/EmacsPreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
   具体配置请看/etc下的配置文件
+  **请直接Clone用Emacs查看此自述文件，否则会出现格式错乱等问题**
 * 如何安装
 ** 依赖
     - Git
@@ -62,8 +63,8 @@
 	+ config/ :: 主要模块集合
 	+ extensions/ :: 对特殊插件的扩展集合
 	+ snippets/ :: 代码片段集合，可扩展
-	+ \+autoload.el :: 需要自动加载的自定义函数
-	+ \+config.el :: 简单的自定义函数
+	+ +autoload.el :: 需要自动加载的自定义函数
+	+ +config.el :: 简单的自定义函数
 	+ init-config.el :: 模块管理
   - site-lisp/ :: 第三方包(插件源内没有的)
   - themes/ :: 可选主题(插件源内没有的)
