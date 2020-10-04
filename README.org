@@ -56,6 +56,22 @@
    - *~/Documents/org/capture/word.org* :: 记录生词
 ** telega的安装方式
    telega是emacs下的一个telegram客户端，你首先得编译tdlib，才能使用telega，tdlib的安装方式可以在这里找到: [[https://github.com/tdlib/td][tdlib 主页]]
+* 目录结构
+  - doc/ :: 文档
+  - etc/ :: 配置文件集合
+	+ config/ :: 主要模块集合
+	+ extensions/ :: 对特殊插件的扩展集合
+	+ snippets/ :: 代码片段集合，可扩展
+	+ +autoload.el :: 需要自动加载的自定义函数
+	+ +config.el :: 简单的自定义函数
+	+ init-config.el :: 模块管理
+  - site-lisp/ :: 第三方包(插件源内没有的)
+  - themes/ :: 可选主题(插件源内没有的)
+  - init.el :: Emacs第一个加载的文件
+  - package-config.org :: 过时的org形式的Emacs配置文档
+  - README.org :: 自述文件
+  - var/ :: 插件的缓存文件及杂项
+
 * 常见问题
 ** 暂时没有！欢迎提交Issue或在QQ群讨论.
 * 其他
