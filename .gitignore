@@ -5,6 +5,7 @@ url/
 elpa/*
 .cache/
 doc/
+!doc/emacs-document
 var/*
 !/var/banner/
 # site-lisp/
