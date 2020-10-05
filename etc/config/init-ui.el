@@ -86,7 +86,11 @@
   ;; sunrise 白天用的主题 sunset 晚上用的主题
   (setq circadian-themes '((:sunrise . modus-operandi)
 						   (:sunset . modus-vivendi)))
-  (circadian-setup))
+  (circadian-setup)
+  ;; 解决切换主题spaceline色块显示问题
+  (add-hook 'circadian-after-load-theme-hook
+			#'(lambda (theme)
+				(spaceline-emacs-theme))))
 
 
 ;; 根据时间切换高亮当前行颜色
