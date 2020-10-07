@@ -1,9 +1,9 @@
 #+STARTUP: overview
 * 简介
   *黑暗主题*
-  [[file:var/banner/EmacsPreviewDark.png]]
+a  [[file:var/banner/PreviewDark.png]]
   *明亮主题*
-  [[file:var/banner/EmacsPreviewLight.png]]
+  [[file:var/banner/PreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
   具体配置请看/etc下的配置文件
   **请直接Clone用Emacs查看此自述文件，否则会出现格式错乱等问题**
