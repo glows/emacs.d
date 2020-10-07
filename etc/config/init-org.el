@@ -57,9 +57,9 @@
   (add-to-list 'org-capture-templates
                '("t" "任务清单"))
   (add-to-list 'org-capture-templates '("tw" "工作任务" entry (file+headline "~/Documents/org/capture/task.org" "Work")
-                                        "* [待办] %^{任务名} - %U\n  %a\n  %?" :clock-in t :clock-keep t))
+                                        "* [待办] %^{任务名} - %U\n %?" :clock-in t :clock-keep t))
   (add-to-list 'org-capture-templates '("ts" "学习任务" entry (file+headline "~/Documents/org/capture/task.org" "Study")
-                                        "* [学习] %^{学习项目} - %U\n  %a\n  %?" :clock-in t :clock-keep t))
+                                        "* [学习] %^{学习项目} - %U\n %?" :clock-in t :clock-keep t))
   (add-to-list 'org-capture-templates '("j" "我的日志" entry (file+headline"~/Documents/site/org/diary.org" "日志")
                                         "* %U - %^{标题}\n  %?"))
   (add-to-list 'org-capture-templates '("i" "我的闪念" entry (file+headline "~/Documents/site/org/idea.org" "闪念")
