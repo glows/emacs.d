@@ -263,12 +263,13 @@
 		  ;; help-mode
 		  ) . english-teacher-follow-mode))
 
-
+;; google翻译工具
 (use-package go-translate
   :ensure t
   :custom
   (go-translate-base-url "https://translate.google.cn")
   (go-translate-local-language "zh-CN"))
+
 ;; 管理员模式编辑
 (use-package sudo-edit
   :ensure t)
@@ -300,4 +301,11 @@
   :config
   (setq figlet-default-font "standard"))
 
+;; 写作模式，让你专注与写作状态
+(use-package writeroom-mode
+  :ensure t
+  :hook (writeroom-mode . (lambda () (progn
+									   (nlinum-mode -1)
+									   (git-gutter-mode -1)
+									   (toggle-truncate-lines -1)))))
 (provide 'init-tools)

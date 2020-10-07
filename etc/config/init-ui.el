@@ -129,8 +129,9 @@
 
 ;; 启动界面
 (use-package
+  dashboard
   :disabled
-  dashboard 
+  :ensure t
   :init
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text") 
