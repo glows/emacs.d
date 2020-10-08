@@ -112,14 +112,12 @@
 (use-package 
   vterm
   :ensure t
-  :defer 2 
   :bind (:map leader-key
               ("o t" . 'vterm)))
 
 ;; 有道词典，非常有用
 (use-package 
   youdao-dictionary 
-  :defer 2 
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
@@ -308,4 +306,5 @@
 									   (nlinum-mode -1)
 									   (git-gutter-mode -1)
 									   (toggle-truncate-lines -1)))))
+
 (provide 'init-tools)

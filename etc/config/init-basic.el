@@ -129,6 +129,26 @@
      '(aw-leading-char-face
        ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta")))))))
 
+;; 如果不喜欢ivy可以用这个包替换
+(use-package selectrum
+  :disabled
+  :ensure t
+  :config
+  (selectrum-mode +1)
+  (use-package selectrum-prescient
+	:ensure t
+	:disabled
+	:config
+	(prescient-persist-mode +1)
+	(selectrum-prescient-mode +1)))
+
+;; 如果不喜欢swiper可以用这个包替换
+(use-package ctrlf
+  :ensure t
+  :disabled
+  :config
+  (ctrlf-mode +1))
+
 ;; 增强了搜索功能
 (use-package swiper
   :bind

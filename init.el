@@ -40,10 +40,10 @@
 
 (require 'init-config)
 ;; 透明效果
-;; (when (graphic-p) 
-;;   (+evan/toggle-transparency) 
-;;   (+evan/toggle-transparency) 
-;;   (message "透明以开启，想要关闭可以调用命令(+evan/toggle-transparency)"))
+(when (graphic-p) 
+  (+evan/toggle-transparency) 
+  (+evan/toggle-transparency) 
+  (message "透明以开启，想要关闭可以调用命令(+evan/toggle-transparency)"))
 
 (if (graphic-p) 
     (message "检测到当前环境为图形环境，可以正常使用。")
@@ -69,9 +69,9 @@
  '(bongo-mode-line-icon-color "")
  '(bongo-mode-line-icon-size 10 t)
  '(browse-url-browser-function 'eaf-open-browser)
- '(ccls-enable-skipped-ranges nil)
- '(ccls-executable "/usr/bin/ccls")
- '(ccls-sem-highlight-method 'font-lock)
+ '(ccls-enable-skipped-ranges nil t)
+ '(ccls-executable "/usr/bin/ccls" t)
+ '(ccls-sem-highlight-method 'font-lock t)
  '(custom-safe-themes
    '("7ea491e912d419e6d4be9a339876293fff5c8d13f6e84e9f75388063b5f794d6" "58f68812adb97601734ba811f50669cb0b1d7a4301c20821524bee482079ebab" "de2a4aedfee6a8644cd74dc15de228eff96e9f9d081f56161c4fac6b8d2feb15" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "f2927d7d87e8207fa9a0a003c0f222d45c948845de162c885bf6ad2a255babfd" "2f1518e906a8b60fac943d02ad415f1d8b3933a5a7f75e307e6e9a26ef5bf570" default))
  '(default-input-method "rime")
@@ -121,7 +121,7 @@
  '(lsp-prefer-flymake nil t)
  '(lsp-python-ms-executable
    "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer")
- '(lsp-ui-doc-delay 1)
+ '(lsp-ui-doc-delay 1 t)
  '(nrepl-message-colors
    '("#00afef" "#778ca3" "#009c9f" "#778ca3" "#005cc5" "#fa1090" "#009c9f" "#778ca3"))
  '(objed-cursor-color "#ff5555")
@@ -148,7 +148,7 @@
    '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
 	 (sequence "[BUG](b!/@)" "[新事件](i@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))
  '(package-selected-packages
-   '(olivetti darkroom nlinum-mode nlinum git-gutter-fringe figlet gkroam spaceline-all-the-icons eshell-git-prompt peep-dired evil emms transwin memory-usage winner-mode ranger spacemacs-thems spacemacs-theme org-protocol org-protocal org-roam-server org-roam lab-themes lispy neotree valign\.el valign ivy-fuz better-scroll elpy go-translate command-log-mode hide-mode-line modues-vivendi-theme modus-operandi-theme modus-vivendi-theme dired-rainbow dired-posframe geiser lsp-pyright lua-mode paredit elisp-slime-nav rust-mode python-black vscdark-theme vscode-dark-plus-theme mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
+   '(ctrlf selectrum-prescient selectrum dir-treeview olivetti darkroom nlinum-mode nlinum git-gutter-fringe figlet gkroam spaceline-all-the-icons eshell-git-prompt peep-dired evil emms transwin memory-usage winner-mode ranger spacemacs-thems spacemacs-theme org-protocol org-protocal org-roam-server org-roam lab-themes lispy neotree valign\.el valign ivy-fuz better-scroll elpy go-translate command-log-mode hide-mode-line modues-vivendi-theme modus-operandi-theme modus-vivendi-theme dired-rainbow dired-posframe geiser lsp-pyright lua-mode paredit elisp-slime-nav rust-mode python-black vscdark-theme vscode-dark-plus-theme mu4e srcery-theme use-package-el-get emacsql-mysql grip-mode sdcv bing-dict writeroom-mode green-is-the-new-black-theme green-phosphor-theme green-screen-theme organic-green-theme lsp-mode modern-cpp-font-lock ccls simple-httpd ox-hugo indent-guide beacon markdown-mode+ markdown dashboard youdao-dictionary yasnippet-snippets yaml-mode xml-format xml+ which-key web-mode w3m vterm use-package-hydra undo-tree try treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired toc-org telega sudo-edit snazzy-theme smartparens rotate rime rainbow-delimiters quickrun prettier-js perspeen pdf-tools page-break-lines ox-reveal org-bullets nyx-theme major-mode-hydra lsp-ui lsp-python-ms lsp-java live-py-mode linum-relative jsonrpc json-rpc-server json-rpc js2-mode ivy-posframe ivy-hydra info-colors iceberg-theme hungry-delete htmlize howdoyou hemera-theme google-translate general flycheck-posframe flycheck-pos-tip flycheck-popup-tip esup emojify emmet-mode elisp-format doom dired-icon dired-hacks-utils dash-docs dap-mode dakrone-light-theme counsel-projectile company-tabnine company-box circadian bongo benchmark-init auto-complete amx all-the-icons-ivy-rich all-the-icons-ivy all-the-icons-dired ag))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(read-process-output-max 1048576 t)
  '(rustic-ansi-faces

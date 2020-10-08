@@ -118,7 +118,9 @@
 		 ;; 浮动窗口支持
 		 (use-package
 		   posframe
-		   :ensure t)) graphic-only-plugins-setting)
+		   :ensure t
+		   :custom
+		   (posframe-mouse-banish nil))) graphic-only-plugins-setting)
 
 ;; 竖线
 (use-package
