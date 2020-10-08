@@ -226,10 +226,14 @@
   :config
   (setq valign-fancy-bar nil))
 
+;; 懒猫的超简洁modeline
 (use-package awesome-tray
   :disabled
   :load-path "~/.emacs.d/site-lisp/awesome-tray"
   :hook (after-init . awesome-tray-mode))
-
+;; tab-bar
+(use-package tab-bar
+  :config
+  (setq tab-bar-tab-name-truncated-max 8))
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

@@ -170,13 +170,21 @@
   ("c" nyan-start-music :color blue)
   ("s" nyan-stop-music :colro blue)
   ("q" nil "QUIT" :color blue))
+(defhydra evan/hydra-tab-bar-menu (:color blue)
+  ""
+  ("n" tab-bar-new-tab "new bar")
+  ("x" tab-bar-close-tab "close bar")
+  ("r" tab-bar-rename "rename bar")
+  ("b" tab-bar-switch-to-tab "switch bar")
+  ("l" tab-bar-switch-to-next-tab "next bar" :color red)
+  ("h" tab-bar-switch-to-prev-tab "prev bar" :color red))
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()
   "
 					^主菜单^
 [_b_] ^音乐^	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
 [_c_] ^代码^	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
-[_s_] ^Snails^
+[_s_] ^Snails^	[_T_] ^Tab-Bar^
 "
   ("b" evan/hydra-music-menu/body nil :color blue)
   ("o" evan/hydra-open-menu/body nil :color blue)
@@ -187,6 +195,7 @@
   ("2" evan/hydra-common-menu/body nil :color blue)
   ("a" evan/hydra-app-menu/body nil :color blue)
   ("s" snails nil :color blue)
+  ("T" evan/hydra-tab-bar-menu/body nil :color blue)
   ("q" nil "QUIT" :color blue))
 
 (global-set-key (kbd "M-\\") #'evan/hydra-main-menu/body)

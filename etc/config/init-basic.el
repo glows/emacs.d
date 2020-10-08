@@ -262,6 +262,7 @@
 
 ;; 更好的显示行号
 (use-package nlinum
+  :disabled
   :ensure t
   :hook (after-init . global-nlinum-mode))
 
