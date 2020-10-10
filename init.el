@@ -9,7 +9,7 @@
 ;; 性能测试
 ;; (load-file "~/.emacs.d/site-lisp/benchmark-init/benchmark.el")
 (setq gc-cons-threshold-original gc-cons-threshold)
-(setq gc-cons-threshold (* 1024 1024 100))
+(setq gc-cons-threshold (* 1024 1024 1000))
 (setq file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (run-with-idle-timer 5 nil (lambda () 

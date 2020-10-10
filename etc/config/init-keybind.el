@@ -154,6 +154,7 @@
 [_i_] ^find-config-file-by-fzf^     [_=_] ^plus-backlight^
 [_w_] ^capture-word^				[_-_] ^less-backlight^
 [_c_] ^nyan-strat-music^			[_s_] ^nyan-stop-music^
+[_1_] ^alpha-add^					[_2_] ^alpha-less^
 "
   ("g" counsel-rg nil :color blue)
   ("f" counsel-fzf nil :color blue)
@@ -169,6 +170,8 @@
   ("=" +evan/plus-backlight :color red)
   ("c" nyan-start-music :color blue)
   ("s" nyan-stop-music :colro blue)
+  ("1" +evan/plus-alpha nil :color red)
+  ("2" +evan/less-alpha nil :color red)
   ("q" nil "QUIT" :color blue))
 (defhydra evan/hydra-tab-bar-menu (:color blue)
   ""

@@ -129,5 +129,14 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
 			   (message "亮度-10%")) 
 	  (message "亮度Min!!"))))
 
+;; 增加透明度
+(defun +evan/less-alpha ()
+  (interactive)
+  (sanityinc/adjust-opacity nil -2))
+
+;; 减少透明度
+(defun +evan/plus-alpha ()
+  (interactive)
+  (sanityinc/adjust-opacity nil 2))
 
 (provide '+config)
