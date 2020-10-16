@@ -1,6 +1,7 @@
 (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 		   (use-package 
 			 eaf
+			 :defer 0
 			 :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
 			 :custom (eaf-find-alternate-file-in-dired t)
 			 (eaf-proxy-type "socks5")
@@ -67,7 +68,7 @@
               ))
 ;; 括号匹配
 (use-package 
-  smartparens 
+  smartparens
   :ensure t 
   :hook ('prog-mode . 'smartparens-global-mode))
 
@@ -80,15 +81,14 @@
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
   telega
+  :defer 2
   :ensure t
   :commands telega 
   :init (setq telega-proxies 
               '((:server "localhost" 
                          :port 1088
                          :enable t 
-                         :type (:@type "proxyTypeSocks5"
-                                       )
-                         ))) 
+                         :type (:@type "proxyTypeSocks5")))) 
   (setq telega-chat-fill-column 65) 
   (setq telega-emoji-use-images nil) 
   :config
@@ -111,13 +111,15 @@
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
   vterm
+  :defer 2
   :ensure t
   :bind (:map leader-key
               ("o t" . 'vterm)))
 
 ;; 有道词典，非常有用
 (use-package 
-  youdao-dictionary 
+  youdao-dictionary
+  :defer 2
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
@@ -131,7 +133,7 @@
 (use-package 
   bongo
   :ensure t
-  ;; :hook (after-init . bongo)
+  :hook (after-init-hook . bongo)
   :custom
   (bongo-mode-line-icon-size 10)
   :config
@@ -139,15 +141,15 @@
   (setq bongo-mode-line-indicator-mode nil)
   (setq bongo-global-lastfm-mode nil)
   (defun bongo-init () 
-            (interactive) 
-            (let ((buffer (current-buffer))) 
-              (bongo) 
-              (setq bongo-insert-whole-directory-trees "ask") 
-              (bongo-insert-file "~/Music") 
-              (bongo-insert-enqueue-region (point-min) 
-                                           (point-max)) 
-              (bongo-play-random) 
-              (switch-to-buffer buffer)))
+    (interactive) 
+    (let ((buffer (current-buffer))) 
+      (bongo) 
+      (setq bongo-insert-whole-directory-trees "ask") 
+      (bongo-insert-file "~/Music") 
+      (bongo-insert-enqueue-region (point-min) 
+                                   (point-max)) 
+      (bongo-play-random) 
+      (switch-to-buffer buffer)))
   :bind (:map leader-key
               ("b RET" . 'bongo-dwim) 
               ("b i" . 'bongo-init) 
@@ -177,7 +179,8 @@
 
 ;; 窗口管理器
 (use-package 
-  windmove 
+  windmove
+  :defer 0
   :ensure t 
   :init (windmove-default-keybindings) 
   :config 
@@ -199,7 +202,7 @@
 (use-package 
   hideshow 
   :ensure t 
-  :diminish hs-minor-mode 
+  :diminish hs-minor-mode
   :bind (:map prog-mode-map
               ("C-c TAB" . hs-toggle-hiding) 
               ("C-c p +" . hs-show-all)
@@ -214,7 +217,7 @@
 ;; 工作区
 (use-package 
   perspeen
-  :diminish 
+  :defer 2
   :ensure t 
   :init
   ;; (setq perspeen-use-tab t)
@@ -244,7 +247,7 @@
 
 ;; emacs内置网页浏览器
 (use-package 
-  eww 
+  eww
   :ensure t 
   :custom (eww-search-prefix "https://google.com/search?q="))
 

@@ -66,7 +66,7 @@
 (set-keyboard-coding-system  'utf-8)    ; pretty
 (set-selection-coding-system 'utf-8)    ; please
 (prefer-coding-system        'utf-8)    ; with sugar on top
-(setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+(setq default-process-coding-system '(utf-8 . utf-8))
 
 ;; 更友好及平滑的滚动
 (setq scroll-step 2

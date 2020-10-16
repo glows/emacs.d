@@ -35,46 +35,47 @@
   ;; 用GUI tooltips来显示检查到的错误
   (push '(progn
 		   (use-package 
-      flycheck-posframe 
-      :ensure t 
-      :custom-face (flycheck-posframe-border-face ((t 
-                                                    (:inherit default)))) 
-      :hook (flycheck-mode . flycheck-posframe-mode) 
-      :init (setq flycheck-posframe-border-width 1 flycheck-posframe-inhibit-functions '((lambda 
-                                                                                           (&rest 
-                                                                                            _) 
-                                                                                           (bound-and-true-p
-                                                                                            company-backend))))) 
-    (use-package 
-      flycheck-pos-tip 
-      :ensure t 
-      :defines flycheck-pos-tip-timeout 
-      :hook (global-flycheck-mode . flycheck-pos-tip-mode) 
-      :config (setq flycheck-pos-tip-timeout 30)) 
-    (use-package 
-      flycheck-popup-tip 
-      :ensure t 
-      :hook (flycheck-mode . flycheck-popup-tip-mode))) graphic-only-plugins-setting))
+			 flycheck-posframe 
+			 :ensure t 
+			 :custom-face (flycheck-posframe-border-face ((t 
+														   (:inherit default)))) 
+			 :hook (flycheck-mode . flycheck-posframe-mode) 
+			 :init (setq flycheck-posframe-border-width 1 flycheck-posframe-inhibit-functions '((lambda 
+																								  (&rest 
+																								   _) 
+																								  (bound-and-true-p
+																								   company-backend))))) 
+		   (use-package 
+			 flycheck-pos-tip 
+			 :ensure t 
+			 :defines flycheck-pos-tip-timeout 
+			 :hook (global-flycheck-mode . flycheck-pos-tip-mode) 
+			 :config (setq flycheck-pos-tip-timeout 30)) 
+		   (use-package 
+			 flycheck-popup-tip 
+			 :ensure t 
+			 :hook (flycheck-mode . flycheck-popup-tip-mode))) graphic-only-plugins-setting))
 
 ;; 美化lsp-mode
 (push '(use-package 
-    lsp-ui 
-    :ensure t 
-    :hook (lsp-mode . lsp-ui-mode) 
-    :custom (lsp-ui-doc-delay 1) 
-    :init (setq lsp-ui-doc-enable t lsp-ui-doc-use-webkit nil lsp-ui-doc-delay 0.2
-                lsp-ui-doc-include-signature t lsp-ui-doc-position 'at-point lsp-ui-doc-border
-                (face-foreground 'default) lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
-                lsp-ui-sideline-enable t lsp-ui-sideline-show-hover nil
-                lsp-ui-sideline-show-diagnostics nil lsp-ui-sideline-ignore-duplicate t
-                lsp-ui-imenu-enable t lsp-ui-imenu-colors `(,(face-foreground
-                                                              'font-lock-keyword-face) 
-                                                            ,(face-foreground
-                                                              'font-lock-string-face) 
-                                                            ,(face-foreground
-                                                              'font-lock-constant-face) 
-                                                            ,(face-foreground
-                                                              'font-lock-variable-name-face)))) graphic-only-plugins-setting)
+		 lsp-ui 
+		 :ensure t
+		 ;; 默认不再开启lsp-ui
+		 ;; :hook (lsp-mode . lsp-ui-mode) 
+		 :custom (lsp-ui-doc-delay 1) 
+		 :init (setq lsp-ui-doc-enable t lsp-ui-doc-use-webkit nil lsp-ui-doc-delay 0.2
+					 lsp-ui-doc-include-signature t lsp-ui-doc-position 'at-point lsp-ui-doc-border
+					 (face-foreground 'default) lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
+					 lsp-ui-sideline-enable t lsp-ui-sideline-show-hover nil
+					 lsp-ui-sideline-show-diagnostics nil lsp-ui-sideline-ignore-duplicate t
+					 lsp-ui-imenu-enable t lsp-ui-imenu-colors `(,(face-foreground
+																   'font-lock-keyword-face) 
+																 ,(face-foreground
+																   'font-lock-string-face) 
+																 ,(face-foreground
+																   'font-lock-constant-face) 
+																 ,(face-foreground
+																   'font-lock-variable-name-face)))) graphic-only-plugins-setting)
 ;; 微软的python语言服务器-老牌稳定
 (use-package lsp-python-ms
   :disabled
@@ -93,18 +94,18 @@
                          (lsp)))
   :init
   (when (executable-find "python3")
-             (setq lsp-pyright-python-executable-cmd "python3")))  ; or lsp-deferred
+    (setq lsp-pyright-python-executable-cmd "python3")))  ; or lsp-deferred
 
-  ;; 写网页可用的模式
-  (use-package 
-    web-mode 
-    :mode ("\\.html'" . web-mode) 
-    :ensure t)
-  ;; 写js可用的模式
-  (use-package 
-    js2-mode 
-    :mode ("\\.js'" . js2-mode) 
-    :ensure t)
+;; 写网页可用的模式
+(use-package 
+  web-mode 
+  :mode ("\\.html'" . web-mode) 
+  :ensure t)
+;; 写js可用的模式
+(use-package 
+  js2-mode 
+  :mode ("\\.js'" . js2-mode) 
+  :ensure t)
 
 
 ;; 快速插入翻译后的函数名，变量名等。。。

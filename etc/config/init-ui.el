@@ -9,9 +9,9 @@
 
 ;;; Code:
 
-(setq evan/font-name "Sarasa Mono Slab SC Semibold" ;
+(setq evan/font-name "Sarasa Mono Slab SC Semibold"
 	  evan/font-style "Regular"
-	  evan/font-size 22)
+	  evan/font-size 20)
 
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
@@ -55,29 +55,30 @@
 ;; 主题包									
 (use-package
   doom-themes
-  :ensure t
-  :defer)
+  :ensure t)
 (use-package
   spacemacs-common
-  :ensure spacemacs-theme
-  :defer)
+  :ensure spacemacs-theme)
 
 ;; (use-package base16-theme
 ;;   :ensure t
 ;;   :defer)
 
 (use-package modus-operandi-theme
-  :ensure t)
-
+  :defer 0
+  :ensure t
+  )
  ;; (load-file "~/.emacs.d/themes/solo-jazz-theme.el")
 
 (use-package modus-vivendi-theme
-  :ensure t)
+    :defer 0
+	:ensure t )
 
 
 ;; 自动切换主题
 (use-package
   circadian
+  :defer 0
   :ensure t
   :config
   ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
@@ -103,21 +104,25 @@
 		 ;; 图标支持
 		 (use-package
 		   all-the-icons
+		   :defer 0
 		   :ensure t)
 		 ;; dired模式图标支持
 		 (use-package
 		   all-the-icons-dired
+		   :defer 0
 		   :ensure t
 		   :hook ('dired-mode . 'all-the-icons-dired-mode))
 		 ;; 表情符号
 		 (use-package
 		   emojify
+		   :defer 0
 		   :ensure t
 		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
 		   :hook telega-mode)
 		 ;; 浮动窗口支持
 		 (use-package
 		   posframe
+		   :defer 0
 		   :ensure t
 		   :custom
 		   (posframe-mouse-banish nil))) graphic-only-plugins-setting)
@@ -169,6 +174,7 @@
                                                     :height 125))))))
 
 (use-package spaceline
+  :defer 0
   :ensure t
   :config
   (spaceline-emacs-theme))
@@ -176,7 +182,8 @@
 ;; 彩虹括号
 (use-package 
   rainbow-delimiters 
-  :ensure t 
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode)
   :config
   ;; 设置每一级括号的颜色
   (set-face-foreground 'rainbow-delimiters-depth-1-face "chartreuse3") 
@@ -212,6 +219,7 @@
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
+  :defer 1
   :ensure t
   :hook (after-init . nyan-mode)
   :config
@@ -231,8 +239,10 @@
   :disabled
   :load-path "~/.emacs.d/site-lisp/awesome-tray"
   :hook (after-init . awesome-tray-mode))
+
 ;; tab-bar
 (use-package tab-bar
+  :defer 2
   :config
   (setq tab-bar-tab-name-truncated-max 8))
 ;; 为上层提供 init-ui 模块

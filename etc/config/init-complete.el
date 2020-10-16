@@ -41,7 +41,7 @@
   :commands lsp
   :hook ((java-mode python-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode) . lsp)
   :custom
-  (lsp-idle-delay 1200)
+  (lsp-idle-delay 200)
   (lsp-auto-guess-root nil)
   (lsp-file-watch-threshold 2000)
   (read-process-output-max (* 1024 1024))

@@ -8,8 +8,8 @@
 ;;;###autoload 
 (defun +setup-blur-kde (&rest ignores)
   (shell-command "sh ~/.emacs.d/script/kde-blur.sh"))
-(when (eq window-system 'x)
-  (add-hook 'emacs-startup-hook #'+setup-blur-kde))
+;; (when (eq window-system 'x)
+;;   (add-hook 'emacs-startup-hook #'+setup-blur-kde))
 
 ;; 切换透明
 ;;;###autoload

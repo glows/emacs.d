@@ -10,5 +10,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(use-package use-package
+  :init
+  (setq use-package-always-defer t))
+
 (provide 'init-package)
  

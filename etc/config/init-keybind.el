@@ -19,15 +19,18 @@
 
 (use-package
   hydra
+  :defer 0
   :ensure t)
 
 (push '(use-package
-  hydra-posframe
-  :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-  :hook (after-init . hydra-posframe-mode)) graphic-only-plugins-setting)
+		 hydra-posframe
+		 :defer 0
+		 :load-path "~/.emacs.d/site-lisp/hydra-posframe"
+		 :hook (after-init . hydra-posframe-mode)) graphic-only-plugins-setting)
 
 (use-package
   major-mode-hydra
+  :defer 0
   :ensure t
   :after hydra)
 
@@ -58,7 +61,7 @@
 ;; 启动点er啥
 (defhydra evan/hydra-open-menu ()
   "
-							^启动点er啥^
+	^启动点er啥^
 [_t_] ^vterm^
 "
   ("t" vterm nil :color blue)
