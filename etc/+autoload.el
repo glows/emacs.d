@@ -8,8 +8,8 @@
 ;;;###autoload 
 (defun +setup-blur-kde (&rest ignores)
   (shell-command "sh ~/.emacs.d/script/kde-blur.sh"))
-;; (when (eq window-system 'x)
-;;   (add-hook 'emacs-startup-hook #'+setup-blur-kde))
+(when (eq window-system 'x)
+  (add-hook 'emacs-startup-hook #'+setup-blur-kde))
 
 ;; 切换透明
 ;;;###autoload
@@ -37,6 +37,19 @@
          (newalpha (+ incr oldalpha)))
     (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
       (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
+
+;; 自动初始化bongo音乐列表
+;;;###autoload
+(defun bongo-init () 
+  (interactive) 
+  (let ((buffer (current-buffer))) 
+    (bongo) 
+    (setq bongo-insert-whole-directory-trees "ask") 
+    (bongo-insert-file "~/Music") 
+    (bongo-insert-enqueue-region (point-min) 
+                                 (point-max)) 
+    (bongo-play-random) 
+    (switch-to-buffer buffer)))
 
 (provide '+autoload)
 

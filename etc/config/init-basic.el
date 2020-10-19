@@ -193,6 +193,7 @@
 
 
 (use-package fuz
+  :defer 0
   :load-path "~/.emacs.d/site-lisp/fuz.el"
   :init
   (require 'fuz)
@@ -200,6 +201,7 @@
 	(fuz-build-and-load-dymod)))
 
 (use-package snails
+  :defer 0
   :load-path "~/.emacs.d/site-lisp/snails"
   :config
   (setq snails-default-backends '(snails-backend-current-buffer
@@ -224,7 +226,8 @@
 		snails-backend-eaf-browser-history-limit 10))
 
 ;; 强大的字符跳转工具
-(use-package avy 
+(use-package avy
+  :defer 0
   :ensure t
   :bind (("M-g :" . 'avy-goto-char)
          ("M-g '" . 'avy-goto-char-2)
