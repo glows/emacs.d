@@ -184,6 +184,15 @@
   ("b" tab-bar-switch-to-tab "switch bar")
   ("l" tab-bar-switch-to-next-tab "next bar" :color red)
   ("h" tab-bar-switch-to-prev-tab "prev bar" :color red))
+
+;; (add-hook 'snails-mode-hook
+;; 		  #'(lambda ()
+;; 			  (when (frame-live-p snails-init-frame)
+;; 				(dolist (buffer (buffer-list))
+;; 				  (when (string-suffix-p "*snails" (buffer-name buffer))
+;; 					(centaur-tabs-local-mode nil)) )
+;; 				)))
+
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()
   "
@@ -200,7 +209,7 @@
   ("p" evan/hydra-project-menu/body nil :color blue)
   ("2" evan/hydra-common-menu/body nil :color blue)
   ("a" evan/hydra-app-menu/body nil :color blue)
-  ("s" snails nil :color blue)
+  ("s" snails  nil :color blue)
   ("T" evan/hydra-tab-bar-menu/body nil :color blue)
   ("q" nil "QUIT" :color blue))
 

@@ -269,7 +269,7 @@
 		;; 默认按键设置为Nil
 		centaur-tabs-prefix-map nil
 		;; 是否要显示导航按钮
-		centaur-tabs-show-navigation-buttons t)
+		centaur-tabs-show-navigation-buttons nil)
   (centaur-tabs-change-fonts evan/font-name 160)
   ;; centaur show tabs rules
   ;; Centuar-tabs 显示规则
@@ -291,7 +291,9 @@
        (string-prefix-p "*straight" name)
        (string-prefix-p " *temp" name)
        (string-prefix-p "*Help" name)
-       (string-prefix-p "*snails" name)
+	   ;; (string-prefix-p "*snails input*" (buffer-name))
+	   ;; (string-prefix-p "*snails tips*" (buffer-name))
+	   ;; (stirng-prefix-p "*snails content*" (buffer-name))
 	   ;; (string-prefix-p "◀[" name)
 	   ;; (string-prefix-p "◀{" name)
        ;; Is not magit buffer.
@@ -316,8 +318,9 @@
 							  magit-blame-mode
 							  )))
 	   "Emacs")
-	  ((derived-mode-p 'prog-mode)
-	   "Editing")
+	  ((or (derived-mode-p 'prog-mode)
+		   (string-prefix-p "*scratch" (buffer-name))) 
+	   "Programming")
 	  ((derived-mode-p 'dired-mode)
 	   "Dired")
 	  ((memq major-mode '(helpful-mode
@@ -334,15 +337,19 @@
 						  org-agenda-log-mode
 						  diary-mode))
 	   "OrgMode")
-	  ((memq major-mode '(telega-mode-line-mode))
+	  ((or (string-prefix-p "◀[" (buffer-name))
+		   (string-prefix-p "◀{" (buffer-name))) 
 	   "Telega")
+	  ((derived-mode-p 'vterm-mode)
+	   "Vterm")
 	  (t
 	   (centaur-tabs-get-group-name (current-buffer))))))
   :bind
-  (("C-c h" . centaur-tabs-forward-tab)
-   ("C-c l" . centaur-tabs-backward-tab)
-   ("C-c H" . centaur-tabs-forward-tab-other-window)
-   ("C-c L" . centaur-tabs-backward-tab-other-window)
-   ("C-c 0" . centaur-tabs-do-close)
+  (("C-c h" . centaur-tabs-backward-tab)
+   ("C-c l" . centaur-tabs-forward-tab)
+   ("C-c H" . centaur-tabs-backward-tab-other-window)
+   ("C-c L" . centaur-tabs-forward-tab-other-window)
+   ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
+
 (provide 'init-ui)
