@@ -38,6 +38,7 @@
     (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
       (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
 
+<<<<<<< HEAD
 ;;;###autoload
   (defun bongo-init () 
     (interactive) 
@@ -49,6 +50,20 @@
                                    (point-max)) 
       (bongo-play-random) 
       (switch-to-buffer buffer)))
+=======
+;; 自动初始化bongo音乐列表
+;;;###autoload
+(defun bongo-init () 
+  (interactive) 
+  (let ((buffer (current-buffer))) 
+    (bongo) 
+    (setq bongo-insert-whole-directory-trees "ask") 
+    (bongo-insert-file "~/Music") 
+    (bongo-insert-enqueue-region (point-min) 
+                                 (point-max)) 
+    (bongo-play-random) 
+    (switch-to-buffer buffer)))
+>>>>>>> 565a0d96cd1d50c1a5e7a62efe14a86e77a55f25
 
 (provide '+autoload)
 
