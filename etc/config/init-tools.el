@@ -15,11 +15,12 @@
 			   :after eaf)
 			 (defalias 'browse-web #'eaf-open-browser)
 			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+			 (setq eaf-browser-default-search-engine "duckduckgo")
+			 (eaf-setq eaf-browse-blank-page-url "https://duckduckgo.com")
 			 (eaf-setq eaf-pdf-dark-mode "true")
 			 (eaf-setq eaf-browser-dark-mode "true") 
 			 (eaf-setq eaf-mindmap-dark-mode "true")
 			 (eaf-setq eaf-browser-enable-adblocker "true")
-			 (eaf-setq eaf-browser-search-engines (list "duckduckgo" "https://duckduckgo.com/?q=%s"))
 			 (when (and
 					(> (car (circadian-now-time)) (car (circadian-sunrise)))
 					(< (car (circadian-now-time)) (car (circadian-sunset))))
@@ -30,7 +31,14 @@
 			 (eaf-setq eaf-browser-default-zoom "1.2")
 			 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
 			 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
-			 (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+			 (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+			 ;; 将光标自动移动到右下角（防止eaf buffer无法使用emacs快捷键)
+			 (setq mouse-avoidance-banish-position '((frame-or-window . frame)
+													 (side . right)
+													 (side-pos . 3)
+													 (top-or-bottom . bottom)
+													 (top-or-bottom-pos . 0)))
+			 (mouse-avoidance-mode 'banish))
 		 (message
 		  "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")) graphic-only-plugins-setting)
 
@@ -140,16 +148,6 @@
   (setq bongo-header-line-mode nil)
   (setq bongo-mode-line-indicator-mode nil)
   (setq bongo-global-lastfm-mode nil)
-  (defun bongo-init () 
-    (interactive) 
-    (let ((buffer (current-buffer))) 
-      (bongo) 
-      (setq bongo-insert-whole-directory-trees "ask") 
-      (bongo-insert-file "~/Music") 
-      (bongo-insert-enqueue-region (point-min) 
-                                   (point-max)) 
-      (bongo-play-random) 
-      (switch-to-buffer buffer)))
   :bind (:map leader-key
               ("b RET" . 'bongo-dwim) 
               ("b i" . 'bongo-init) 
@@ -292,9 +290,14 @@
 
 ;; 窗口布局恢复
 (use-package winner-mode
+  :defer 0
+  :config
+  (winner-mode +1)
+  (message "winner mode")
   :bind (:map winner-mode-map
 			  ("C-c H" . 'winner-undo)
 			  ("C-c L" . 'winner-redo)))
+
 
 ;; ASCII艺术字
 (use-package figlet
