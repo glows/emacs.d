@@ -47,6 +47,7 @@
 
 ;; 切换buffer焦点时高亮动画
 (use-package beacon
+  :disabled
   :ensure t
   :hook (after-init . beacon-mode))
 
@@ -257,7 +258,7 @@
   (centaur-tabs-headline-match)
   (centaur-tabs-enable-buffer-reordering)
   (setq centaur-tabs-height 35
-		centaur-tabs-style "wave"
+		centaur-tabs-style "bar"
 		centaur-tabs-set-icons t
 		centaur-tabs-gray-out-icons 'buffer
 		centaur-tabs-set-bar 'under
@@ -291,11 +292,8 @@
        (string-prefix-p "*straight" name)
        (string-prefix-p " *temp" name)
        (string-prefix-p "*Help" name)
-	   ;; (string-prefix-p "*snails input*" (buffer-name))
-	   ;; (string-prefix-p "*snails tips*" (buffer-name))
-	   ;; (stirng-prefix-p "*snails content*" (buffer-name))
-	   ;; (string-prefix-p "◀[" name)
-	   ;; (string-prefix-p "◀{" name)
+	   (derived-mode-p 'eaf-mode)
+	   ;; (string-prefix-p "*snails" name)
        ;; Is not magit buffer.
        (and (string-prefix-p "magit" name)
 			(not (file-name-extension name))))))
@@ -322,7 +320,7 @@
 		   (string-prefix-p "*scratch" (buffer-name))) 
 	   "Programming")
 	  ((derived-mode-p 'dired-mode)
-	   "Dired")
+	   "Dired") ''
 	  ((memq major-mode '(helpful-mode
 						  help-mode))
 	   "Help")

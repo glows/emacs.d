@@ -32,7 +32,7 @@
 ;; 自动刷新被修改过的文件
 (global-auto-revert-mode 1)
 ;; 选中文本后输入会覆盖
-(delete-selection-mode 1)
+(delete-selection-mode t)
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil
@@ -265,9 +265,16 @@
 
 ;; 更好的显示行号
 (use-package nlinum
-  :disabled
+  :defer 0
   :ensure t
   :hook (after-init . global-nlinum-mode))
+
+;; ;; 高亮当前行行号
+;; (use-package hlinum
+;;   :ensure t
+;;   :defines nlinum-highlight-current-line
+;;   :custom-face (nlinum-highlight-face ((t (:inherit default :background nil :foreground nil))))
+;;   :hook (global-nlinum-mode . hlinum-activate))
 
 ;; 默认目录为~/.emacs.d/
 (cd "~/.emacs.d/")
