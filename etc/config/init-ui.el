@@ -266,7 +266,7 @@
 		;; 开启已修改标记
 		centaur-tabs-set-modified-marker t
 		;; 自动排序
-		centaur-tabs-adjust-buffer-order t
+		;; centaur-tabs-adjust-buffer-order t
 		;; 默认按键设置为Nil
 		centaur-tabs-prefix-map nil
 		;; 是否要显示导航按钮
@@ -293,7 +293,7 @@
        (string-prefix-p " *temp" name)
        (string-prefix-p "*Help" name)
 	   (derived-mode-p 'eaf-mode)
-	   ;; (string-prefix-p "*snails" name)
+	   (string-prefix-p " *snails" name)
        ;; Is not magit buffer.
        (and (string-prefix-p "magit" name)
 			(not (file-name-extension name))))))

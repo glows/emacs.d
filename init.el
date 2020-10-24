@@ -8,7 +8,7 @@
 
 ;; 性能测试
 (setq gc-cons-threshold-original gc-cons-threshold)
-(setq gc-cons-threshold most-positive-fixnum)
+(setq gc-cons-threshold (* 10240 10))
 (setq file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (run-with-idle-timer 5 nil (lambda () 
@@ -77,7 +77,7 @@
 	 ("XXX+" . "#dc752f")
 	 ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   '(hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
+   '(lsp-python-ms hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
  '(pdf-view-midnight-colors '("#655370" . "#fbf8ef")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -86,3 +86,4 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta"))))
  '(linum-highlight-face ((t (:inherit default :background nil :foreground nil)))))
+(put 'dired-find-alternate-file 'disabled nil)

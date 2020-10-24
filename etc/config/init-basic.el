@@ -30,9 +30,12 @@
 (menu-bar-mode -1)
 
 ;; 自动刷新被修改过的文件
-(global-auto-revert-mode 1)
+(global-auto-revert-mode +1)
+
 ;; 选中文本后输入会覆盖
-(delete-selection-mode t)
+(add-hook 'after-init-hook
+		  (lambda () (delete-selection-mode +1)))
+
 ;; 关闭GUI功能
 (setq use-file-dialog nil
       use-dialog-box nil

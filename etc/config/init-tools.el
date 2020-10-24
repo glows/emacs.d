@@ -91,7 +91,7 @@
   telega
   :defer 2
   :ensure t
-  :commands telega 
+  :commands telega
   :init (setq telega-proxies 
               '((:server "localhost" 
                          :port 1088
@@ -100,6 +100,9 @@
   (setq telega-chat-fill-column 65) 
   (setq telega-emoji-use-images nil) 
   :config
+  (set-face-attribute 'telega-entity-type-code nil :font (font-spec :name evan/font-name
+										 :style evan/font-style
+										 :size evan/font-size))
   (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
   (with-eval-after-load 'company (add-hook 'telega-chat-mode-hook (lambda () 
                                                                     (make-local-variable 'company-backends) 
@@ -290,10 +293,8 @@
 
 ;; 窗口布局恢复
 (use-package winner-mode
-  :defer 0
+  :hook (after-init . winner-mode)
   :config
-  (winner-mode +1)
-  (message "winner mode")
   :bind (:map winner-mode-map
 			  ("C-c H" . 'winner-undo)
 			  ("C-c L" . 'winner-redo)))
