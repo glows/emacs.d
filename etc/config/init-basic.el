@@ -20,6 +20,11 @@
 ;; 设置eshell历史记录
 (setq eshell-history-file-name "~/.emacs/var/eshell/history")
 
+;; 设置默认模式
+(add-hook 'after-init-hook (lambda ()
+							 (text-mode)
+							 (insert ";; 欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842\n;; 配置文件地址:github.com/EvanMeek/.emacs.d\n;; 作者:EvanMeek")))
+
 ;; 关闭滚动条
 (push '(scroll-bar-mode -1) graphic-only-plugins-setting)
 
