@@ -31,3 +31,6 @@
 [submodule "doc/emacs-document"]
 	path = doc/emacs-document
 	url = git@github.com:lujun9972/emacs-document.git
+[submodule "site-lisp/svg-tag-mode"]
+	path = site-lisp/svg-tag-mode
+	url = https://github.com/rougier/svg-tag-mode

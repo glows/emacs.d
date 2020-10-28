@@ -33,8 +33,9 @@
 
 ;; 图形界面插件的设置
 (setq graphic-only-plugins-setting ())
+
 ;; 全屏
-(toggle-frame-fullscreen)
+(push '(toggle-frame-fullscreen) graphic-only-plugins-setting)
 
 (require 'init-config)
 ;; 透明效果
@@ -56,10 +57,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline success warning error])
  '(ansi-color-names-vector
    ["#d2ceda" "#f2241f" "#67b11d" "#b1951d" "#3a81c3" "#a31db1" "#21b8c7" "#655370"])
+ '(awesome-tray-mode-line-active-color "#0031a9")
+ '(awesome-tray-mode-line-inactive-color "#d7d7d7")
  '(custom-safe-themes
-   '("99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" default))
+   '("e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "cba5ebfabc6456e4bbd68e0394d176161e1db063c6ca24c23b9828af0bdd7411" "37a4701758378c93159ad6c7aceb19fd6fb523e044efe47f2116bc7398ce20c9" "8d7684de9abb5a770fbfd72a14506d6b4add9a7d30942c6285f020d41d76e0fa" "4a8d4375d90a7051115db94ed40e9abb2c0766e80e228ecad60e06b3b397acab" "11acc02297c40918f6e459f56bc372a00b8e3af218689b2db991fe92a358e7d6" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4bbc7ea775d8e99cd50d9ef82f25e2aa0a4903433733bf13e3a4bb2dc005a572" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" default))
+ '(delete-selection-mode nil)
+ '(fci-rule-color "#6272a4")
+ '(flymake-error-bitmap '(flymake-double-exclamation-mark modus-theme-fringe-red))
+ '(flymake-note-bitmap '(exclamation-mark modus-theme-fringe-cyan))
+ '(flymake-warning-bitmap '(exclamation-mark modus-theme-fringe-yellow))
+ '(highlight-tail-colors '(("#aecf90" . 0) ("#c0efff" . 20)))
  '(hl-todo-keyword-faces
    '(("TODO" . "#dc752f")
 	 ("NEXT" . "#dc752f")
@@ -76,14 +87,51 @@
 	 ("FIXME" . "#dc752f")
 	 ("XXX+" . "#dc752f")
 	 ("\\?\\?\\?+" . "#dc752f")))
+ '(ibuffer-deletion-face 'modus-theme-mark-del)
+ '(ibuffer-filter-group-name-face 'modus-theme-mark-symbol)
+ '(ibuffer-marked-face 'modus-theme-mark-sel)
+ '(ibuffer-title-face 'modus-theme-pseudo-header)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
+ '(objed-cursor-color "#ff5555")
  '(package-selected-packages
-   '(lsp-python-ms hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
- '(pdf-view-midnight-colors '("#655370" . "#fbf8ef")))
+   '(flycheck-popup-tip flycheck-pos-tip flycheck-posframe sly-repl-ansi-color sly-macrostep sly disable-mouse lsp-python-ms hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
+ '(pdf-view-midnight-colors '("#655370" . "#fbf8ef"))
+ '(rustic-ansi-faces
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
+ '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
+ '(vc-annotate-color-map
+   '((20 . "#a60000")
+	 (40 . "#721045")
+	 (60 . "#8f0075")
+	 (80 . "#972500")
+	 (100 . "#813e00")
+	 (120 . "#70480f")
+	 (140 . "#5d3026")
+	 (160 . "#184034")
+	 (180 . "#005e00")
+	 (200 . "#315b00")
+	 (220 . "#005a5f")
+	 (240 . "#30517f")
+	 (260 . "#00538b")
+	 (280 . "#093060")
+	 (300 . "#0031a9")
+	 (320 . "#2544bb")
+	 (340 . "#0000c0")
+	 (360 . "#5317ac")))
+ '(vc-annotate-very-old-color nil)
+ '(xterm-color-names
+   ["#000000" "#a60000" "#005e00" "#813e00" "#0031a9" "#721045" "#00538b" "#f0f0f0"])
+ '(xterm-color-names-bright
+   ["#505050" "#972500" "#315b00" "#70480f" "#2544bb" "#8f0075" "#30517f" "#ffffff"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0 :foreground "magenta"))))
+ '(flycheck-posframe-border-face ((t (:inherit default))))
  '(linum-highlight-face ((t (:inherit default :background nil :foreground nil)))))
 (put 'dired-find-alternate-file 'disabled nil)

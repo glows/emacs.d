@@ -20,6 +20,7 @@
 (require 'init-lua)
 (require 'init-emacs-lisp)
 (require 'init-scheme)
+(require 'init-common-lisp)
 (require 'init-pyim)
 (require 'init-graphic)
 (provide 'init-config)
