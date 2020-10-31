@@ -139,4 +139,20 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (interactive)
   (sanityinc/adjust-opacity nil 2))
 
+;; 打开临时elisp buffer
+(defun +evan/temp-elisp-buf ()
+  (interactive)
+  (let ((buf (get-buffer-create "*TEMP-ELISP*")))
+	(with-current-buffer buf
+	  (pop-to-buffer buf t)
+	  (lisp-interaction-mode))))
+;; 关闭临时elisp buffer
+(defun +evan/kill-temp-elisp-buf ()
+  (interactive)
+  (let (buf (get-buffer "*TEMP-ELISP"))
+	(if (null buf)
+		(kill-buffer buf))))
+
+
+
 (provide '+config)

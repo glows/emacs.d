@@ -1,5 +1,6 @@
 (require '+autoload)
 (require '+config)
+(require '+mini-keybind)
 (require 'init-package)
 (require 'init-basic)
 (require 'init-ui)
