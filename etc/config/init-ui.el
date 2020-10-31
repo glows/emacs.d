@@ -85,8 +85,9 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . spacemacs-light)
-						   (:sunset . doom-dracula)))
+  (setq circadian-themes '((:sunrise . doom-one-light)
+						   (:sunset . doom-dracula
+									)))
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
@@ -211,11 +212,19 @@
   :ensure t 
   :hook ('Info-selection-hook . 'info-colors-fontify-node))
 
-;; 缩进线
+;; 缩进线-不再使用
 (use-package
   indent-guide
+  :disabled
   :ensure t
-  :hook (prog-mode . indent-guide-mode))
+  :hook ((prog-mode . indent-guide-mode)
+		 (python-mode . (lambda () (indent-guide-mode -1)))))
+
+;; 缩进线
+(use-package highlight-indentation
+  :ensure t
+  :hook (prog-mode  . hightlight-indentation-mode))
+
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
@@ -248,15 +257,15 @@
 
 
 ;; 为上层提供 init-ui 模块
-
 (use-package centaur-tabs
+  :disabled
   :init (setq centaur-tabs-enable-key-bindkings t)
   :ensure t
   :defer 0
   :config
   (centaur-tabs-mode +1)
   (centaur-tabs-headline-match)
-  (centaur-tabs-enable-buffer-reordering)
+  ;; (centaur-tabs-enable-buffer-reordering)
   (setq centaur-tabs-height 35
 		centaur-tabs-style "bar"
 		centaur-tabs-set-icons t
@@ -270,7 +279,8 @@
 		;; 默认按键设置为Nil
 		centaur-tabs-prefix-map nil
 		;; 是否要显示导航按钮
-		centaur-tabs-show-navigation-buttons nil)
+		centaur-tabs-show-navigation-buttons nil
+		)
   (centaur-tabs-change-fonts evan/font-name 160)
   ;; centaur show tabs rules
   ;; Centuar-tabs 显示规则
@@ -316,8 +326,7 @@
 							  magit-blame-mode
 							  )))
 	   "Emacs")
-	  ((or (derived-mode-p 'prog-mode)
-		   (string-prefix-p "*scratch" (buffer-name))) 
+	  ((or (derived-mode-p 'prog-mode)) 
 	   "Programming")
 	  ((derived-mode-p 'dired-mode)
 	   "Dired") ''
@@ -349,5 +358,42 @@
    ("C-c L" . centaur-tabs-forward-tab-other-window)
    ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
+
+(use-package svg-tag-mode
+  :demand
+  :load-path "~/.emacs.d/site-lisp/svg-tag-mode"
+  :config
+  (defface svg-tag-note-face
+	'((t :foreground "black" :background "white" :box "black"
+		 :family "Roboto Mono" :weight light :height 120))
+	"Face for note tag" :group nil)
+
+  (defface svg-tag-keyboard-face
+	'((t :foreground "#333333" :background "#f9f9f9" :box "#333333"
+		 :family "Roboto Mono" :weight light :height 120))
+	"Face for keyboard bindings tag" :group nil)
+
+  (setq svg-tag-todo
+		(svg-tag-make "TODO" nil 1 1 2))
+
+  (setq svg-tag-note
+		(svg-tag-make "NOTE" 'svg-tag-note-face 1 1 2))
+
+  (defun svg-tag-round (text)
+	(svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 12))
+
+  (defun svg-tag-quasi-round (text)
+	(svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 8))
+
+  (defun svg-tag-keyboard (text)
+	(svg-tag-make (substring text 1 -1) 'svg-tag-keyboard-face 1 1 2))
+
+  (setq svg-tag-tags
+        '((":TODO:"                     . svg-tag-todo)
+          (":NOTE:"                     . svg-tag-note)
+          ("\([0-9a-zA-Z]\)"            . svg-tag-round)
+          ("\([0-9a-zA-Z][0-9a-zA-Z]\)" . svg-tag-quasi-round)
+          ("|[0-9a-zA-Z- ]+?|"          . svg-tag-keyboard)))
+  (svg-tag-mode 1))
 
 (provide 'init-ui)

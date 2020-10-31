@@ -12,7 +12,7 @@
   ;; systems stupidly make the unversioned one point at Python 2.
   (when (and (executable-find "python3") 
              (string= python-shell-interpreter "python")) 
-    (setq python-shell-interpreter "python3"))
+    (setq python-shell-interpreter "/usr/bin/python3"))
   ;; Env vars
   (with-eval-after-load 'exec-path-from-shell (exec-path-from-shell-copy-env "PYTHONPATH"))
   ;; Live Coding in Python
@@ -21,5 +21,14 @@
   (use-package python-black
 	:ensure t
 	:hook (python-mode . python-black-on-save-mode)))
+
+(use-package elpy
+  :disabled
+  :ensure t
+  :defer t
+  :init
+  (advice-add 'python-mode :before 'elpy-enable)
+  :config
+  (push "~/.local/bin/" exec-path))
 
 (provide 'init-python)
