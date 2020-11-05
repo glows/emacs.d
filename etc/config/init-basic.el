@@ -166,6 +166,8 @@
    ("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file))
   :config
+  (setq counsel-describe-function-function #'helpful-callable)
+  (setq counsel-describe-variable-function #'helpful-variable)
   (progn
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
