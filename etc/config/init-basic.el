@@ -272,10 +272,9 @@
   :hook ('prog-mode . 'linum-relative-mode))
 
 ;; 更好的显示行号
-(use-package nlinum
-  :defer 0
-  :ensure t
-  :hook (after-init . global-nlinum-mode))
+;; (use-package nlinum
+;;   :ensure t
+;;   :hook (after-init . global-nlinum-mode))
 
 ;; ;; 高亮当前行行号
 ;; (use-package hlinum

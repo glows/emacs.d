@@ -1,3 +1,8 @@
+(use-package benchmark-init
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 		   (use-package 
 			 eaf
@@ -21,13 +26,6 @@
 			 (eaf-setq eaf-browser-dark-mode "true") 
 			 (eaf-setq eaf-mindmap-dark-mode "true")
 			 (eaf-setq eaf-browser-enable-adblocker "true")
-			 (when (and
-					(> (car (circadian-now-time)) (car (circadian-sunrise)))
-					(< (car (circadian-now-time)) (car (circadian-sunset))))
-			   (progn
-				 (eaf-setq eaf-pdf-dark-mode "false")
-				 (eaf-setq eaf-browser-dark-mode "false") 
-				 (eaf-setq eaf-mindmap-dark-mode "false")))
 			 (eaf-setq eaf-browser-default-zoom "1.2")
 			 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
 			 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
@@ -83,6 +81,7 @@
 ;; 英语拼写助手，默认不开启
 (use-package 
   company-english-helper
+  :after company
   :load-path "~/.emacs.d/site-lisp/company-english-helper" 
   :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper))
 
@@ -319,5 +318,16 @@
   :ensure t
   :hook (after-init . (lambda ()
 						(global-disable-mouse-mode))))
+
+;; 模式编辑-暂时关闭，等待大改。
+;; (use-package meow
+;;   :disabled
+;;   :load-path "~/.emacs.d/site-lisp/meow"
+;;   :custom
+;;   (meow-layout 'qwerty))
+
+;; 管理生词工具-本配置文件作者写的插件
+(use-package shengci
+  :load-path "~/.emacs.d/site-lisp/shengci.el")
 
 (provide 'init-tools)

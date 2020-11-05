@@ -77,14 +77,14 @@
 																 ,(face-foreground
 																   'font-lock-variable-name-face)))) graphic-only-plugins-setting)
 ;; 微软的python语言服务器-老牌稳定
-(use-package lsp-python-ms
-  :disabled
-  :ensure t
-  :hook (python-mode . (lambda () 
-                         (require 'lsp-python-ms) 
-                         (lsp))) 
-  :custom (lsp-python-ms-executable
-           "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
+;; (use-package lsp-python-ms
+;;   :disabled
+;;   :ensure t
+;;   :hook (python-mode . (lambda () 
+;;                          (require 'lsp-python-ms) 
+;;                          (lsp))) 
+;;   :custom (lsp-python-ms-executable
+;;            "~/.emacs.d/var/python-language-server/output/bin/Release/linux-x64/publish/Microsoft.Python.LanguageServer"))
 
 ;; 微软的python语言服务器-新版
 (use-package lsp-pyright
@@ -95,18 +95,6 @@
   :init
   (when (executable-find "python3")
     (setq lsp-pyright-python-executable-cmd "python3")))  ; or lsp-deferred
-
-;; 写网页可用的模式
-(use-package 
-  web-mode 
-  :mode ("\\.html'" . web-mode) 
-  :ensure t)
-;; 写js可用的模式
-(use-package 
-  js2-mode 
-  :mode ("\\.js'" . js2-mode) 
-  :ensure t)
-
 
 ;; 快速插入翻译后的函数名，变量名等。。。
 (use-package 

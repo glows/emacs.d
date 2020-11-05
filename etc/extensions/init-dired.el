@@ -7,4 +7,7 @@
   :ensure t
   :config
   (ranger-override-dired-mode 1))
+
+(use-package diredc
+  :load-path "~/.emacs.d/site-lisp/emacs-diredc")
 (provide 'init-dired)

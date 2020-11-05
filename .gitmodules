@@ -34,3 +34,12 @@
 [submodule "site-lisp/svg-tag-mode"]
 	path = site-lisp/svg-tag-mode
 	url = https://github.com/rougier/svg-tag-mode
+[submodule "site-lisp/describe-symbol"]
+	path = site-lisp/describe-symbol
+	url = https://github.com/xuchunyang/describe-symbol
+[submodule "site-lisp/shengci.el"]
+	path = site-lisp/shengci.el
+	url = https://github.com/EvanMeek/shengci.el
+[submodule "emacs-diredc"]
+	path = site-lisp/emacs-diredc
+	url = https://github.com/Boruch-Baum/emacs-diredc

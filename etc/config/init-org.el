@@ -1,8 +1,8 @@
 (require 'org-capture)
 (use-package 
   org
+  :defer t
   :ensure t
-  ;; ('org-mode . 'toggle-truncate-lines)	 
   :bind
   ("C-c c" . 'org-capture)
   ("C-c a" . 'org-agenda)
@@ -119,6 +119,7 @@
 
 (use-package gkroam
   :ensure t
+  :hook (after-init-hook . gkroam-mode)
   :init
   (setq gkroam-root-dir "~/Documents/org/"
 		gkroam-window-margin 4

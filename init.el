@@ -5,10 +5,9 @@
 ;; |_____| \_/ \__,_|_| |_| |_____|_| |_| |_|\__,_|\___|___/
 ;; AUTHOR	: EvanMeek
 ;; EMAIL	: the_lty_mail@foxmail.com
-
 ;; 性能测试
 (setq gc-cons-threshold-original gc-cons-threshold)
-(setq gc-cons-threshold (* 10240 1024))
+(setq gc-cons-threshold (* 10240 10))
 (setq file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (run-with-idle-timer 5 nil (lambda () 
@@ -64,7 +63,7 @@
  '(awesome-tray-mode-line-active-color "#0031a9")
  '(awesome-tray-mode-line-inactive-color "#d7d7d7")
  '(custom-safe-themes
-   '("e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "cba5ebfabc6456e4bbd68e0394d176161e1db063c6ca24c23b9828af0bdd7411" "37a4701758378c93159ad6c7aceb19fd6fb523e044efe47f2116bc7398ce20c9" "8d7684de9abb5a770fbfd72a14506d6b4add9a7d30942c6285f020d41d76e0fa" "4a8d4375d90a7051115db94ed40e9abb2c0766e80e228ecad60e06b3b397acab" "11acc02297c40918f6e459f56bc372a00b8e3af218689b2db991fe92a358e7d6" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4bbc7ea775d8e99cd50d9ef82f25e2aa0a4903433733bf13e3a4bb2dc005a572" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" default))
+   '("32ecae1d95b8d684d99618ebc512e8e856dfaa1521a1124b3d97f004e6025c66" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "e6ff132edb1bfa0645e2ba032c44ce94a3bd3c15e3929cdf6c049802cf059a2a" "cba5ebfabc6456e4bbd68e0394d176161e1db063c6ca24c23b9828af0bdd7411" "37a4701758378c93159ad6c7aceb19fd6fb523e044efe47f2116bc7398ce20c9" "8d7684de9abb5a770fbfd72a14506d6b4add9a7d30942c6285f020d41d76e0fa" "4a8d4375d90a7051115db94ed40e9abb2c0766e80e228ecad60e06b3b397acab" "11acc02297c40918f6e459f56bc372a00b8e3af218689b2db991fe92a358e7d6" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "4bbc7ea775d8e99cd50d9ef82f25e2aa0a4903433733bf13e3a4bb2dc005a572" "99ea831ca79a916f1bd789de366b639d09811501e8c092c85b2cb7d697777f93" default))
  '(delete-selection-mode nil)
  '(fci-rule-color "#6272a4")
  '(flymake-error-bitmap '(flymake-double-exclamation-mark modus-theme-fringe-red))
@@ -94,9 +93,10 @@
  '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
+ '(meow-global-mode t)
  '(objed-cursor-color "#ff5555")
  '(package-selected-packages
-   '(exec-path-from-shell flycheck-popup-tip flycheck-pos-tip flycheck-posframe sly-repl-ansi-color sly-macrostep sly disable-mouse lsp-python-ms hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
+   '(emmet-mode prettier-js scss-mode helm paredit highlight-indent-guides highlight-indentation-mode exec-path-from-shell flycheck-popup-tip flycheck-pos-tip flycheck-posframe sly-repl-ansi-color sly-macrostep sly disable-mouse hlinum nlinum youdao-dictionary yasnippet-snippets writeroom-mode which-key web-mode vterm use-package undo-tree try treemacs-projectile treemacs-persp treemacs-magit telega symbol-overlay sudo-edit spacemacs-theme spaceline smartparens simple-httpd rotate rime rainbow-delimiters quickrun python-black pyim perspeen pdf-tools page-break-lines org-bullets nyan-mode modus-vivendi-theme modus-operandi-theme modern-cpp-font-lock markdown-mode+ major-mode-hydra lua-mode lsp-ui lsp-pyright lsp-java live-py-mode lispy lab-themes js2-mode ivy-fuz info-colors indent-guide hungry-delete htmlize howdoyou grip-mode go-translate gkroam git-gutter-fringe geiser flycheck figlet emojify doom-themes dired-posframe counsel-projectile company-box command-log-mode circadian centaur-tabs ccls bongo beacon amx all-the-icons-ivy-rich all-the-icons-dired))
  '(pdf-view-midnight-colors '("#655370" . "#fbf8ef"))
  '(rustic-ansi-faces
    ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])

@@ -3,12 +3,14 @@
 ;;; Code:
 
 (use-package htmlize
+  :defer t
   :ensure t
   ;; :config
   ;; (setq htmlize-output-type 'font)
   )
 
 (use-package ox-html
+  :defer t
   :config
   (setq
    ;; org-html-doctype "html5"
@@ -25,8 +27,8 @@
         ))
 
 (use-package ox-publish
+  :defer t
   :config
-
   ;; org-publish-project-alist
   ;; ("project-name" :property value :property value ...)
   ;; ("project-name" :components ("project-name" "project-name" ...))
@@ -34,7 +36,7 @@
   (setq org-publish-project-alist
         '(("orgfiles"
            ;; ; Sources and destinations for files.
-           :base-directory "~/Documents/site/org/"  ;; local dir
+           :base-directory "~/Documents/site/org/" ;; local dir
            :publishing-directory "~/Documents/site/public/" ;; :publishing-directory "/ssh:jack@192.112.245.112:~/Documents/site/public/"
            ;; :preparation-function
            ;; :complete-function
@@ -55,10 +57,10 @@
            ;; ; Generic properties
            ;; :archived-trees	org-export-with-archived-trees
            ;; :exclude-tags	org-export-exclude-tags
-           :headline-levels 4 ;; org-export-headline-levels
+           :headline-levels 4	;; org-export-headline-levels
            ;; :language	org-export-default-language
            ;; :preserve-breaks	org-export-preserve-breaks
-           :section-numbers nil	;; org-export-with-section-numbers
+           :section-numbers nil		;; org-export-with-section-numbers
            ;; :select-tags	org-export-select-tags
            :with-author "Evan Meek" ;; org-export-with-author
            ;; :with-broken-links	org-export-with-broken-links

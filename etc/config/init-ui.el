@@ -92,7 +92,14 @@
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
 			#'(lambda (theme)
-				(spaceline-emacs-theme))))
+				(spaceline-emacs-theme)
+				(when (and
+					   (> (car (circadian-now-time)) (car (circadian-sunrise)))
+					   (< (car (circadian-now-time)) (car (circadian-sunset))))
+				  (progn
+					(eaf-setq eaf-pdf-dark-mode "false")
+					(eaf-setq eaf-browser-dark-mode "false") 
+					(eaf-setq eaf-mindmap-dark-mode "false"))))))
 
 
 ;; 根据时间切换高亮当前行颜色
@@ -175,6 +182,7 @@
                                                     :height 125))))))
 
 (use-package spaceline
+  :disabled
   :defer 0
   :ensure t
   :config
@@ -219,12 +227,6 @@
   :ensure t
   :hook ((prog-mode . indent-guide-mode)
 		 (python-mode . (lambda () (indent-guide-mode -1)))))
-
-;; 缩进线
-(use-package highlight-indentation
-  :ensure t
-  :hook (prog-mode  . hightlight-indentation-mode))
-
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
