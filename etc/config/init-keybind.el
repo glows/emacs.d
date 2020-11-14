@@ -167,7 +167,7 @@
   ("d" counsel-dired nil :color blue)
   ("m" counsel-bookmark nil :color blue)
   ("l" counsel-linux-app nil :color blue)
-  ("w" evan/capture-word nil :color blue)
+  ("w" shengci-capture-word-and-save nil :color blue)
   ("i" +evan/find-config-file-by-fzf :color blue)
   ("-" +evan/less-backlight :color red)
   ("=" +evan/plus-backlight :color red)
@@ -176,6 +176,8 @@
   ("1" +evan/plus-alpha nil :color red)
   ("2" +evan/less-alpha nil :color red)
   ("q" nil "QUIT" :color blue))
+
+;; Tab bar menu
 (defhydra evan/hydra-tab-bar-menu (:color blue)
   ""
   ("n" tab-bar-new-tab "new bar")
@@ -184,14 +186,6 @@
   ("b" tab-bar-switch-to-tab "switch bar")
   ("l" tab-bar-switch-to-next-tab "next bar" :color red)
   ("h" tab-bar-switch-to-prev-tab "prev bar" :color red))
-
-;; (add-hook 'snails-mode-hook
-;; 		  #'(lambda ()
-;; 			  (when (frame-live-p snails-init-frame)
-;; 				(dolist (buffer (buffer-list))
-;; 				  (when (string-suffix-p "*snails" (buffer-name buffer))
-;; 					(centaur-tabs-local-mode nil)) )
-;; 				)))
 
 ;; 主菜单
 (defhydra evan/hydra-main-menu ()

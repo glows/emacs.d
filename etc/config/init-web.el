@@ -2,7 +2,8 @@
 (use-package 
   web-mode
   :ensure t
-  :mode ("\\.html\\'" . web-mode))
+  :mode ("\\.html\\'" . web-mode)
+  :hook (html-mode . web-mode))
 
 ;; (use-package pp-html
 ;;   :load-path "~/.emacs.d/site-lisp/pp-html")
@@ -10,7 +11,8 @@
 (use-package emmet-mode
   :ensure t
   :hook ((web-mode . emmet-mode)
-		 (css-mode . emmet-mode)))
+		 (css-mode . emmet-mode)
+         (html-mode . emmet-mode)))
 
 (use-package css-mode
   :ensure nil

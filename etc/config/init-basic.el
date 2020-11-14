@@ -110,7 +110,7 @@
 (add-hook 'after-change-major-mode-hook (lambda () 
                                           (modify-syntax-entry ?- "w")))
 ;; 允许插入制表符
-(setq-default indent-tabs-mode t)
+(setq-default indent-tabs-mode nil)
 ;; 制表符宽度
 (setq-default tab-width 4)
 
@@ -196,7 +196,7 @@
 									  "-g" "!site-lisp"
 									  "-g" "!doc"
 									  "-g" "!themes"))
-  (setq counsel-fzf-cmd "fd --exclude={site-lisp,elpa/,etc/snippets,themes} --type f | fzf -f \"%s\" --algo=v1")
+  (setq counsel-fzf-cmd "fd --exclude={site-lisp,etc/snippets,themes} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))

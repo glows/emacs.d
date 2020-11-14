@@ -9,9 +9,9 @@
 
 ;;; Code:
 
-(setq evan/font-name "Sarasa Mono Slab SC Semibold"
-	  evan/font-style "Regular"
-	  evan/font-size 20)
+(setq evan/font-name "agave Nerd Font"
+	  evan/font-style "r"
+	  evan/font-size 22)
 
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
@@ -21,12 +21,8 @@
 (setq inhibit-startup-message t)
 ;; 设置英文字体
 (push '(if (fontp (font-spec
-				   ;; :name "Fira Code Nerd Font"
-				   ;; :style "Retina"
 				   :name evan/font-name
 				   :style evan/font-style
-				   ;; :name "Sarasa Mono SC"
-				   ;; :style "Regular"
 				   :size evan/font-size))
 		   (progn
 			 (set-face-attribute 'default nil
@@ -57,22 +53,20 @@
 (use-package
   doom-themes
   :ensure t)
+
 (use-package
   spacemacs-common
   :ensure spacemacs-theme)
 
-;; (use-package base16-theme
-;;   :ensure t
-;;   :defer)
-
 (use-package modus-operandi-theme
-  :defer 0
   :ensure t)
  ;; (load-file "~/.emacs.d/themes/solo-jazz-theme.el")
 
 (use-package modus-vivendi-theme
-    :defer 0
 	:ensure t )
+
+(use-package lab-themes
+  :ensure t)
 
 
 ;; 自动切换主题
@@ -85,14 +79,13 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-one-light)
-						   (:sunset . doom-dracula
-									)))
+  (setq circadian-themes '((:sunrise . doom-dark+)
+						   (:sunset . doom-dark+)))
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
 			#'(lambda (theme)
-				(spaceline-emacs-theme)
+				;; (spaceline-emacs-theme)
 				(when (and
 					   (> (car (circadian-now-time)) (car (circadian-sunrise)))
 					   (< (car (circadian-now-time)) (car (circadian-sunset))))
@@ -139,13 +132,11 @@
 (use-package
   page-break-lines
   :ensure t
-  :hook (after-init . page-break-lines-mode)
-  :config (turn-on-page-break-lines-mode))
+  :hook (after-init . page-break-lines-mode))
 
 ;; 启动界面
 (use-package
   dashboard
-  :disabled
   :ensure t
   :init
   (dashboard-setup-startup-hook)
@@ -166,6 +157,7 @@
 (use-package 
   doom-modeline
   :disabled
+  :ensure t
   :init (doom-modeline-mode 1)
   :custom
   (doom-modeline-height 10)
@@ -195,24 +187,24 @@
   :hook (prog-mode . rainbow-delimiters-mode)
   :config
   ;; 设置每一级括号的颜色
-  (set-face-foreground 'rainbow-delimiters-depth-1-face "chartreuse3") 
-  (set-face-foreground 'rainbow-delimiters-depth-2-face "DodgerBlue1") 
-  (set-face-foreground 'rainbow-delimiters-depth-3-face "DarkOrange2")
-  (set-face-foreground 'rainbow-delimiters-depth-4-face "deep pink") 
-  (set-face-foreground 'rainbow-delimiters-depth-5-face "medium orchid") 
-  (set-face-foreground 'rainbow-delimiters-depth-6-face "turquoise") 
-  (set-face-foreground 'rainbow-delimiters-depth-7-face "lime green") 
-  (set-face-foreground 'rainbow-delimiters-depth-8-face "gold") 
-  (set-face-foreground 'rainbow-delimiters-depth-9-face "cyan") 
-  (set-face-bold 'rainbow-delimiters-depth-1-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-2-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-3-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-4-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-5-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-6-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-7-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-8-face "t") 
-  (set-face-bold 'rainbow-delimiters-depth-9-face "t") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-1-face "chartreuse3") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-2-face "DodgerBlue1") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-3-face "DarkOrange2")
+  ;; (set-face-foreground 'rainbow-delimiters-depth-4-face "deep pink") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-5-face "medium orchid") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-6-face "turquoise") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-7-face "lime green") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-8-face "gold") 
+  ;; (set-face-foreground 'rainbow-delimiters-depth-9-face "cyan") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-1-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-2-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-3-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-4-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-5-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-6-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-7-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-8-face "t") 
+  ;; (set-face-bold 'rainbow-delimiters-depth-9-face "t") 
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 ;; 让info帮助信息中关键字有高亮
 (use-package 
@@ -361,7 +353,7 @@
    ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
 
-(use-package svg-tag-mode
+(push '(use-package svg-tag-mode
   :demand
   :load-path "~/.emacs.d/site-lisp/svg-tag-mode"
   :config
@@ -396,6 +388,11 @@
           ("\([0-9a-zA-Z]\)"            . svg-tag-round)
           ("\([0-9a-zA-Z][0-9a-zA-Z]\)" . svg-tag-quasi-round)
           ("|[0-9a-zA-Z- ]+?|"          . svg-tag-keyboard)))
-  (svg-tag-mode 1))
+  (svg-tag-mode 1)) graphic-only-plugins-setting)
+
+
+(use-package fira-code-mode
+  :ensure t
+  :hook (after-init-hook . global-fira-code-mode))
 
 (provide 'init-ui)
