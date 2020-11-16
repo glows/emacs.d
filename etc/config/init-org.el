@@ -1,7 +1,7 @@
 (require 'org-capture)
 (use-package 
   org
-  :defer t
+  :defer 2
   :ensure t
   :bind
   ("C-c c" . 'org-capture)
@@ -118,6 +118,7 @@
 ;; 		org-roam-server-network-label-wrap-length 20))
 
 (use-package gkroam
+  :disabled
   :ensure t
   :hook (after-init-hook . gkroam-mode)
   :init

@@ -13,8 +13,7 @@
 
 ;; 著名的Emacs补全框架
 (use-package company 
-  :defer 2 
-  :hook (after-init . global-company-mode) 
+  :hook (prog-mode . company-mode) 
   :init (setq company-tooltip-align-annotations t company-idle-delay 0.1 company-echo-delay 0
               company-minimum-prefix-length 2 company-require-match nil company-dabbrev-ignore-case
               nil company-dabbrev-downcase nil company-show-numbers t) 
@@ -38,8 +37,8 @@
 ;; Emacs对语言服务器支持的插件
 (use-package lsp-mode
   :ensure t
-  :commands lsp
-  :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode) . lsp)
+  :commands (lsp)
+  :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode python-mode) . lsp)
   :custom
   (lsp-idle-delay 200)
   (lsp-auto-guess-root nil)

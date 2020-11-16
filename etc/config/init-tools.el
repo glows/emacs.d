@@ -3,52 +3,98 @@
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-(push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
-		   (use-package 
-			 eaf
-			 :defer 0
-			 :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
-			 :custom (eaf-find-alternate-file-in-dired t)
-			 (eaf-proxy-type "socks5")
-			 (eaf-proxy-host "127.0.0.1")
-			 (eaf-proxy-port "1088")
-			 (browse-url-browser-function 'eaf-open-browser)
-			 :config
-			 ;; eaf markdown 预览所需要的
-			 (use-package grip-mode
-			   :ensure t
-			   :after eaf)
-			 (defalias 'browse-web #'eaf-open-browser)
-			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
-             ;; (setq eaf-browser-default-search-engine "google")
-			 (setq eaf-browser-default-search-engine "duckduckgo")
-			 (eaf-setq eaf-browse-blank-page-url "https://google.com")
-			 
-			 (eaf-setq eaf-browser-enable-adblocker "true")
-			 (eaf-setq eaf-browser-default-zoom "1.2")
-			 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
-			 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
-			 (eaf-bind-key take_photo "p" eaf-camera-keybinding)
-			 ;; 将光标自动移动到右下角（防止eaf buffer无法使用emacs快捷键)
-             (if (and
-				  (> (car (circadian-now-time)) (car (circadian-sunrise)))
-				  (< (car (circadian-now-time)) (car (circadian-sunset))))
-				 (progn
-				   (eaf-setq eaf-pdf-dark-mode "false")
-				   (eaf-setq eaf-browser-dark-mode "false") 
-				   (eaf-setq eaf-mindmap-dark-mode "false"))
-               (progn
-                 (eaf-setq eaf-pdf-dark-mode "true")
-			     (eaf-setq eaf-browser-dark-mode "true") 
-			     (eaf-setq eaf-mindmap-dark-mode "true")))
-			 (setq mouse-avoidance-banish-position '((frame-or-window . frame)
-													 (side . right)
-													 (side-pos . 80)
-													 (top-or-bottom . bottom)
-													 (top-or-bottom-pos . 0)))
-			 (mouse-avoidance-mode 'banish))
-		 (message
-		  "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")) graphic-only-plugins-setting)
+;; (push '(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
+;; 		   (use-package 
+;; 			 eaf
+;; 			 :defer 0
+;; 			 :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
+;; 			 :custom (eaf-find-alternate-file-in-dired t)
+;; 			 (eaf-proxy-type "socks5")
+;; 			 (eaf-proxy-host "127.0.0.1")
+;; 			 (eaf-proxy-port "1088")
+;; 			 (browse-url-browser-function 'eaf-open-browser)
+;; 			 :config
+;; 			 ;; eaf markdown 预览所需要的
+;; 			 (use-package grip-mode
+;; 			   :ensure t
+;; 			   :after eaf)
+;; 			 (defalias 'browse-web #'eaf-open-browser)
+;; 			 (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+;;              ;; (setq eaf-browser-default-search-engine "google")
+;; 			 (setq eaf-browser-default-search-engine "duckduckgo")
+;; 			 (eaf-setq eaf-browse-blank-page-url "https://google.com")
+
+;; 			 (eaf-setq eaf-browser-enable-adblocker "true")
+;; 			 (eaf-setq eaf-browser-default-zoom "1.2")
+;; 			 (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
+;; 			 (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
+;; 			 (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+;; 			 ;; 将光标自动移动到右下角（防止eaf buffer无法使用emacs快捷键)
+;;              (if (and
+;; 				  (> (car (circadian-now-time)) (car (circadian-sunrise)))
+;; 				  (< (car (circadian-now-time)) (car (circadian-sunset))))
+;; 				 (progn
+;; 				   (eaf-setq eaf-pdf-dark-mode "false")
+;; 				   (eaf-setq eaf-browser-dark-mode "false") 
+;; 				   (eaf-setq eaf-mindmap-dark-mode "false"))
+;;                (progn
+;;                  (eaf-setq eaf-pdf-dark-mode "true")
+;; 			     (eaf-setq eaf-browser-dark-mode "true") 
+;; 			     (eaf-setq eaf-mindmap-dark-mode "true")))
+;; 			 (setq mouse-avoidance-banish-position '((frame-or-window . frame)
+;; 													 (side . right)
+;; 													 (side-pos . 80)
+;; 													 (top-or-bottom . bottom)
+;; 													 (top-or-bottom-pos . 0)))
+;; 			 (mouse-avoidance-mode 'banish))
+;; 		 (message
+;; 		  "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF")) graphic-only-plugins-setting)
+(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
+	(use-package 
+	  eaf
+	  :defer 0
+	  :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
+	  :custom (eaf-find-alternate-file-in-dired t)
+	  (eaf-proxy-type "socks5")
+	  (eaf-proxy-host "127.0.0.1")
+	  (eaf-proxy-port "1088")
+	  (browse-url-browser-function 'eaf-open-browser)
+	  :config
+	  ;; eaf markdown 预览所需要的
+	  (use-package grip-mode
+		:ensure t
+		:after eaf)
+	  (defalias 'browse-web #'eaf-open-browser)
+	  (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+      ;; (setq eaf-browser-default-search-engine "google")
+	  (setq eaf-browser-default-search-engine "duckduckgo")
+	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
+	  
+	  (eaf-setq eaf-browser-enable-adblocker "true")
+	  (eaf-setq eaf-browser-default-zoom "1.2")
+	  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
+	  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
+	  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
+	  ;; 将光标自动移动到右下角（防止eaf buffer无法使用emacs快捷键)
+      (if (and
+		   (> (car (circadian-now-time)) (car (circadian-sunrise)))
+		   (< (car (circadian-now-time)) (car (circadian-sunset))))
+		  (progn
+			(eaf-setq eaf-pdf-dark-mode "false")
+			(eaf-setq eaf-browser-dark-mode "false") 
+			(eaf-setq eaf-mindmap-dark-mode "false"))
+        (progn
+          (eaf-setq eaf-pdf-dark-mode "true")
+		  (eaf-setq eaf-browser-dark-mode "true") 
+		  (eaf-setq eaf-mindmap-dark-mode "true")))
+	  (setq mouse-avoidance-banish-position '((frame-or-window . frame)
+											  (side . right)
+											  (side-pos . 80)
+											  (top-or-bottom . bottom)
+											  (top-or-bottom-pos . 0)))
+	  (mouse-avoidance-mode 'banish))
+  (message
+   "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF"))
 
 ;; 括号匹配，不再使用这个，转为使用smartparens
 (use-package 
@@ -98,7 +144,6 @@
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
   telega
-  :defer 2
   :ensure t
   :commands telega
   :init (setq telega-proxies 
@@ -110,8 +155,8 @@
   (setq telega-emoji-use-images nil) 
   :config
   (set-face-attribute 'telega-entity-type-code nil :font (font-spec :name evan/font-name
-										 :style evan/font-style
-										 :size evan/font-size))
+										                            :style evan/font-style
+										                            :size evan/font-size))
   (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
   (with-eval-after-load 'company (add-hook 'telega-chat-mode-hook (lambda () 
                                                                     (make-local-variable 'company-backends) 
@@ -131,7 +176,7 @@
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
   vterm
-  :defer 2
+  :commands (vterm)
   :ensure t
   :bind (:map leader-key
               ("o t" . 'vterm)))
@@ -139,7 +184,7 @@
 ;; 有道词典，非常有用
 (use-package 
   youdao-dictionary
-  :defer 2
+  :commands (youdao-dictionary-search-at-point-posframe)
   :ensure t 
   :config (setq url-automatic-caching t) 
   (which-key-add-key-based-replacements "C-x y" "有道翻译") 
@@ -176,7 +221,17 @@
               ("b r" . 'bongo-play-random) 
               ("b s" . 'bongo-sprinkle)))
 ;; Emacs下的pdf查看工具，默认非图形化不开启
-(push '(use-package 
+;; (push '(use-package 
+;; 		 pdf-tools 
+;; 		 :ensure t 
+;; 		 :hook ('doc-view-mode 'pdf-view-mode)
+;; 		 :bind (:map pdf-view-mode-map
+;; 					 ("j" . #'pdf-view-next-line-or-next-page)
+;; 					 ("k" . #'pdf-view-previous-line-or-previous-page)
+;; 					 ("l" . #'image-forward-hscroll)
+;; 					 ("h" . #'image-backward-hscroll))) graphic-only-plugins-setting)
+
+(use-package 
 		 pdf-tools 
 		 :ensure t 
 		 :hook ('doc-view-mode 'pdf-view-mode)
@@ -184,7 +239,7 @@
 					 ("j" . #'pdf-view-next-line-or-next-page)
 					 ("k" . #'pdf-view-previous-line-or-previous-page)
 					 ("l" . #'image-forward-hscroll)
-					 ("h" . #'image-backward-hscroll))) graphic-only-plugins-setting)
+					 ("h" . #'image-backward-hscroll)))
 
 
 ;; 窗口管理器
@@ -227,12 +282,12 @@
 ;; 工作区
 (use-package 
   perspeen
-  :defer 2
   :ensure t 
   :init
   ;; (setq perspeen-use-tab t)
   (setq perspeen-keymap-prefix [C-tab]) 
-  :config (perspeen-mode))
+  :config (perspeen-mode)
+  :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
 
 ;; 撤销树
 (use-package 

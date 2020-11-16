@@ -152,7 +152,14 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (let (buf (get-buffer "*TEMP-ELISP"))
 	(if (null buf)
 		(kill-buffer buf))))
-
+;; 光标向上移动5行
+(defun +evan/previous-line-5 ()
+  (interactive)
+  (previous-line 5))
+;; 光标向下移动5行
+(defun +evan/next-line-5 ()
+  (interactive)
+  (next-line 5))
 
 
 (provide '+config)

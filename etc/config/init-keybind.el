@@ -22,11 +22,16 @@
   :defer 0
   :ensure t)
 
-(push '(use-package
-		 hydra-posframe
-		 :defer 0
-		 :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-		 :hook (after-init . hydra-posframe-mode)) graphic-only-plugins-setting)
+;; (push '(use-package
+;; 		 hydra-posframe
+;; 		 :defer 0
+;; 		 :load-path "~/.emacs.d/site-lisp/hydra-posframe"
+;; 		 :hook (after-init . hydra-posframe-mode)) graphic-only-plugins-setting)
+
+(use-package
+  hydra-posframe
+  :load-path "~/.emacs.d/site-lisp/hydra-posframe"
+  :hook (after-init . hydra-posframe-mode))
 
 (use-package
   major-mode-hydra

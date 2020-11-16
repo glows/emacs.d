@@ -1,6 +1,6 @@
 (use-package treemacs
   :ensure t
-  :defer t
+  :commands treemacs
   :init
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
@@ -67,6 +67,10 @@
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package lsp-treemacs
+  :ensure t
+  :after dap-mode)
 
 (use-package treemacs-projectile
   :after treemacs projectile

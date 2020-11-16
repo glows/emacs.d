@@ -14,7 +14,8 @@
 ;; 设置缓存文件/杂七杂八的文件存放的地址
 (setq user-emacs-directory "~/.emacs.d/var")
 (setq desktop-dirname "~/.emacs.d/var/desktop-save")
-
+;; 设置Emacs源码位置
+(setq source-directory "~/Documents/repoes/emacs-src/src/")
 ;; 设置自动保存路径前缀
 (setq auto-save-list-file-prefix "~/.emacs/var/auto-save-list/.saves-")
 ;; 设置eshell历史记录
@@ -26,7 +27,8 @@
 							 (insert ";; 欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842\n;; 配置文件地址:github.com/EvanMeek/.emacs.d\n;; 作者:EvanMeek")))
 
 ;; 关闭滚动条
-(push '(scroll-bar-mode -1) graphic-only-plugins-setting)
+;; (push '(scroll-bar-mode -1) graphic-only-plugins-setting)
+(scroll-bar-mode -1)
 
 ;; 关闭工具栏
 (tool-bar-mode -1)
