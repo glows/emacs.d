@@ -20,23 +20,6 @@
 ;; 去除默认启动界面
 (setq inhibit-startup-message t)
 ;; 设置英文字体
-;; (push '(if (fontp (font-spec
-;; 				   :name evan/font-name
-;; 				   :style evan/font-style
-;; 				   :size evan/font-size))
-;; 		   (progn
-;; 			 (set-face-attribute 'default nil
-;; 								 :font (font-spec
-;; 										:name evan/font-name
-;; 										:style evan/font-style
-;; 										:size evan/font-size))
-;; 			 (set-fontset-font t ?中 (font-spec
-;; 									  :name evan/font-name
-;; 									  :style evan/font-style
-;; 									  :size evan/font-size)))
-		 
-;; 		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name)) graphic-only-plugins-setting)
-
 (if (fontp (font-spec
 				   :name evan/font-name
 				   :style evan/font-style
@@ -65,7 +48,6 @@
   :hook (after-init . beacon-mode))
 
 
-
 ;; 主题包									
 (use-package
   doom-themes
@@ -77,7 +59,6 @@
 
 (use-package modus-operandi-theme
   :ensure t)
-;; (load-file "~/.emacs.d/themes/solo-jazz-theme.el")
 
 (use-package modus-vivendi-theme
   :ensure t )
@@ -110,40 +91,6 @@
 					(eaf-setq eaf-pdf-dark-mode "false")
 					(eaf-setq eaf-browser-dark-mode "false") 
 					(eaf-setq eaf-mindmap-dark-mode "false"))))))
-
-
-;; 根据时间切换高亮当前行颜色
-;; (if (and (> (car (circadian-now-time)) (car (circadian-sunrise)))
-;; 		 (< (car (circadian-now-time)) (car (circadian-sunset))))
-;; 	(set-face-background 'hl-line "light gray")
-;;   (set-face-background 'hl-line "gray17"))
-
-;; (push '(progn
-;; 		 ;; 图标支持
-;; 		 (use-package
-;; 		   all-the-icons
-;; 		   :defer 0
-;; 		   :ensure t)
-;; 		 ;; dired模式图标支持
-;; 		 (use-package
-;; 		   all-the-icons-dired
-;; 		   :defer 0
-;; 		   :ensure t
-;; 		   :hook ('dired-mode . 'all-the-icons-dired-mode))
-;; 		 ;; 表情符号
-;; 		 (use-package
-;; 		   emojify
-;; 		   :defer 0
-;; 		   :ensure t
-;; 		   :custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
-;; 		   :hook telega-mode)
-;; 		 ;; 浮动窗口支持
-;; 		 (use-package
-;; 		   posframe
-;; 		   :defer 0
-;; 		   :ensure t
-;; 		   :custom
-;; 		   (posframe-mouse-banish nil))) graphic-only-plugins-setting)
 
 (progn
   ;; 图标支持
@@ -181,6 +128,7 @@
 ;; 启动界面
 (use-package
   dashboard
+  :disabled
   :ensure t
   :init
   (dashboard-setup-startup-hook)
@@ -194,7 +142,9 @@
   (setq dashboard-center-content t) 
   (setq dashboard-set-heading-icons t) 
   ;; (setq dashboard-set-file-icons t) 
-  (setq dashboard-set-navigator t))
+  (setq dashboard-set-navigator t)
+  :config
+  (display-line-numbers-mode -1))
 
 
 ;; modeline样式
@@ -223,6 +173,11 @@
   :ensure t
   :config
   (spaceline-emacs-theme))
+
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-center-theme))
 
 ;; 彩虹括号
 (use-package 
@@ -395,85 +350,8 @@
    ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
 
-;; (push '(use-package svg-tag-mode
-;;          :disabled
-;;          :demand
-;;          :load-path "~/.emacs.d/site-lisp/svg-tag-mode"
-;;          :config
-;;          (defface svg-tag-note-face
-;; 	       '((t :foreground "black" :background "white" :box "black"
-;; 		        :family "Roboto Mono" :weight light :height 120))
-;; 	       "Face for note tag" :group nil)
-
-;;          (defface svg-tag-keyboard-face
-;; 	       '((t :foreground "#333333" :background "#f9f9f9" :box "#333333"
-;; 		        :family "Roboto Mono" :weight light :height 120))
-;; 	       "Face for keyboard bindings tag" :group nil)
-
-;;          (setq svg-tag-todo
-;; 		       (svg-tag-make "TODO" nil 1 1 2))
-
-;;          (setq svg-tag-note
-;; 		       (svg-tag-make "NOTE" 'svg-tag-note-face 1 1 2))
-
-;;          (defun svg-tag-round (text)
-;; 	       (svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 12))
-
-;;          (defun svg-tag-quasi-round (text)
-;; 	       (svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 8))
-
-;;          (defun svg-tag-keyboard (text)
-;; 	       (svg-tag-make (substring text 1 -1) 'svg-tag-keyboard-face 1 1 2))
-
-;;          (setq svg-tag-tags
-;;                '((":TODO:"                     . svg-tag-todo)
-;;                  (":NOTE:"                     . svg-tag-note)
-;;                  ("\([0-9a-zA-Z]\)"            . svg-tag-round)
-;;                  ("\([0-9a-zA-Z][0-9a-zA-Z]\)" . svg-tag-quasi-round)
-;;                  ("|[0-9a-zA-Z- ]+?|"          . svg-tag-keyboard)))
-;;          (svg-tag-mode 1)) graphic-only-plugins-setting)
-
-(use-package svg-tag-mode
-         :disabled
-         :demand
-         :load-path "~/.emacs.d/site-lisp/svg-tag-mode"
-         :config
-         (defface svg-tag-note-face
-	       '((t :foreground "black" :background "white" :box "black"
-		        :family "Roboto Mono" :weight light :height 120))
-	       "Face for note tag" :group nil)
-
-         (defface svg-tag-keyboard-face
-	       '((t :foreground "#333333" :background "#f9f9f9" :box "#333333"
-		        :family "Roboto Mono" :weight light :height 120))
-	       "Face for keyboard bindings tag" :group nil)
-
-         (setq svg-tag-todo
-		       (svg-tag-make "TODO" nil 1 1 2))
-
-         (setq svg-tag-note
-		       (svg-tag-make "NOTE" 'svg-tag-note-face 1 1 2))
-
-         (defun svg-tag-round (text)
-	       (svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 12))
-
-         (defun svg-tag-quasi-round (text)
-	       (svg-tag-make (substring text 1 -1) 'svg-tag-note-face 1 1 8))
-
-         (defun svg-tag-keyboard (text)
-	       (svg-tag-make (substring text 1 -1) 'svg-tag-keyboard-face 1 1 2))
-
-         (setq svg-tag-tags
-               '((":TODO:"                     . svg-tag-todo)
-                 (":NOTE:"                     . svg-tag-note)
-                 ("\([0-9a-zA-Z]\)"            . svg-tag-round)
-                 ("\([0-9a-zA-Z][0-9a-zA-Z]\)" . svg-tag-quasi-round)
-                 ("|[0-9a-zA-Z- ]+?|"          . svg-tag-keyboard)))
-         (svg-tag-mode 1))
-
-
-(use-package fira-code-mode
-  :ensure t
-  :hook (after-init-hook . global-fira-code-mode))
+;; (use-package fira-code-mode
+;;   :ensure t
+;;   :hook (prog-mode . fira-code-mode))
 
 (provide 'init-ui)
