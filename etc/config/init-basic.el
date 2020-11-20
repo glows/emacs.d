@@ -254,8 +254,7 @@
   :custom
   (default-input-method "rime")
   :config
-  (setq rime-user-data-dir "~/.config/fcitx/rime")
-
+  (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
   (setq rime-posframe-properties
 		(list :background-color "#333333"
 			  :foreground-color "#dcdccc"

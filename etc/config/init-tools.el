@@ -25,7 +25,7 @@
 	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
 	  
 	  (eaf-setq eaf-browser-enable-adblocker "true")
-	  (eaf-setq eaf-browser-default-zoom "1.2")
+	  (eaf-setq eaf-browser-default-zoom "1.0")
 	  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
 	  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
 	  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
@@ -108,9 +108,9 @@
   (setq telega-chat-fill-column 65) 
   (setq telega-emoji-use-images nil) 
   :config
-  (set-face-attribute 'telega-entity-type-code nil :font (font-spec :name evan/font-name
-										                            :style evan/font-style
-										                            :size evan/font-size))
+  (set-face-attribute 'telega-entity-type-code nil :font (font-spec :name evan/en-font-name
+										                            :style evan/en-font-style
+										                            :size evan/en-font-size))
   (set-fontset-font t 'unicode (font-spec :family "Symbola") nil 'prepend) 
   (with-eval-after-load 'company (add-hook 'telega-chat-mode-hook (lambda () 
                                                                     (make-local-variable 'company-backends) 

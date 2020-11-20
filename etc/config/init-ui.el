@@ -9,9 +9,15 @@
 
 ;;; Code:
 
-(setq evan/font-name "agave Nerd Font"
-	  evan/font-style "r"
-	  evan/font-size 22)
+(setq
+ ;; 英文字体
+ evan/en-font-name "agave Nerd Font"
+ evan/en-font-style "r"
+ evan/en-font-size 22
+ ;; 中文字体
+ evan/zh-font-name "Sarasa Gothic SC"
+ evan/zh-font-style "Regular"
+ evan/zh-font-size 18)
 
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
@@ -19,23 +25,27 @@
 (setq-default cursor-type 'box)
 ;; 去除默认启动界面
 (setq inhibit-startup-message t)
-;; 设置英文字体
+;; 设置英文/英文字体
 (if (fontp (font-spec
-				   :name evan/font-name
-				   :style evan/font-style
-				   :size evan/font-size))
-		   (progn
-			 (set-face-attribute 'default nil
-								 :font (font-spec
-										:name evan/font-name
-										:style evan/font-style
-										:size evan/font-size))
-			 (set-fontset-font t ?中 (font-spec
-									  :name evan/font-name
-									  :style evan/font-style
-									  :size evan/font-size)))
+			:name evan/font-name
+			:style evan/en-font-style
+			:size evan/en-font-size))
+	(progn
+	  (set-face-attribute 'default nil
+						  :font (font-spec
+								 :name evan/en-font-name
+								 :style evan/en-font-style
+								 :size evan/en-font-size))
+	  (set-fontset-font t ?中 (font-spec
+							   :name evan/zh-font-name
+							   :style evan/zh-font-style
+							   :size evan/zh-font-size))
+      (set-fontset-font t 'han (font-spec
+                                :name evan/zh-font-name
+                                :style evan/zh-font-style
+                                :size evan/zh-font-size)))
 		 
-		 (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/font-name))
+  (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name))
 
 
 ;; 高亮当前行
@@ -159,12 +169,12 @@
   (doom-modeline-buffer-file-name-style 'file-name)
   :config
   (custom-set-faces '(mode-line ((t 
-                                  (:family evan/font-name
-                                           :style evan/font-style
+                                  (:family evan/en-font-name
+                                           :style evan/en-font-style
                                            :height 125)))) 
                     '(mode-line-inactive ((t 
-                                           (:family evan/font-name
-                                                    :style evan/font-size
+                                           (:family evan/en-font-name
+                                                    :style evan/en-font-size
                                                     :height 125))))))
 
 (use-package spaceline
@@ -175,6 +185,7 @@
   (spaceline-emacs-theme))
 
 (use-package powerline
+  :disabled
   :ensure t
   :config
   (powerline-center-theme))
@@ -272,7 +283,7 @@
 		;; 是否要显示导航按钮
 		centaur-tabs-show-navigation-buttons nil
 		)
-  (centaur-tabs-change-fonts evan/font-name 160)
+  (centaur-tabs-change-fonts evan/en-font-name 160)
   ;; centaur show tabs rules
   ;; Centuar-tabs 显示规则
   (defun centaur-tabs-hide-tab (x)

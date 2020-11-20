@@ -78,8 +78,8 @@
    '((python . t)
 	 (shell . t))))
 
-(set-face-attribute 'org-table nil :font (font-spec :name evan/font-name
-                                                    :size evan/font-size
+(set-face-attribute 'org-table nil :font (font-spec :name evan/en-font-name
+                                                    :size evan/en-font-size
 													;; :style "Regular"
 													))
 
