@@ -14,11 +14,11 @@
  evan/en-font-name "agave Nerd Font"
  ;; evan/en-font-name "Sarasa Mono CL"
  evan/en-font-style "r"
- evan/en-font-size 18
+ evan/en-font-size 20
  ;; 中文字体
  evan/zh-font-name "Sarasa Mono CL"
  evan/zh-font-style "Regular"
- evan/zh-font-size 16)
+ evan/zh-font-size 18)
 
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
@@ -27,30 +27,27 @@
 ;; 去除默认启动界面
 (setq inhibit-startup-message t)
 ;; 设置英文/英文字体
-(if (fontp (font-spec
-			:name evan/en-font-name
-			:style evan/en-font-style
-			:size evan/en-font-size))
-	(progn
-	  (set-face-attribute 'default nil
-						  :font (font-spec
-								 :name evan/en-font-name
-								 :style evan/en-font-style
-								 :size evan/en-font-size))
-	  (set-fontset-font t ?中 (font-spec
-							   :name evan/zh-font-name
-							   :style evan/zh-font-style
-							   :size evan/zh-font-size))
-      (set-fontset-font t 'han (font-spec
-                                :name evan/zh-font-name
-                                :style evan/zh-font-style
-                                :size evan/zh-font-size))
-      ;; (add-hook 'org-mode (lambda ())
-      ;;           (set-face-attribute 'org-table nil :font (font-spec :name evan/en-font-name
-      ;;                                                     :size evan/en-font-size
-      ;;                                                     :style evan/en-font-style))))
-      )
-  (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name))
+(push '(progn
+         (if (fontp (font-spec
+			         :name evan/en-font-name
+			         :style evan/en-font-style
+			         :size evan/en-font-size))
+	         (progn
+	           (set-face-attribute 'default nil
+						           :font (font-spec
+								          :name evan/en-font-name
+								          :style evan/en-font-style
+								          :size evan/en-font-size))
+	           (set-fontset-font t ?中 (font-spec
+							            :name evan/zh-font-name
+							            :style evan/zh-font-style
+							            :size evan/zh-font-size))
+               (set-fontset-font t 'han (font-spec
+                                         :name evan/zh-font-name
+                                         :style evan/zh-font-style
+                                         :size evan/zh-font-size)))
+           (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name)))
+      graphic-only-plugins-setting) 
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -185,8 +182,10 @@
                                                     :style evan/en-font-size
                                                     :height 125))))))
 (use-package mini-modeline
+  :disabled
   :ensure t
   :hook (after-init . mini-modeline-mode))
+
 
 (use-package spaceline
   :disabled
