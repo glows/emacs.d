@@ -12,12 +12,13 @@
 (setq
  ;; 英文字体
  evan/en-font-name "agave Nerd Font"
+ ;; evan/en-font-name "Sarasa Mono CL"
  evan/en-font-style "r"
- evan/en-font-size 22
+ evan/en-font-size 18
  ;; 中文字体
- evan/zh-font-name "Sarasa Gothic SC"
+ evan/zh-font-name "Sarasa Mono CL"
  evan/zh-font-style "Regular"
- evan/zh-font-size 18)
+ evan/zh-font-size 16)
 
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
@@ -27,7 +28,7 @@
 (setq inhibit-startup-message t)
 ;; 设置英文/英文字体
 (if (fontp (font-spec
-			:name evan/font-name
+			:name evan/en-font-name
 			:style evan/en-font-style
 			:size evan/en-font-size))
 	(progn
@@ -43,10 +44,13 @@
       (set-fontset-font t 'han (font-spec
                                 :name evan/zh-font-name
                                 :style evan/zh-font-style
-                                :size evan/zh-font-size)))
-		 
+                                :size evan/zh-font-size))
+      ;; (add-hook 'org-mode (lambda ())
+      ;;           (set-face-attribute 'org-table nil :font (font-spec :name evan/en-font-name
+      ;;                                                     :size evan/en-font-size
+      ;;                                                     :style evan/en-font-style))))
+      )
   (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name))
-
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -76,6 +80,9 @@
 (use-package lab-themes
   :ensure t)
 
+(load-file "~/.emacs.d/themes/oswald-theme.el")
+(load-file "~/.emacs.d/themes/solo-jazz-theme.el")
+
 
 ;; 自动切换主题
 (use-package
@@ -87,8 +94,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-						   (:sunset . doom-gruvbox)))
+  (setq circadian-themes '((:sunrise . modus-operandi)
+						   (:sunset . modus-vivendi)))
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
@@ -117,10 +124,11 @@
   ;; 表情符号
   (use-package
 	emojify
-	:defer 0
 	:ensure t
 	:custom (emojify-emojis-dir "~/.emacs.d/var/emojis")
-	:hook telega-mode)
+	:config
+    (add-hook 'telega-root-mode-hook (lambda ()
+                                       (emojify-mode +1))))
   ;; 浮动窗口支持
   (use-package
 	posframe
@@ -176,6 +184,9 @@
                                            (:family evan/en-font-name
                                                     :style evan/en-font-size
                                                     :height 125))))))
+(use-package mini-modeline
+  :ensure t
+  :hook (after-init . mini-modeline-mode))
 
 (use-package spaceline
   :disabled
@@ -261,7 +272,6 @@
 ;; 为上层提供 init-ui 模块
 (use-package centaur-tabs
   :disabled
-  :init (setq centaur-tabs-enable-key-bindkings t)
   :ensure t
   :defer 0
   :config
@@ -349,8 +359,8 @@
 	  ((or (string-prefix-p "◀[" (buffer-name))
 		   (string-prefix-p "◀{" (buffer-name))) 
 	   "Telega")
-	  ((derived-mode-p 'vterm-mode)
-	   "Vterm")
+	  ;; ((derived-mode-p 'vterm-mode)
+	  ;;  "Vterm")
 	  (t
 	   (centaur-tabs-get-group-name (current-buffer))))))
   :bind

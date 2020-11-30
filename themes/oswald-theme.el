@@ -4,7 +4,7 @@
 (custom-theme-set-faces
  'oswald
 
- '(default ((t (:background "unspecified-bg" :foreground "green"))))
+ '(default ((t (:background "black" :foreground "green"))))
  '(mouse ((t (:foreground "black"))))
  '(cursor ((t (:background "green"))))
  '(border ((t (:foreground "black"))))

@@ -43,7 +43,7 @@
   (lsp-idle-delay 200)
   (lsp-auto-guess-root nil)
   (lsp-file-watch-threshold 2000)
-  (read-process-output-max (* 1024 1024))
+  (read-process-output-max (* 1024 10240))
   (lsp-eldoc-hook nil)
   (lsp-prefer-flymake nil)
   :bind (:map lsp-mode-map

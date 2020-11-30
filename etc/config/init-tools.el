@@ -25,7 +25,7 @@
 	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
 	  
 	  (eaf-setq eaf-browser-enable-adblocker "true")
-	  (eaf-setq eaf-browser-default-zoom "1.0")
+	  (eaf-setq eaf-browser-default-zoom "1.2")
 	  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
 	  (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding) 
 	  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
@@ -125,7 +125,13 @@
                                                                                        :v-adjust -0.2 
                                                                                        :face all-the-icons-blue))) 
   (telega-notifications-mode t)
-  (telega-mode-line-mode 1))
+  (telega-mode-line-mode 1)
+  (add-hook 'telega-chat-mode-hook
+            (lambda ()
+              (display-line-numbers-mode -1)))
+  (add-hook 'telega-root-mode-hook
+            (lambda ()
+              (display-line-numbers-mode -1))))
 
 ;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
 (use-package 
@@ -312,7 +318,6 @@
 ;; 窗口布局恢复
 (use-package winner-mode
   :hook (after-init . winner-mode)
-  :config
   :bind (:map winner-mode-map
 			  ("C-c H" . 'winner-undo)
 			  ("C-c L" . 'winner-redo)))
@@ -347,6 +352,10 @@
 
 ;; 管理生词工具-本配置文件作者写的插件
 (use-package shengci
-  :load-path "~/.emacs.d/site-lisp/shengci.el")
+  :load-path "~/.emacs.d/site-lisp/shengci.el"
+  ;; :bind (:map shengci-mode-map
+  ;;             ("p" . shengci--backward-word)
+  ;;             ("n" . shengci--forward-word))
+  )
 
 (provide 'init-tools)

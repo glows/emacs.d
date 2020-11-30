@@ -56,16 +56,17 @@
 
 ;; 美化lsp-mode
 (use-package 
-  lsp-ui 
+  lsp-ui
+  :disabled
   :ensure t
   ;; 默认不再开启lsp-ui
   ;; :hook (lsp-mode . lsp-ui-mode)
-  :after lsp-mode
-  :custom (lsp-ui-doc-delay 1) 
+  ;; :after lsp-mode
+  ;; :custom (lsp-ui-doc-delay 1) 
   :init (setq lsp-ui-doc-enable t lsp-ui-doc-use-webkit nil lsp-ui-doc-delay 0.2
 			  lsp-ui-doc-include-signature t lsp-ui-doc-position 'at-point lsp-ui-doc-border
 			  (face-foreground 'default) lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
-			  lsp-ui-sideline-enable t lsp-ui-sideline-show-hover t
+			  lsp-ui-sideline-enable nil lsp-ui-sideline-show-hover nil
 			  lsp-ui-sideline-show-diagnostics nil lsp-ui-sideline-ignore-duplicate t
 			  lsp-ui-imenu-enable t lsp-ui-imenu-colors `(,(face-foreground
 															'font-lock-keyword-face) 

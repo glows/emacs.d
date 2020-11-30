@@ -20,5 +20,4 @@
   :ensure t
   :config
   (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
-
 (provide 'init-emacs-lisp)
