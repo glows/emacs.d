@@ -13,4 +13,4 @@ session*
 tramp
 eaf/
 transient/
-!/etc/private/
+!/etc/private/*
