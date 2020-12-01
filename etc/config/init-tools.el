@@ -19,7 +19,7 @@
 		:ensure t
 		:after eaf)
 	  (defalias 'browse-web #'eaf-open-browser)
-	  (setq eaf-grip-token "32872f2ccde165e5d36548619681c7b7e7ec8793")
+	  (setq eaf-grip-token evan/eaf-grip-token)
       ;; (setq eaf-browser-default-search-engine "google")
 	  (setq eaf-browser-default-search-engine "duckduckgo")
 	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
@@ -101,12 +101,13 @@
   :ensure t
   :commands telega
   :init (setq telega-proxies 
-              '((:server "localhost" 
-                         :port 1088
+              '((:server "localhost"
+                         :port "1088"
                          :enable t 
-                         :type (:@type "proxyTypeSocks5")))) 
+                         :type (:@type "proxyTypeSocks5")))
+              telega-chat-show-avatars nil) 
   (setq telega-chat-fill-column 65) 
-  (setq telega-emoji-use-images nil) 
+  (setq telega-emoji-use-images nil)
   :config
   (set-face-attribute 'telega-entity-type-code nil :font (font-spec :name evan/en-font-name
 										                            :style evan/en-font-style
@@ -133,7 +134,7 @@
             (lambda ()
               (display-line-numbers-mode -1))))
 
-;; Emacs下最好用的终端仿真器，需要编译库，默认不开启
+;; Emacs下最好用的终端仿真器
 (use-package 
   vterm
   :commands (vterm)
@@ -294,7 +295,10 @@
   :ensure t
   :custom
   (go-translate-base-url "https://translate.google.cn")
-  (go-translate-local-language "zh-CN"))
+  (go-translate-local-language "zh-CN")
+  :config
+  (defun go-translate-token--extract-tkk ()
+    (cons 430675 2721866130)))
 
 ;; 管理员模式编辑
 (use-package sudo-edit

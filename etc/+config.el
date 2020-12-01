@@ -65,8 +65,8 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (if (null url-proxy-services) 
       (progn 
         (setq url-proxy-services
-              '(("http" . "127.0.0.1:8000") 
-                                   ("https" ."127.0.0.1:8000"))) 
+              '(("http" . (concat evan/proxy-host ":" evan/proxy-port) ) 
+                ("https" . (concat evan/proxy-host ":" evan/proxy-port))))
         (message "代理已开启.")) 
     (setq url-proxy-services nil)
     (message "代理已关闭.")))

@@ -1,5 +1,7 @@
 (require '+autoload)
 (require '+config)
+(require 'init-variable)
+(require 'private-module)
 (require '+mini-keybind)
 (require 'init-package)
 (require 'init-basic)

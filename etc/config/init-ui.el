@@ -9,17 +9,6 @@
 
 ;;; Code:
 
-(setq
- ;; 英文字体
- evan/en-font-name "agave Nerd Font"
- ;; evan/en-font-name "Sarasa Mono CL"
- evan/en-font-style "r"
- evan/en-font-size 20
- ;; 中文字体
- evan/zh-font-name "Sarasa Mono CL"
- evan/zh-font-style "Regular"
- evan/zh-font-size 18)
-
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
 ;; 设置光标样式
@@ -38,14 +27,18 @@
 								          :name evan/en-font-name
 								          :style evan/en-font-style
 								          :size evan/en-font-size))
+               (set-fontset-font t 'han (font-spec
+                                         :name evan/zh-font-name
+                                         :style evan/zh-font-style
+                                         :size evan/zh-font-size))
 	           (set-fontset-font t ?中 (font-spec
 							            :name evan/zh-font-name
 							            :style evan/zh-font-style
 							            :size evan/zh-font-size))
-               (set-fontset-font t 'han (font-spec
-                                         :name evan/zh-font-name
-                                         :style evan/zh-font-style
-                                         :size evan/zh-font-size)))
+               (set-fontset-font "fontset-default" ?༼ (font-spec
+                                                       :name "Noto Serif Tibetan"
+                                                       :size 0))
+               )
            (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name)))
       graphic-only-plugins-setting) 
 
@@ -64,10 +57,6 @@
   doom-themes
   :ensure t)
 
-(use-package
-  spacemacs-common
-  :ensure spacemacs-theme)
-
 (use-package modus-operandi-theme
   :ensure t)
 
@@ -76,10 +65,6 @@
 
 (use-package lab-themes
   :ensure t)
-
-(load-file "~/.emacs.d/themes/oswald-theme.el")
-(load-file "~/.emacs.d/themes/solo-jazz-theme.el")
-
 
 ;; 自动切换主题
 (use-package
@@ -91,8 +76,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . modus-operandi)
-						   (:sunset . modus-vivendi)))
+  (setq circadian-themes '((:sunrise . doom-flatwhite)
+						   (:sunset . doom-one)))
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
@@ -272,7 +257,6 @@
 (use-package centaur-tabs
   :disabled
   :ensure t
-  :defer 0
   :config
   (centaur-tabs-mode +1)
   (centaur-tabs-headline-match)
@@ -287,11 +271,10 @@
 		centaur-tabs-set-modified-marker t
 		;; 自动排序
 		;; centaur-tabs-adjust-buffer-order t
-		;; 默认按键设置为Nil
+ppp		;; 默认按键设置为Nil
 		centaur-tabs-prefix-map nil
 		;; 是否要显示导航按钮
-		centaur-tabs-show-navigation-buttons nil
-		)
+		centaur-tabs-show-navigation-buttons nil)
   (centaur-tabs-change-fonts evan/en-font-name 160)
   ;; centaur show tabs rules
   ;; Centuar-tabs 显示规则
@@ -355,9 +338,9 @@
 						  org-agenda-log-mode
 						  diary-mode))
 	   "OrgMode")
-	  ((or (string-prefix-p "◀[" (buffer-name))
-		   (string-prefix-p "◀{" (buffer-name))) 
-	   "Telega")
+	  ;; ((or (string-prefix-p "◀[" (buffer-name))
+	  ;;      (string-prefix-p "◀{" (buffer-name))) 
+	  ;;  "Telega")
 	  ;; ((derived-mode-p 'vterm-mode)
 	  ;;  "Vterm")
 	  (t
@@ -369,6 +352,7 @@
    ("C-c L" . centaur-tabs-forward-tab-other-window)
    ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
+
 
 ;; (use-package fira-code-mode
 ;;   :ensure t

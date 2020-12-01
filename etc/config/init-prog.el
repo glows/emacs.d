@@ -57,25 +57,26 @@
 ;; 美化lsp-mode
 (use-package 
   lsp-ui
-  :disabled
   :ensure t
-  ;; 默认不再开启lsp-ui
-  ;; :hook (lsp-mode . lsp-ui-mode)
-  ;; :after lsp-mode
-  ;; :custom (lsp-ui-doc-delay 1) 
-  :init (setq lsp-ui-doc-enable t lsp-ui-doc-use-webkit nil lsp-ui-doc-delay 0.2
-			  lsp-ui-doc-include-signature t lsp-ui-doc-position 'at-point lsp-ui-doc-border
-			  (face-foreground 'default) lsp-eldoc-enable-hover nil ; Disable eldoc displays in minibuffer
-			  lsp-ui-sideline-enable nil lsp-ui-sideline-show-hover nil
-			  lsp-ui-sideline-show-diagnostics nil lsp-ui-sideline-ignore-duplicate t
-			  lsp-ui-imenu-enable t lsp-ui-imenu-colors `(,(face-foreground
-															'font-lock-keyword-face) 
-														  ,(face-foreground
-															'font-lock-string-face) 
-														  ,(face-foreground
-															'font-lock-constant-face) 
-														  ,(face-foreground
-															'font-lock-variable-name-face))))
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  ;; sideline
+  (setq lsp-ui-sideline-show-diagnostics t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-show-code-actions nil
+        lsp-ui-sideline-update-mode 'line
+        ;; sideline
+        lsp-ui-sideline-delay 1)
+  ;; peek
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  ;; doc
+  (setq lsp-ui-doc-enable t
+        ;; 文档显示的位置
+        lsp-ui-doc-position 'top
+        ;; 显示文档的延迟
+        lsp-ui-doc-delay 2))
+
 ;; 微软的python语言服务器-老牌稳定
 ;; (use-package lsp-python-ms
 ;;   :disabled
