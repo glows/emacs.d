@@ -43,3 +43,6 @@
 [submodule "emacs-diredc"]
 	path = site-lisp/emacs-diredc
 	url = https://github.com/Boruch-Baum/emacs-diredc
+[submodule "site-lisp/telega.el"]
+	path = site-lisp/telega.el
+	url = https://github.com/zevlg/telega.el
