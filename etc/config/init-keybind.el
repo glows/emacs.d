@@ -161,8 +161,8 @@
 [_b_] ^counsel-switch-buffer^		[_l_] ^counsel-linux-app^
 [_i_] ^find-config-file-by-fzf^     [_=_] ^plus-backlight^
 [_w_] ^capture-word^				[_-_] ^less-backlight^
-[_c_] ^nyan-strat-music^			[_s_] ^nyan-stop-music^
-[_1_] ^alpha-add^					[_2_] ^alpha-less^
+[_c_] ^nyan-strat-music^			[_2_] ^alpha-less^
+[_1_] ^alpha-add^					
 "
   ("g" counsel-rg nil :color blue)
   ("f" counsel-fzf nil :color blue)
@@ -176,8 +176,7 @@
   ("i" +evan/find-config-file-by-fzf :color blue)
   ("-" +evan/less-backlight :color red)
   ("=" +evan/plus-backlight :color red)
-  ("c" nyan-start-music :color blue)
-  ("s" nyan-stop-music :colro blue)
+  ("c" +evan/girl-say :color blue)
   ("1" +evan/plus-alpha nil :color red)
   ("2" +evan/less-alpha nil :color red)
   ("q" nil "QUIT" :color blue))

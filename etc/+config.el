@@ -161,5 +161,18 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (interactive)
   (next-line 5))
 
+(defun +evan/girl-say ()
+  (interactive)
+  (let ((girl-say-lst (list)))
+    (mapcar (lambda (mp3)
+              (push mp3 girl-say-lst))
+            (split-string (shell-command-to-string "ls ~/.emacs.d/var/girl-say")))
+    
+    (setq girl-say-process
+          (start-process-shell-command "girl-say" "girl-say"
+                                       (concat "mplayer" " ~/.emacs.d/var/girl-say/" (nth
+                                                                                      (random (length girl-say-lst))
+                                                                                      girl-say-lst))))))
+
 
 (provide '+config)

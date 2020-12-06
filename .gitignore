@@ -8,6 +8,7 @@ doc/
 !doc/emacs-document
 var/*
 !/var/banner/
+!/var/girl-say/
 /site-lisp/
 session*
 tramp

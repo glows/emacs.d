@@ -15,10 +15,11 @@
                              (makunbound 'gc-cons-threshold-original) 
                              (makunbound 'file-name-handler-alist-original)
                              (message
-                              ;; "自动优化完毕!\t如果要关闭这条消息可以在~/.emacs.d/init.el里注释掉."
-							  "如果感到无聊就试试按下 M-\ 2 c 吧!")))
+							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 (add-hook 'after-init-hook (lambda ()
-                             (setq gc-cons-threshold 800000)))
+                             (setq gc-cons-threshold 800000)
+                             (message
+							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 
 ;; 递归遍历加载路径
 (defun add-subdirs-to-load-path(dir) 
