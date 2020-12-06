@@ -8,9 +8,10 @@ doc/
 !doc/emacs-document
 var/*
 !/var/banner/
-# site-lisp/
+!/site-lisp/
 session*
 tramp
 eaf/
 transient/
+!/eln-cache/
 !/etc/private/
