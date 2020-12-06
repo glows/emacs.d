@@ -161,6 +161,7 @@
 
 ;; 增强了搜索功能
 (use-package swiper
+  :ensure t
   :bind
   (("C-s" . swiper)
    ("C-r" . swiper)
@@ -199,7 +200,7 @@
 									  "-g" "!doc"
 									  "-g" "!themes"
                                       "-g" "!etc-cache"))
-  (setq counsel-fzf-cmd "fd --exclude={site-lisp,etc/snippets,themes,/eln-cache} --type f | fzf -f \"%s\" --algo=v1")
+  (setq counsel-fzf-cmd "fd -I --exclude={site-lisp,etc/snippets,themes,/eln-cache,/var,/elpa,/url,/auto-save-list,.cache,doc/} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))

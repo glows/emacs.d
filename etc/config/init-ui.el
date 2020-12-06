@@ -37,8 +37,7 @@
 							            :size evan/zh-font-size))
                (set-fontset-font "fontset-default" ?༼ (font-spec
                                                        :name "Noto Serif Tibetan"
-                                                       :size 0))
-               )
+                                                       :size 0)))
            (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name)))
       graphic-only-plugins-setting) 
 
@@ -50,7 +49,6 @@
   :disabled
   :ensure t
   :hook (after-init . beacon-mode))
-
 
 ;; 主题包									
 (use-package
@@ -92,7 +90,6 @@
 					(eaf-setq eaf-mindmap-dark-mode "false")))
                 (centaur-tabs-mode -1)
                 (centaur-tabs-mode +1))))
-
 (progn
   ;; 图标支持
   (use-package
@@ -250,70 +247,69 @@
 
 ;; tab-bar
 (use-package tab-bar
+  :disabled
   :config
   (setq tab-bar-tab-name-truncated-max 8))
 
-
-;; 为上层提供 init-ui 模块
-(use-package centaur-tabs
-  :ensure t
-  :hook (after-init . centaur-tabs-mode)
+(use-package awesome-tab
+  :load-path "~/.emacs.d/site-lisp/awesome-tab"
+  :hook (after-init . awesome-tab-mode)
+  :bind
+  (("C-c l" . awesome-tab-backward-tab)
+   ("C-c h" . awesome-tab-forward-tab)
+   ("C-c L" . awesome-tab-backward-tab-other-window)
+   ("C-c H" . awesome-tab-forward-tab-other-window)
+   ("C-c b" . awesome-tab-switch-group)
+   ("C-c g" . awesome-tab-ace-jump))
   :config
-  (centaur-tabs-headline-match)
-  ;; (centaur-tabs-enable-buffer-reordering)
-  (setq centaur-tabs-height 35
-		centaur-tabs-style "bar"
-		centaur-tabs-set-icons t
-		centaur-tabs-gray-out-icons 'buffer
-		centaur-tabs-set-bar 'under
-		x-underline-at-descent-line t
-		;; 开启已修改标记
-		centaur-tabs-set-modified-marker t
-		;; 自动排序
-		;; centaur-tabs-adjust-buffer-order t
-		;; 默认按键设置为Nil
-		centaur-tabs-prefix-map nil
-		;; 是否要显示导航按钮
-		centaur-tabs-show-navigation-buttons nil)
-  (centaur-tabs-change-fonts evan/en-font-name 160)
-  ;; centaur show tabs rules
-  ;; Centuar-tabs 显示规则
-  (defun centaur-tabs-hide-tab (x)
-	"Do no to show buffer X in tabs."
-	(let ((name (format "%s" x)))
+  (defun awesome-tab-hide-tab (x)
+    (let ((name (format "%s" x)))
       (or
-       ;; Current window is not dedicated window.
-       (window-dedicated-p (selected-window))
-
-       ;; Buffer name not match below blacklist.
-	   ;; 黑名单
+       (string-prefix-p "*epc" name)
+       (string-prefix-p "*helm" name)
        (string-prefix-p "*Compile-Log*" name)
        (string-prefix-p "*lsp" name)
-       (string-prefix-p "*company" name)
-       (string-prefix-p "*Flycheck" name)
-       (string-prefix-p " *Mini" name)
-       (string-prefix-p "*help" name)
-       (string-prefix-p "*straight" name)
-       (string-prefix-p " *temp" name)
-       (string-prefix-p "*Help" name)
+       (string-prefix-p "flycheck" name)
        (string-prefix-p "*LSP" name)
-	   (derived-mode-p 'eaf-mode)
-	   (string-prefix-p " *snails" name)
-       (string-suffix-p ".pdf" name)
-       ;; Is not magit buffer.
+       (string-prefix-p "*Youdao" name)
        (and (string-prefix-p "magit" name)
-			(not (file-name-extension name))))))
-  :bind
-  (("C-c h" . centaur-tabs-backward-tab)
-   ("C-c l" . centaur-tabs-forward-tab)
-   ("C-c H" . centaur-tabs-backward-tab-other-window)
-   ("C-c L" . centaur-tabs-forward-tab-other-window)
-   ("C-c x" . centaur-tabs--kill-this-buffer-dont-ask)
-   ("C-c B" . centaur-tabs-counsel-switch-group)))
+            (not (file-name-extension name)))
+       )))
+  (defun awesome-tab-buffer-groups ()
+    "`awesome-tab-buffer-groups' control buffers' group rules.
 
+Group awesome-tab with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+All buffer name start with * will group to \"Emacs\".
+Other buffer group by `awesome-tab-get-group-name' with project name."
+    (list
+     (cond
+      ((or (derived-mode-p 'telega-chat-mode)
+           (derived-mode-p 'telega-root-mode)) 
+       "Telega")
+      
+       "Elisp")
+      ((or (string-equal "*" (substring (buffer-name) 0 1))
+           (memq major-mode '(magit-process-mode
+                              magit-status-mode
+                              magit-diff-mode
+                              magit-log-mode
+                              magit-file-mode
+                              magit-blob-mode
+                              magit-blame-mode
+                              )))
+       ((or (string-equal "*TEMP-ELISP" (buffer-name))
+            (string-prefix-p "*Youdao" (buffer-name))
+            (derived-mode-p 'emacs-lisp-mode)) 
+        "Emacs")
+      ((derived-mode-p 'eshell-mode)
+       "EShell")
+      
+      ((derived-mode-p 'dired-mode)
+       "Dired")
+      ((memq major-mode '(org-mode org-agenda-mode diary-mode))
+       "OrgMode") 
+      (t
+       (awesome-tab-get-group-name (current-buffer)))))))
 
-;; (use-package fira-code-mode
-;;   :ensure t
-;;   :hook (prog-mode . fira-code-mode))
-
+;; 为上层提供 init-ui 模块
 (provide 'init-ui)

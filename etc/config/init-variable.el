@@ -18,6 +18,8 @@
 
  ;; Emacs原生设置
  shell-file-name "/usr/bin/zsh"
+ ;; custom-set-variables 的那些数据存放位置
+ custom-file "~/.emacs.d/etc/custom.el"
 
  ;; EAF相关
  evan/eaf-grip-token nil

@@ -1,7 +1,7 @@
-;; (use-package benchmark-init
-;;   :ensure t
-;;   :config
-;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+(use-package benchmark-init
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
 	(use-package 
@@ -324,8 +324,8 @@
 (use-package winner-mode
   :hook (after-init . winner-mode)
   :bind (:map winner-mode-map
-			  ("C-c H" . 'winner-undo)
-			  ("C-c L" . 'winner-redo)))
+              ("C-c H" . 'winner-undo)
+              ("C-c L" . 'winner-redo)))
 
 
 ;; ASCII艺术字
@@ -348,19 +348,9 @@
   :hook (after-init . (lambda ()
 						(global-disable-mouse-mode))))
 
-;; 模式编辑-暂时关闭，等待大改。
-;; (use-package meow
-;;   :disabled
-;;   :load-path "~/.emacs.d/site-lisp/meow"
-;;   :custom
-;;   (meow-layout 'qwerty))
-
 ;; 管理生词工具-本配置文件作者写的插件
 (use-package shengci
-  :load-path "~/.emacs.d/site-lisp/shengci.el"
-  ;; :bind (:map shengci-mode-map
-  ;;             ("p" . shengci--backward-word)
-  ;;             ("n" . shengci--forward-word))
-  )
+  :defer 2
+  :load-path "~/.emacs.d/site-lisp/shengci.el")
 
 (provide 'init-tools)

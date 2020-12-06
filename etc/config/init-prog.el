@@ -111,7 +111,8 @@
 ;; 大量可用的代码片段
 (use-package 
   yasnippet-snippets 
-  :ensure t)
+  :ensure t
+  :after yasnippet)
 
 ;; 编译运行当前文件
 (use-package 
