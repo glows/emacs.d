@@ -233,7 +233,7 @@
   :hook (after-init . nyan-mode)
   :config
   (setq nyan-wavy-trail t
-		nyan-animate-nyancat nil))
+		nyan-animate-nyancat t))
 
 ;; 对齐表格
 (use-package valign
