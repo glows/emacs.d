@@ -3,8 +3,8 @@
 (setq
  ;; 字体相关
  ;; 英文字体
- evan/en-font-name "agave Nerd Font"
- evan/en-font-style "r"
+ evan/en-font-name "Sarasa Mono CL"
+ evan/en-font-style "Regular"
  evan/en-font-size 20
  ;; 中文字体
  evan/zh-font-name "Sarasa Mono CL"

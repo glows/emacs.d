@@ -23,14 +23,11 @@ a  [[file:var/banner/PreviewDark.png]]
     - tdlib
       * ArchLinux[#archlinuxcn]
 		~pacman -S libtd-git~
-	- llvm
+	- llvm && cargo
       fuz.el
 ** 字体
-   - all-the-icons
-	 下面的字体三选一
-   - Fira Code [可选]
-   - Sarasa Mono [可选]
-   - Iosevka [可选]
+   - all-the-icons :: 必装
+   - Sarasa Mono :: 默认字体 [可选]
 ** 安装
    #+begin_src shell
    mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
@@ -66,6 +63,10 @@ a  [[file:var/banner/PreviewDark.png]]
 	+ +autoload.el :: 需要自动加载的自定义函数
 	+ +config.el :: 简单的自定义函数
 	+ init-config.el :: 模块管理
+    + +mini-keybind.el :: 针对+config.el提供的键位绑定
+    + private/ :: 用户私有模块集合
+      + private-demo :: 私有模块示例
+      + private-module.el :: 私有模块模块管理
   - site-lisp/ :: 第三方包(插件源内没有的)
   - themes/ :: 可选主题(插件源内没有的)
   - init.el :: Emacs第一个加载的文件
@@ -74,12 +75,28 @@ a  [[file:var/banner/PreviewDark.png]]
   - var/ :: 插件的缓存文件及杂项
 
 * 常见问题
-** 暂时没有！欢迎提交Issue或在QQ群讨论.
+** fuz.el编译失败？
+   请确保你已安装 =cargo= ，且 =cargo= 可执行文件路径存在于 =Emacs= 的 ~exec-path~ 变量中。
+** 如何修改默认字体？
+   利用私有模块，用于覆盖 ~init-variable.el~ 中提供的字体变量配置即可。
+** 如何切换默认主题？
+   将以下代码放入你的私有模块:
+   #+begin_src emacs-lisp
+     ;; sunrise 白天 sunset 夜晚
+     (setq circadian-themes '((:sunrise . doom-one-light)
+                              (:sunset . doom-one)))
+   #+end_src
+** 为什么提示很多包找不到？
+   请确保你已经初始化了子模块。
+** telega无法使用？
+   请确保你安装了 =tdlib= 库。
 * 其他
   本配置配套视频讲解(保姆级别超级详细)
   [[https://www.bilibili.com/video/BV19p4y1X7W3][戳我观看视频！]]
+  *视频已过时，一切追随根据最新配置。*
   
   QQ群: 466898428
   
   *加群请说明获取QQ群来源！*
+
 

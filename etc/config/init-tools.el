@@ -21,7 +21,7 @@
 	  (defalias 'browse-web #'eaf-open-browser)
 	  (setq eaf-grip-token evan/eaf-grip-token)
       ;; (setq eaf-browser-default-search-engine "google")
-	  (setq eaf-browser-default-search-engine "duckduckgo")
+	  (setq eaf-browser-default-search-engine "google")
 	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
 	  
 	  (eaf-setq eaf-browser-enable-adblocker "true")
@@ -98,6 +98,7 @@
 ;; Emacs下telegram的客户端，默认不开启
 (use-package 
   telega
+  :load-path "~/.emacs.d/site-lisp/telega.el"
   :ensure t
   :commands telega
   :init (setq telega-proxies 

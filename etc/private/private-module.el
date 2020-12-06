@@ -2,5 +2,8 @@
 ;; 例如
 ;; (require 'private-demo)
 
+(require 'private-variable)
+(require 'private-blog)
+
 ;; 不要删除下面这行
 (provide 'private-module)

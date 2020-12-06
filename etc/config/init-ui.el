@@ -76,8 +76,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-flatwhite)
-						   (:sunset . doom-one)))
+  (setq circadian-themes '((:sunrise . doom-one-light)
+                           (:sunset . doom-one)))
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
@@ -89,7 +89,9 @@
 				  (progn
 					(eaf-setq eaf-pdf-dark-mode "false")
 					(eaf-setq eaf-browser-dark-mode "false") 
-					(eaf-setq eaf-mindmap-dark-mode "false"))))))
+					(eaf-setq eaf-mindmap-dark-mode "false")))
+                (centaur-tabs-mode -1)
+                (centaur-tabs-mode +1))))
 
 (progn
   ;; 图标支持
@@ -235,7 +237,6 @@
 
 ;; 对齐表格
 (use-package valign
-  :disabled
   :load-path "~/.emacs.d/site-lisp/valign"
   :hook ((org-mode markdown-mode) . valign-mode)
   :config
@@ -255,10 +256,9 @@
 
 ;; 为上层提供 init-ui 模块
 (use-package centaur-tabs
-  :disabled
   :ensure t
+  :hook (after-init . centaur-tabs-mode)
   :config
-  (centaur-tabs-mode +1)
   (centaur-tabs-headline-match)
   ;; (centaur-tabs-enable-buffer-reordering)
   (setq centaur-tabs-height 35
@@ -271,7 +271,7 @@
 		centaur-tabs-set-modified-marker t
 		;; 自动排序
 		;; centaur-tabs-adjust-buffer-order t
-ppp		;; 默认按键设置为Nil
+		;; 默认按键设置为Nil
 		centaur-tabs-prefix-map nil
 		;; 是否要显示导航按钮
 		centaur-tabs-show-navigation-buttons nil)
@@ -296,61 +296,19 @@ ppp		;; 默认按键设置为Nil
        (string-prefix-p "*straight" name)
        (string-prefix-p " *temp" name)
        (string-prefix-p "*Help" name)
+       (string-prefix-p "*LSP" name)
 	   (derived-mode-p 'eaf-mode)
 	   (string-prefix-p " *snails" name)
+       (string-suffix-p ".pdf" name)
        ;; Is not magit buffer.
        (and (string-prefix-p "magit" name)
 			(not (file-name-extension name))))))
-
-  (defun centaur-tabs-buffer-groups ()
-    "`centaur-tabs-buffer-groups' control buffers' group rules.
-
-    Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
-    All buffer name start with * will group to \"Emacs\".
-    Other buffer group by `centaur-tabs-get-group-name' with project name."
-    (list
-	 (cond
-	  ((or (string-equal "*" (substring (buffer-name) 0 1))
-	       (memq major-mode '(magit-process-mode
-							  magit-status-mode
-							  magit-diff-mode
-							  magit-log-mode
-							  magit-file-mode
-							  magit-blob-mode
-							  magit-blame-mode
-							  )))
-	   "Emacs")
-	  ((or (derived-mode-p 'prog-mode)) 
-	   "Programming")
-	  ((derived-mode-p 'dired-mode)
-	   "Dired") ''
-	  ((memq major-mode '(helpful-mode
-						  help-mode))
-	   "Help")
-	  ((memq major-mode '(org-mode
-						  org-agenda-clockreport-mode
-						  org-src-mode
-						  org-agenda-mode
-						  org-beamer-mode
-						  org-indent-mode
-						  org-bullets-mode
-						  org-cdlatex-mode
-						  org-agenda-log-mode
-						  diary-mode))
-	   "OrgMode")
-	  ;; ((or (string-prefix-p "◀[" (buffer-name))
-	  ;;      (string-prefix-p "◀{" (buffer-name))) 
-	  ;;  "Telega")
-	  ;; ((derived-mode-p 'vterm-mode)
-	  ;;  "Vterm")
-	  (t
-	   (centaur-tabs-get-group-name (current-buffer))))))
   :bind
   (("C-c h" . centaur-tabs-backward-tab)
    ("C-c l" . centaur-tabs-forward-tab)
    ("C-c H" . centaur-tabs-backward-tab-other-window)
    ("C-c L" . centaur-tabs-forward-tab-other-window)
-   ("C-c 0" . centaur-tabs--kill-this-buffer-dont-ask)
+   ("C-c x" . centaur-tabs--kill-this-buffer-dont-ask)
    ("C-c B" . centaur-tabs-counsel-switch-group)))
 
 

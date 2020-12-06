@@ -80,7 +80,7 @@
 
 ;; 更友好及平滑的滚动
 (setq scroll-step 2
-      scroll-margin 2
+      scroll-margin 6
       hscroll-step 2
       hscroll-margin 2
       scroll-conservatively 101
@@ -197,8 +197,9 @@
 									  "-g" "!package-config.org"
 									  "-g" "!site-lisp"
 									  "-g" "!doc"
-									  "-g" "!themes"))
-  (setq counsel-fzf-cmd "fd --exclude={site-lisp,etc/snippets,themes} --type f | fzf -f \"%s\" --algo=v1")
+									  "-g" "!themes"
+                                      "-g" "!etc-cache"))
+  (setq counsel-fzf-cmd "fd --exclude={site-lisp,etc/snippets,themes,/eln-cache} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy)))
@@ -258,7 +259,7 @@
   (setq rime-posframe-properties
 		(list :background-color "#333333"
 			  :foreground-color "#dcdccc"
-			  :font "Sarasa Mono SC-16"
+			  :font evan/en-font-name
 			  :internal-border-width 10))
   (setq default-input-method "rime"
 		rime-show-candidate 'posframe))
@@ -285,8 +286,8 @@
 ;;   :defines nlinum-highlight-current-line
 ;;   :custom-face (nlinum-highlight-face ((t (:inherit default :background nil :foreground nil))))
 ;;   :hook (global-nlinum-mode . hlinum-activate))
+; 默认目录为~/.emacs.d/
 
-;; 默认目录为~/.emacs.d/
 (cd "~/.emacs.d/")
 
 (provide 'init-basic)
