@@ -211,7 +211,10 @@
   :init
   (require 'fuz)
   (unless (require 'fuz-core nil t)
-	(fuz-build-and-load-dymod)))
+    (fuz-build-and-load-dymod)))
+
+(use-package exec-path-from-shell
+	     :ensure t)
 
 (use-package snails
   :defer 0
@@ -286,7 +289,9 @@
 ;;   :defines nlinum-highlight-current-line
 ;;   :custom-face (nlinum-highlight-face ((t (:inherit default :background nil :foreground nil))))
 ;;   :hook (global-nlinum-mode . hlinum-activate))
-; 默认目录为~/.emacs.d/
+					; 默认目录为~/.emacs.d/
+
+
 
 (cd "~/.emacs.d/")
 
