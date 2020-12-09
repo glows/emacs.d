@@ -34,24 +34,6 @@
   'company-tabnine-mode 
   :config (add-to-list 'company-backends #'company-tabnine))
 
-;; Emacs对语言服务器支持的插件
-(use-package lsp-mode
-  :ensure t
-  :commands (lsp)
-  :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode python-mode) . lsp)
-  :custom
-  (lsp-idle-delay 200)
-  (lsp-auto-guess-root nil)
-  (lsp-file-watch-threshold 2000)
-  (read-process-output-max (* 1024 10240))
-  (lsp-eldoc-hook nil)
-  (lsp-prefer-flymake nil)
-  :bind (:map lsp-mode-map
-			  ("C-c C-f" . lsp-format-buffer)
-			  ("M-RET" . lsp-ui-sideline-apply-code-actions))
-  :config
-  (setq lsp-prefer-capf t))
-
 ;; 各个语言的Debug工具
 (use-package dap-mode
   :ensure t

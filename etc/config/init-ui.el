@@ -124,92 +124,6 @@
   :ensure t
   :hook (after-init . page-break-lines-mode))
 
-;; 启动界面
-(use-package
-  dashboard
-  :disabled
-  :ensure t
-  :init
-  (dashboard-setup-startup-hook)
-  (dashboard-modify-heading-icons '((recents . "file-text") 
-                                    (bookmarks . "book")))
-  ;; 设置标题
-  (setq dashboard-banner-logo-title
-        "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
-  ;; 设置banner
-  (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png")
-  (setq dashboard-center-content t) 
-  (setq dashboard-set-heading-icons t) 
-  ;; (setq dashboard-set-file-icons t) 
-  (setq dashboard-set-navigator t)
-  :config
-  (display-line-numbers-mode -1))
-
-
-;; modeline样式
-(use-package 
-  doom-modeline
-  :disabled
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :custom
-  (doom-modeline-height 10)
-  (doom-modeline-bar-width 3)
-  (doom-modeline-buffer-file-name-style 'file-name)
-  :config
-  (custom-set-faces '(mode-line ((t 
-                                  (:family evan/en-font-name
-                                           :style evan/en-font-style
-                                           :height 125)))) 
-                    '(mode-line-inactive ((t 
-                                           (:family evan/en-font-name
-                                                    :style evan/en-font-size
-                                                    :height 125))))))
-(use-package mini-modeline
-  :disabled
-  :ensure t
-  :hook (after-init . mini-modeline-mode))
-
-
-(use-package spaceline
-  :disabled
-  :defer 0
-  :ensure t
-  :config
-  (spaceline-emacs-theme))
-
-(use-package powerline
-  :disabled
-  :ensure t
-  :config
-  (powerline-center-theme))
-
-;; 彩虹括号
-(use-package 
-  rainbow-delimiters 
-  :ensure t
-  :hook (prog-mode . rainbow-delimiters-mode)
-  :config
-  ;; 设置每一级括号的颜色
-  ;; (set-face-foreground 'rainbow-delimiters-depth-1-face "chartreuse3") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-2-face "DodgerBlue1") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-3-face "DarkOrange2")
-  ;; (set-face-foreground 'rainbow-delimiters-depth-4-face "deep pink") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-5-face "medium orchid") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-6-face "turquoise") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-7-face "lime green") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-8-face "gold") 
-  ;; (set-face-foreground 'rainbow-delimiters-depth-9-face "cyan") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-1-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-2-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-3-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-4-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-5-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-6-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-7-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-8-face "t") 
-  ;; (set-face-bold 'rainbow-delimiters-depth-9-face "t") 
-  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 ;; 让info帮助信息中关键字有高亮
 (use-package 
   info-colors 
@@ -220,9 +134,14 @@
 (use-package
   indent-guide
   :disabled
-  :ensure t
   :hook ((prog-mode . indent-guide-mode)
 		 (python-mode . (lambda () (indent-guide-mode -1)))))
+;; 缩进线
+(use-package highlight-indent-guides
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode)
+  :config
+  (setq highlight-indent-guides-method 'bitmap))
 
 ;; 彩虹猫进度条
 (use-package nyan-mode
@@ -255,13 +174,13 @@
   :load-path "~/.emacs.d/site-lisp/awesome-tab"
   :hook (after-init . awesome-tab-mode)
   :bind
-  (("C-c l" . awesome-tab-backward-tab)
-   ("C-c h" . awesome-tab-forward-tab)
-   ("C-c L" . awesome-tab-backward-tab-other-window)
-   ("C-c H" . awesome-tab-forward-tab-other-window)
+  (("C-c h" . awesome-tab-backward-tab)
+   ("C-c l" . awesome-tab-forward-tab)
+   ("C-c H" . awesome-tab-backward-tab-other-window)
+   ("C-c L" . awesome-tab-forward-tab-other-window)
    ("C-c b" . awesome-tab-switch-group)
    ("C-c g" . awesome-tab-ace-jump))
-  :config
+  :init
   (defun awesome-tab-hide-tab (x)
     (let ((name (format "%s" x)))
       (or
@@ -272,6 +191,10 @@
        (string-prefix-p "flycheck" name)
        (string-prefix-p "*LSP" name)
        (string-prefix-p "*Youdao" name)
+       (string-prefix-p " *company-box" name)
+       (string-prefix-p "*company-box" name)
+       (string-prefix-p "*hydra-posframe" name)
+       (string-prefix-p "*which-key*" name)
        (and (string-prefix-p "magit" name)
             (not (file-name-extension name)))
        )))
@@ -283,11 +206,6 @@ All buffer name start with * will group to \"Emacs\".
 Other buffer group by `awesome-tab-get-group-name' with project name."
     (list
      (cond
-      ((or (derived-mode-p 'telega-chat-mode)
-           (derived-mode-p 'telega-root-mode)) 
-       "Telega")
-      
-       "Elisp")
       ((or (string-equal "*" (substring (buffer-name) 0 1))
            (memq major-mode '(magit-process-mode
                               magit-status-mode
@@ -297,19 +215,22 @@ Other buffer group by `awesome-tab-get-group-name' with project name."
                               magit-blob-mode
                               magit-blame-mode
                               )))
-       ((or (string-equal "*TEMP-ELISP" (buffer-name))
-            (string-prefix-p "*Youdao" (buffer-name))
-            (derived-mode-p 'emacs-lisp-mode)) 
-        "Emacs")
+       "Emacs")
       ((derived-mode-p 'eshell-mode)
        "EShell")
-      
+      ((or (derived-mode-p 'emacs-lisp-mode)
+           (string= "*TEMP-ELISP*" (buffer-name)))
+       "Elisp")
       ((derived-mode-p 'dired-mode)
        "Dired")
       ((memq major-mode '(org-mode org-agenda-mode diary-mode))
-       "OrgMode") 
+       "OrgMode")
+      ((derived-mode-p 'eaf-mode)
+       "EAF")
+      ((or (derived-mode-p 'telega-chat-mode)
+           (derived-mode-p 'telega-root-mode))
+       "Telega")
       (t
        (awesome-tab-get-group-name (current-buffer)))))))
-
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

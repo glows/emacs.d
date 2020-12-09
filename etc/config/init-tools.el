@@ -10,9 +10,8 @@
 	  :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
 	  :custom (eaf-find-alternate-file-in-dired t)
 	  (eaf-proxy-type "socks5")
-	  (eaf-proxy-host "127.0.0.1")
-	  (eaf-proxy-port "1088")
-	  (browse-url-browser-function 'eaf-open-browser)
+	  (eaf-proxy-host evan/proxy-host)
+	  (eaf-proxy-port evan/proxy-port)
 	  :config
 	  ;; eaf markdown 预览所需要的
 	  (use-package grip-mode
@@ -242,14 +241,15 @@
   :ensure t)
 
 ;; 工作区
-(use-package 
-  perspeen
-  :ensure t 
-  :init
-  ;; (setq perspeen-use-tab t)
-  (setq perspeen-keymap-prefix [C-tab]) 
-  :config (perspeen-mode)
-  :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
+;; (use-package 
+;;   perspeen
+;;   :disabled
+;;   :ensure t 
+;;   :init
+;;   ;; (setq perspeen-use-tab t)
+;;   (setq perspeen-keymap-prefix [C-tab]) 
+;;   :config (perspeen-mode)
+;;   :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
 
 ;; 撤销树
 (use-package 

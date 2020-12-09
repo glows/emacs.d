@@ -44,3 +44,4 @@
   (message "检测到当前环境为字符环境，部分插件未启用。"))
 
 ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
+(put 'dired-find-alternate-file 'disabled nil)

@@ -64,10 +64,11 @@
   ;; 美化
   (use-package 
 	ivy-posframe
-	:ensure t 
-	:init (ivy-posframe-mode 1) 
+    :disabled
+	:ensure t
+	:hook (ivy-mode ivy-posframe-mode)
 	:custom (ivy-posframe-parameters '((left-fringe . 8) 
-									   (right-fringe . 8))) 
+									   (right-fringe . 8)))
 	(ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))))
 ;; counsel提供对项目管理的支持
 (use-package 
