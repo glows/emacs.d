@@ -33,7 +33,7 @@
 
 ;; 自动初始化bongo音乐列表
 ;;;###autoload
-(defun bongo-init () 
+(defun bongo-init-all () 
   (interactive) 
   (let ((buffer (current-buffer))) 
     (bongo) 
@@ -43,6 +43,5 @@
                                  (point-max)) 
     (bongo-play-random) 
     (switch-to-buffer buffer)))
-
 (provide '+autoload)
 

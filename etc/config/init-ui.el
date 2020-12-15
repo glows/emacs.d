@@ -180,7 +180,7 @@
    ("C-c L" . awesome-tab-forward-tab-other-window)
    ("C-c b" . awesome-tab-switch-group)
    ("C-c g" . awesome-tab-ace-jump))
-  :init
+  :config
   (defun awesome-tab-hide-tab (x)
     (let ((name (format "%s" x)))
       (or
@@ -193,6 +193,7 @@
        (string-prefix-p "*Youdao" name)
        (string-prefix-p " *company-box" name)
        (string-prefix-p "*company-box" name)
+       (string-prefix-p " *Go-Tran" name)
        (string-prefix-p "*hydra-posframe" name)
        (string-prefix-p "*which-key*" name)
        (and (string-prefix-p "magit" name)

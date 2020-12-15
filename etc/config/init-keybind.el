@@ -49,7 +49,7 @@
 [_r_] ^随机播放 	[_k_] ^关闭播放器^
 "
   ("RET" bongo-dwim nil)
-  ("i" bongo-init nil)
+  ("i" bongo-init-all nil)
   ("x" bongo-kill-region nil)
   ("d" bongo-kill-line nil) 
   ("_" bongo-undo nil)
