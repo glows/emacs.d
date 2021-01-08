@@ -125,13 +125,13 @@
                                                                                        :face all-the-icons-blue))) 
   (telega-notifications-mode t)
   (telega-mode-line-mode 1)
-  ;; (add-hook 'telega-chat-mode-hook
-  ;;           (lambda ()
-  ;;             (display-line-numbers-mode -1)))
-  ;; (add-hook 'telega-root-mode-hook
-  ;;           (lambda ()
-  ;;             (display-line-numbers-mode -1)
-  ;;             (toggle-truncate-lines -1)))
+  (add-hook 'telega-chat-mode-hook
+            (lambda ()
+              (display-line-numbers-mode -1)))
+  (add-hook 'telega-root-mode-hook
+            (lambda ()
+              (display-line-numbers-mode -1)
+              (toggle-truncate-lines -1)))
   )
 
 ;; Emacs下最好用的终端仿真器
