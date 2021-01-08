@@ -3,8 +3,7 @@
   :config
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
-(if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
-	(use-package eaf
+(use-package eaf
 	  :load-path "/usr/share/emacs/site-lispe/emacs-application-framework"
 	  :custom
       (eaf-find-alternate-file-in-dired t)
@@ -44,8 +43,6 @@
 	    									  (top-or-bottom . bottom)
 	    									  (top-or-bottom-pos . 0)))
 	  (mouse-avoidance-mode 'banish))
-  (message
-   "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF"))
 
 ;; 括号匹配，不再使用这个，转为使用smartparens
 (use-package 
