@@ -67,15 +67,16 @@
 ;; 自动切换主题
 (use-package
   circadian
-  :defer 0
   :ensure t
   :config
   ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-one-light)
-                           (:sunset . doom-one)))
+  (setq circadian-themes '((:sunrise . modus-operandi)
+                           (:sunset . modus-vivendi)))
+
+  
   (circadian-setup)
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
@@ -171,6 +172,7 @@
   (setq tab-bar-tab-name-truncated-max 8))
 
 (use-package awesome-tab
+  :disabled
   :load-path "~/.emacs.d/site-lisp/awesome-tab"
   :hook (after-init . awesome-tab-mode)
   :bind
@@ -233,5 +235,6 @@ Other buffer group by `awesome-tab-get-group-name' with project name."
        "Telega")
       (t
        (awesome-tab-get-group-name (current-buffer)))))))
+
 ;; 为上层提供 init-ui 模块
 (provide 'init-ui)

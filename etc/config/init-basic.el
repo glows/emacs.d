@@ -91,7 +91,7 @@
 ;; 关闭自动调节行高
 (setq auto-window-vscroll nil)
 ;; 关闭自动换行的功能
-(setq truncate-partial-width-windows t)
+(setq truncate-partial-width-windows nil)
 
 ;; 创建新行的动作
 ;; 回车时创建新行并且对齐
@@ -126,7 +126,7 @@
   ;; 弹出方式，底部弹出
   (which-key-popup-type 'side-window)
   :config
-  (which-key-mode))
+  (which-key-mode 1))
 
 ;; 跳转窗口
 (use-package ace-window
@@ -274,10 +274,10 @@
   :hook ('prog-mode . 'global-hungry-delete-mode))
 
 ;; 相对行号，默认未开启
-(use-package linum-relative
-  :ensure t
-  :disabled
-  :hook ('prog-mode . 'linum-relative-mode))
+;; (use-package linum-relative
+;;   :ensure t
+;;   :disabled
+;;   :hook ('prog-mode . 'linum-relative-mode))
 
 ;; 更好的显示行号
 ;; (use-package nlinum
@@ -290,9 +290,12 @@
 ;;   :defines nlinum-highlight-current-line
 ;;   :custom-face (nlinum-highlight-face ((t (:inherit default :background nil :foreground nil))))
 ;;   :hook (global-nlinum-mode . hlinum-activate))
-					; 默认目录为~/.emacs.d/
+                                        ; 默认目录为~/.emacs.d/
 
-
+;;; 利用avy跳转链接
+(use-package link-hint
+  :ensure t
+  :bind (("M-g l" . link-hint-open-link)))
 
 (cd "~/.emacs.d/")
 

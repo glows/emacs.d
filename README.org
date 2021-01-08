@@ -13,18 +13,25 @@ a  [[file:var/banner/PreviewDark.png]]
     - GNU Emacs Version >= 26.3
     - CMake
     - Python
+    - [[https://github.com/mannateelazycat/emacs-application-framework][EAF]]
+      * Archlinux
+
+        ~yay -S emacs-application-framework-git~
     - libvterm
       * Ubuntu/Debian
+
         ~apt install libvterm~
       * ArchLinux
+
         ~pacman -S libvterm~
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
     - tdlib
       * ArchLinux[#archlinuxcn]
+
 		~pacman -S libtd-git~
-	- llvm && cargo
-      fuz.el
+	- llvm && rust
+      [[https://github.com/rustify-emacs/fuz.el][fuz.el]]
 ** 字体
    - all-the-icons :: 必装
    - Sarasa Mono :: 默认字体 [可选]
@@ -55,6 +62,7 @@ a  [[file:var/banner/PreviewDark.png]]
 ** telega的安装方式
    telega是emacs下的一个telegram客户端，你首先得编译tdlib，才能使用telega，tdlib的安装方式可以在这里找到: [[https://github.com/tdlib/td][tdlib 主页]]
 * 目录结构
+  #+begin_src 
   - doc/ :: 文档
   - etc/ :: 配置文件集合
 	+ config/ :: 主要模块集合
@@ -73,6 +81,8 @@ a  [[file:var/banner/PreviewDark.png]]
   - package-config.org :: 过时的org形式的Emacs配置文档
   - README.org :: 自述文件
   - var/ :: 插件的缓存文件及杂项
+  #+end_src
+  
 
 * 常见问题
 ** fuz.el编译失败？

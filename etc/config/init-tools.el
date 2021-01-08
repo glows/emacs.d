@@ -4,11 +4,10 @@
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (if (file-exists-p "~/.emacs.d/site-lisp/emacs-application-framework") 
-	(use-package 
-	  eaf
-	  :defer 0
-	  :load-path "~/.emacs.d/site-lisp/emacs-application-framework" 
-	  :custom (eaf-find-alternate-file-in-dired t)
+	(use-package eaf
+	  :load-path "/usr/share/emacs/site-lispe/emacs-application-framework"
+	  :custom
+      (eaf-find-alternate-file-in-dired t)
 	  (eaf-proxy-type "socks5")
 	  (eaf-proxy-host evan/proxy-host)
 	  (eaf-proxy-port evan/proxy-port)
@@ -22,7 +21,6 @@
       ;; (setq eaf-browser-default-search-engine "google")
 	  (setq eaf-browser-default-search-engine "google")
 	  (eaf-setq eaf-browse-blank-page-url "https://google.com")
-	  
 	  (eaf-setq eaf-browser-enable-adblocker "true")
 	  (eaf-setq eaf-browser-default-zoom "1.2")
 	  (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding) 
@@ -30,21 +28,21 @@
 	  (eaf-bind-key take_photo "p" eaf-camera-keybinding)
 	  ;; 将光标自动移动到右下角（防止eaf buffer无法使用emacs快捷键)
       (if (and
-		   (> (car (circadian-now-time)) (car (circadian-sunrise)))
-		   (< (car (circadian-now-time)) (car (circadian-sunset))))
-		  (progn
-			(eaf-setq eaf-pdf-dark-mode "false")
-			(eaf-setq eaf-browser-dark-mode "false") 
-			(eaf-setq eaf-mindmap-dark-mode "false"))
+	       (> (car (circadian-now-time)) (car (circadian-sunrise)))
+	       (< (car (circadian-now-time)) (car (circadian-sunset))))
+	      (progn
+	    	(eaf-setq eaf-pdf-dark-mode "false")
+	    	(eaf-setq eaf-browser-dark-mode "false") 
+	    	(eaf-setq eaf-mindmap-dark-mode "false"))
         (progn
           (eaf-setq eaf-pdf-dark-mode "true")
-		  (eaf-setq eaf-browser-dark-mode "true") 
-		  (eaf-setq eaf-mindmap-dark-mode "true")))
+	      (eaf-setq eaf-browser-dark-mode "true") 
+	      (eaf-setq eaf-mindmap-dark-mode "true")))
 	  (setq mouse-avoidance-banish-position '((frame-or-window . frame)
-											  (side . right)
-											  (side-pos . 80)
-											  (top-or-bottom . bottom)
-											  (top-or-bottom-pos . 0)))
+	    									  (side . right)
+	    									  (side-pos . 80)
+	    									  (top-or-bottom . bottom)
+	    									  (top-or-bottom-pos . 0)))
 	  (mouse-avoidance-mode 'banish))
   (message
    "你需要下载emacs-application-framework到~/.emacs.d/site-lisp/emacs-application-framework.才能启用EAF"))
@@ -127,12 +125,14 @@
                                                                                        :face all-the-icons-blue))) 
   (telega-notifications-mode t)
   (telega-mode-line-mode 1)
-  (add-hook 'telega-chat-mode-hook
-            (lambda ()
-              (display-line-numbers-mode -1)))
-  (add-hook 'telega-root-mode-hook
-            (lambda ()
-              (display-line-numbers-mode -1))))
+  ;; (add-hook 'telega-chat-mode-hook
+  ;;           (lambda ()
+  ;;             (display-line-numbers-mode -1)))
+  ;; (add-hook 'telega-root-mode-hook
+  ;;           (lambda ()
+  ;;             (display-line-numbers-mode -1)
+  ;;             (toggle-truncate-lines -1)))
+  )
 
 ;; Emacs下最好用的终端仿真器
 (use-package 
@@ -243,7 +243,6 @@
 ;; 工作区
 ;; (use-package 
 ;;   perspeen
-;;   :disabled
 ;;   :ensure t 
 ;;   :init
 ;;   ;; (setq perspeen-use-tab t)
@@ -280,6 +279,7 @@
 
 ;; 看英语文档神器
 (use-package english-teacher
+  :disabled
   :load-path "~/.emacs.d/site-lisp/english-teacher"
   :custom
   (english-teacher-backend 'baidu)
