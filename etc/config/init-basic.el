@@ -39,6 +39,9 @@
 ;; 自动刷新被修改过的文件
 (global-auto-revert-mode +1)
 
+;; 开启行号
+(global-display-line-numbers-mode +1)
+
 ;; 选中文本后输入会覆盖
 (add-hook 'after-init-hook
 		  (lambda () (delete-selection-mode +1)))
