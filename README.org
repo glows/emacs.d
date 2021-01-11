@@ -1,12 +1,14 @@
 #+STARTUP: overview
 * 简介
   *黑暗主题*
-a  [[file:var/banner/PreviewDark.png]]
+  [[file:var/banner/PreviewDark.png]]
   *明亮主题*
   [[file:var/banner/PreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
   具体配置请看/etc下的配置文件
-  **请直接Clone用Emacs查看此自述文件，否则会出现格式错乱等问题**
+
+  **请直接克隆本仓库，并使用Org-Mode查看此自述文件，否则会出现格式错乱等问题。**
+
 * 如何安装
 ** 依赖
     - Git
@@ -27,14 +29,15 @@ a  [[file:var/banner/PreviewDark.png]]
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
     - tdlib
-      * ArchLinux[#archlinuxcn]
+      * ArchLinux
 
 		~pacman -S libtd-git~
-	- llvm && rust
+	- llvm & rust
+
       [[https://github.com/rustify-emacs/fuz.el][fuz.el]]
 ** 字体
    - all-the-icons :: 必装
-   - Sarasa Mono :: 默认字体 [可选]
+   - Sarasa Mono :: 默认字体 [安装时必选，安装完可修改]
 ** 安装
    #+begin_src shell
    mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
@@ -71,6 +74,7 @@ a  [[file:var/banner/PreviewDark.png]]
 	+ +autoload.el :: 需要自动加载的自定义函数
 	+ +config.el :: 简单的自定义函数
 	+ init-config.el :: 模块管理
+    + init-variable.el :: 提供的可定制变量(有很多没有直接提供，可通过私有模块覆盖)
     + +mini-keybind.el :: 针对+config.el提供的键位绑定
     + private/ :: 用户私有模块集合
       + private-demo :: 私有模块示例
@@ -83,7 +87,6 @@ a  [[file:var/banner/PreviewDark.png]]
   - var/ :: 插件的缓存文件及杂项
   #+end_src
   
-
 * 常见问题
 ** fuz.el编译失败？
    请确保你已安装 =cargo= ，且 =cargo= 可执行文件路径存在于 =Emacs= 的 ~exec-path~ 变量中。
@@ -100,6 +103,9 @@ a  [[file:var/banner/PreviewDark.png]]
    请确保你已经初始化了子模块。
 ** telega无法使用？
    请确保你安装了 =tdlib= 库。
+** meow是什么？
+   meow是一款Emacs下的模式编辑插件，其比Evil精简且吸收了很多编辑器的编辑风格思想，建议使用。
+   [[https://github.com/DogLooksGood/meow][meow仓库]]
 * 其他
   本配置配套视频讲解(保姆级别超级详细)
   [[https://www.bilibili.com/video/BV19p4y1X7W3][戳我观看视频！]]
