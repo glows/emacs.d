@@ -12,10 +12,9 @@
 (require '+mini-keybind)
 (require 'init-keybind)
 
-;;;;;;;;;;;;;
-;; 私有模块 ;;
-;;;;;;;;;;;;;
-(require 'private-module)
+;;;;;;;;;;;;;;
+;; 基础配置  ;;
+;;;;;;;;;;;;;;
 (require 'init-basic)
 
 ;;;;;;;;;;;;;
@@ -115,9 +114,24 @@
 (require 'init-haskell)
 
 ;;;;;;;;;;
+;; Rust ;;
+;;;;;;;;;;
+(require 'init-rust)
+
+;;;;;;;;;;
 ;; pyim ;;
 ;;;;;;;;;;
 ;; (require 'init-pyim)
+
+;;;;;;;;;;;;;
+;; 私有模块  ;;
+;;;;;;;;;;;;;
+(require 'private-module)
+
+;;;;;;;;;;
+;; meow ;;
+;;;;;;;;;;
+(require 'init-meow)
 
 ;;;;;;;;;;
 ;; Hack ;;
