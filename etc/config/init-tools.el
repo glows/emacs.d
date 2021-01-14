@@ -96,8 +96,8 @@
   :ensure t
   :commands telega
   :init (setq telega-proxies 
-              '((:server "localhost"
-                         :port "1088"
+              '((:server evan/proxy-host
+                         :port evan/proxy-port
                          :enable t 
                          :type (:@type "proxyTypeSocks5")))
               telega-chat-show-avatars t) 
@@ -129,7 +129,7 @@
             (lambda ()
               (display-line-numbers-mode -1)
               (toggle-truncate-lines -1)))
-  )
+  (define-key telega-msg-button-map "k" nil))
 
 ;; Emacs下最好用的终端仿真器
 (use-package 
@@ -343,7 +343,7 @@
 (use-package disable-mouse
   :ensure t
   :hook (after-init . (lambda ()
-						(global-disable-mouse-mode))))
+						(global-disable-mouse-mode -1))))
 
 ;; 管理生词工具-本配置文件作者写的插件
 (use-package shengci

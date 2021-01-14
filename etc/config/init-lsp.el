@@ -2,7 +2,7 @@
 (use-package lsp-mode
   :ensure t
   :commands (lsp)
-  :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode python-mode) . lsp)
+  :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode python-mode rust-mode) . lsp)
   :custom
   (lsp-idle-delay 200)
   (lsp-auto-guess-root nil)
