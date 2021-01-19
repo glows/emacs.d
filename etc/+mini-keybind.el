@@ -6,5 +6,5 @@
 (define-key global-map (kbd "M-]") #'scroll-other-window-down)
 (define-key global-map (kbd "C-x C-b") #'switch-to-buffer)
 (define-key global-map (kbd "C-x C-o") #'ace-window)
-(define-key global-map (kbd "C-x C-k") #'kill-buffer-and-window)
+(define-key global-map (kbd "C-x C-k") #'kill-buffer)
 (provide '+mini-keybind)

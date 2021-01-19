@@ -16,10 +16,6 @@
   ;; Env vars
   (with-eval-after-load 'exec-path-from-shell (exec-path-from-shell-copy-env "PYTHONPATH"))
   ;; Live Coding in Python
-  (use-package live-py-mode
-    :ensure t
-    :after python
-    )
   (use-package python-black
 	:ensure t
     :after python

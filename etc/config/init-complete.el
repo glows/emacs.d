@@ -56,6 +56,7 @@
 ;; 代码片段
 (use-package yasnippet 
   :ensure t
+  :defer 2
   :config
   (setq yas-snippet-dirs '("~/.emacs.d/etc/snippets")))
 

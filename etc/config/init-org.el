@@ -1,9 +1,7 @@
-
 (use-package 
   org
+  :defer 2
   :ensure t
-  :init
-  (require 'org-capture)
   :bind
   ("C-c c" . 'org-capture)
   ("C-c a" . 'org-agenda)
@@ -13,6 +11,7 @@
   (org-todo-keywords '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
                        (sequence "[BUG](b!/@)" "[新事件](i/@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))  
   :config
+  (require 'org-capture) 
   (setq org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
 								 ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
 								 ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))

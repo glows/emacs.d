@@ -1,6 +1,7 @@
 ;; Emacs对语言服务器支持的插件
 (use-package lsp-mode
   :ensure t
+  :defer 2
   :commands (lsp)
   :hook ((java-mode js-mode js2-mode web-mode c-mode c++-mode objc-mode python-mode rust-mode) . lsp)
   :custom

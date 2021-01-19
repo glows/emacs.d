@@ -16,7 +16,7 @@
                              (message
 							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 (add-hook 'after-init-hook (lambda ()
-                             (setq gc-cons-threshold (* 800000 100))
+                             (setq gc-cons-threshold (* 80000 100))
                              (message
 							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 

@@ -114,6 +114,7 @@
           (keypad . "KEYPAD")
           (motion . "MOTION")))
   ;; 添加指定模式到normal模式列表
-  (add-to-list 'meow-normal-state-mode-list 'helpful-mode))
+  (add-to-list 'meow-normal-state-mode-list 'helpful-mode)
+  (add-to-list 'meow-normal-state-mode-list  'Info-mode))
 
 (provide 'init-meow)

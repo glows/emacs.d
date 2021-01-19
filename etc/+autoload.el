@@ -31,14 +31,36 @@
     (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
       (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
 
-;; 自动初始化bongo音乐列表
+(defun bongo-buffer-live-p ()
+  "判断是否存在bongo buffer。"
+  (if (or (get-buffer "*Bongo Playlist*") (get-buffer "*Bongo Library*"))
+    t
+    nil))
+
 ;;;###autoload
-(defun bongo-init-all () 
+(defun bongo-init-all ()
+  "自动初始化bongo音乐列表"
   (interactive) 
-  (let ((buffer (current-buffer))) 
-    (bongo) 
+  (let ((buffer (current-buffer)))
+    (when (bongo-buffer-live-p)
+      (bongo-stop))
+    (bongo)
     (setq bongo-insert-whole-directory-trees "ask") 
     (bongo-insert-file "~/Music") 
+    (bongo-insert-enqueue-region (point-min) 
+                                 (point-max)) 
+    (bongo-play-random) 
+    (switch-to-buffer buffer)))
+
+;;;###autoload
+(defun bongo-init-by-path (path)
+  "根据路径初始化bongo"
+  (let ((buffer (current-buffer)))
+    (when (bongo-buffer-live-p)
+      (bongo-stop))
+    (bongo)
+    (setq bongo-insert-whole-directory-trees "ask") 
+    (bongo-insert-file path) 
     (bongo-insert-enqueue-region (point-min) 
                                  (point-max)) 
     (bongo-play-random) 
