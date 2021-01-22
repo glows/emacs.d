@@ -1,6 +1,6 @@
 (use-package meow
   :if is-need-meow-module
-  :ensure t
+  :load-path "~/.emacs.d/site-lisp/meow"
   :init
   (meow-global-mode +1)
   (defun meow-setup ()
@@ -115,6 +115,8 @@
           (motion . "MOTION")))
   ;; 添加指定模式到normal模式列表
   (add-to-list 'meow-normal-state-mode-list 'helpful-mode)
-  (add-to-list 'meow-normal-state-mode-list  'Info-mode))
+  (add-to-list 'meow-normal-state-mode-list  'Info-mode)
+  (add-to-list 'meow-normal-state-mode-list 'cargo-process-mode))
+
 
 (provide 'init-meow)

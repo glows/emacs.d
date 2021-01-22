@@ -283,7 +283,9 @@
   :ensure t
   :config
   (setq go-translate-base-url "https://translate.google.cn")
-  (setq go-translate-local-language "zh-CN"))
+  (setq go-translate-local-language "zh-CN")
+  (setq go-translate-token-current (cons 430675 2721866130)))
+
 
 ;; 管理员模式编辑
 (use-package sudo-edit

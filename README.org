@@ -5,9 +5,8 @@
   *明亮主题*
   [[file:var/banner/PreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
-  具体配置请看/etc下的配置文件
-
-  **请直接克隆本仓库，并使用Org-Mode查看此自述文件，否则会出现格式错乱等问题。**
+  具体配置请看/etc下的配置文件 
+  **请直接克隆本仓库，并使用Org-Mode查看此自述文件，否则会出现格式错乱等问题。 **
 
 * 如何安装
 ** 依赖
@@ -16,24 +15,15 @@
     - CMake
     - Python
     - [[https://github.com/mannateelazycat/emacs-application-framework][EAF]]
-      * Archlinux
-
-        ~yay -S emacs-application-framework-git~
+      * Archlinux :: ~yay -S emacs-application-framework-git~
     - libvterm
-      * Ubuntu/Debian
-
-        ~apt install libvterm~
-      * ArchLinux
-
-        ~pacman -S libvterm~
+      * Ubuntu/Debian :: ~apt install libvterm~
+      * ArchLinux  :: ~pacman -S libvterm~
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
     - tdlib
-      * ArchLinux
-
-		~pacman -S libtd-git~
+      * ArchLinux :: ~pacman -S libtd-git~
 	- llvm & rust
-
       [[https://github.com/rustify-emacs/fuz.el][fuz.el]]
 ** 字体
    - all-the-icons :: 必装
@@ -90,6 +80,10 @@
 * 常见问题
 ** fuz.el编译失败？
    请确保你已安装 =cargo= ，且 =cargo= 可执行文件路径存在于 =Emacs= 的 ~exec-path~ 变量中。
+** EAF如何安装?
+   #+begin_src shell
+   yay -S emacs-application-framework-git
+   #+end_src
 ** 如何修改默认字体？
    利用私有模块，用于覆盖 ~init-variable.el~ 中提供的字体变量配置即可。
 ** 如何切换默认主题？

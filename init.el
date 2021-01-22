@@ -9,26 +9,27 @@
 (setq gc-cons-threshold (* 10240 1000000))
 (setq file-name-handler-alist-original file-name-handler-alist)
 (setq file-name-handler-alist nil)
-(run-with-idle-timer 5 nil (lambda () 
-                             (setq file-name-handler-alist file-name-handler-alist-original) 
-                             (makunbound 'gc-cons-threshold-original) 
+
+(run-with-idle-timer 5 nil (lambda ()
+                             (setq file-name-handler-alist file-name-handler-alist-original)
+                             (makunbound 'gc-cons-threshold-original)
                              (makunbound 'file-name-handler-alist-original)
                              (message
-							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
+                              "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 (add-hook 'after-init-hook (lambda ()
                              (setq gc-cons-threshold (* 80000 100))
                              (message
-							  "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
+                              "如果感到无聊就摘下耳机，然后试试按下 M-\\ 2 c 吧!")))
 
 ;; 递归遍历加载路径
-(defun add-subdirs-to-load-path(dir) 
+(defun add-subdirs-to-load-path(dir)
   "Recursive add directories to `load-path`."
-  (let ((default-directory (file-name-as-directory dir))) 
-    (add-to-list 'load-path dir) 
+  (let ((default-directory (file-name-as-directory dir)))
+    (add-to-list 'load-path dir)
     (normal-top-level-add-subdirs-to-load-path)))
 
-(let ((gc-cons-threshold most-positive-fixnum) 
-      (file-name-handler-alist nil)) 
+(let ((gc-cons-threshold most-positive-fixnum)
+      (file-name-handler-alist nil))
   (add-subdirs-to-load-path "~/.emacs.d/etc/"))
 
 ;; 图形界面插件的设置
@@ -39,7 +40,7 @@
 
 (require 'init-config)
 
-(if (graphic-p) 
+(if (graphic-p)
     (message "检测到当前环境为图形环境，可以正常使用。")
   (message "检测到当前环境为字符环境，部分插件未启用。"))
 

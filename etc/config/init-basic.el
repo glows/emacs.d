@@ -260,8 +260,8 @@
 ;; emacs 调用 rime输入法的前端，强烈推荐
 (use-package rime
   :ensure t
-  :custom
-  (default-input-method "rime")
+  :init
+  (setq default-input-method "rime")
   :config
   (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
   (setq rime-posframe-properties
@@ -270,7 +270,10 @@
 			  :font evan/en-font-name
 			  :internal-border-width 10))
   (setq default-input-method "rime"
-		rime-show-candidate 'posframe))
+		rime-show-candidate 'posframe)
+  (setq rime-disable-predicates '(meow-normal-mode-p
+                                  meow-motion-mode-p
+                                  meow-keypad-mode-p)))
 
 ;; 饥饿删除（一次性删除多个连续的空白符）
 (use-package hungry-delete
