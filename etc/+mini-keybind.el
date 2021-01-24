@@ -7,4 +7,7 @@
 (define-key global-map (kbd "C-x C-b") #'switch-to-buffer)
 (define-key global-map (kbd "C-x C-o") #'ace-window)
 (define-key global-map (kbd "C-x C-k") #'kill-buffer)
+(define-key global-map (kbd "C-x C-d") #'dired)
+;; (define-key meow-leader-keymap (kbd "s-SPC") meow-leader-keymap)
+
 (provide '+mini-keybind)

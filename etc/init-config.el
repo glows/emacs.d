@@ -5,17 +5,16 @@
 (require '+config)
 (require 'init-package)
 (require 'init-variable)
+;;;;;;;;;;;;;;
+;; 基础配置  ;;
+;;;;;;;;;;;;;;
+(require 'init-basic)
 
 ;;;;;;;;;;;;;
 ;; keybind ;;
 ;;;;;;;;;;;;;
 (require '+mini-keybind)
 (require 'init-keybind)
-
-;;;;;;;;;;;;;;
-;; 基础配置  ;;
-;;;;;;;;;;;;;;
-(require 'init-basic)
 
 ;;;;;;;;;;;;;
 ;; 用户界面 ;;

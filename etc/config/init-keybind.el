@@ -31,7 +31,8 @@
 (use-package
   hydra-posframe
   :load-path "~/.emacs.d/site-lisp/hydra-posframe"
-  :hook (after-init . hydra-posframe-mode))
+  :hook (after-init . (lambda ()
+                        (hydra-posframe-mode +1) ) ))
 
 (use-package
   major-mode-hydra

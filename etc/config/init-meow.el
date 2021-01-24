@@ -2,7 +2,6 @@
   :if is-need-meow-module
   :load-path "~/.emacs.d/site-lisp/meow"
   :init
-  (meow-global-mode +1)
   (defun meow-setup ()
     (meow-motion-overwrite-define-key
      '("j" . meow-next) 
@@ -99,8 +98,9 @@
      '("&" . meow-query-replace)
      '("%" . meow-query-replace-regexp)
      '("<escape>" . meow-last-buffer)))
-  (meow-indicator)
+  
   :config
+  (meow-global-mode +1)
   ;; 设置按键
   (meow-setup)
   ;; 设置modeline模式标记字符串

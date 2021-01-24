@@ -1,6 +1,7 @@
-(require 'package)
-
-(package-initialize) ;; You might already have this line
+(unless +dumped-load-path
+  (require 'package)
+  (package-initialize))
+;; You might already have this line
 
 ;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 ;;                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))

@@ -5,7 +5,17 @@
 
 (use-package eaf
   :commands (eaf-open eaf-search-it eaf-open-browser eaf-open-bookmark)
-  :load-path "/usr/share/emacs/site-lispe/emacs-application-framework"
+  :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
+  :init
+  (use-package epc
+    :ensure t
+    :defer t)
+  (use-package ctable
+    :load-path "~/.emacs.d/site-lisp/emacs-ctable"
+    :defer t)
+  (use-package deferred
+    :load-path "~/.emacs.d/site-lisp/emacs-deferred"
+    :defer t)
   :custom
   (eaf-find-alternate-file-in-dired t)
   (eaf-proxy-type "socks5")
@@ -80,6 +90,7 @@
 ;; 括号匹配
 (use-package 
   smartparens
+
   :ensure t 
   :hook (prog-mode . smartparens-mode))
 
@@ -125,9 +136,11 @@
   (telega-mode-line-mode 1)
   (add-hook 'telega-chat-mode-hook
             (lambda ()
+              (toggle-truncate-lines +1)
               (display-line-numbers-mode -1)))
   (add-hook 'telega-root-mode-hook
             (lambda ()
+              (toggle-truncate-lines +1)
               (display-line-numbers-mode -1)
               (toggle-truncate-lines -1)))
   (define-key telega-msg-button-map "k" nil))

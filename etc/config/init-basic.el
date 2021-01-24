@@ -17,9 +17,10 @@
 ;; 设置Emacs源码位置
 (setq source-directory "~/Documents/repoes/emacs-src/src/")
 ;; 设置自动保存路径前缀
-(setq auto-save-list-file-prefix "~/.emacs/var/auto-save-list/.saves-")
+(setq auto-save-list-file-prefix "~/.emacs.d/var/auto-save-list/.saves-")
 ;; 设置eshell历史记录
-(setq eshell-history-file-name "~/.emacs/var/eshell/history")
+(setq eshell-history-file-name "~/.emacs.d/var/eshell/history")
+(setq recentf-save-file "~/.emacs.d/var/recentf")
 
 ;; 设置默认模式
 (add-hook 'after-init-hook (lambda ()
@@ -207,44 +208,46 @@
   (setq counsel-fzf-cmd "fd -I --exclude={site-lisp,etc/snippets,themes,/eln-cache,/var,/elpa,/url,/auto-save-list,.cache,doc/} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
-    (setq projectile-completion-system 'ivy)))
+    (setq projectile-completion-system 'ivy))
+  )
 
 
-(use-package fuz
-  :defer 0
-  :load-path "~/.emacs.d/site-lisp/fuz.el"
-  :init
-  (require 'fuz)
-  (unless (require 'fuz-core nil t)
-    (fuz-build-and-load-dymod)))
+(push '(progn
+         (use-package fuz
+           :load-path "~/.emacs.d/site-lisp/fuz.el"
+           :after snails
+           :init
+           (unless (require 'fuz-core nil t)
+             (fuz-build-and-load-dymod)))
+         (use-package snails
+           :load-path "~/.emacs.d/site-lisp/snails"
+           :config
+           (setq snails-default-backends '(snails-backend-current-buffer
+								           snails-backend-command
+								           snails-backend-bookmark
+								           snails-backend-buffer
+								           snails-backend-rg
+								           snails-backend-fd
+								           snails-backend-eaf-browser-history
+								           snails-backend-eaf-github-search
+								           snails-backend-google-suggestion)
+		         snails-prefix-backends '(("*" '(snails-backend-current-buffer))
+								          (">" '(snails-backend-command))
+								          ("@" '(snails-backend-bookmark))
+								          ("#" '(snails-backend-buffer))
+								          ("$" '(snails-backend-rg))
+								          ("-" '(snails-backend-fd))
+								          ("=" '(snails-backend-eaf-browser-history))
+								          ("." '(snails-backend-eaf-github-search))
+								          ("," '(snails-backend-google-suggestion)))
+		         snails-default-show-prefix-tips t
+		         snails-backend-eaf-browser-history-limit 10))) graphic-only-plugins-setting)
+
 
 (use-package exec-path-from-shell
 	     :ensure t)
 
-(use-package snails
-  :defer 0
-  :load-path "~/.emacs.d/site-lisp/snails"
-  :config
-  (setq snails-default-backends '(snails-backend-current-buffer
-								  snails-backend-command
-								  snails-backend-bookmark
-								  snails-backend-buffer
-								  snails-backend-rg
-								  snails-backend-fd
-								  snails-backend-eaf-browser-history
-								  snails-backend-eaf-github-search
-								  snails-backend-google-suggestion)
-		snails-prefix-backends '(("*" '(snails-backend-current-buffer))
-								 (">" '(snails-backend-command))
-								 ("@" '(snails-backend-bookmark))
-								 ("#" '(snails-backend-buffer))
-								 ("$" '(snails-backend-rg))
-								 ("-" '(snails-backend-fd))
-								 ("=" '(snails-backend-eaf-browser-history))
-								 ("." '(snails-backend-eaf-github-search))
-								 ("," '(snails-backend-google-suggestion)))
-		snails-default-show-prefix-tips t
-		snails-backend-eaf-browser-history-limit 10))
+
 
 ;; 强大的字符跳转工具
 (use-package avy

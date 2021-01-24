@@ -38,7 +38,8 @@
                (set-fontset-font "fontset-default" ?༼ (font-spec
                                                        :name "Noto Serif Tibetan"
                                                        :size 0)))
-           (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name))) graphic-only-plugins-setting)
+           (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name)))
+      graphic-only-plugins-setting)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
@@ -50,9 +51,9 @@
   :hook (after-init . beacon-mode))
 
 ;; 主题包									
-(use-package
-  doom-themes
-  :ensure t)
+(use-package doom-themes
+  :ensure t
+  :config)
 
 (use-package modus-operandi-theme
   :ensure t)
@@ -64,39 +65,36 @@
   :ensure t)
 
 ;; 自动切换主题
-(push '(use-package
-         circadian
-         :ensure t
-         :hook (after-init . (lambda () (circadian-setup)))
-         :config
-         ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
-         (setq calendar-latitude 23.130280
-		       calendar-longitude 113.288879)
-         ;; sunrise 白天用的主题 sunset 晚上用的主题
-         ;; (setq circadian-themes '((:sunrise . modus-operandi)
-         ;;                          (:sunset . modus-vivendi)))
-
-         
-         (circadian-setup)
-         ;; 解决切换主题spaceline色块显示问题
-         (add-hook 'circadian-after-load-theme-hook
-			       #'(lambda (theme)
-				       ;; (spaceline-emacs-theme)
-				       (when (and
-					          (> (car (circadian-now-time)) (car (circadian-sunrise)))
-					          (< (car (circadian-now-time)) (car (circadian-sunset))))
-				         (progn
-					       (eaf-setq eaf-pdf-dark-mode "false")
-					       (eaf-setq eaf-browser-dark-mode "false") 
-					       (eaf-setq eaf-mindmap-dark-mode "false")))
-                       (centaur-tabs-mode -1)
-                       (centaur-tabs-mode +1)
-                       (highlight-indent-guides-mode -1)
-                       (highlight-indent-guides-mode +1)))) graphic-only-plugins-setting)
-
+(use-package
+  circadian
+  :ensure t
+  :hook ('after-make-frame-functions . (lambda ()
+                                         (circadian-setup)))
+  :config
+  ;; 经纬度，可以在https://www.latlong.net/获取，默认是广州的
+  (setq calendar-latitude 23.130280
+		calendar-longitude 113.288879)
+  ;; sunrise 白天用的主题 sunset 晚上用的主题
+  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
+                           (:sunset . doom-gruvbox)))
+  ;; 解决切换主题spaceline色块显示问题
+  (add-hook 'circadian-after-load-theme-hook
+			#'(lambda (theme)
+				;; (spaceline-emacs-theme)
+				(when (and
+					   (> (car (circadian-now-time)) (car (circadian-sunrise)))
+					   (< (car (circadian-now-time)) (car (circadian-sunset))))
+				  (progn
+					(eaf-setq eaf-pdf-dark-mode "false")
+					(eaf-setq eaf-browser-dark-mode "false") 
+					(eaf-setq eaf-mindmap-dark-mode "false")))
+                (centaur-tabs-mode -1)
+                (centaur-tabs-mode +1)
+                (highlight-indent-guides-mode -1)
+                (highlight-indent-guides-mode +1)))
+  (circadian-setup))
 (progn
-  ;; 图标支持
-  (use-package
+    (use-package
 	all-the-icons
 	:ensure t)
   ;; dired模式图标支持
