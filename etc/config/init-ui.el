@@ -75,8 +75,8 @@
   (setq calendar-latitude 23.130280
 		calendar-longitude 113.288879)
   ;; sunrise 白天用的主题 sunset 晚上用的主题
-  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-                           (:sunset . doom-gruvbox)))
+  (setq circadian-themes '((:sunrise . gruvbox-light-medium)
+                           (:sunset . gruvbox-dark-medium)))
   ;; 解决切换主题spaceline色块显示问题
   (add-hook 'circadian-after-load-theme-hook
 			#'(lambda (theme)
@@ -93,13 +93,30 @@
                 (highlight-indent-guides-mode -1)
                 (highlight-indent-guides-mode +1)))
   (circadian-setup))
+
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '((recents . "file-text") 
+                                    (bookmarks . "book")))
+  ;; 设置标题
+  (setq dashboard-banner-logo-title
+        "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
+  ;; 设置banner
+  (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png")
+  (setq dashboard-center-content t) 
+  (setq dashboard-set-heading-icons t) 
+  (setq dashboard-set-navigator t)
+  (add-hook 'after-init-hook (lambda () (dashboard-refresh-buffer))))
 (progn
-    (use-package
+  (use-package
 	all-the-icons
 	:ensure t)
   ;; dired模式图标支持
   (use-package
 	all-the-icons-dired
+
 	:ensure t
 	:hook ('dired-mode . 'all-the-icons-dired-mode))
   ;; 表情符号

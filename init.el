@@ -12,13 +12,13 @@
 (when +dumped-load-path
   ;;恢复load-path
   (setq load-path +dumped-load-path)
-  ;; (setq warning-minimum-level :emergency)
+  (setq warning-minimum-level :emergency)
+  (setq user-emacs-directory "~/.emacs.d/var/")
   (global-font-lock-mode t)
   (transient-mark-mode t))
 
 ;; 没有dump加载的配置
 (unless +dumped-load-path
-  (message "hello")
   (setq gc-cons-threshold-original gc-cons-threshold)
   (setq gc-cons-threshold (* 10240 1000000))
   (setq file-name-handler-alist-original file-name-handler-alist)

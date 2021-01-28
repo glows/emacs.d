@@ -100,7 +100,10 @@
      '("<escape>" . meow-last-buffer)))
   
   :config
+  ;; 开启meow
   (meow-global-mode +1)
+  ;; 关闭输入覆盖
+  (delete-selection-mode -1)
   ;; 设置按键
   (meow-setup)
   ;; 设置modeline模式标记字符串
@@ -116,7 +119,8 @@
   ;; 添加指定模式到normal模式列表
   (add-to-list 'meow-normal-state-mode-list 'helpful-mode)
   (add-to-list 'meow-normal-state-mode-list  'Info-mode)
-  (add-to-list 'meow-normal-state-mode-list 'cargo-process-mode))
+  (add-to-list 'meow-normal-state-mode-list 'cargo-process-mode)
+  (global-set-key (kbd "s-SPC") meow-leader-keymap))
 
 
 (provide 'init-meow)

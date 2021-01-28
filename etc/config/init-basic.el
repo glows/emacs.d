@@ -23,10 +23,10 @@
 (setq recentf-save-file "~/.emacs.d/var/recentf")
 
 ;; 设置默认模式
-(add-hook 'after-init-hook (lambda ()
-                             (text-mode)
-                             (display-line-numbers-mode -1)
-                             (insert ";; 欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842\n;; 配置文件地址:github.com/EvanMeek/.emacs.d\n;; 作者:EvanMeek")))
+;; (add-hook 'after-init-hook (lambda ()
+;;                              (text-mode)
+;;                              (display-line-numbers-mode -1)
+;;                              (insert ";; 欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842\n;; 配置文件地址:github.com/EvanMeek/.emacs.d\n;; 作者:EvanMeek")))
 
 ;; 关闭滚动条
 ;; (push '(scroll-bar-mode -1) graphic-only-plugins-setting)
@@ -45,8 +45,7 @@
 (global-display-line-numbers-mode +1)
 
 ;; 选中文本后输入会覆盖
-(add-hook 'after-init-hook
-		  (lambda () (delete-selection-mode +1)))
+(delete-selection-mode +1)
 
 ;; 关闭GUI功能
 (setq use-file-dialog nil
