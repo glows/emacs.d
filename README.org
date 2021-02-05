@@ -23,8 +23,6 @@
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
     - tdlib
       * ArchLinux :: ~pacman -S libtd-git~
-	- llvm & rust
-      [[https://github.com/rustify-emacs/fuz.el][fuz.el]]
 ** 字体
    - all-the-icons :: 必装
    - Sarasa Mono :: 默认字体 [安装时必选，安装完可修改]
@@ -78,8 +76,6 @@
   #+end_src
   
 * 常见问题
-** fuz.el编译失败？
-   请确保你已安装 =cargo= ，且 =cargo= 可执行文件路径存在于 =Emacs= 的 ~exec-path~ 变量中。
 ** EAF如何安装?
    #+begin_src shell
    yay -S emacs-application-framework-git

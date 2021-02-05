@@ -10,9 +10,12 @@ var/*
 !/var/banner/
 !/var/girl-say/
 /site-lisp/
+quelpa/
 session*
 custom.el
 tramp
+emacs.pdmp
+.log/
 eaf/
 transient/
 /eln-cache/

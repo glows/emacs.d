@@ -1,22 +1,4 @@
-(progn
-  ;;美化
-  (use-package 
-	all-the-icons-ivy-rich 
-	:ensure t 
-	:init (all-the-icons-ivy-rich-mode 1)) 
-  (use-package ivy-rich
-    :ensure t
-    :config
-    (ivy-rich-mode +1))
-  ;; 美化
-  (use-package 
-	ivy-posframe
-    :disabled
-	:ensure t
-	:hook (ivy-mode ivy-posframe-mode)
-	:custom (ivy-posframe-parameters '((left-fringe . 8) 
-									   (right-fringe . 8)))
-	(ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))))
+
 ;; counsel提供对项目管理的支持
 (use-package 
   counsel-projectile 

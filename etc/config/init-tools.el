@@ -8,13 +8,12 @@
   :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
   :init
   (use-package epc
-    :ensure t
     :defer t)
   (use-package ctable
-    :load-path "~/.emacs.d/site-lisp/emacs-ctable"
+    :quelpa ((ctable :fetcher github :repo "kiwanami/emacs-ctable"))
     :defer t)
   (use-package deferred
-    :load-path "~/.emacs.d/site-lisp/emacs-deferred"
+    :quelpa ((deferred :fetcher github :repo "kiwanami/emacs-deferred"))
     :defer t)
   :custom
   (eaf-find-alternate-file-in-dired t)
@@ -55,56 +54,13 @@
 	    								  (top-or-bottom-pos . 0)))
   (mouse-avoidance-mode 'banish))
 
-;; 括号匹配，不再使用这个，转为使用smartparens
-(use-package 
-  awesome-pair
-  :disabled 
-  :load-path "~/.emacs.d/site-lisp/awesome-pair" 
-  :config (dolist (hook (list 'c-mode-common-hook 'c-mode-hook 'c++-mode-hook 'java-mode-hook 'haskell-mode-hook 'emacs-lisp-mode-hook 'lisp-interaction-mode-hook 'lisp-mode-hook 'maxima-mode-hook 'ielm-mode-hook 'sh-mode-hook 'makefile-gmake-mode-hook 'php-mode-hook 'python-mode-hook 'js-mode-hook 'go-mode-hook 'qml-mode-hook 'jade-mode-hook 'css-mode-hook 'ruby-mode-hook 'coffee-mode-hook 'rust-mode-hook 'qmake-mode-hook 'lua-mode-hook 'swift-mode-hook 'minibuffer-inactive-mode-hook)) 
-            (add-hook hook '(lambda () 
-                              (awesome-pair-mode 1)))) 
-  :bind (:map awesome-pair-mode-map
-              ("(" . #'awesome-pair-open-round) 
-              ("(" . #'awesome-pair-open-round) 
-              ("[" . #'awesome-pair-open-bracket) 
-              ("{" . #'awesome-pair-open-curly) 
-              ("" . #'awesome-pair-close-round) 
-              ("]" . #'awesome-pair-close-bracket) 
-              ("}" . #'awesome-pair-close-curly) 
-              ("=" . #'awesome-pair-equal) 
-              ("%" . #'awesome-pair-match-paren) 
-              ("\"" . #'awesome-pair-double-quote) 
-              ("SPC" . #'awesome-pair-space) 
-              ("M-o" . #'awesome-pair-backward-delete) 
-              ("C-d" . #'awesome-pair-forward-delete) 
-              ("C-k" . #'awesome-pair-kill) 
-              ("M-\"" . #'awesome-pair-wrap-double-quote) 
-              ("M-[" . #'awesome-pair-wrap-bracket) 
-              ("M-{" . #'awesome-pair-wrap-curly) 
-              ("M-(" . #'awesome-pair-wrap-round) 
-              ("M-)" . #'awesome-pair-unwrap) 
-              ("M-p" . #'awesome-pair-jump-right) 
-              ("M-n" . #'awesome-pair-jump-left) 
-              ("M-:" . #'awesome-pair-jump-out-pair-and-newline)
-              ))
 ;; 括号匹配
-(use-package 
-  smartparens
-
+(use-package smartparens
   :ensure t 
   :hook (prog-mode . smartparens-mode))
 
-;; 英语拼写助手，默认不开启
-(use-package 
-  company-english-helper
-  :after company
-  :load-path "~/.emacs.d/site-lisp/company-english-helper" 
-  :config (define-key leader-key (kbd "t e") 'toggle-company-english-helper))
-
 ;; Emacs下telegram的客户端，默认不开启
-(use-package 
-  telega
-  :load-path "~/.emacs.d/site-lisp/telega.el"
+(use-package telega
   :ensure t
   :commands (telega) 
   :init (setq telega-proxies 
@@ -146,16 +102,14 @@
   (define-key telega-msg-button-map "k" nil))
 
 ;; Emacs下最好用的终端仿真器
-(use-package 
-  vterm
+(use-package vterm
   :commands (vterm)
   :ensure t
   :bind (:map leader-key
               ("o t" . 'vterm)))
 
 ;; 有道词典，非常有用
-(use-package 
-  youdao-dictionary
+(use-package youdao-dictionary
   :commands (youdao-dictionary-search-at-point-posframe)
   :ensure t 
   :config (setq url-automatic-caching t) 
@@ -167,8 +121,7 @@
          ("C-x y i" . 'youdao-dictionary-search-from-input)))
 
 ;; Emacs下的音乐播放器，自带一个函数将~/Music下的所有音乐导入进Bongo再自动播放(bongo-init)
-(use-package 
-  bongo
+(use-package bongo
   :ensure t
   :hook (after-init-hook . bongo)
   :custom
@@ -193,8 +146,7 @@
               ("b r" . 'bongo-play-random) 
               ("b s" . 'bongo-sprinkle)))
 ;; Emacs下的pdf查看工具，默认非图形化不开启
-(use-package 
-  pdf-tools 
+(use-package pdf-tools 
   :ensure t 
   :hook ('doc-view-mode 'pdf-view-mode)
   :bind (:map pdf-view-mode-map
@@ -204,8 +156,7 @@
 			  ("h" . #'image-backward-hscroll)))
 
 ;; 窗口管理器
-(use-package 
-  windmove
+(use-package windmove
   :defer 0
   :ensure t 
   :init (windmove-default-keybindings) 
@@ -225,8 +176,7 @@
               ("w k" . #'shrink-window)))
 
 ;; 折叠和收缩代码
-(use-package 
-  hideshow 
+(use-package hideshow 
   :ensure t 
   :diminish hs-minor-mode
   :bind (:map prog-mode-map
@@ -235,8 +185,7 @@
   :hook (prog-mode . hs-minor-mode))
 
 ;; 一个可以临时安装使用插件的插件
-(use-package 
-  try
+(use-package try
   :commands (try)
   :ensure t)
 
@@ -252,8 +201,7 @@
 ;;   :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
 
 ;; 撤销树
-(use-package 
-  undo-tree 
+(use-package undo-tree 
   :ensure t 
   :hook (after-init . global-undo-tree-mode) 
   :init (setq undo-tree-visualizer-timestamps t undo-tree-enable-undo-in-region nil undo-tree-auto-save-history nil)
@@ -262,26 +210,21 @@
   (with-no-warnings (make-variable-buffer-local 'undo-tree-visualizer-diff) 
                     (setq-default undo-tree-visualizer-diff t)))
 ;; 项目管理
-(use-package 
-  projectile 
+(use-package projectile 
   :ensure t)
 
 ;; 快速查询你的问题
-(use-package 
-  howdoyou 
-  :ensure t 
-  :hook (after-init . howdoyou-mode))
+(use-package howdoyou 
+  :ensure t)
 
 ;; emacs内置网页浏览器
-(use-package 
-  eww
+(use-package eww
   :ensure t 
   :custom (eww-search-prefix "https://google.com/search?q="))
 
 ;; 看英语文档神器
 (use-package english-teacher
-  :disabled
-  :load-path "~/.emacs.d/site-lisp/english-teacher"
+  :quelpa ((english-teacher :fetcher github :repo "loyalpartner/english-teacher.el"))
   :custom
   (english-teacher-backend 'baidu)
   (english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
@@ -346,10 +289,8 @@
   :ensure t
   :hook (after-init . (lambda ()
 						(global-disable-mouse-mode -1))))
-
 ;; 管理生词工具-本配置文件作者写的插件
 (use-package shengci
-  :defer 2
-  :load-path "~/.emacs.d/site-lisp/shengci.el")
+  :quelpa ((shengci :fetcher github :repo "EvanMeek/shengci.el")))
 
 (provide 'init-tools)

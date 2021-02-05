@@ -1,12 +1,12 @@
 (load (expand-file-name "init.el"))
 
 (setq +dump-exclude-packages '(telega
-                               hydra-posframe))
+                               hydra-posframe
+                               dap-mode))
 
 
 (dolist (package package-activated-list)
   (unless (member package +dump-exclude-packages)
-
     (require package)))
 
 (setq +dumped-load-path load-path)

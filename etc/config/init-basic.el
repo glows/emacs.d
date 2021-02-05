@@ -203,44 +203,48 @@
 									  "-g" "!site-lisp"
 									  "-g" "!doc"
 									  "-g" "!themes"
+                                      "-g" "!quelpa"
                                       "-g" "!etc-cache"))
-  (setq counsel-fzf-cmd "fd -I --exclude={site-lisp,etc/snippets,themes,/eln-cache,/var,/elpa,/url,/auto-save-list,.cache,doc/} --type f | fzf -f \"%s\" --algo=v1")
+  (setq counsel-fzf-cmd "fd -I --exclude={site-lisp,etc/snippets,themes,/eln-cache,/var,/elpa,quelpa/,/url,/auto-save-list,.cache,doc/} --type f | fzf -f \"%s\" --algo=v1")
   ;; Integration with `projectile'
   (with-eval-after-load 'projectile
     (setq projectile-completion-system 'ivy))
   )
 
 
-(push '(progn
-         (use-package fuz
-           :load-path "~/.emacs.d/site-lisp/fuz.el"
-           :after snails
-           :init
-           (unless (require 'fuz-core nil t)
-             (fuz-build-and-load-dymod)))
-         (use-package snails
-           :load-path "~/.emacs.d/site-lisp/snails"
-           :config
-           (setq snails-default-backends '(snails-backend-current-buffer
-								           snails-backend-command
-								           snails-backend-bookmark
-								           snails-backend-buffer
-								           snails-backend-rg
-								           snails-backend-fd
-								           snails-backend-eaf-browser-history
-								           snails-backend-eaf-github-search
-								           snails-backend-google-suggestion)
-		         snails-prefix-backends '(("*" '(snails-backend-current-buffer))
-								          (">" '(snails-backend-command))
-								          ("@" '(snails-backend-bookmark))
-								          ("#" '(snails-backend-buffer))
-								          ("$" '(snails-backend-rg))
-								          ("-" '(snails-backend-fd))
-								          ("=" '(snails-backend-eaf-browser-history))
-								          ("." '(snails-backend-eaf-github-search))
-								          ("," '(snails-backend-google-suggestion)))
-		         snails-default-show-prefix-tips t
-		         snails-backend-eaf-browser-history-limit 10))) graphic-only-plugins-setting)
+;; (push '(progn
+;;          (use-package fuz
+;;            :quelpa ((fuz :fetcher github :repo "rustify-emacs/fuz.el")
+;;                     :upgrade t)
+;;            :after snails
+;;            :init
+;;            (unless (require 'fuz-core nil t)
+;;              (fuz-build-and-load-dymod)))
+;;          (use-package snails
+;;            :if (graphic-p)
+;;            :quelpa ((snails :fetcher github :repo "manateelazycat/snails")
+;;                     :upgrade t)
+;;            :config
+;;            (setq snails-default-backends '(snails-backend-current-buffer
+;; 								           snails-backend-command
+;; 								           snails-backend-bookmark
+;; 								           snails-backend-buffer
+;; 								           snails-backend-rg
+;; 								           snails-backend-fd
+;; 								           snails-backend-eaf-browser-history
+;; 								           snails-backend-eaf-github-search
+;; 								           snails-backend-google-suggestion)
+;; 		         snails-prefix-backends '(("*" '(snails-backend-current-buffer))
+;; 								          (">" '(snails-backend-command))
+;; 								          ("@" '(snails-backend-bookmark))
+;; 								          ("#" '(snails-backend-buffer))
+;; 								          ("$" '(snails-backend-rg))
+;; 								          ("-" '(snails-backend-fd))
+;; 								          ("=" '(snails-backend-eaf-browser-history))
+;; 								          ("." '(snails-backend-eaf-github-search))
+;; 								          ("," '(snails-backend-google-suggestion)))
+;; 		         snails-default-show-prefix-tips t
+;; 		         snails-backend-eaf-browser-history-limit 10))) graphic-only-plugins-setting)
 
 
 (use-package exec-path-from-shell

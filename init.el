@@ -8,6 +8,13 @@
 ;; EMAIL	: the_lty_mail@foxmail.com
 (defvar +dumped-load-path nil
   "Not nil when using dump.")
+
+;; 图形界面插件的设置
+(setq graphic-only-plugins-setting ()) 
+
+(setq gp-count 0)
+(push '(setq gp-count (1+ gp-count)) graphic-only-plugins-setting)
+
 ;; 加载dump的配置
 (when +dumped-load-path
   ;;恢复load-path
@@ -19,6 +26,8 @@
 
 ;; 没有dump加载的配置
 (unless +dumped-load-path
+  (toggle-debug-on-error)
+  (setq warning-minimum-level :emergency) 
   (setq gc-cons-threshold-original gc-cons-threshold)
   (setq gc-cons-threshold (* 10240 1000000))
   (setq file-name-handler-alist-original file-name-handler-alist)
@@ -45,11 +54,6 @@
   (let ((gc-cons-threshold most-positive-fixnum)
         (file-name-handler-alist nil))
     (add-subdirs-to-load-path "~/.emacs.d/etc/"))
-
-
-  ;; 图形界面插件的设置
-  (setq graphic-only-plugins-setting ())
-
   ;; 全屏
   ;; (toggle-frame-fullscreen)
 
@@ -61,3 +65,4 @@
 
   ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
   (put 'dired-find-alternate-file 'disabled nil))
+(put 'downcase-region 'disabled nil)

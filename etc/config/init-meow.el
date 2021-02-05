@@ -1,6 +1,6 @@
 (use-package meow
   :if is-need-meow-module
-  :load-path "~/.emacs.d/site-lisp/meow"
+  :quelpa ((meow :fetcher github :repo "doglooksgood/meow"))
   :init
   (defun meow-setup ()
     (meow-motion-overwrite-define-key
@@ -31,7 +31,6 @@
      '("p" . evan/hydra-project-menu/body)
      '("g" . evan/hydra-common-menu/body)
      '("a" . evan/hydra-app-menu/body)
-     '("s" . snails)
      '("w" . evan/hydra-window-menu/body))
     (meow-normal-define-key
      '("0" . meow-expand-0)

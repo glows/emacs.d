@@ -35,17 +35,17 @@
   :config (add-to-list 'company-backends #'company-tabnine))
 
 ;; 各个语言的Debug工具
-(use-package dap-mode
-  :ensure t
-  :functions dap-hydra/nil
-  :diminish
-  :bind (:map lsp-mode-map
-			  ("<f5>" . dap-debug)
-			  ("M-<f5>" . dap-hydra))
-  :hook ((after-init . dap-mode)
-		 (dap-mode . dap-ui-mode)
-		 (python-mode . (lambda () (require 'dap-python)))
-		 ((c-mode c++-mode) . (lambda () (require 'dap-lldb)))))
+;; (use-package dap-mode
+;;   :ensure t
+;;   :functions dap-hydra/nil
+;;   :diminish
+;;   :bind (:map lsp-mode-map
+;; 			  ("<f5>" . dap-debug)
+;; 			  ("M-<f5>" . dap-hydra))
+;;   :hook ((after-init . dap-mode)
+;; 		 (dap-mode . dap-ui-mode)
+;; 		 (python-mode . (lambda () (require 'dap-python)))
+;; 		 ((c-mode c++-mode) . (lambda () (require 'dap-lldb)))))
 
 
 ;; 美化company

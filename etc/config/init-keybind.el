@@ -30,7 +30,9 @@
 
 (use-package
   hydra-posframe
-  :load-path "~/.emacs.d/site-lisp/hydra-posframe"
+  :quelpa ((hydra-posframe
+            :fetcher github
+            :repo "Ladicle/hydra-posframe"))
   :hook (after-init . (lambda ()
                         (hydra-posframe-mode +1) ) ))
 
@@ -198,7 +200,6 @@
 					^主菜单^
 [_b_] ^音乐^	[_o_] ^开启^ 	[_t_] ^开关^ 	[_w_] ^窗格^
 [_c_] ^代码^	[_p_] ^项目^ 	[_a_] ^应用^ 	[_2_] ^常用^
-[_s_] ^Snails^
 "
   ;; [_T_] ^Tab-Bar^
   ("b" evan/hydra-music-menu/body nil :color blue)
@@ -209,7 +210,6 @@
   ("p" evan/hydra-project-menu/body nil :color blue)
   ("2" evan/hydra-common-menu/body nil :color blue)
   ("a" evan/hydra-app-menu/body nil :color blue)
-  ("s" snails  nil :color blue)
   ;; ("T" evan/hydra-tab-bar-menu/body nil :color blue)
   ("q" nil "QUIT" :color blue))
 
