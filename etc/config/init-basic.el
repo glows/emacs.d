@@ -21,7 +21,8 @@
 ;; 设置eshell历史记录
 (setq eshell-history-file-name "~/.emacs.d/var/eshell/history")
 (setq recentf-save-file "~/.emacs.d/var/recentf")
-
+(setq recentf-max-menu-items 20)
+(set-default 'truncate-lines t)
 ;; 设置默认模式
 ;; (add-hook 'after-init-hook (lambda ()
 ;;                              (text-mode)
@@ -123,6 +124,7 @@
 ;; 高亮对应的括号
 (show-paren-mode 1)
 
+;; (recentf-load-list)
 ;; 键位提示
 (use-package which-key
   :ensure t

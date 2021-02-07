@@ -52,7 +52,7 @@
 		  ((eq number 3) (nth 2 evan/capture-word-data))))
   
   (setq org-capture-templates nil)
-  (push "~/Documents/org/capture/task.org" org-agenda-files)
+  ;; (push "~/Documents/org/capture/task.org" org-agenda-files)
   ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
   (add-to-list 'org-capture-templates
                '("t" "任务清单"))

@@ -26,7 +26,6 @@
 
 ;; 没有dump加载的配置
 (unless +dumped-load-path
-  (toggle-debug-on-error)
   (setq warning-minimum-level :emergency) 
   (setq gc-cons-threshold-original gc-cons-threshold)
   (setq gc-cons-threshold (* 10240 1000000))

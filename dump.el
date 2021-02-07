@@ -2,11 +2,17 @@
 
 (setq +dump-exclude-packages '(telega
                                hydra-posframe
-                               dap-mode))
+                               dap-mode
+                               vterm
+                               rime
+                               fuz
+                               undo-tree))
 
 
 (dolist (package package-activated-list)
   (unless (member package +dump-exclude-packages)
+    (require 'doom-one-theme)
+    (require 'doom-one-light-theme)
     (require package)))
 
 (setq +dumped-load-path load-path)
