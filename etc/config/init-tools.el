@@ -4,7 +4,7 @@
   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 (use-package eaf
-  :commands (eaf-open eaf-search-it eaf-open-browser eaf-open-bookmark)
+  :commands (eaf-open eaf-search-it eaf-open-browser eaf-open-bookmark eaf-open-browser-with-history)
   :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
   :init
   (use-package epc
