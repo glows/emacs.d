@@ -48,6 +48,8 @@
   (setq lsp-ui-doc-enable t
         ;; 文档显示的位置
         lsp-ui-doc-position 'top
+        lsp-ui-sideline-enable nil
+        lsp-signature-render-documentation nil
         ;; 显示文档的延迟
         lsp-ui-doc-delay 2))
 
