@@ -19,4 +19,4 @@ emacs.pdmp
 eaf/
 transient/
 /eln-cache/
-/etc/private/
+# /etc/private/

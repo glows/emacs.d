@@ -52,16 +52,16 @@
 
   (let ((gc-cons-threshold most-positive-fixnum)
         (file-name-handler-alist nil))
-    (add-subdirs-to-load-path "~/.emacs.d/etc/"))
+    ;; 将配置文件添加进load-path
+    (add-subdirs-to-load-path "~/.emacs.d/etc/")
+    (unless (file-exists-p "~/.config/.evan-emacs.d/")
+      (mkdir "~/.config/.evan-emacs.d"))
+    (add-subdirs-to-load-path "~/.config/.evan-emacs.d/"))
   ;; 全屏
   ;; (toggle-frame-fullscreen)
-
+  
+ ;; 所有配置自带的模块
   (require 'init-config)
-
-  ;; (if (graphic-p)
-  ;;     (message "检测到当前环境为图形环境，可以正常使用。")
-  ;;   (message "检测到当前环境为字符环境，部分插件未启用。"))
-
-  ;; (org-babel-load-file (expand-file-name "~/.emacs.d/myinit.org"))
+  
   (put 'dired-find-alternate-file 'disabled nil))
 (put 'downcase-region 'disabled nil)
