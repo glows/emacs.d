@@ -1,7 +1,9 @@
 ;; 交互式Git工具
 (use-package magit
   :ensure t
-  :commands (magit))
+  :init
+  (use-package with-editor
+    :ensure t))
 
 ;; 显示当前行修改-Git
 (use-package git-gutter-fringe

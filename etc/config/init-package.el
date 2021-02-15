@@ -30,10 +30,7 @@
 (require 'quelpa-use-package)
 
 (setq quelpa-upgrade-interval 7
-      quelpa-update-melpa-p nil
-      use-package-ensure-function 'quelpa
-      use-package-always-ensure t)
-;; (setq use-package-always-defer t)
+      quelpa-update-melpa-p nil)
 
 (provide 'init-package)
  

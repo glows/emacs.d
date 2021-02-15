@@ -1,7 +1,8 @@
 (use-package lispy
-  :if (eq is-need-meow-module nil)
   :ensure t
-  :hook (emacs-lisp-mode . lispy-mode))
+  :hook (emacs-lisp-mode . (lambda ()
+                             (unless is-need-meow-module
+                               (lispy-mode)))))
 
 ;; lisp符号操作工具
 (use-package symbol-overlay

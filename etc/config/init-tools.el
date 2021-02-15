@@ -163,7 +163,8 @@
   :ensure t)
 
 ;; 快速查询你的问题
-(use-package howdoyou 
+(use-package howdoyou
+  :quelpa nil
   :ensure t)
 
 ;; emacs内置网页浏览器
