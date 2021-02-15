@@ -200,7 +200,7 @@
 (use-package dired-posframe
   :ensure t
   :custom
-  (dired-posframe-size-limit (* 100 1024 1024))
+  (dired-posframe-size-limit (* 100 1024 102400))
   :bind((:map dired-mode-map)
 		("C-*" . dired-posframe-mode)))
 ;; 更改窗格布局
