@@ -62,7 +62,7 @@
 ;; 关闭备份
 (setq make-backup-files nil auto-save-default nil)
 
-;; 关闭多编辑器同时编辑统一文件时锁文件操作
+;; 关闭多编辑器同时编辑同一文件时锁文件操作
 (setq create-lockfiles nil)
 
 ;; 随时重新加载发生修改过的文件
@@ -268,9 +268,8 @@
 ;; emacs 调用 rime输入法的前端，强烈推荐
 (use-package rime
   :ensure t
-  :init
-  (setq default-input-method "rime")
   :config
+  (push '(setq default-input-method "rime") graphic-only-plugins-setting)
   (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
   (setq rime-posframe-properties
 		(list :background-color "#333333"

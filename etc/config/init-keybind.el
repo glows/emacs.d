@@ -165,7 +165,7 @@
 [_i_] ^find-config-file-by-fzf^     [_=_] ^plus-backlight^
 [_w_] ^capture-word^				[_-_] ^less-backlight^
 [_c_] ^nyan-strat-music^			[_2_] ^alpha-less^
-[_1_] ^alpha-add^					
+[_1_] ^alpha-add^					[_I_] ^find-praivte-config-file-by-fzf
 "
   ("g" counsel-rg nil :color blue)
   ("f" counsel-fzf nil :color blue)
@@ -177,6 +177,7 @@
   ("l" counsel-linux-app nil :color blue)
   ("w" shengci-capture-word-and-save nil :color blue)
   ("i" +evan/find-config-file-by-fzf :color blue)
+  ("I" +evan/find-private-config-file-by-fzf :color blue)
   ("-" +evan/less-backlight :color red)
   ("=" +evan/plus-backlight :color red)
   ("c" +evan/girl-say :color blue)

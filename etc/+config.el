@@ -77,6 +77,11 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   (interactive)
   (counsel-fzf nil "~/.emacs.d"))
 
+(defun +evan/find-private-config-file-by-fzf ()
+  "在~/.config/.evan-emacs.d中使用fzf查找文件"
+  (interactive)
+  (counsel-fzf nil "~/.config/.evan-emacs.d"))
+
 ;; 调节屏幕亮度
 (defun +evan/set-backlight (&optional light-value)
   (interactive "s请输入亮度(小数表示的百分比): ")
