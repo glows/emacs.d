@@ -16,7 +16,7 @@
                     ;; Also handle undocumented (<active> <inactive>) form.
                     ((numberp (cadr alpha)) (cadr alpha)))
               100)
-         '(80 . 80) '(100 . 100)))))
+         '(90 . 90) '(100 . 100)))))
 ;; 增加或减少透明
 ;;;###autoload
 (defun sanityinc/adjust-opacity (frame incr)
