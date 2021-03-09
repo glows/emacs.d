@@ -32,7 +32,8 @@
 (use-package 
   lsp-ui
   :ensure t
-  :hook (lsp-mode . lsp-ui-mode)
+  :commands (lsp-ui)
+  ;; :hook (lsp-mode . lsp-ui-mode)
   :config
   ;; sideline
   (setq lsp-ui-sideline-show-diagnostics t
