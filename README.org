@@ -1,12 +1,13 @@
 #+STARTUP: overview
 * 简介
-  *黑暗主题*
+  **黑暗主题**
   [[file:var/banner/PreviewDark.png]]
-  *明亮主题*
+  **明亮主题**
   [[file:var/banner/PreviewLight.png]]
   本配置由我从零开始配置，所以对每个地方都很了解，如果对哪里不懂的可以发邮件[[mailto:the_lty_mail@foxmail.com][EvanMeek's Email]]给我提问.
-  具体配置请看/etc下的配置文件 
-  **请直接克隆本仓库，并使用Org-Mode查看此自述文件，否则会出现格式错乱等问题。 **
+  具体配置请看/etc下的配置文件。
+
+  **请直接克隆本仓库，并使用Org-Mode查看此自述文件，否则会出现格式错乱等问题。**
 
 * 如何安装
 ** 依赖
@@ -15,17 +16,25 @@
     - CMake
     - Python
     - [[https://github.com/mannateelazycat/emacs-application-framework][EAF]]
-      * Archlinux :: ~yay -S emacs-application-framework-git~
+      
+    	可以将EAF克隆到 ~~/.emacs.d/site-lisp/中~
     - libvterm
       * Ubuntu/Debian :: ~apt install libvterm~
       * ArchLinux  :: ~pacman -S libvterm~
     - [[https://github.com/junegunn/fzf][fzf]]
     - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
-    - tdlib
+    - tdlib 如果你使用telega的话。
       * ArchLinux :: ~pacman -S libtd-git~
 ** 字体
    - all-the-icons :: 必装
+     请确保网络稳定。由于需要访问github的资源，所以请修改hosts或挂代理。
+     #+begin_src 
+     M-x all-the-icons-install-fonts
+     #+end_src
    - Sarasa Mono :: 默认字体 [安装时必选，安装完可修改]
+     #+begin_src shell
+     pacman -S ttf-sarasa-gothic
+     #+end_src
 ** 安装
    #+begin_src shell
    mv ~/.emacs.d/ ~/.emacs.d_bak &&  git clone https://github.com/EvanMeek/.emacs.d ~/.emacs.d
@@ -51,6 +60,8 @@
    - *~/Documents/org/capture/word.org* :: 记录生词
 ** telega的安装方式
    telega是emacs下的一个telegram客户端，你首先得编译tdlib，才能使用telega，tdlib的安装方式可以在这里找到: [[https://github.com/tdlib/td][tdlib 主页]]
+** 安装完成后Emacs白屏，无反映
+   请确保你的网络可以流畅访问外网，最好使得Emacs挂代理。推荐使用ProxyChains对Emacs强制代理。  
 * 目录结构
   #+begin_src 
   - doc/ :: 文档
