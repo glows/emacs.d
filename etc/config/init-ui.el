@@ -8,6 +8,8 @@
 ;; AUTHOR: EvanMeek the_lty_mail@foxmail.com
 
 ;;; Code:
+;; 解决Emacs在KDE下最大化出现间隙的问题
+(setq frame-resize-pixelwise t)
 ;; 设置光标颜色
 ;; (set-cursor-color "green2")
 ;; 设置光标样式
