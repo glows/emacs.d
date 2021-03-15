@@ -57,7 +57,7 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
 (push '(defun open-with-chrome () 
 		 (interactive) 
 		 (browse-url-chrome (buffer-file-name)))
-	  garbage-collection-messages)
+	  graphic-only-plugins-setting)
 
 ;; 切换代理
 (defun +evan/toggle-proxy () 
@@ -190,6 +190,33 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
                                        (concat "mplayer" " ~/.emacs.d/var/girl-say/" (nth
                                                                                       (random (length girl-say-lst))
                                                                                       girl-say-lst))))))
-
-
+(defun font-size-adjust (step)
+  "修改全局字体大小"
+  (interactive "n步长:")
+  (unless step
+    (setq step 1))
+  (let ((en-size evan/en-font-size)
+        (zh-size evan/zh-font-size))
+    (setq en-size (+ en-size step)
+          zh-size (+ zh-size step)
+          evan/en-font-size en-size
+          evan/zh-font-size zh-size)
+    (progn
+	  (set-face-attribute 'default nil
+						  :font (font-spec
+								 :name evan/en-font-name
+								 :style evan/en-font-style
+								 :size evan/en-font-size))
+      (set-fontset-font t 'han (font-spec
+                                :name evan/zh-font-name
+                                :style evan/zh-font-style
+                                :size evan/zh-font-size)))))
+(defun font-size-increase ()
+  "增加字体大小"
+  (interactive)
+  (font-size-adjust 1))
+(defun font-size-decrease ()
+  "减少字体大小"
+  (interactive)
+  (font-size-adjust -1))
 (provide '+config)
