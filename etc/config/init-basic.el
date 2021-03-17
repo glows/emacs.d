@@ -270,7 +270,8 @@
   :ensure t
   :config
   (push '(setq default-input-method "rime") graphic-only-plugins-setting)
-  (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
+  (setq rime-user-data-dir "~/.emacs.d/var/rime")
+  (setq rime-share-data-dir "~/.emacs.d/var/rime")
   (setq rime-posframe-properties
 		(list :background-color "#333333"
 			  :foreground-color "#dcdccc"
