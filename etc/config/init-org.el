@@ -81,13 +81,16 @@
 	 (shell . t))))
 
 ;; 美化org
-(use-package 
-  org-bullets
+(use-package org-bullets
   :ensure t
   :after org
   :hook ('org-mode . 'org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("☰" "☷" "✿" "☭")))
+(use-package org-superstar
+  :ensure t
+  :after org
+  :hook (org-mode . org-superstar-mode))
 
 (use-package gkroam
   :disabled
