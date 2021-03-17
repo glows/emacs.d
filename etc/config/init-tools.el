@@ -140,14 +140,14 @@
 
 
 ;; 工作区
-;; (use-package 
-;;   perspeen
-;;   :ensure t 
-;;   :init
-;;   ;; (setq perspeen-use-tab t)
-;;   (setq perspeen-keymap-prefix [C-tab]) 
-;;   :config (perspeen-mode)
-;;   :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
+(use-package 
+  perspeen
+  :ensure t 
+  :init
+  ;; (setq perspeen-use-tab t)
+  (setq perspeen-keymap-prefix [C-tab]) 
+  :config (perspeen-mode)
+  :custom-face (perspeen-selected-face ((t (::background "#68217A")))))
 
 ;; 撤销树
 (use-package undo-tree 
@@ -179,7 +179,6 @@
   (english-teacher-backend 'baidu)
   (english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
   :hook ((Info-mode
-		  elfeed-show-mode
 		  Man-mode
 		  Woman-mode
 		  ;; help-mode
