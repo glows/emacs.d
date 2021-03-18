@@ -107,7 +107,8 @@
         "欢迎您使用此Emacs配置文件，有任何问题可加QQ群:46689842                  ")
   ;; 设置banner
   (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png")
-  (setq dashboard-center-content t) 
+  (setq dashboard-center-content t)
+  (setq dashboard-show-shortcuts nil)
   (setq dashboard-set-heading-icons t) 
   (setq dashboard-set-navigator t)
   (add-hook 'after-init-hook (lambda () (dashboard-refresh-buffer))))
