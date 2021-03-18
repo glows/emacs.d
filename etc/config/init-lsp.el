@@ -15,7 +15,9 @@
 			  ("C-c C-f" . lsp-format-buffer)
 			  ("M-RET" . lsp-ui-sideline-apply-code-actions))
   :config
-  (setq lsp-prefer-capf t))
+  (setq lsp-prefer-capf t)
+  (add-hook 'lsp-ui-imenu-mode-hook (lambda ()
+                                      (display-line-numbers-mode -1))))
 
 ;; 微软的python语言服务器-新版
 (use-package lsp-pyright
@@ -40,6 +42,10 @@
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-show-code-actions nil
         lsp-ui-sideline-update-mode 'line
+        ;; lsp-ui-imenu列表自动刷新
+        lsp-ui-imenu-auto-refresh t
+        ;; lsp-ui-imenu列表刷新延迟
+        lsp-ui-imenu-auto-refresh-delay 5.0
         ;; sideline
         lsp-ui-sideline-delay 1)
   ;; peek
