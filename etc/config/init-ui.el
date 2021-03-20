@@ -38,8 +38,7 @@
 						                            :size evan/zh-font-size))
                            (set-fontset-font "fontset-default" ?༼ (font-spec
                                                                    :name "Noto Serif Tibetan"
-                                                                   :size 0))
-                           )
+                                                                   :size 0)))
                        (message "无法找到%s字体，你可以更换其他字体或安装它让这条消息消失." evan/en-font-name))))
 
 (push font-config graphic-only-plugins-setting)
@@ -109,7 +108,7 @@
   (setq dashboard-startup-banner "~/.emacs.d/var/banner/evan-emacs-banner.png")
   (setq dashboard-center-content t)
   (setq dashboard-show-shortcuts nil)
-  (setq dashboard-set-heading-icons t) 
+  (setq dashboard-set-heading-icons t)
   (setq dashboard-set-navigator t)
   (add-hook 'after-init-hook (lambda () (dashboard-refresh-buffer))))
 (progn
@@ -132,7 +131,15 @@
 ;; 竖线
 (use-package page-break-lines
   :ensure t
-  :hook (after-init . page-break-lines-mode))
+  :hook (after-init . global-page-break-lines-mode)
+  :config
+  (set-fontset-font "fontset-default"
+                  (cons page-break-lines-char page-break-lines-char)
+                  (face-attribute 'default :family))
+  (let ((table (make-char-table nil)))                   ;; make a new empty table
+    (set-char-table-parent table char-width-table)       ;; make it inherit from the current char-width-table
+    (set-char-table-range table page-break-lines-char 1) ;; let the width of page-break-lines-char be 1
+    (setq char-width-table table)))
 
 ;; 让info帮助信息中关键字有高亮
 (use-package info-colors 
