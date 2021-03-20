@@ -6,6 +6,7 @@
                                vterm
                                rime
                                fuz
+                               emacs-application-framework
                                undo-tree))
 
 

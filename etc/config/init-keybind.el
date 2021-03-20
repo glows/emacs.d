@@ -164,8 +164,9 @@
 [_b_] ^counsel-switch-buffer^		[_l_] ^counsel-linux-app^
 [_i_] ^find-config-file-by-fzf^     [_=_] ^plus-backlight^
 [_w_] ^capture-word^				[_-_] ^less-backlight^
-[_c_] ^nyan-strat-music^			[_2_] ^alpha-less^
+[_c_] ^美女嘤嘤嘤^					[_2_] ^alpha-less^
 [_1_] ^alpha-add^					[_I_] ^find-praivte-config-file-by-fzf
+[_t_] ^TG选择联系人^
 "
   ("g" counsel-rg nil :color blue)
   ("f" counsel-fzf nil :color blue)
@@ -183,6 +184,7 @@
   ("c" +evan/girl-say :color blue)
   ("1" +evan/plus-alpha nil :color red)
   ("2" +evan/less-alpha nil :color red)
+  ("t" ivy-telega-chat-with nil :color blue)
   ("q" nil "QUIT" :color blue))
 
 ;; Tab bar menu

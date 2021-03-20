@@ -9,6 +9,7 @@
 (define-key global-map (kbd "C-x C-d") #'dired)
 (define-key global-map (kbd "C-x C-=") #'font-size-increase)
 (define-key global-map (kbd "C-x C-\-") #'font-size-decrease)
+(define-key global-map (kbd "C-x C-0") #'font-size-orginal)
 ;; (define-key meow-leader-keymap (kbd "s-SPC") meow-leader-keymap)
 
 (provide '+mini-keybind)

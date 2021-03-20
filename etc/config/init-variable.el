@@ -28,7 +28,10 @@
  ;; eaf grip 所需token值
  evan/eaf-grip-token nil
  ;; 是否需要启动meow模式编辑模块，如果需要则设置为t
- is-need-meow-module nil)
-
+ is-need-meow-module nil
+ ;; 用于恢复字体大小的变量
+ original-zh-font-size evan/zh-font-size
+ original-en-font-size evan/en-font-size
+ )
 
 (provide 'init-variable)

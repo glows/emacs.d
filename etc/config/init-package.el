@@ -1,10 +1,10 @@
 (unless +dumped-load-path
   (require 'package)
   (package-initialize))
-(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-                         ("melpa" . "http://elpa.emacs-china.org/melpa/")
-                         ("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
-                         ("org" . "http://elpa.emacs-china.org/org/")))
+(setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+                         ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+                         ("melpa-stable" . "http://mirrors.cloud.tencent.com/elpa/melpa-stable/")
+                         ("org" . "http://mirrors.cloud.tencent.com/elpa/org/")))
 ;; 安装use-package包管理器
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)

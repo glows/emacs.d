@@ -180,6 +180,8 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
 
 (defun +evan/girl-say ()
   (interactive)
+  (unless (executable-find "mplayer")
+      (message "缺少mplayer依赖!"))
   (let ((girl-say-lst (list)))
     (mapcar (lambda (mp3)
               (push mp3 girl-say-lst))
@@ -219,4 +221,11 @@ WAY是方向，可选值为p,n,f,b，分别对应上下左右
   "减少字体大小"
   (interactive)
   (font-size-adjust -1))
+
+(defun font-size-orginal ()
+  "复原字体大小"
+  (interactive)
+  (setq evan/en-font-size original-en-font-size
+        evan/zh-font-size original-zh-font-size)
+  (font-size-adjust 0))
 (provide '+config)
