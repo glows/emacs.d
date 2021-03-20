@@ -312,6 +312,13 @@
   :ensure t
   :bind (("M-g l" . link-hint-open-link)))
 
+;; 自动保存
+(use-package auto-save
+  :quelpa ((auto-save :fetcher github :repo "manateelazycat/auto-save"))
+  :config
+  (setq auto-save-slient t)
+  (auto-save-enable))
+
 (cd "~/.emacs.d/")
 
 (provide 'init-basic)
