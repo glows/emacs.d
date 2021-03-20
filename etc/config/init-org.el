@@ -11,7 +11,6 @@
   (org-todo-keywords '((sequence "[学习](s!/@)" "[待办](t!/@)" "[等待](w!))" "|" "[完成](d!/@)" "[取消](c!@)")
                        (sequence "[BUG](b!/@)" "[新事件](i/@)" "[已知问题](k!/@)" "[修改中](W!/@)" "|" "[已修复](f!)")))  
   :config
-  (require 'org-capture) 
   (setq org-todo-keyword-faces '(("[学习]" . (:foreground "white" :background "#2ECC71" :weight bold))
 								 ("[待办]" . (:foreground "white" :background "#F1C40F" :weight bold))
 								 ("[等待]" . (:foreground "white" :background "#3498DB" :weight bold))
@@ -51,42 +50,66 @@
 		  ((eq number 2) (nth 1 evan/capture-word-data))
 		  ((eq number 3) (nth 2 evan/capture-word-data))))
   
-  (setq org-capture-templates nil)
-  ;; (push "~/Documents/org/capture/task.org" org-agenda-files)
-  ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
-  (add-to-list 'org-capture-templates
-               '("t" "任务清单"))
-  (add-to-list 'org-capture-templates '("tw" "工作任务" entry (file+headline "~/Documents/org/capture/task.org" "Work")
-                                        "* [待办] %^{任务名} - %U\n  %a\n  %?"))
-  (add-to-list 'org-capture-templates '("ts" "学习任务" entry (file+headline "~/Documents/org/capture/task.org" "Study")
-                                        "* [学习] %^{学习项目} - %U\n  %a\n  %?"))
-  (add-to-list 'org-capture-templates '("ti" "新事件" entry (file+headline "~/Documents/org/capture/task.org" "Issue")
-                                        "* [新事件] %^{事件名} - %U\n  %a\n  %?"))
-  (add-to-list 'org-capture-templates '("j" "我的日志" entry (file+headline"~/Documents/site/org/diary.org" "日志")
-                                        "* %U - %^{标题}\n  %?"))
-  (add-to-list 'org-capture-templates '("i" "我的闪念" entry (file+headline "~/Documents/site/org/idea.org" "闪念")
-                                        "* %U - %^{标题} %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("k" "我的百科" entry (file+headline "~/Documents/site/org/wiki.org" "WIKI")
-                                        "* %^{标题} %t %^g\n  %?\n"))
-  (add-to-list 'org-capture-templates '("w" "我的单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
-                                        " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |"))
-  (add-to-list 'org-capture-templates '("f" "单词速导" table-line (file+headline "~/Documents/org/capture/word.org" "Words")
-                                        "| %U | %(evan/capture-get-word 1) | %(evan/capture-get-word 2) | %(evan/capture-get-word 3) |"))
-  (add-to-list 'org-capture-templates '("l" "超链接" entry (file+headline "~/Documents/org/capture/link.org" "Links")
-                                        "* %^{简介} %t %^g\n  %^L\n  %?\n"))
   ;; 设置org-babel支持运行的代码
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((python . t)
 	 (shell . t))))
 
-;; 美化org
-(use-package org-bullets
-  :ensure t
+(use-package org-capture
   :after org
-  :hook ('org-mode . 'org-bullets-mode)
-  :custom
-  (org-bullets-bullet-list '("☰" "☷" "✿" "☭")))
+  :config
+    ;; org-capture
+  (setq org-capture-templates nil)
+  ;; (push "~/Documents/org/capture/task.org" org-agenda-files)
+  ;; (setq org-time-stamp-formats '("<%Y-%m-%d 周%u %H:%M>"))
+  (add-to-list 'org-capture-templates '("c" "代码"))
+  (add-to-list 'org-capture-templates '("b" "博客"))
+  (add-to-list 'org-capture-templates '("s" "学习"))
+  ;; 代码捕获模板
+  (push '("cb" "BUG" entry (file+headline "~/Documents/org/capture/code.org" "BUG")  "* [BUG] %^{BUG} \t%^g\n创建时间: %U\nSCHEDULED :%^T\nDEADLINE: %^T\n %T") org-capture-templates)
+  (push '("ci" "新事件" entry (file+headline "~/Documents/org/capture/code.org" "新事件")  "* [新事件] %^{新事件} \t%^g\n创建时间: %U\nSCHEDULED :%^T\nDEADLINE: %^T\n %T") org-capture-templates)
+  ;; 学习捕获模板
+  (push '("ss" "学习" entry (file+headline "~/Documents/org/capture/study.org" "学习")  "* [学习] %^{学习} \t%^g\n创建时间: %U\nSCHEDULED :%^T\nDEADLINE: %^T\n %T") org-capture-templates)
+  (push '("st" "待办" entry (file+headline "~/Documents/org/capture/study.org" "待办") "* [待办] %^{待办} \t%^g\n创建时间: %U\nSCHEDULED :%^T\nDEADLINE: %^T\n %T") org-capture-templates)
+  (push '("sw" "完成" entry (file+healine "~/Documents/org/capture/study.org" "完成") "* [完成] %^{完成} \t%^g\n创建时间: %U\nSCHEDULED :%^T\nDEADLINE: %^T\n %T") org-capture-templates)
+  ;; 博客捕获模板
+  (push '("bj" "我的日志" entry (file+headline"~/Documents/site/org/diary.org" "日志") "* %U - %^{标题}\n  %?") org-capture-templates)
+  (push '("bi" "我的闪念" entry (file+headline "~/Documents/site/org/idea.org" "闪念") "* %U - %^{标题} %^g\n  %?\n") org-capture-templates)
+  (push '("bk" "我的百科" entry (file+headline "~/Documents/site/org/wiki.org" "WIKI") "* %^{标题} %t %^g\n  %?\n") org-capture-templates)
+  ;; 我的单词捕获模板
+  (push '("w" "我的单词" table-line (file+headline "~/Documents/org/capture/word.org" "Words") " | %U | %^{en_US} | %^{词性} | %^{zh_CN} |") org-capture-templates))
+
+(use-package org-agenda
+  :after org
+  :config
+  (defun evan/agenda-icon-material (name)
+    "返回一个all-the-icons-material图标"
+    (list (all-the-icons-material name)))
+  ;; 设置org-agenda分类图标
+  (setq org-agenda-category-icon-alist
+        `(
+          ;; 学习相关
+          ("待办" ,(evan/agenda-icon-material "check_box") nil nil :ascent center)
+          ("学习" ,(evan/agenda-icon-material "book") nil nil :ascent center)
+          ("等待" ,(evan/agenda-icon-material "ac_unit") nil nil :ascent center)
+          ("完成" ,(evan/agenda-icon-material "done") nil nil :ascent center)
+          ;; 代码相关
+          ("取消" ,(evan/agenda-icon-material "cancel") nil nil :ascent)
+          ("BUG" ,(evan/agenda-icon-material "bug_report") nil nil :ascent center)
+          ("新事件" ,(evan/agenda-icon-material "new_releases") nil nil :ascent center)
+          ("已知问题" ,(evan/agenda-icon-material "comment") nil nil :ascent center)
+          ("修改中" ,(evan/agenda-icon-material "adjust") nil nil :ascent center)
+          ("已修复" ,(evan/agenda-icon-material "thumb_up") nil nil :ascent center))))
+
+;; 美化org
+;; (use-package org-bullets
+;;   :ensure t
+;;   :after org
+;;   :hook ('org-mode . 'org-bullets-mode)
+;;   :custom
+;;   (org-bullets-bullet-list '("☰" "☷" "✿" "☭")))
+
 (use-package org-superstar
   :ensure t
   :after org
