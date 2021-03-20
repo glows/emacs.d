@@ -2,20 +2,43 @@
 (use-package lsp-mode
   :ensure t
   :defer 2
+  :init (setq lsp-keymap-prefix "s-g")
   :commands (lsp)
-  :hook ((java-mode js-mode js2-mode web-mode scss-mode c-mode c++-mode objc-mode python-mode rust-mode) . lsp)
+  :hook (((java-mode js-mode js2-mode web-mode scss-mode c-mode c++-mode objc-mode python-mode rust-mode) . lsp)
+         (lsp-mode . (lambda ()
+                       (lsp-enable-which-key-integration))))
   :custom
   (lsp-idle-delay 200)
   (lsp-auto-guess-root nil)
   (lsp-file-watch-threshold 2000)
-  (read-process-output-max (* 1024 10240))
+  (read-process-output-max (* 1024 1240))
   (lsp-eldoc-hook nil)
+  (lsp-auto-configure t)
+  (lsp-log-io nil)
   (lsp-prefer-flymake nil)
+  (lsp-diagnostics-provide :flycheck)
+  (lsp-enable-indentation t)
+  (lsp-enable-on-type-formatting nil)
+  (lsp-response-timeout 3)  
   :bind (:map lsp-mode-map
 			  ("C-c C-f" . lsp-format-buffer)
 			  ("M-RET" . lsp-ui-sideline-apply-code-actions))
   :config
-  (setq lsp-prefer-capf t)
+  (define-key lsp-command-map (kbd "s-g") lsp-command-map)
+  
+    ;; 设置lsp的一些界面功能
+  ;; 具体变量是干嘛的可以参考这里： https://emacs-lsp.github.io/lsp-mjjode/tutorials/how-to-turn-off/
+  (setq lsp-lens-enable t
+        lsp-headerline-breadcrumb-enable nil
+        lsp-ui-sideline-enable nil
+        lsp-ui-sideline-show-code-actions t
+        lsp-modeline-code-actions-enable nil
+        lsp-ui-sideline-show-diagnostics nil
+        lsp-modeline-diagnostics-enable nil
+        lsp-signature-auto-activate nil
+        lsp-prefer-capf t
+        lsp-signature-render-documentation nil)
+
   (add-hook 'lsp-ui-imenu-mode-hook (lambda ()
                                       (display-line-numbers-mode -1))))
 
@@ -37,24 +60,22 @@
   :commands (lsp-ui)
   ;; :hook (lsp-mode . lsp-ui-mode)
   :config
-  ;; sideline
-  (setq lsp-ui-sideline-show-diagnostics t
-        lsp-ui-sideline-show-hover t
-        lsp-ui-sideline-show-code-actions nil
-        lsp-ui-sideline-update-mode 'line
-        ;; lsp-ui-imenu列表自动刷新
-        lsp-ui-imenu-auto-refresh t
-        ;; lsp-ui-imenu列表刷新延迟
-        lsp-ui-imenu-auto-refresh-delay 5.0
-        ;; sideline
-        lsp-ui-sideline-delay 1)
+  (setq
+   ;; sideline
+   lsp-ui-sideline-update-mode 'line
+   ;; sideline
+   lsp-ui-sideline-delay 1
+   ;; lsp-ui-imenu列表自动刷新
+   lsp-ui-imenu-auto-refresh t
+   ;; lsp-ui-imenu列表刷新延迟
+   lsp-ui-imenu-auto-refresh-delay 5.0)
   ;; peek
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   ;; doc
   (setq lsp-ui-doc-enable t
         ;; 文档显示的位置
-        lsp-ui-doc-position 'top
+        lsp-ui-doc-position 'at-point
         lsp-ui-sideline-enable nil
         lsp-signature-render-documentation nil
         ;; 显示文档的延迟
