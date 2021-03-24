@@ -1,0 +1,41 @@
+* Feeds :elfeed:
+** Blogs :blog:
+*** [[https://feeds.feedburner.com/ruanyifeng][ruanyf]]
+*** https://www.raychase.net/feed
+*** [[https://juanignaciosl.github.io/feed.xml][Juan Ignacio]]
+*** https://feeds.feedburner.com/codinghorror?format=xml
+*** https://endler.dev/rss.xml  :rust:
+*** [[https://medium.com/feed/@steve.yegge][Steve Yegge]]
+*** [[https://1byte.io/rss.xml][1byte]]
+
+** Rust :rust:
+*** [[https://matklad.github.io/feed.xml][Matklad]]
+*** [[https://lucumr.pocoo.org/feed.atom][Armin Ronacher]]  :python:
+** Databases :db:
+*** [[https://blog.yugabyte.com/feed/][YugaByteDB]]
+*** [[https://www.cockroachlabs.com/blog/index.xml][CockroachLabs]]
+*** [[https://feeds.feedburner.com/martinkl?format=xml][Martin Kleppmann]]
+*** http://mysql.taobao.org/monthly/feed.xml
+*** [[https://blog.acolyer.org/feed/][MorningPaper]]
+*** [[https://blog.dbi-services.com/author/franckpachot/feed][DBI Franck]]
+** Golang :go:
+*** [[https://blog.golang.org/feed.atom][Go blog]]
+** Tech Blog :company:
+*** [[https://blogs.dropbox.com/tech/feed/][Dropbox]]
+*** [[https://engineering.linkedin.com/blog.rss.html][LinkedIn]]
+*** [[https://hacks.mozilla.org/feed/][Mozilla]]
+*** [[https://code.facebook.com/posts/rss/][Facebook]]
+*** [[http://tech.meituan.com/atom.xml][Meituan]]
+*** [[https://medium.com/feed/paypal-engineering][PayPal]]
+*** [[https://engineering.grab.com/feed.xml][Grab]]
+*** [[https://medium.com/feed/pinterest-engineering][Pinterest]]
+** Emacs :emacs:
+*** https://jherrlin.github.io/index.xml
+*** [[https://www.masteringemacs.org/feed][Mastering Emacs]]
+*** [[https://emacsredux.com/atom.xml][Emacs Redux]]
+*** [[https://endlessparentheses.com/atom.xml][Endless Parentheses]]
+
+** News :news:
+*** [[https://lillianli.substack.com/feed/][Chinese Characteristics]]
+*** [[http://ithare.com/feed/][IT Hare]]
+*** [[https://hnrss.org/best][Hacker News: Best]]

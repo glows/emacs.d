@@ -124,7 +124,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil elfeed-dashboard elfeed-org elfeed easy-hugo rainbow-delimiters rainbow-mode autopair undo-tree centaur-tabs neotree company hungry-delete swiper counsel smartparens js2-mode nodejs-repl exec-path-from-shell monokai-theme))))
+    (easy-hugo rainbow-delimiters rainbow-mode autopair undo-tree centaur-tabs neotree company hungry-delete swiper counsel smartparens js2-mode nodejs-repl exec-path-from-shell monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -337,40 +337,10 @@ sCategories: ")
         (save-buffer))))
 
 
-
 (global-set-key (kbd "C-x w") 'elfeed)
-
-;; use an org file to organise feeds
-(use-package elfeed-org
-  :ensure t
-  :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed_feeds.org")))
-
-
-(use-package elfeed-dashboard
-  :ensure t
-  :config
-  (setq elfeed-dashboard-file "~/.emacs.d/elfeed-dashboard.org")
-  ;; update feed counts on elfeed-quit
-  (advice-add 'elfeed-search-quit-window :after #'elfeed-dashboard-update-links))
 
 (setq elfeed-feeds
       '("http://www.50ply.com/atom.xml"
-	"news.ycombinator.com/rss"
+	"http://possiblywrong.wordpress.com/feed/"
+	;; ...
 	        "http://www.devrand.org/feeds/posts/default"))
-
-
-(defvar myPackages
-  '(better-defaults                 ;; Set up some better Emacs defaults
-    elpy                            ;; Emacs Lisp Python Environment
-    ein                             ;; Emacs iPython Notebook
-    flycheck                        ;; On the fly syntax checking
-    py-autopep8                     ;; Run autopep8 on save
-    blacken                         ;; Black formatting on save
-    magit                           ;; Git integration
-    material-theme                  ;; Theme
-    )
-  )
-
-

@@ -1,0 +1,44 @@
+* Basics
+
+ [U] Update Elfeed
+ [S] Search
+ [E] Edit
+ [g] Refresh counts
+ [q] Kill dashboard
+
+* Bookmarks
+
+ [s] Starred     [[elfeed:+starred][  1]]
+ [R] Recent      [[elfeed:-unread][___]]
+ [u] Unread      ([[elfeed:+unread][   774]]/[[elfeed:][   874]])
+ [d] Database    ([[elfeed:+unread +db][   343]]/[[elfeed:+db][   365]])
+ [c] Company     ([[elfeed:+unread +company][   359]]/[[elfeed:+company][   382]])
+ [b] Blogs       ([[elfeed:+unread +blog][    71]]/[[elfeed:+blog][    93]])
+ [e] Emacs       ([[elfeed:+unread +emacs][   178]]/[[elfeed:+emacs][   178]])
+ [r] Rust        ([[elfeed:+unread +rust][    59]]/[[elfeed:+rust][    64]])
+ [o] Golang      ([[elfeed:+unread +go][     9]]/[[elfeed:+go][    10]])
+ [n] News        ([[elfeed:+unread +news][    90]]/[[elfeed:+news][   135]])
+
+* Configuration
+  :PROPERTIES:
+  :VISIBILITY: hideall
+  :END:
+
+  Press "E" to edit and M-x elfeed-dashboard-mode to go back
+
+  #+STARTUP: showall showstars indent
+  #+KEYMAP: s | elfeed-dashboard-query "+starred"
+  #+KEYMAP: R | elfeed-dashboard-query "-unread"
+  #+KEYMAP: u | elfeed-dashboard-query "+unread"
+  #+KEYMAP: d | elfeed-dashboard-query "+unread +db"
+  #+KEYMAP: c | elfeed-dashboard-query "+unread +company"
+  #+KEYMAP: b | elfeed-dashboard-query "+unread +blog"
+  #+KEYMAP: e | elfeed-dashboard-query "+unread +emacs"
+  #+KEYMAP: r | elfeed-dashboard-query "+unread +rust"
+  #+KEYMAP: o | elfeed-dashboard-query "+unread +go"
+  #+KEYMAP: n | elfeed-dashboard-query "+unread +news"
+  #+KEYMAP: S | elfeed
+  #+KEYMAP: g | elfeed-dashboard-update-links
+  #+KEYMAP: U | elfeed-dashboard-update
+  #+KEYMAP: E | elfeed-dashboard-edit
+  #+KEYMAP: q | kill-current-buffer
